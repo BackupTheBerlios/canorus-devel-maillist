@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Hello, Mac OS X build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C45CAEC86.40300%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000033.html">
+   <LINK REL="Next"  HREF="000041.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Hello, Mac OS X build</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C45CAEC86.40300%40gmail.com%3E"
+       TITLE="[Canorus-devel] Hello, Mac OS X build">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Feb  8 10:25:26 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000033.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+        <LI>Next message: <A HREF="000041.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> I think it has something to do with ADD_CUSTOM_COMMAND or cmake -E but
+</I>&gt;<i> nothing I have tried has worked; admittedly I don't know much about
+</I>&gt;<i> cmake.
+</I>&gt;<i>   
+</I>Is there any documentation about the file system hierarchy under Mac.
+I'm a bit confused about where are the applications located - here's how
+the installation works now.
+To universally compile and install Canorus (no native installation or
+packages), one should do:
+$ cd canorus
+$ cmake .
+$ make
+$ sudo make install
+
+This should compile and install Canorus to default paths (ie.
+/usr/local/bin&amp;lib&amp;share under Linux, C:\Program files\Canorus on
+Windows). Where are Mac applications located?
+
+The second way is to create a native packages (currently Debian-based
+Linux and Windows). This is done by (for Windows)
+$ cd canorus
+$ cmake . -DCMAKE_INSTALL_PREFIX=nsis/canorus
+$ make
+$ make install
+$ cd nsis
+$ nsis setup.nsi    //creates an installation .exe for Canorus
+
+And for debian, the installation prefix is debian/canorus/usr and
+debian/rules binary is executed instead of nsis to create a .deb
+package. The whole idea is to install Canorus into a local directory and
+create a native package from there.
+
+IMO, the support for Mac should be offered again genericly (by typing
+make install) and to create a native package (.dmz?). This should go
+into macosx/ directory.
+
+So, my question is, which files should be installed where? As far as I
+was able to see, Applications/ is used only for describing the
+applications, not for their data. The core application files are still
+located in /usr/bin&amp;lib&amp;share or maybe usr/local/bin&amp;lib&amp;share under Mac?
+
+
+Regards.
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070208/cd42f08b/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070208/cd42f08b/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000033.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+	<LI>Next message: <A HREF="000041.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#34">[ date ]</a>
+              <a href="thread.html#34">[ thread ]</a>
+              <a href="subject.html#34">[ subject ]</a>
+              <a href="author.html#34">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

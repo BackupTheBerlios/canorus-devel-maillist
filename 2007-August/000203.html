@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] some stuff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3C46D0FCEC.8000500%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000201.html">
+   <LINK REL="Next"  HREF="000204.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] some stuff</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3C46D0FCEC.8000500%40gmail.com%3E"
+       TITLE="[Canorus-devel] some stuff">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Aug 26 06:09:16 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000201.html">[Canorus-devel] some stuff
+</A></li>
+        <LI>Next message: <A HREF="000204.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+&gt;&gt;<i> Some regressions:
+</I>&gt;&gt;<i> * Cannot create new documents (&quot;ImportError: No module name new&quot;)
+</I>&gt;&gt;<i>     
+</I>&gt;<i> That's weird. I can't reproduce this. Is this the whole output? Would
+</I>&gt;<i> expect something like newDocument or newDefaultDocument, not just &quot;new&quot;.
+</I>&gt;<i>   
+</I>
+I'm using the Windows build. The error started happening several builds 
+back. Below is the full error message that appears at startup. One thing 
+I notice about the error message is the mixture of forward slashes (/) 
+and back slashes (\) in the file names.
+
+'import site' failed; use -v for traceback
+Traceback (most recent call last):
+  File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+  File &quot;C:\Program Files\Canorus\CanorusPython.py&quot;, line 8, in &lt;module&gt;
+    import new
+ImportError: No module named new
+QObject::startTimer: timers cannot be started from another thread
+Traceback (most recent call last):
+  File &quot;C:/Program Files/Canorus/scripts\newdocument.py&quot;, line 1, in 
+&lt;module&gt;
+    from CanorusPython import *
+  File &quot;C:\Program Files\Canorus\CanorusPython.py&quot;, line 8, in &lt;module
+    import new
+ImportError: No module named new
+
+
+-- 
+David Bolton
+<A HREF="http://davidbolton.info">http://davidbolton.info</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000201.html">[Canorus-devel] some stuff
+</A></li>
+	<LI>Next message: <A HREF="000204.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#203">[ date ]</a>
+              <a href="thread.html#203">[ thread ]</a>
+              <a href="subject.html#203">[ subject ]</a>
+              <a href="author.html#203">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

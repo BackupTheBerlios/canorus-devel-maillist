@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> Plugins Interoperability via JS?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20Plugins%20Interoperability%20via%20JS%3F&In-Reply-To=%3C9a4db0e10903201601w2efb99a6we2f934b76ba42982%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000741.html">
+   <LINK REL="Next"  HREF="000742.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>Plugins Interoperability via JS?</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20Plugins%20Interoperability%20via%20JS%3F&In-Reply-To=%3C9a4db0e10903201601w2efb99a6we2f934b76ba42982%40mail.gmail.com%3E"
+       TITLE="Plugins Interoperability via JS?">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sat Mar 21 00:01:39 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000741.html">[Canorus-devel] Users guide and more
+</A></li>
+        <LI>Next message: <A HREF="000742.html">[Canorus-devel] [Fwd: Re: Plugins Interoperability via JS?]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#743">[ date ]</a>
+              <a href="thread.html#743">[ thread ]</a>
+              <a href="subject.html#743">[ subject ]</a>
+              <a href="author.html#743">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard. You should forward this to ML as well.
+
+I was thinking a lot about this a year ago when QtScript was introduced.
+There is also PythonQt (not PyQt!) which can be used through QtScript. See
+Qt quarterly paper <A HREF="http://doc.trolltech.com/qq/qq23-pythonqt.html">http://doc.trolltech.com/qq/qq23-pythonqt.html</A> .
+
+The problem I had looking at javascript was that you couldn't get any useful
+libraries for the javascript engine in real life. For example Python has a
+large userbase and has support for sound, images, web stuff, Qt, statistics
+etc. It has Eclipse IDE plugin, a command-line interpreter and a portable
+library. If you're looking for an arbitrary library, it's very possible
+there will exist bindings for Python beside the C/C++. This makes it a very
+useful scripting alternative to the native C/C++ interface.
+
+I asked myself then why do we need two scripting languages. If we replaced
+Swig with QtScript backend and still using Python that would be great. But I
+don't see this possible yet. And introducing just another scripting language
+and keeping Swig is loss of resources IMO. Having one scripting language
+which works as it should is much better. I can't say anything against Python
+becuase it works very well for Harmonia.
+
+
+Regards.
+-Matev&#382;
+
+2009/3/19 Reinhard Katzmann &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">suamor at web.de</A>&gt;
+
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> For being able to interoperate with other Qt apps using QtScript
+</I>&gt;<i> we might want to add at least JavaScript support somewhen in the
+</I>&gt;<i> future.
+</I>&gt;<i>
+</I>&gt;<i> I found that Swig was once supported externally via SwigJS but
+</I>&gt;<i> that project was abandoned (corresponding page is only available
+</I>&gt;<i> on internet archive) and replaced by SpiderMonkey (new Mozilla JS
+</I>&gt;<i> engine). So we would have to either use Qt or SpiderMonkey if we
+</I>&gt;<i> want to offer JS support. I personally dislike Javascript generally
+</I>&gt;<i> but seeing more and more application with QtScript Only plugin
+</I>&gt;<i> support I'm beginning to think about it.
+</I>&gt;<i>
+</I>&gt;<i> Theoretically Swig -&gt; Java -&gt; Rhino would be possible too but
+</I>&gt;<i> this is certainly no good way for defining the plugin interface...
+</I>&gt;<i>
+</I>&gt;<i> Though we could use QtScript I currently prefer SpiderMonkey (1.8) as
+</I>&gt;<i> engine being probably more mature and probably faster as it is
+</I>&gt;<i> implemented in C (I didn't find any current benchmarks for that
+</I>&gt;<i> so we'd have to test this for ourself) or more feature-rich/compatible.
+</I>&gt;<i> Also we don't have use for the Qt interface offered via QtBindings
+</I>&gt;<i> with our current plugin concept.
+</I>&gt;<i>
+</I>&gt;<i> I didn't look at other implementations like KJS / JavascriptCore
+</I>&gt;<i> (certainly also implemented in C++), just too new at the moment.
+</I>&gt;<i>
+</I>&gt;<i> If you agree I post this to the mailing list else &gt;/dev/null
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard
+</I>&gt;<i> --
+</I>&gt;<i> Software-Engineer, Developer of User Interfaces
+</I>&gt;<i> Project: Canorus - the next generation music score editor -
+</I>&gt;<i> <A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+</I>&gt;<i> GnuPG Public Key available on request
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20090321/a8bb3191/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20090321/a8bb3191/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000741.html">[Canorus-devel] Users guide and more
+</A></li>
+	<LI>Next message: <A HREF="000742.html">[Canorus-devel] [Fwd: Re: Plugins Interoperability via JS?]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#743">[ date ]</a>
+              <a href="thread.html#743">[ thread ]</a>
+              <a href="subject.html#743">[ subject ]</a>
+              <a href="author.html#743">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

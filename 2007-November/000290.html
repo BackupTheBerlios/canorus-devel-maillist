@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Future of Print / Preview
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Future%20of%20Print%20/%20Preview&In-Reply-To=%3C47489E3D.80208%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000292.html">
+   <LINK REL="Next"  HREF="000293.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Future of Print / Preview</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Future%20of%20Print%20/%20Preview&In-Reply-To=%3C47489E3D.80208%40web.de%3E"
+       TITLE="[Canorus-devel] Future of Print / Preview">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Nov 24 22:57:17 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000292.html">[Canorus-devel] Copy &amp; Paste ideas
+</A></li>
+        <LI>Next message: <A HREF="000293.html">[Canorus-devel] major api change
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Matevz brought some additional ideas up for printing / preview. My
+current concept is relatively separate from the Canorus core model.
+I only need access to the export objects to create a source for the
+typeset program used by the composer.
+
+No currently there is not much difference for the composer concerning
+print / preview. He defines which typeset program to use, defines the
+options for that program and starts it.
+
+NoteEdit lacks the possibility to use special features of a typesetter.
+This is in many cases not a problem, I heard that some composers use
+NoteEdit mainly for input of the notes and do the &quot;fine tuning&quot; of
+the score with the exported lilypond/musixtex or whatever source.
+
+Matevz idea was to introduce new engraver classes, based on the music
+element classes. These objects would store the engraving &quot;commands&quot; for
+every music element the composer defines. To avoid dependencies we'd
+need to create abstract classes for each music element class having
+additionally engraving options, so those parts of Canorus ignoring the
+engraving stuff do not need to use it. Also this way a simpler Canorus
+binary could be created completely without engraving music element options.
+
+Apart from that I currently don't know if Qt supports all those
+DE printer settings (windows, gnome, kde, mac). On Linux I can start
+programs like kprinter (don't know the equivalent for gnome, but
+an alternative is xpp). I don't know if such programs also exist for
+windows and mac. At least the composer would be able to select one of
+those programs.
+
+It would be nice to hear your opinion on those ideas for printing and preview.
+
+Best,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000292.html">[Canorus-devel] Copy &amp; Paste ideas
+</A></li>
+	<LI>Next message: <A HREF="000293.html">[Canorus-devel] major api change
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#290">[ date ]</a>
+              <a href="thread.html#290">[ thread ]</a>
+              <a href="subject.html#290">[ subject ]</a>
+              <a href="author.html#290">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

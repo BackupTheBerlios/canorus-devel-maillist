@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Runtime error (no noteheads)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Runtime%20error%20%28no%20noteheads%29&In-Reply-To=%3C461D3E1A.3020806%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000101.html">
+   <LINK REL="Next"  HREF="000102.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Runtime error (no noteheads)</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Runtime%20error%20%28no%20noteheads%29&In-Reply-To=%3C461D3E1A.3020806%40web.de%3E"
+       TITLE="[Canorus-devel] Runtime error (no noteheads)">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Apr 11 21:59:22 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000101.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+        <LI>Next message: <A HREF="000102.html">[Canorus-devel] Playback with rests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+&gt;&gt;&gt;<i> I get a staff, but no clef.  I get notes that will playback,
+</I>&gt;&gt;&gt;<i> but I can only see the stems, but no noteheads. I was careful
+</I>&gt;&gt;&gt;<i> following the instructions, including a creating a symlink for
+</I>&gt;&gt;&gt;<i> one of the dependencies, uncommenting one of the 
+</I>&gt;&gt;&gt;<i> lines in one of the Makefiles, and installing the fonts with
+</I>&gt;&gt;&gt;<i> drakfont, and copying them to ~/.fonts (just in case).
+</I>&gt;&gt;&gt;<i> I also checked and the Makefiles put the fonts in
+</I>&gt;&gt;&gt;<i> /usr/local/share/fonts/truetype/canorus. 
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> Not having a Linux box to play with at the moment all I can suggest is
+</I>&gt;&gt;<i> 1) try installing 'Emmentaler-Mac.ttf' font from macosx/files/ in
+</I>&gt;&gt;<i> current svn and see if that fixes it, and 2) if you don't have Lilypond
+</I>&gt;&gt;<i> installed already, you can try getting it and installing the original
+</I>&gt;&gt;<i> .otf version of Emmentaler that they provide.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Good luck,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Sam
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i> I used drakfont to install the lilypond fonts, didn't fix it, tried the 
+</I>&gt;<i> Emmentaler.ttf from /trunk/macosx/files (it wasn't called 
+</I>&gt;<i> Emmantaler-Mac.ttf).  That also didn't work.  I get this message in the 
+</I>&gt;<i> console, everytime I paste a note or symbol on the staff:
+</I>&gt;<i>
+</I>&gt;<i> QToolButton: Menu in setMenu() overriding actions set in addAction!
+</I>&gt;<i>
+</I>&gt;<i> Maybe this is a clue?
+</I>&gt;<i> Galen
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Bad bad.. don't use drakfont to install the font, I did this too but it
+did not work out.
+I found out that drakfont converted the font on the fly into a
+postscript font instead
+of keeping the original font format. Apparently for some reason this
+destroys the font.
+I copied it manually into the directory where the converted font was
+found (but ttf
+not Type1: /usr/share/fonts/drakfont/ttf/Emmentaler-14.ttf ).
+
+Best,
+
+Reinhard
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - <A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000101.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+	<LI>Next message: <A HREF="000102.html">[Canorus-devel] Playback with rests
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#106">[ date ]</a>
+              <a href="thread.html#106">[ thread ]</a>
+              <a href="subject.html#106">[ subject ]</a>
+              <a href="author.html#106">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

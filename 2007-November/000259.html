@@ -1,0 +1,116 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] New Programmer (Microtonality)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20New%20Programmer%20%28Microtonality%29&In-Reply-To=%3C4731CB55.2080702%40elec.gla.ac.uk%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000258.html">
+   <LINK REL="Next"  HREF="000260.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] New Programmer (Microtonality)</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20New%20Programmer%20%28Microtonality%29&In-Reply-To=%3C4731CB55.2080702%40elec.gla.ac.uk%3E"
+       TITLE="[Canorus-devel] New Programmer (Microtonality)">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Nov  7 15:27:33 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000258.html">[Canorus-devel] New Programmer
+</A></li>
+        <LI>Next message: <A HREF="000260.html">[Canorus-devel] New Programmer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+&gt;<i> Hi Dan,
+</I>&gt;<i>
+</I>&gt;<i> I think the implementation of microtones are very important, as it is the key to writing blues and Arab scales correctly - and playing the notes correctly through MIDI. Why not start here?
+</I>&gt;<i>
+</I>&gt;<i> I have been working a lot with Arab scales this summer and I was amazed by the new possibilities (the scales resemble the Greek scales with a few extra odd halftones).
+</I>&gt;<i>
+</I>&gt;<i> Best regards
+</I>&gt;<i> NORDISC Music
+</I>&gt;<i>
+</I>&gt;<i> Henrik W. Gade
+</I>&gt;<i>   
+</I>&gt;<i>
+</I>
+Hi everyone, I've been lurking for a while keeping up to date with 
+progress as I haven't had time to contribute a useful amount of time to 
+the project.
+
+However, I've been working with microtonal music (specifically 19-tone 
+ET) for the past couple of years, and have some code lying around which 
+might help save a few hours for anyone adding microtonal support.
+
+The tuning class (in C++) converts between pitch, frequency &amp; MIDI. It 
+is suitable for a system which retunes MIDI notes to frequencies (as in 
+MIDI tuning standard or fluidsynth) rather than systems which aim to use 
+the pitch bend (which aren't really much use anyway).
+
+Tunings can be read from a text file, I also have an XML implementation 
+of the tuning definition which I could dig out (writing has yet to be 
+supported). It works for non-equal tempered tunings, and I suspect it 
+would work for tunings which are not based on the octave, but I haven't 
+had the need to use these yet, so I'm not sure.
+
+If this is of interest/use I have put the relevant classes and an 
+example tunings file in an archive at the location below:
+<A HREF="http://userweb.elec.gla.ac.uk/d/dougiemc/tuningclass.tgz">http://userweb.elec.gla.ac.uk/d/dougiemc/tuningclass.tgz</A>
+
+If you have any questions feel free to ask, please let me know if you 
+decide to use it, or if you improve the code. I'll be away travelling 
+soon, so my replies might be slightly delayed.
+
+
+Cheers,
+Dougie
+
+-- 
+ _________________________________________
+ Douglas McGilvray		
+ Centre for Music Technology	
+ Rankine Building
+ University of Glasgow                                                
+ Glasgow, G12 8QQ
+
+ <A HREF="http://cmt.gla.ac.uk/">http://cmt.gla.ac.uk/</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000258.html">[Canorus-devel] New Programmer
+</A></li>
+	<LI>Next message: <A HREF="000260.html">[Canorus-devel] New Programmer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#259">[ date ]</a>
+              <a href="thread.html#259">[ thread ]</a>
+              <a href="subject.html#259">[ subject ]</a>
+              <a href="author.html#259">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

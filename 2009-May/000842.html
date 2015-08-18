@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] midi import does time signatures
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import%20does%20time%20signatures&In-Reply-To=%3C4A205989.4020404%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000841.html">
+   <LINK REL="Next"  HREF="000843.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] midi import does time signatures</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import%20does%20time%20signatures&In-Reply-To=%3C4A205989.4020404%40schwaben.de%3E"
+       TITLE="[Canorus-devel] midi import does time signatures">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Fri May 29 23:54:17 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000841.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+        <LI>Next message: <A HREF="000843.html">[Canorus-devel] midi import does time signatures
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#842">[ date ]</a>
+              <a href="thread.html#842">[ thread ]</a>
+              <a href="subject.html#842">[ subject ]</a>
+              <a href="author.html#842">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everybody,
+
+with r1083 importing midi is even more fun because time signatures are
+now done right. Almost all my midi files are read in and displayed nicely :)
+I'll soon improve exporting time signatures to the same level, which now
+I understand better, so anacrusises will be handled properly too.
+
+A little proposal (to Matev&#382;): To keep the paper feeling of canorus,
+which I really like, and keep canorus workable without any signatures or
+barlines at all, and, nevertheless, keep a midi export/import cycle
+close to identity, I would like to change the default tempo, which
+probably also is the default playback tempo, to the midi default tempo.
+The midi default tempo is quarter = 120.
+
+The selection of pmidi as a parser was a good decision. The quantisation
+should best be done only triggered by the user. The raw display in 128th
+I like most, currently. It's the most unaltered sound. Probably we
+should have some functions on the selected regions, like lowering
+quantisation, merging voices, as Itay mentioned, shifting jazzy notes
+horizontally, pressing notes to chords, and so on. Automatic
+quantisation, or only to be selected prior to import, I don't think
+that's what we want.
+
+
+Best Regards,
+Georg
+
+
+
+
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000841.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+	<LI>Next message: <A HREF="000843.html">[Canorus-devel] midi import does time signatures
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#842">[ date ]</a>
+              <a href="thread.html#842">[ thread ]</a>
+              <a href="subject.html#842">[ subject ]</a>
+              <a href="author.html#842">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

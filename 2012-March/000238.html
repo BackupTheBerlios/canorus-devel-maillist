@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> No subject
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2012-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20No%20subject&In-Reply-To=%3Cmailman.1.1331727674.29668.canorus-devel%40lists.berlios.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000294.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>No subject</H1>
+    <B></B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20No%20subject&In-Reply-To=%3Cmailman.1.1331727674.29668.canorus-devel%40lists.berlios.de%3E"
+       TITLE="No subject">
+       </A><BR>
+    <I>Wed Mar 14 13:21:13 CET 2012</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000294.html">No subject
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>but for some reason, some auto-generated header files were not being 
+created. Im not sure how much confidence you can place in that assertion 
+given Ive spent less than an hour looking at the Canorus source and did 2 
+compilations. :)
+
+While Im here, may as well say Hi to all on the list. Im Colin from 
+Scotland. :)
+
+Regards,
+C.
+
+&gt;<i>From: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>Subject: [Canorus-devel] Rev 599 building
+</I>&gt;<i>Date: Fri, 12 Oct 2007 14:29:38 +0200
+</I>&gt;<i>
+</I>&gt;<i>Hello everybody,
+</I>&gt;<i>
+</I>&gt;<i>building R599 from a clean chechout stalls with these first messages:
+</I>&gt;<i>
+</I>&gt;<i>[ 13%] Building CXX object src/CMakeFiles/CanorusRuby.dir/rtmidi/RtMidi.o
+</I>&gt;<i>[ 14%] Building CXX object
+</I>&gt;<i>src/CMakeFiles/CanorusRuby.dir/interface/rtmididevice.o
+</I>&gt;<i>In file included from /home/rud/canorus/trunk/src/core/canorus.h:12,
+</I>&gt;<i>                  from
+</I>&gt;<i>/home/rud/canorus/trunk/src/interface/rtmididevice.cpp:12:
+</I>&gt;<i>/home/rud/canorus/trunk/src/ui/mainwin.h:17:24: error: ui_mainwin.h:
+</I>&gt;<i>Datei oder Verzeichnis nicht gefunden
+</I>&gt;<i>In file included from /home/rud/canorus/trunk/src/core/canorus.h:13,
+</I>&gt;<i>                  from
+</I>&gt;<i>/home/rud/canorus/trunk/src/interface/rtmididevice.cpp:12:
+</I>&gt;<i>.......
+</I>&gt;<i>
+</I>&gt;<i>Somehow the underscores should be slashes, to be the right path
+</I>&gt;<i>descriptor. Any idea what happended?
+</I>&gt;<i>
+</I>&gt;<i>And, have a small patch:
+</I>&gt;<i>
+</I>&gt;<i>--- playback.cpp        (Revision 599)
+</I>&gt;<i>+++ playback.cpp        (Arbeitskopie)
+</I>&gt;<i>@@ -56,6 +56,7 @@
+</I>&gt;<i>         Destructor deletes the created arrays.
+</I>&gt;<i>  */
+</I>&gt;<i>  CAPlayback::~CAPlayback() {
+</I>&gt;<i>+       delete _repeating;
+</I>&gt;<i>         delete _streamIdx;
+</I>&gt;<i>         delete _lastRepeatOpenIdx;
+</I>&gt;<i>         delete _curTime;
+</I>&gt;<i>
+</I>&gt;<i>Regards,
+</I>&gt;<i>Georg
+</I>&gt;<i>
+</I>&gt;<i>_______________________________________________
+</I>&gt;<i>Canorus-devel mailing list
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>
+_________________________________________________________________
+The next generation of Hotmail is here!  <A HREF="http://www.newhotmail.co.uk">http://www.newhotmail.co.uk</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000294.html">No subject
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#238">[ date ]</a>
+              <a href="thread.html#238">[ thread ]</a>
+              <a href="subject.html#238">[ subject ]</a>
+              <a href="author.html#238">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

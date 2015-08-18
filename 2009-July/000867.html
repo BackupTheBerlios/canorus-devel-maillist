@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20Trunk%20crashes%20on%20start%20in%20glib.c%20from%20pmidi&In-Reply-To=%3C4A4CAAFE.5000505%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000868.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20Trunk%20crashes%20on%20start%20in%20glib.c%20from%20pmidi&In-Reply-To=%3C4A4CAAFE.5000505%40web.de%3E"
+       TITLE="[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi">suamor at web.de
+       </A><BR>
+    <I>Thu Jul  2 14:41:34 CEST 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000868.html">[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#867">[ date ]</a>
+              <a href="thread.html#867">[ thread ]</a>
+              <a href="subject.html#867">[ subject ]</a>
+              <a href="author.html#867">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I cannot start Canorus. When I try I get a double free / corruption
+SIGABRT signal in the file import/pmidi/glib.c.
+
+I tried to find out why, but I have no clue. It seems to be a problem
+within gtk itself. Maybe glib.c is somehow outdated ?
+
+I have completely recompiled everything with no avail. Also I changed
+the function causing the bug as below in the hope it would help
+but it is called for the first time when the app crashes:
+
+Starting program: /home/suamor/projekte/canorus/trunk/src/canorus
++[Thread debugging using libthread_db enabled]
+[New Thread 0x7fda05a71700 (LWP 13420)]
+Freeing array f58f80
+*** glibc detected *** /home/suamor/projekte/canorus/trunk/src/canorus: 
+double free or corruption (out): 0x0000000000f58f80 ***
+======= Backtrace: =========
+/lib64/libc.so.6[0x7fd9ff6ed9a8]
+/lib64/libc.so.6(cfree+0x76)[0x7fd9ff6efc36]
+/home/suamor/projekte/canorus/trunk/src/canorus(g_array_free+0x66)[0x61c716]
+/usr/lib64/libgdk-x11-2.0.so.0[0x7fd9fbcabf6e]
+/usr/lib64/libgdk-x11-2.0.so.0[0x7fd9fbcac50a]
+/usr/lib64/libgdk-x11-2.0.so.0(gdk_display_open+0xf1)[0x7fd9fbc931a1]
+/usr/lib64/libgdk-x11-2.0.so.0(gdk_display_open_default_libgtk_only+0x6d)[0x7fd9fbc6cf1d]
+/usr/lib64/libgtk-x11-2.0.so.0(gtk_init_check+0x14)[0x7fd9fc01dcb4]
+/usr/lib64/libgtk-x11-2.0.so.0(gtk_init+0x9)[0x7fd9fc01dcd9]
+/usr/lib64/libQtGui.so.4[0x7fda0375d7b8]
+/usr/lib64/libQtGui.so.4[0x7fda0375dd3c]
+/usr/lib64/libQtGui.so.4(_ZN9QGtkStyleC1Ev+0x2a)[0x7fda0374463a]
+/usr/lib64/libQtGui.so.4(_ZN13QStyleFactory6createERK7QString+0x20b)[0x7fda036c6e2b]
+/usr/lib64/libQtGui.so.4(_ZN12QApplication5styleEv+0xba)[0x7fda033f4c6a]
+/usr/lib64/libQtGui.so.4(_ZN19QApplicationPrivate10initializeEv+0x10d)[0x7fda033f4f1d]
+/usr/lib64/libQtGui.so.4(_ZN19QApplicationPrivate9constructEP9_XDisplaymm+0x69)[0x7fda033f4fb9]
+/usr/lib64/libQtGui.so.4(_ZN12QApplicationC1ERiPPci+0x72)[0x7fda033f5e22]
+/home/suamor/projekte/canorus/trunk/src/canorus(main+0x3a)[0x495c38]
+/lib64/libc.so.6(__libc_start_main+0xe6)[0x7fd9ff699446]
+/home/suamor/projekte/canorus/trunk/src/canorus[0x495ae9]
+======= Memory map: ========
+00400000-00749000 r-xp 00000000 08:06 4548521 
+  /home/suamor/projekte/canorus/trunk/src/canorus
+00949000-00959000 rw-p 00349000 08:06 4548521 
+  /home/suamor/projekte/canorus/trunk/src/canorus
+00959000-0095b000 rw-p 00959000 00:00 0
+00f4e000-0101c000 rw-p 00f4e000 00:00 0 
+  [heap]
+7fd9f4000000-7fd9f4021000 rw-p 7fd9f4000000 00:00 0
+7fd9f4021000-7fd9f8000000 ---p 7fd9f4021000 00:00 0
+7fd9fa659000-7fd9fa69c000 r-xp 00000000 08:05 444069 
+  /usr/lib64/libpixman-1.so.0.14.0
+7fd9fa69c000-7fd9fa89c000 ---p 00043000 08:05 444069 
+  /usr/lib64/libpixman-1.so.0.14.0
+7fd9fa89c000-7fd9fa89e000 r--p 00043000 08:05 444069 
+  /usr/lib64/libpixman-1.so.0.14.0
+7fd9fa89e000-7fd9fa89f000 rw-p 00045000 08:05 444069 
+  /usr/lib64/libpixman-1.so.0.14.0
+7fd9fa89f000-7fd9fa8a1000 r-xp 00000000 08:05 444055 
+  /usr/lib64/libXdamage.so.1.1.0
+7fd9fa8a1000-7fd9faaa0000 ---p 00002000 08:05 444055 
+  /usr/lib64/libXdamage.so.1.1.0
+7fd9faaa0000-7fd9faaa1000 rw-p 00001000 08:05 444055 
+  /usr/lib64/libXdamage.so.1.1.0
+7fd9faaa1000-7fd9faaa3000 r-xp 00000000 08:05 444877 
+  /usr/lib64/libXcomposite.so.1.0.0
+7fd9faaa3000-7fd9faca2000 ---p 00002000 08:05 444877 
+  /usr/lib64/libXcomposite.so.1.0.0
+7fd9faca2000-7fd9faca3000 rw-p 00001000 08:05 444877 
+  /usr/lib64/libXcomposite.so.1.0.0
+7fd9faca3000-7fd9face9000 r-xp 00000000 08:05 443177 
+  /usr/lib64/libpango-1.0.so.0.2400.1
+7fd9face9000-7fd9faee9000 ---p 00046000 08:05 443177 
+  /usr/lib64/libpango-1.0.so.0.2400.1
+7fd9faee9000-7fd9faeeb000 r--p 00046000 08:05 443177 
+  /usr/lib64/libpango-1.0.so.0.2400.1
+7fd9faeeb000-7fd9faeec000 rw-p 00048000 08:05 443177 
+  /usr/lib64/libpango-1.0.so.0.2400.1
+7fd9faeec000-7fd9faf18000 r-xp 00000000 08:05 444845 
+  /usr/lib64/libpangoft2-1.0.so.0.2400.1
+7fd9faf18000-7fd9fb117000 ---p 0002c000 08:05 444845 
+  /usr/lib64/libpangoft2-1.0.so.0.2400.1
+7fd9fb117000-7fd9fb118000 r--p 0002b000 08:05 444845 
+  /usr/lib64/libpangoft2-1.0.so.0.2400.1
+7fd9fb118000-7fd9fb119000 rw-p 0002c000 08:05 444845 
+  /usr/lib64/libpangoft2-1.0.so.0.2400.1
+7fd9fb119000-7fd9fb18f000 r-xp 00000000 08:05 444629 
+  /usr/lib64/libgio-2.0.so.0.2000.1
+7fd9fb18f000-7fd9fb38f000 ---p 00076000 08:05 444629 
+  /usr/lib64/libgio-2.0.so.0.2000.1
+7fd9fb38f000-7fd9fb391000 r--p 00076000 08:05 444629 
+  /usr/lib64/libgio-2.0.so.0.2000.1
+7fd9fb391000-7fd9fb392000 rw-p 00078000 08:05 444629 
+  /usr/lib64/libgio-2.0.so.0.2000.1
+7fd9fb392000-7fd9fb393000 rw-p 7fd9fb392000 00:00 0
+7fd9fb393000-7fd9fb407000 r-xp 00000000 08:05 444999 
+  /usr/lib64/libcairo.so.2.10800.6
+7fd9fb407000-7fd9fb607000 ---p 00074000 08:05 444999 
+  /usr/lib64/libcairo.so.2.10800.6
+7fd9fb607000-7fd9fb609000 r--p 00074000 08:05 444999 
+  /usr/lib64/libcairo.so.2.10800.6
+7fd9fb609000-7fd9fb60a000 rw-p 00076000 08:05 444999 
+  /usr/lib64/libcairo.so.2.10800.6
+7fd9fb60a000-7fd9fb627000 r-xp 00000000 08:05 445180 
+  /usr/lib64/libatk-1.0.so.0.2609.1
+7fd9fb627000-7fd9fb827000 ---p 0001d000 08:05 445180 
+  /usr/lib64/libatk-1.0.so.0.2609.1
+7fd9fb827000-7fd9fb829000 r--p 0001d000 08:05 445180 
+  /usr/lib64/libatk-1.0.so.0.2609.1
+7fd9fb829000-7fd9fb82a000 rw-p 0001f000 08:05 445180 
+  /usr/lib64/libatk-1.0.so.0.2609.1
+7fd9fb82a000-7fd9fb835000 r-xp 00000000 08:05 444137 
+  /usr/lib64/libpangocairo-1.0.so.0.2400.1
+7fd9fb835000-7fd9fba34000 ---p 0000b000 08:05 444137 
+  /usr/lib64/libpangocairo-1.0.so.0.2400.1
+7fd9fba34000-7fd9fba35000 r--p 0000a000 08:05 444137 
+  /usr/lib64/libpangocairo-1.0.so.0.2400.1
+7fd9fba35000-7fd9fba36000 rw-p 0000b000 08:05 444137 
+  /usr/lib64/libpangocairo-1.0.so.0.2400.1
+7fd9fba36000-7fd9fba50000 r-xp 00000000 08:05 444829 
+  /usr/lib64/libgdk_pixbuf-2.0.so.0.1600.1
+7fd9fba50000-7fd9fbc4f000 ---p 0001a000 08:05 444829 
+  /usr/lib64/libgdk_pixbuf-2.0.so.0.1600.1
+7fd9fbc4f000-7fd9fbc50000 r--p 00019000 08:05 444829 
+  /usr/lib64/libgdk_pixbuf-2.0.so.0.1600.1
+7fd9fbc50000-7fd9fbc51000 rw-p 0001a000 08:05 444829 
+  /usr/lib64/libgdk_pixbuf-2.0.so.0.1600.1
+7fd9fbc51000-7fd9fbceb000 r-xp 00000000 08:05 443459 
+  /usr/lib64/libgdk-x11-2.0.so.0.1600.1
+7fd9fbceb000-7fd9fbeeb000 ---p 0009a000 08:05 443459 
+  /usr/lib64/libgdk-x11-2.0.so.0.1600.1
+7fd9fbeeb000-7fd9fbeef000 r--p 0009a000 08:05 443459 
+  /usr/lib64/libgdk-x11-2.0.so.0.1600.1
+7fd9fbeef000-7fd9fbef1000 rw-p 0009e000 08:05 443459 
+  /usr/lib64/libgdk-x11-2.0.so.0.1600.1
+7fd9fbef1000-7fd9fc2cd000 r-xp 00000000 08:05 444042 
+  /usr/lib64/libgtk-x11-2.0.so.0.1600.1
+7fd9fc2cd000-7fd9fc4cd000 ---p 003dc000 08:05 444042 
+  /usr/lib64/libgtk-x11-2.0.so.0.1600.1
+7fd9fc4cd000-7fd9fc4d4000 r--p 003dc000 08:05 444042 
+  /usr/lib64/libgtk-x11-2.0.so.0.1600.1
+7fd9fc4d4000-7fd9fc4d8000 rw-p 003e3000 08:05 444042 
+  /usr/lib64/libgtk-x11-2.0.so.0.1600.1
+7fd9fc4d8000-7fd9fc4da000 rw-p 7fd9fc4d8000 00:00 0
+7fd9fc4da000-7fd9fc4e5000 r-xp 00000000 08:05 2641412 
+  /lib64/libnss_files-2.9.so
+7fd9fc4e5000-7fd9fc6e5000 ---p 0000b000 08:05 2641412 
+  /lib64/libnss_files-2.9.so
+7fd9fc6e5000-7fd9fc6e6000 r--p 0000b000 08:05 2641412 
+  /lib64/libnss_files-2.9.so
+7fd9fc6e6000-7fd9fc6e7000 rw-p 0000c000 08:05 2641412 
+  /lib64/libnss_files-2.9.so
+7fd9fc6e7000-7fd9fc723000 r-xp 00000000 08:05 2410620 
+  /lib64/libdbus-1.so.3.4.0
+7fd9fc723000-7fd9fc923000 ---p 0003c000 08:05 2410620 
+  /lib64/libdbus-1.so.3.4.0
+7fd9fc923000-7fd9fc924000 r--p 0003c000 08:05 2410620 
+  /lib64/libdbus-1.so.3.4.0
+7fd9fc924000-7fd9fc925000 rw-p 0003d000 08:05 2410620 
+  /lib64/libdbus-1.so.3.4.0
+7fd9fc925000-7fd9fc928000 r-xp 00000000 08:05 444609 
+  /usr/lib64/libgmodule-2.0.so.0.2000.1
+7fd9fc928000-7fd9fcb27000 ---p 00003000 08:05 444609 
+  /usr/lib64/libgmodule-2.0.so.0.2000.1
+7fd9fcb27000-7fd9fcb28000 r--p 00002000 08:05 444609 
+  /usr/lib64/libgmodule-2.0.so.0.2000.1
+7fd9fcb28000-7fd9fcb29000 rw-p 00003000 08:05 444609 
+  /usr/lib64/libgmodule-2.0.so.0.2000.1
+7fd9fcb29000-7fd9fcb86000 r-xp 00000000 08:05 445263 
+  /usr/lib64/libORBit-2.so.0.1.0
+7fd9fcb86000-7fd9fcd86000 ---p 0005d000 08:05 445263 
+  /usr/lib64/libORBit-2.so.0.1.0
+7fd9fcd86000-7fd9fcd95000 r--p 0005d000 08:05 445263 
+  /usr/lib64/libORBit-2.so.0.1.0
+7fd9fcd95000-7fd9fcd98000 rw-p 0006c000 08:05 445263 
+  /usr/lib64/libORBit-2.so.0.1.0
+7fd9fcd98000-7fd9fcd99000 rw-p 7fd9fcd98000 00:00 0
+7fd9fcd99000-7fd9fcdd2000 r-xp 00000000 08:05 445460 
+  /usr/lib64/libgconf-2.so.4.1.5
+7fd9fcdd2000-7fd9fcfd1000 ---p 00039000 08:05 445460
+Program received signal SIGABRT, Aborted.
+0x00007fd9ff6aca15 in raise () from /lib64/libc.so.6
+Missing debug package(s), you should install: 
+GConf2-debug-2.26.0-1mdv2009.1.x86_64 
+ORBit2-debug-2.14.17-1mdv2009.1.x86_64 
+atk1.0-debug-1.26.0-1mdv2009.1.x86_64 
+cairo-debug-1.8.6-3mdv2009.1.x86_64 
+dbus-debug-1.2.4.4permissive-2mdv2009.1.x86_64 
+fontconfig-debug-2.6.0-5mdv2009.1.x86_64 
+freetype2-debug-2.3.9-1plf2009.1.x86_64 gcc-debug-4.3.2-5mnb2.x86_64 
+glib2.0-debug-2.20.1-1mdv2009.1.x86_64 
+glibc-debug-2.9-0.20081113.5mnb2.x86_64 
+gtk+2.0-debug-2.16.1-4mdv2009.1.x86_64 
+libalsa2-debug-1.0.19-1mdv2009.1.x86_64 
+libice-debug-1.0.5-1mdv2009.1.x86_64 
+libpng-debug-1.2.35-1mdv2009.1.x86_64 
+libsm-debug-1.1.0-1mdv2009.1.x86_64 
+libx11-debug-1.2.1-1.2mdv2009.1.x86_64 
+libxau-debug-1.0.4-1mdv2009.1.x86_64 libxcb-debug-1.2-1mdv2009.1.x86_64 
+libxcomposite-debug-0.4.0-3mdv2009.1.x86_64 
+libxcursor-debug-1.1.9-3mdv2009.1.x86_64 
+libxdamage-debug-1.1.1-3mdv2009.1.x86_64 
+libxdmcp-debug-1.0.2-6mdv2009.1.x86_64 
+libxext-debug-1.0.5-2mdv2009.1.x86_64 
+libxfixes-debug-4.0.3-4mdv2009.1.x86_64 
+libxi-debug-1.2.1-1mdv2009.1.x86_64 
+libxinerama-debug-1.0.3-2mdv2009.1.x86_64 
+libxml2-debug-2.7.3-2mdv2009.1.x86_64 
+libxrandr-debug-1.3.0-1mdv2009.1.x86_64 
+libxrender-debug-0.9.4-4mdv2009.1.x86_64 
+pango-debug-1.24.1-1mdv2009.1.x86_64 pcre-debug-7.8-3mdv2009.1.x86_64 
+phonon-debug-4.3.1-11mdv2009.1.x86_64 
+pixman-debug-0.14.0-1mdv2009.1.x86_64 
+python-debug-2.6.1-6mdv2009.1.x86_64 qt4-debug-4.5.0-3mdv2009.1.x86_64 
+sqlite3-debug-3.6.15-0.1mdv2009.1.x86_64 zlib-debug-1.2.3-13mdv2009.1.x86_64
+
+Below is the backtrace:
+#0  0x00007fd9ff6aca15 in raise () from /lib64/libc.so.6
+#1  0x00007fd9ff6ae243 in abort () from /lib64/libc.so.6
+#2  0x00007fd9ff6e8388 in ?? () from /lib64/libc.so.6
+#3  0x00007fd9ff6ed9a8 in ?? () from /lib64/libc.so.6
+#4  0x00007fd9ff6efc36 in free () from /lib64/libc.so.6
+#5  0x000000000061c716 in g_array_free (array=0xf58f80, free_segment=0)
+     at /home/suamor/projekte/canorus/trunk/src/import/pmidi/glib.c:188
+#6  0x00007fd9fbcabf6e in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#7  0x00007fd9fbcac50a in ?? () from /usr/lib64/libgdk-x11-2.0.so.0
+#8  0x00007fd9fbc931a1 in gdk_display_open ()
+    from /usr/lib64/libgdk-x11-2.0.so.0
+#9  0x00007fd9fbc6cf1d in gdk_display_open_default_libgtk_only ()
+    from /usr/lib64/libgdk-x11-2.0.so.0
+#10 0x00007fd9fc01dcb4 in gtk_init_check () from 
+/usr/lib64/libgtk-x11-2.0.so.0
+#11 0x00007fd9fc01dcd9 in gtk_init () from /usr/lib64/libgtk-x11-2.0.so.0
+#12 0x00007fda0375d7b8 in ?? () from /usr/lib64/libQtGui.so.4
+#13 0x00007fda0375dd3c in ?? () from /usr/lib64/libQtGui.so.4
+#14 0x00007fda0374463a in QGtkStyle::QGtkStyle () from 
+/usr/lib64/libQtGui.so.4
+#15 0x00007fda036c6e2b in QStyleFactory::create ()
+    from /usr/lib64/libQtGui.so.4
+#16 0x00007fda033f4c6a in QApplication::style () from 
+/usr/lib64/libQtGui.so.4
+#17 0x00007fda033f4f1d in QApplicationPrivate::initialize ()
+    from /usr/lib64/libQtGui.so.4
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+#18 0x00007fda033f4fb9 in QApplicationPrivate::construct ()
+    from /usr/lib64/libQtGui.so.4
+#19 0x00007fda033f5e22 in QApplication::QApplication ()
+    from /usr/lib64/libQtGui.so.4
+#20 0x0000000000495c38 in main (argc=1, argv=0x7fff0dac56f8)
+     at /home/suamor/projekte/canorus/trunk/src/main.cpp:35
+
+The function is changed like this:
+
+void
+g_array_free (GArray  *array, gboolean free_segment)
+{
+	if( array )
+	{
+		if (free_segment &amp;&amp; array-&gt;data)
+		{
+			g_free (array-&gt;data);
+			array-&gt;data = 0;
+			array-&gt;len  = 0;
+		}
+		printf(&quot;Freeing array %x\n&quot;,array);
+		g_free(array);
+		printf(&quot;Freed array %x\n&quot;,array);
+		fflush(0);
+		array = 0;
+	}
+}
+
+I see no way how to find out if the array pointer was
+already freed. Do you know of any ?
+
+Workaround: Disable function content. This will lead surely
+to memory leaks, but I have no idea how to solve the problem.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000868.html">[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#867">[ date ]</a>
+              <a href="thread.html#867">[ thread ]</a>
+              <a href="subject.html#867">[ subject ]</a>
+              <a href="author.html#867">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

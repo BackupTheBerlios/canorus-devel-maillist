@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] &quot;new document&quot; does not work?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C47C30956.3050000%40wp.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000463.html">
+   <LINK REL="Next"  HREF="000465.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] &quot;new document&quot; does not work?</H1>
+    <B>Michal Kolodziejczyk</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C47C30956.3050000%40wp.pl%3E"
+       TITLE="[Canorus-devel] &quot;new document&quot; does not work?">miko at wp.pl
+       </A><BR>
+    <I>Mon Feb 25 19:30:46 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000463.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+        <LI>Next message: <A HREF="000465.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; Jekovec wrote:
+&gt;<i> Do you have Python installed and compiled Canorus with Python? If so,
+</I>&gt;<i> which distribution are you using?
+</I>
+No, I used this command:
+
+cmake . -DCMAKE_INSTALL_PREFIX=&quot;/usr&quot;  -DNO_PYTHON=true
+
+which I suppose disabled python support.
+I am using archlinux: www.archlinux.org with python 2.5.2, ruby 1.8.6.
+
+BTW, you may consider adding some debug info to the About dialog (like 
+&quot;compiled with python support&quot;).
+
+Now that I recompiled with
+cmake . -DCMAKE_INSTALL_PREFIX=&quot;/usr&quot;
+I get following error after each click on New document::
+
+ImportError: No module named newdocument
+
+I have those scripts installed: /usr/share/canorus/scripts/newdocument.py
+/usr/share/canorus/scripts/newdocument.rb
+
+After running strace and grep newdocument I can see that it finds 
+scripts/newdocument.py but then looks in another locations:
+  stat64(&quot;scripts/newdocument.py&quot;, 0x8d5f8a8) = -1 ENOENT (No such file 
+or directory)
+lstat64(&quot;scripts/newdocument.py&quot;, 0xbff3a1d0) = -1 ENOENT (No such file 
+or directory)
+stat64(&quot;/tmp/scripts/newdocument.py&quot;, 0x8d5f930) = -1 ENOENT (No such 
+file or directory)
+lstat64(&quot;/tmp/scripts/newdocument.py&quot;, 0xbff3a1d0) = -1 ENOENT (No such 
+file or directory)
+stat64(&quot;/usr/bin/scripts/newdocument.py&quot;, 0x8d5fa50) = -1 ENOENT (No 
+such file or directory)
+lstat64(&quot;/usr/bin/scripts/newdocument.py&quot;, 0xbff3a1d0) = -1 ENOENT (No 
+such file or directory)
+stat64(&quot;/usr/share/canorus/scripts/newdocument.py&quot;, 
+{st_mode=S_IFREG|0755, st_size=1011, ...}) = 0
+stat64(&quot;/usr/bin/ui/scripts/newdocument.py&quot;, 0x8d5fa40) = -1 ENOENT (No 
+such file or directory)
+lstat64(&quot;/usr/bin/ui/scripts/newdocument.py&quot;, 0xbff3a1d0) = -1 ENOENT 
+(No such file or directory)
+stat64(&quot;/usr/share/canorus/scripts/newdocument.py&quot;, 
+{st_mode=S_IFREG|0755, st_size=1011, ...}) = 0
+stat64(&quot;/usr/lib/python2.5/site-packages/docutils-0.4-py2.5.egg/newdocument&quot;, 
+0xbff3806c) = -1 ENOENT (No such file or directory)
+...
+There is stat64(usr/share/canorus/scripts/newdocument.py) but there is 
+no open(usr/share/canorus/scripts/newdocument.py) - open looks in other 
+locations.
+
+Regards,
+	miko
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000463.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+	<LI>Next message: <A HREF="000465.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#464">[ date ]</a>
+              <a href="thread.html#464">[ thread ]</a>
+              <a href="subject.html#464">[ subject ]</a>
+              <a href="author.html#464">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

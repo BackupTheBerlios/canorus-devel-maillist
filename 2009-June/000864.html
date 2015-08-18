@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] modulo operator ambiguity
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20modulo%20operator%20ambiguity&In-Reply-To=%3C4A460A74.5020408%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000863.html">
+   <LINK REL="Next"  HREF="000865.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] modulo operator ambiguity</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20modulo%20operator%20ambiguity&In-Reply-To=%3C4A460A74.5020408%40schwaben.de%3E"
+       TITLE="[Canorus-devel] modulo operator ambiguity">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Sat Jun 27 14:03:00 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000863.html">[Canorus-devel] no title in lily export
+</A></li>
+        <LI>Next message: <A HREF="000865.html">[Canorus-devel] modulo operator ambiguity
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello list,
+
+r1146 (drawablestaff.cpp) and r1147 (diatonickey.cpp) fix crashes which
+are caused by the % operators with negative operands, which result in
+negative array indices. I have run into it at some midi file import.
+
+This is a general problem. In the c++ standard, the outcome of a%b is
+implementation dependent when one of the operators is negative. On my
+machine I get (-4)%7=-4, which was a suprise for me. I'm on gcc-4.3,
+32-bit, if that's relevant.
+
+When I grep through the project I guess that in all places (-4)%7=3 was
+intended, and at places, where the algorithm needs the other variant,
+for example at key computation, it's coded explicitly. Of course, I
+could be wrong, so the original authors should check my fixes.
+
+Is there a save function or macro we could use instead?
+
+There's still a bug, probably same cause: Start canorus, put a quarter
+on the second staff with the base key, lower the note with arrow down
+until the crash. Does it only byte me, and what is the best solution?
+
+Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000863.html">[Canorus-devel] no title in lily export
+</A></li>
+	<LI>Next message: <A HREF="000865.html">[Canorus-devel] modulo operator ambiguity
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#864">[ date ]</a>
+              <a href="thread.html#864">[ thread ]</a>
+              <a href="subject.html#864">[ subject ]</a>
+              <a href="author.html#864">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

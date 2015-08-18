@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] CAExternProgram and Control directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAExternProgram%20and%20Control%20directory&In-Reply-To=%3C47C1D3B9.8050703%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000457.html">
+   <LINK REL="Next"  HREF="000460.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] CAExternProgram and Control directory</H1>
+    <B>&#352;tefan Sakal&#237;k</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAExternProgram%20and%20Control%20directory&In-Reply-To=%3C47C1D3B9.8050703%40gmail.com%3E"
+       TITLE="[Canorus-devel] CAExternProgram and Control directory">rabbit6440 at gmail.com
+       </A><BR>
+    <I>Sun Feb 24 21:29:45 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000457.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+        <LI>Next message: <A HREF="000460.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#458">[ date ]</a>
+              <a href="thread.html#458">[ thread ]</a>
+              <a href="subject.html#458">[ subject ]</a>
+              <a href="author.html#458">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Reinhard wrote:
+Hi Reinhard,
+&gt;<i> The solution is of course a observer pattern, i.e. the
+</I>&gt;<i> script tells me that it waits for input (this is similar to signal/slot but
+</I>&gt;<i> independent of it and only on C++ layer). There are both solution for C++
+</I>&gt;<i> native (like sigslot) and python available, but the main question is how
+</I>&gt;<i> to combine the both (and use swig).
+</I>&gt;<i>   
+</I>I called my script in different thread, script used observer to get 
+input in return, and put output back to c++, through a thin wrapper.
+
+The thing is when I wanted to send a signal to thread, (like SIGINT -&gt; 
+KeyboardInterrupt in python), whole Canorus crashed or exited, because 
+signal is sent to each thread in process. I found out there can be 
+installed masks somehow, but I don't know much about this, and I thought 
+that would be ugly. Plus when I want to kill a python thread with 
+SIGTERM, whole process would crash.
+
+But this was a thread... Is it possible to run script as a different 
+process, something like Proc1 creates Proc2, Proc2 calls function in 
+Proc1 in some thread of Proc1? I heard about D-BUS, but I'm quite lost here.
+
+Regards,
+Stefan
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000457.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+	<LI>Next message: <A HREF="000460.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#458">[ date ]</a>
+              <a href="thread.html#458">[ thread ]</a>
+              <a href="subject.html#458">[ subject ]</a>
+              <a href="author.html#458">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

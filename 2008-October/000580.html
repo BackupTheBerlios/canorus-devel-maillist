@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] &quot;Unresolvabe&quot; design error CAFile / CAExport ?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22Unresolvabe%22%20design%20error%20CAFile%20/%20CAExport%20%3F&In-Reply-To=%3C48FF7F45.5060600%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000579.html">
+   <LINK REL="Next"  HREF="000581.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] &quot;Unresolvabe&quot; design error CAFile / CAExport ?</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22Unresolvabe%22%20design%20error%20CAFile%20/%20CAExport%20%3F&In-Reply-To=%3C48FF7F45.5060600%40web.de%3E"
+       TITLE="[Canorus-devel] &quot;Unresolvabe&quot; design error CAFile / CAExport ?">suamor at web.de
+       </A><BR>
+    <I>Wed Oct 22 21:30:13 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000579.html">[Canorus-devel] release dates
+</A></li>
+        <LI>Next message: <A HREF="000581.html">[Canorus-devel] &quot;Unresolvabe&quot; design error CAFile / CAExport ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#580">[ date ]</a>
+              <a href="thread.html#580">[ thread ]</a>
+              <a href="subject.html#580">[ subject ]</a>
+              <a href="author.html#580">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I have several big issues with virtual function on the &quot;abstrace&quot; CAExport
+class I use for accessing export method. It basically looks like this:
+
+CAExport *poExp; // abstract export instance
+...
+if ( uiExportDialog-&gt;selectedFilter() == CAFileFormats::MIDI_FILTER ) {
+			CAMidiExport me;
+			poExp = &me;
+} else if ( uiExportDialog-&gt;selectedFilter() == CAFileFormats::LILYPOND_FILTER) {
+			CALilyPondExport le;
+			poExp = &le;
+} else
+...
+poExp-&gt;setStreamToFile( s );
+poExp-&gt;exportDocument( document() );
+poExp-&gt;wait();
+
+This makes it easily possible to ass new exporters.
+But I have a big problems with all virtual functions called from 
+setStreamToFile, exportDocument!
+
+Now if I call CAFile::setStream() within setStreamToFile and the other methods
+the &quot;virtual&quot; keyword makes no sense anymore becaus I don't call setStream 
+inside an exporter implementing its own setStream.
+
+A similar problem seems to be in exportDocument() where start() crashes in
+QMutex::lock() but I would have to study the source code first to be sure.
+Here I'm unsure what to do as start() is no virtual function. Maybe calling
+QThread::start() directly works but I'm not sure if it will work for virtual
+functions called inside QThread. It might be something completely different
+but it must be somehow related as it did not crash as long as I didn't use the
+abstract poExp instance. Any ideas or hints in that direction would be very
+welcome.
+
+Here is a technical article for a related problem but it seems to be a bit
+different to ours (and the hierarchy is much simpler) but still related:
+<A HREF="http://cataclysm.cx/2007/12/18/virtual-insanity/">http://cataclysm.cx/2007/12/18/virtual-insanity/</A>
+
+I think the main problem is that CAExport being a kind of abstract class is
+based on CAFile being based on another class. So I decided for now to make
+the following:
+- create a real abstract class called CAAbsExport (cannot be initiated)
+- make CAExport a base class from CAAbsExport
+- base the exporters on the CAExport (no change here)
+- use CAAbsExport *poExp; in the code to avoid virtual table problems
+
+it might be possible that I'm forced to remove CAFile as base class but
+that is not yet decided. Anyway at the moment I do not intend to allow
+setStream f.e. to be called via the abstract interface.
+I will need probably till sunday until this is tested and rethought. If
+you are faster on an implementation just write to the list.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000579.html">[Canorus-devel] release dates
+</A></li>
+	<LI>Next message: <A HREF="000581.html">[Canorus-devel] &quot;Unresolvabe&quot; design error CAFile / CAExport ?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#580">[ date ]</a>
+              <a href="thread.html#580">[ thread ]</a>
+              <a href="subject.html#580">[ subject ]</a>
+              <a href="author.html#580">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

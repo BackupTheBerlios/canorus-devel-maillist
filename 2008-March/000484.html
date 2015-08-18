@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus Portable [Windows Binaries] for	PortableApps.com
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20Portable%20%5BWindows%20Binaries%5D%20for%0A%09PortableApps.com&In-Reply-To=%3C9a4db0e10803010300o7ee628d3sf13a97019c0bb3a1%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000483.html">
+   <LINK REL="Next"  HREF="000485.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus Portable [Windows Binaries] for	PortableApps.com</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20Portable%20%5BWindows%20Binaries%5D%20for%0A%09PortableApps.com&In-Reply-To=%3C9a4db0e10803010300o7ee628d3sf13a97019c0bb3a1%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Canorus Portable [Windows Binaries] for	PortableApps.com">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sat Mar  1 12:00:48 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000483.html">[Canorus-devel] Multiple python threads crashes canorus
+</A></li>
+        <LI>Next message: <A HREF="000485.html">[Canorus-devel] pycli 2nd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#484">[ date ]</a>
+              <a href="thread.html#484">[ thread ]</a>
+              <a href="subject.html#484">[ subject ]</a>
+              <a href="author.html#484">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Patrick.
+
+Canorus currently uses default Windows location for storing the settings.
+See
+<A HREF="http://doc.trolltech.com/4.3/qsettings.html">http://doc.trolltech.com/4.3/qsettings.html</A>
+
+chapter &quot;Platform-Specific Notes&quot;.
+
+That is
+%APPDATA%\Canorus\config.ini
+
+where %APPDATA% is usually C:\Documents and settings\&lt;user&gt;\Application
+data.
+
+You could simply set the variable APPDATA to something else and Canorus
+would store its settings there:
+$ set APPDATA=C:\something else
+$ canorus.exe
+
+Is this usable?
+
+
+Regards.
+-Matev&#382;
+
+Patrick Patience pravi:
+
+Hey Guys!
+
+    Let me first off say, thank you so, *so* *very much* for putting your
+efforts towards creating an open source musical score editor.  I had been
+looking around for quite a while to find one, and unfortunately everything
+was for Linux.  I'm primarily a Windows user and developer, so I was
+*so*pleased to see Windows binaries available.  I play drums myself,
+and a bit
+of guitar and piano, but mainly drums, and overall I love listening to,
+playing, and composing music.
+
+    So to the point, I'm a developer at PortableApps.com.  What we do there
+is package open source Windows applications so they can be run portably from
+a USB Flash Drive, iPod, etc.  I found Canorus back in September, and tried
+out that released and loved it, the roadmap had some promising features.
+The most recent release is looking fantastic, so I thought I would ask my
+question now.
+
+    The easiest way to make Canorus Portable, is to re-direct its settings
+stored in ApplicationData on Windows the the flash drive.  The easiest way
+to do this is to use a command line switch, or to re-direct the Application
+Data folder to the flash drive.  I've tried to settings the variables to
+re-direct the flash drive, but unfortunately there was no luck.  So, I was
+wondering if while in development, whether some form of a command line
+switch could be added in.  Perhaos something suitable would be like,
+-profile &quot;Path\To\Settings\Directory&quot;.  I would be absolutely fantastic if
+this feature could be added, and I'd be eager to get it tested at
+PortableApps.com while in beta, so when the final release comes out, they
+can be released fairly close together (portable and local versions).  I'll
+let you know, the reason I'm asking you for this feature, is because we only
+write 'launchers' for the applications in the Windows Nullsoft Scriptable
+Install System language, which is mainly for program installers, but works
+great for portable software.
+
+    I'd like to thank you very much in advance for all of your hard work on
+this application, I look forward to the final release and features very
+much, although it Canorus is already quite usable.
+
+Looking forward to a response, and keep up the great work,
+
+    -Patrick Patience
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080301/c26fe9da/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080301/c26fe9da/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000483.html">[Canorus-devel] Multiple python threads crashes canorus
+</A></li>
+	<LI>Next message: <A HREF="000485.html">[Canorus-devel] pycli 2nd
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#484">[ date ]</a>
+              <a href="thread.html#484">[ thread ]</a>
+              <a href="subject.html#484">[ subject ]</a>
+              <a href="author.html#484">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

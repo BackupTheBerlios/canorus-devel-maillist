@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Compiling errors
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Compiling%20errors&In-Reply-To=%3C48BD6A23.40504%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000541.html">
+   <LINK REL="Next"  HREF="000538.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Compiling errors</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Compiling%20errors&In-Reply-To=%3C48BD6A23.40504%40gmail.com%3E"
+       TITLE="[Canorus-devel] Compiling errors">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Tue Sep  2 18:30:27 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000541.html">[Canorus-devel] Compiling errors
+</A></li>
+        <LI>Next message: <A HREF="000538.html">[Canorus-devel] Compiling errors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#537">[ date ]</a>
+              <a href="thread.html#537">[ thread ]</a>
+              <a href="subject.html#537">[ subject ]</a>
+              <a href="author.html#537">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The problem is because it tries to compile pyconsole, but python is not
+present at your system. For now, you can install python-dev by
+$ sudo apt-get install python-dev
+and rerun the cmake.
+
+If you're using Ubuntu, you can also try the nightly built .deb packages at
+<A HREF="http://canorus.jekovec.net">http://canorus.jekovec.net</A>
+
+
+Regards.
+-Matev&#382;
+
+Sam Pattuzzi pravi:
+&gt;<i> My system meets all those requirements, that's why I find it fishy that it 
+</I>&gt;<i> doesn't compile. And that is why is suspect its paths or something like that. 
+</I>&gt;<i> My system is Ubuntu by the way, in case that affects anything.
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000541.html">[Canorus-devel] Compiling errors
+</A></li>
+	<LI>Next message: <A HREF="000538.html">[Canorus-devel] Compiling errors
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#537">[ date ]</a>
+              <a href="thread.html#537">[ thread ]</a>
+              <a href="subject.html#537">[ subject ]</a>
+              <a href="author.html#537">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

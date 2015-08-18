@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Runtime error (no noteheads)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Runtime%20error%20%28no%20noteheads%29&In-Reply-To=%3C4617DAA5.6070808%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000095.html">
+   <LINK REL="Next"  HREF="000097.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Runtime error (no noteheads)</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Runtime%20error%20%28no%20noteheads%29&In-Reply-To=%3C4617DAA5.6070808%40charter.net%3E"
+       TITLE="[Canorus-devel] Runtime error (no noteheads)">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Apr  7 19:53:41 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000095.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+        <LI>Next message: <A HREF="000097.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+&gt;<i> --- <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I built canorus from the latest svn on pclinuxos, followed all the 
+</I>&gt;&gt;<i> instructions.  It builds without errors, but when it runs there are
+</I>&gt;&gt;<i> no noteheads or staffs visible and I get these errors from the
+</I>&gt;&gt;<i> konsole:
+</I>&gt;<i> 
+</I>&gt;<i> These are two different things. The runtime errors are a known problem
+</I>&gt;<i> and may affect the operation of the toolbar menu buttons. See the
+</I>&gt;<i> thread &quot;[Canorus-devel] Menu tool buttons don't work on OS X&quot; starting
+</I>&gt;<i> on March 18th.
+</I>&gt;<i> 
+</I>&gt;<i> The lack of staffs and noteheads sounds like either a Python issue or a
+</I>&gt;<i> font issue. Since there are no staves it seems like Python did not get
+</I>&gt;<i> linked in properly: at startup a Python script (newdocument.py) runs to
+</I>&gt;<i> create staffs and put clefs in them. Try doing Insert/New sheet and
+</I>&gt;<i> then choose the &quot;New Staff&quot; button on the left (five lines with a
+</I>&gt;<i> star). Click on the sheet to insert a staff.
+</I>&gt;<i> 
+</I>&gt;<i> Once a staff is visible you should be able to insert clefs and notes
+</I>&gt;<i> using the buttons on the left. If they display properly, you should be
+</I>&gt;<i> all set. If they are just boxes then it's a font issue with Emmentaler,
+</I>&gt;<i> although as far as I know the font thing only happens on Mac.
+</I>&gt;<i> 
+</I>&gt;<i> To get staffs and clefs to display at startup, try installing Python
+</I>&gt;<i> 2.4 or later, along with its development files.
+</I>&gt;<i> 
+</I>&gt;<i> Sam
+</I>&gt;<i> 
+</I>I have python 2.4.3 with the development files installed.  I read the 
+march 18th discussion and did not find similarities, other than the 
+error messages.  I agree that it's a font issue.  I get a staff, but no 
+clef.  I get notes that will playback, but I can only see the stems, but 
+no noteheads.  I was careful following the instructions, including a 
+creating a symlink for one of the dependencies, uncommenting one of the 
+lines in one of the Makefiles, and installing the fonts with drakfont, 
+and copying them to ~/.fonts (just in case).  I also checked and the 
+Makefiles put the fonts in /usr/local/share/fonts/truetype/canorus.  And 
+they are all their as well.  I appreciate your help.  I excited to see 
+all that you guys are doing to create this program.
+
+Galen
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000095.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+	<LI>Next message: <A HREF="000097.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#96">[ date ]</a>
+              <a href="thread.html#96">[ thread ]</a>
+              <a href="subject.html#96">[ subject ]</a>
+              <a href="author.html#96">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

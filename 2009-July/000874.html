@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BFwd%3A%20%5BBug%20%2315967%5D%20Font%20missing%20on%20OSX%5D&In-Reply-To=%3C4A54D750.2050501%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000873.html">
+   <LINK REL="Next"  HREF="000875.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BFwd%3A%20%5BBug%20%2315967%5D%20Font%20missing%20on%20OSX%5D&In-Reply-To=%3C4A54D750.2050501%40gmail.com%3E"
+       TITLE="[Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Wed Jul  8 19:28:48 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000873.html">[Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]
+</A></li>
+        <LI>Next message: <A HREF="000875.html">[Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#874">[ date ]</a>
+              <a href="thread.html#874">[ thread ]</a>
+              <a href="subject.html#874">[ subject ]</a>
+              <a href="author.html#874">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I think this is the problem described in:
+<A HREF="https://lists.berlios.de/pipermail/canorus-devel/2009-March/000790.html">https://lists.berlios.de/pipermail/canorus-devel/2009-March/000790.html</A>
+
+In March I didn't have time to look into it. AFAIK, fonts don't work on 
+Linux/Windows, if I change the font name to Emmentaler 14 - but I could 
+be mistaking.
+
+
+Regards.
+-Matev&#382;
+
+Reinhard Katzmann pravi:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I have no idea what the problem is here regarding the installation
+</I>&gt;<i> and the font. I though a simple make install works for all *nix systems.
+</I>&gt;<i> Any ideas ?
+</I>&gt;<i>
+</I>&gt;<i> Also I vote for removing &quot;executing of src/canorus&quot; and replace it by
+</I>&gt;<i> a proper short &quot;make install&quot; and run &quot;canorus&quot;. Running src/canorus
+</I>&gt;<i> for Compilation looks strange. What about
+</I>&gt;<i>
+</I>&gt;<i> Compilation
+</I>&gt;<i> -----------
+</I>&gt;<i> ...
+</I>&gt;<i> $ make
+</I>&gt;<i>
+</I>&gt;<i> Installation
+</I>&gt;<i> ------------
+</I>&gt;<i> ...
+</I>&gt;<i> $ make install
+</I>&gt;<i>
+</I>&gt;<i> Running
+</I>&gt;<i> -------
+</I>&gt;<i> ...
+</I>&gt;<i> $ canorus
+</I>&gt;<i>
+</I>&gt;<i> And add &quot;if the program is not found make sure that the directory
+</I>&gt;<i> containing the canorus executable is in your $PATH (or %PATH%).
+</I>&gt;<i> Also note that Windows has a maximum path length limitation, so
+</I>&gt;<i> if possible we should avoid to change the path on that platform at all.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard
+</I>&gt;<i>
+</I>&gt;<i> -------- Original Message --------
+</I>&gt;<i> Subject: [Bug #15967] Font missing on OSX
+</I>&gt;<i> Date: Sun, 5 Jul 2009 15:39:02 +1000 (EST)
+</I>&gt;<i> From: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">admin at berlios.de</A>
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">jnothman at student.usyd.edu.au</A>, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">rk at suamor.de</A>
+</I>&gt;<i>
+</I>&gt;<i> Bug #15967, was updated on 2009-Jul-05 13:11
+</I>&gt;<i> Here is a current snapshot of the bug.
+</I>&gt;<i>
+</I>&gt;<i> Project: Canorus - a music score editor
+</I>&gt;<i> Category: Score view
+</I>&gt;<i> Status: Open
+</I>&gt;<i> Resolution: None
+</I>&gt;<i> Bug Group: None
+</I>&gt;<i> Priority: 5
+</I>&gt;<i> Submitted by: jnothman
+</I>&gt;<i> Assigned to : none
+</I>&gt;<i> Summary: Font missing on OSX
+</I>&gt;<i>
+</I>&gt;<i> Details: After a standard make on OSX, all musical notation appears as 
+</I>&gt;<i> &quot;missing character&quot; squares. I assume the font is not available or in 
+</I>&gt;<i> the right place.
+</I>&gt;<i>
+</I>&gt;<i> Follow-Ups:
+</I>&gt;<i>
+</I>&gt;<i> Date: 2009-Jul-05 15:39
+</I>&gt;<i> By: jnothman
+</I>&gt;<i>
+</I>&gt;<i> Comment:
+</I>&gt;<i> Right. The compilation/installation instructions for OSX are not exactly 
+</I>&gt;<i> clear.
+</I>&gt;<i>
+</I>&gt;<i> The README suggests executing the program with src/canorus, but this 
+</I>&gt;<i> produces a broken setup.
+</I>&gt;<i>
+</I>&gt;<i> It is unusual to do `make install` and not `sudo make install` and then 
+</I>&gt;<i> I completely missed the instructions relating to the macosx directory. 
+</I>&gt;<i> Can't most of this just be done in the one makefile?
+</I>&gt;<i> -------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> Date: 2009-Jul-05 15:27
+</I>&gt;<i> By: suamor
+</I>&gt;<i>
+</I>&gt;<i> Comment:
+</I>&gt;<i> No bug - installation procedure is always necessary for Canorus (at 
+</I>&gt;<i> least once the first time you use it). If you for some reason are 
+</I>&gt;<i> displeased with this, you need to find another way to install the 
+</I>&gt;<i> Canorus font manually -- it has to work with the qt4 font search 
+</I>&gt;<i> mechanism though.
+</I>&gt;<i> -------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> For detailed info, follow this link:
+</I>&gt;<i> <A HREF="http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15967&amp;group_id=6144">http://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=15967&amp;group_id=6144</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000873.html">[Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]
+</A></li>
+	<LI>Next message: <A HREF="000875.html">[Canorus-devel] [Fwd: [Bug #15967] Font missing on OSX]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#874">[ date ]</a>
+              <a href="thread.html#874">[ thread ]</a>
+              <a href="subject.html#874">[ subject ]</a>
+              <a href="author.html#874">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

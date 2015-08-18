@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20Trunk%20crashes%20on%20start%20in%20glib.c%20from%0A%20pmidi&In-Reply-To=%3C4A4CBF79.1000707%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000867.html">
+   <LINK REL="Next"  HREF="000869.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20Trunk%20crashes%20on%20start%20in%20glib.c%20from%0A%20pmidi&In-Reply-To=%3C4A4CBF79.1000707%40web.de%3E"
+       TITLE="[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi">suamor at web.de
+       </A><BR>
+    <I>Thu Jul  2 16:08:57 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000867.html">[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi
+</A></li>
+        <LI>Next message: <A HREF="000869.html">[Canorus-devel] Crash with empty recovery file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#868">[ date ]</a>
+              <a href="thread.html#868">[ thread ]</a>
+              <a href="subject.html#868">[ subject ]</a>
+              <a href="author.html#868">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Ok the main reason for the crash as you can see is related to
+Qt&lt;-&gt;Gtk/Glib dependencies. So any gnome user integrating into
+his desktop with a gtk based style will encounter this crash
+(just set /usr/lib/qt4/bin/qtconfig (path may differ) to a theme
+like GTK+)
+
+Some ideas:
+1) Remove glib.c completely. Problem: Unresolved symbols
+(we cannot add dependencies to glib.. also on systems without glib qt4
+might not have built in theme support for Gtk+)
+2) Always use current glib.c with Canorus. This works around the problem
+but might break with older systems (older glib versions) as well
+3) Replace/Rename Functions in glib.c and also in other pmidi to use the
+&quot;own&quot; renamed glib functions.
+
+I see currently no way around for 3) except removing pmidi but that's
+not really something we want to do. The only alternative would be to
+add glib dependency and require one more lib (I'd like to avoid that).
+
+Regards,
+
+Reinhard
+
+Reinhard Katzmann wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I cannot start Canorus. When I try I get a double free / corruption
+</I>&gt;<i> SIGABRT signal in the file import/pmidi/glib.c.
+</I>&gt;<i>
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000867.html">[Canorus-devel] Canorus Trunk crashes on start in glib.c from pmidi
+</A></li>
+	<LI>Next message: <A HREF="000869.html">[Canorus-devel] Crash with empty recovery file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#868">[ date ]</a>
+              <a href="thread.html#868">[ thread ]</a>
+              <a href="subject.html#868">[ subject ]</a>
+              <a href="author.html#868">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

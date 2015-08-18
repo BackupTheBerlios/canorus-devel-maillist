@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus library proposal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20library%20proposal&In-Reply-To=%3C4B9A9C10.7030003%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000930.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus library proposal</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20library%20proposal&In-Reply-To=%3C4B9A9C10.7030003%40web.de%3E"
+       TITLE="[Canorus-devel] Canorus library proposal">suamor at web.de
+       </A><BR>
+    <I>Fri Mar 12 20:54:56 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000930.html">[Canorus-devel] Canorus library proposal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+By looking over all existing Canorus classes I did start to write
+a small guide describing the Canorus libraries as they could be.
+
+I avoided class or file names and the current directory hierarchy
+but only looked how these are logically combined (sometimes I
+added ideas for refactoring, mainly split up into more classes).
+
+I checked this document into the developers guide directory in
+&quot;libraries&quot; subfolder&quot; (r1197). Also I attached it to this mail.
+
+Here is my proposal of the libraries:
+
+a) Overview
+libCanorusFile
+libCanorusScoreModel
+libCanorusScoreHandling (Playback, various manipulations)
+libCanorusExpImp
+libCanorusMidi
+libCanorusMisc (Editing and Program Execution)
+libCanorusUI
+libCanorusWidget
+libCanorusLayout
+
+b) Comments
+I hope that I did no mistakes. Maybe there could be more
+logically splitted groups as some of them are already more
+than ten 10 classes (I prefer small groups to not loose overview).
+Mainwindow is currently left out as we have to work on that class
+and I think that the canorus exe will later consist of this class.
+
+c) Preliminary work
+To avoid dependencies between the libraries itself we probably have
+to refactor to some patterns like bridge (encapsulation by abstraction
+using service-abstraction and facility-interface), adapter (interface
+adaption if it doesn't fit), facade (encapsulate complex logic), Proxy,
+Wrapper or similar methods. I think header changes or new headers should
+normally be enough (after all headers are the most important part of the
+Canorus &quot;SDK&quot; ;) )
+
+d) Your part
+Please correct me and tell me what you think about my proposal
+(especially if you like the way I ordered the libs).
+
+Thanks and regards,
+
+Reinhard
+P.S.: Sorry Matevz, it seems you have to redraw your librarydiagram
+picture :)
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: ca_libs.txt
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20100312/d66ee91b/attachment.txt">https://lists.berlios.de/pipermail/canorus-devel/attachments/20100312/d66ee91b/attachment.txt</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000930.html">[Canorus-devel] Canorus library proposal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#927">[ date ]</a>
+              <a href="thread.html#927">[ thread ]</a>
+              <a href="subject.html#927">[ subject ]</a>
+              <a href="author.html#927">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

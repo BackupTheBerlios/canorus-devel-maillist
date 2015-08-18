@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] RtMidi Update and Midi crash
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20RtMidi%20Update%20and%20Midi%20crash&In-Reply-To=%3C4A12E075.5080507%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000829.html">
+   <LINK REL="Next"  HREF="000831.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] RtMidi Update and Midi crash</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20RtMidi%20Update%20and%20Midi%20crash&In-Reply-To=%3C4A12E075.5080507%40web.de%3E"
+       TITLE="[Canorus-devel] RtMidi Update and Midi crash">suamor at web.de
+       </A><BR>
+    <I>Tue May 19 18:38:13 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000829.html">[Canorus-devel] Crash on quit
+</A></li>
+        <LI>Next message: <A HREF="000831.html">[Canorus-devel] No compilation of r1075
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#830">[ date ]</a>
+              <a href="thread.html#830">[ thread ]</a>
+              <a href="subject.html#830">[ subject ]</a>
+              <a href="author.html#830">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+
+RtMidi is now at version 1.0.9:
+
+v1.0.9: (30 April 2009)
+- added #ifdef AVOID_TIMESTAMPING to conditionally compile support for 
+event tim
+estamping of ALSA sequencer events. This is useful for programs not 
+needing time
+stamps, saving valuable system resources.
+- updated functionality in OSX_CORE for getting driver name (thanks to 
+Casey Tuc
+ker)
+
+v1.0.8: (29 January 2009)
+- bug fixes for concatenating segmented sysex messages in ALSA (thanks 
+to Christ
+oph Eckert)
+- update to ALSA sequencer port enumeration (thanks to Pedro 
+Lopez-Cabonillas)
+- bug fixes for concatenating segmented sysex messages in OS-X (thanks 
+to Emmanuel Litzroth)
+- added functionality for naming clients (thanks to Pedro 
+Lopez-Cabonillas and Axel Schmidt)
+- bug fix in Windows when receiving sysex messages if the ignore flag 
+was set (thanks to Pedro Lopez-Cabonillas)
+
+I'd recomend to change now the Midi device Name so Canorus Midi Port
+is recognizable (f.e. it's might get difficult when running NoteEdit and
+Canorus at the same time..)
+
+Also I have a strange midi crash sometimes or once also on quit:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00000000004d864c in CAVoice::midiProgram (this=0x0)
+     at /home/suamor/projekte/canorus/trunk/src/score/voice.h:96
+96		inline unsigned char midiProgram() { return _midiProgram; }
+
+It seems that the class was destroyed and access to midi program
+done after that (still on r1070, does r1071 fix it ?)
+It happened once when changing midi speed and another time after
+having changed the midi instrument to violin, saving and pressing
+cancel.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000829.html">[Canorus-devel] Crash on quit
+</A></li>
+	<LI>Next message: <A HREF="000831.html">[Canorus-devel] No compilation of r1075
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#830">[ date ]</a>
+              <a href="thread.html#830">[ thread ]</a>
+              <a href="subject.html#830">[ subject ]</a>
+              <a href="author.html#830">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

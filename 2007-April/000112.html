@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Keybindings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Keybindings&In-Reply-To=%3C248035.48881.qm%40web30615.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000107.html">
+   <LINK REL="Next"  HREF="000113.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Keybindings</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Keybindings&In-Reply-To=%3C248035.48881.qm%40web30615.mail.mud.yahoo.com%3E"
+       TITLE="[Canorus-devel] Keybindings">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Apr 24 06:17:53 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000107.html">[Canorus-devel] [Bug #10879] Mac OS X: Undefined symbols:	CADrawableStaff::calculatePitch
+</A></li>
+        <LI>Next message: <A HREF="000113.html">[Canorus-devel] Keybindings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+I was thinking it would be nice to have Canorus act more like a
+&quot;musical typewriter&quot;: for example, type C and a C appears on the staff,
+sort of like &quot;speedy entry&quot; mode in Finale, but with Lilypond-like
+keys. Point and click is nice, but it is way more efficient to type in
+the notes.
+
+This is also a good opportunity to refactor the keypress code in
+mainwin.cpp. IMO CAMainWin::viewPortKeyPressEvent() should be split
+into separate functions; the existing method should just figure out
+what key has been pressed and then call the appropriate function to do
+the work. And as long as that code is changing it would be worthwhile
+to make key bindings more configurable as well.
+
+I have working code that implements this; I haven't committed it since
+it's more than a trivial change. Attached is a patch with the changes
+(against R461), as well as two new files (keybindings.cpp/h) that
+handle mapping keys to actions. Please comment.
+
+Regards,
+Sam
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: keybindings.h
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070423/f1e688ab/attachment.h">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070423/f1e688ab/attachment.h</A>&gt;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: keybindings.cpp
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070423/f1e688ab/attachment.ksh">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070423/f1e688ab/attachment.ksh</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: canorus-keybindings.patch
+Type: application/octet-stream
+Size: 161231 bytes
+Desc: 2140553931-canorus-keybindings.patch
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070423/f1e688ab/attachment.obj">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070423/f1e688ab/attachment.obj</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000107.html">[Canorus-devel] [Bug #10879] Mac OS X: Undefined symbols:	CADrawableStaff::calculatePitch
+</A></li>
+	<LI>Next message: <A HREF="000113.html">[Canorus-devel] Keybindings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#112">[ date ]</a>
+              <a href="thread.html#112">[ thread ]</a>
+              <a href="subject.html#112">[ subject ]</a>
+              <a href="author.html#112">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

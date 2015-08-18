@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] License questions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20License%20questions&In-Reply-To=%3C4A6CC78D.80109%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000896.html">
+   <LINK REL="Next"  HREF="000898.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] License questions</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20License%20questions&In-Reply-To=%3C4A6CC78D.80109%40gmail.com%3E"
+       TITLE="[Canorus-devel] License questions">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Jul 26 23:15:57 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000896.html">[Canorus-devel] License questions
+</A></li>
+        <LI>Next message: <A HREF="000898.html">[Canorus-devel] License questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#897">[ date ]</a>
+              <a href="thread.html#897">[ thread ]</a>
+              <a href="subject.html#897">[ subject ]</a>
+              <a href="author.html#897">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Orcan.
+
+Canorus is currently licensed under GPL v2, because it depended on Qt4 
+which was licensed under QPL/GPLv2 only (until half a year ago). We 
+would like to relicense Canorus to GPL v3, but we haven't decided yet - 
+that's why no specific GPL version is specified in the source files.
+
+We contain two external snippets: RtMidi (free compatible license, see 
+<A HREF="http://www.music.mcgill.ca/~gary/rtmidi">http://www.music.mcgill.ca/~gary/rtmidi</A> for details) and pmidi (GPL v2).
+
+Examples: .can files are licensed some under GPL and some under Creative 
+Commons share-alike or public domain (see specific example for details - 
+they MUST be distributed along), MusicXml samples are copyrighted by 
+Recordare (see <A HREF="http://www.recordare.com/xml/samples.html">http://www.recordare.com/xml/samples.html</A>) - I'm not 
+sure, if they can be freely distributed, Midi files are downloaded all 
+over the internet and probably can't be distributed along.
+
+I renamed the LICENSE.GPL to COPYING in R1174 as it's the GNU naming 
+standard for this.
+
+
+Thanks for your effort on packaging!
+-Matev&#382;
+
+Orcan Ogetbil pravi:
+&gt;<i> Hi,
+</I>&gt;<i> I'm packaging canorus for Fedora. I have a couple issues I'd like to
+</I>&gt;<i> discuss. As I was told on IRC freenode_#canorus, I'm submitting these
+</I>&gt;<i> to this mailing list.
+</I>&gt;<i>
+</I>&gt;<i> The first issue is the license.
+</I>&gt;<i>
+</I>&gt;<i> * The LICENSE.GPL file contains the text of GPL version 2.
+</I>&gt;<i> * Most source files say that they are &quot;Licensed under the GNU GENERAL
+</I>&gt;<i> PUBLIC LICENSE&quot;, but they do not specify a GPL version. As the clause
+</I>&gt;<i> 9 of GPL version 2 license text indicates, if the source file does not
+</I>&gt;<i> specify a GPL version, it can be distributed under any version of GPL.
+</I>&gt;<i> So to make things clear: is canorus GPL (v2 only) or GPL (v2 or later)
+</I>&gt;<i> or GPL (any version)?
+</I>&gt;<i> * Most source files refer to a non-existing COPYING file. Typo?
+</I>&gt;<i> * Some sources, such as src/import/pmidi/except.c say that they are
+</I>&gt;<i> GPL (v2 only) which add to my confusion.
+</I>&gt;<i>
+</I>&gt;<i> Other than these, there are content files, such as midi files or
+</I>&gt;<i> musicxml files. What license(s) do these files have? I may need to
+</I>&gt;<i> strip these files from the Fedora package if they are not released
+</I>&gt;<i> under a free license.
+</I>&gt;<i>
+</I>&gt;<i> Thanks for your help!
+</I>&gt;<i>
+</I>&gt;<i> Orcan
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000896.html">[Canorus-devel] License questions
+</A></li>
+	<LI>Next message: <A HREF="000898.html">[Canorus-devel] License questions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#897">[ date ]</a>
+              <a href="thread.html#897">[ thread ]</a>
+              <a href="subject.html#897">[ subject ]</a>
+              <a href="author.html#897">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

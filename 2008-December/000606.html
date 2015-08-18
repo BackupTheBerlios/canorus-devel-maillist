@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] CAAbsExport
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAAbsExport&In-Reply-To=%3C494922DE.8080507%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000605.html">
+   <LINK REL="Next"  HREF="000607.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] CAAbsExport</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAAbsExport&In-Reply-To=%3C494922DE.8080507%40gmail.com%3E"
+       TITLE="[Canorus-devel] CAAbsExport">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Wed Dec 17 17:03:42 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000605.html">[Canorus-devel] CAAbsExport
+</A></li>
+        <LI>Next message: <A HREF="000607.html">[Canorus-devel] [Bug #13607] Error in CADrawableSlur in	drawableslur.h
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#606">[ date ]</a>
+              <a href="thread.html#606">[ thread ]</a>
+              <a href="subject.html#606">[ subject ]</a>
+              <a href="author.html#606">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The problem I'm currently having is that I cannot get any export classes
+to work in Python (it compiles, but are useless). Looks like the problem
+is in SWIG interface in pure virtual methods  in CAAbsExport somehow not
+being reimplemented in CAExport. What Swig does is that it disables any
+constructor in CAExport and its derivatives.
+
+I removed absexport.h and used CAExport in CAMainWin instead and it
+works fine.
+
+What do you think?
+
+
+Regards.
+-Matev&#382;
+
+Matev&#382; Jekovec pravi:
+&gt;<i> Hi Reinhard.
+</I>&gt;<i>
+</I>&gt;<i> I'm looking at CAAbsExport class. I thought CAExport is the abstract
+</I>&gt;<i> interface for all the exporters. Do we really need CAAbsExport?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards &amp; Happy holidays!
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000605.html">[Canorus-devel] CAAbsExport
+</A></li>
+	<LI>Next message: <A HREF="000607.html">[Canorus-devel] [Bug #13607] Error in CADrawableSlur in	drawableslur.h
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#606">[ date ]</a>
+              <a href="thread.html#606">[ thread ]</a>
+              <a href="subject.html#606">[ subject ]</a>
+              <a href="author.html#606">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

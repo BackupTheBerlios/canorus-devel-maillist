@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] splitter crashes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20splitter%20crashes&In-Reply-To=%3Ca24024cb0708261424t57edf58n1cdab00195078bbf%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000207.html">
+   <LINK REL="Next"  HREF="000210.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] splitter crashes</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20splitter%20crashes&In-Reply-To=%3Ca24024cb0708261424t57edf58n1cdab00195078bbf%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] splitter crashes">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Aug 26 23:24:25 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000207.html">[Canorus-devel] splitter crashes
+</A></li>
+        <LI>Next message: <A HREF="000210.html">[Canorus-devel] splitter crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Regarding valgrind -- agreed.
+
+I had an idea -- to make source viewports (or all viewports) dock-widgets,
+so they'll be detachable (and re-dockable, so you could drag a vertical
+viewport and &quot;drop&quot; it horizontally). Looks like QDockWidget got some work
+in Qt 4.3, and works nicely within a QSplitter, see here:
+<A HREF="http://doc.trolltech.com/4.3/qt4-3-intro.html">http://doc.trolltech.com/4.3/qt4-3-intro.html</A>
+What do you think? Anyway as it is now, there's no intuitive way to close a
+lilypond viewport -- you must use window-&gt;close current view.
+
+Itay
+
+On 8/26/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+wrote:
+&gt;<i>
+</I>&gt;<i> Thanks Itay, you're great!
+</I>&gt;<i>
+</I>&gt;<i> About valgrind, I don't know how many errors are actually ours fault. We
+</I>&gt;<i> should definitely look at this for the final release. But we're still
+</I>&gt;<i> more than a year far from that and many Qt/Python/Swig valgrind errors
+</I>&gt;<i> might be automagically gone till then.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I found and fixed an undo crash (was visible now when CanorusML view
+</I>&gt;<i> &gt; works) in r560. I also fixed a null pointer error in
+</I>&gt;<i> CAMainWin::setMode().
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I tried running Valgrind on Canorus. I got this error message: &quot;More
+</I>&gt;<i> &gt; than 10000000 total errors detected.  I'm not reporting any more.&quot;
+</I>&gt;<i> &gt; I've never thought I'd ever, ever need to use --error-limit=no.
+</I>&gt;<i> &gt; 10 million errors, for Bach's sake! Most of them come from Qt (our
+</I>&gt;<i> &gt; bugs? Qt's? Valgrind's? All answers correct?), some from python-swig.
+</I>&gt;<i> &gt; IMO we should look into those before quitting beta.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt; Itay
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On 8/26/07, *Itay Perl* &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>
+</I>&gt;<i> &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>&gt;&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Hi Matev&#382;,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     IIRC, the splitter problems started before Qt 4.3.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     I've fixed the window-&gt;split.* menu items in R558. It seems that
+</I>&gt;<i> &gt;     the splitter must get the widget with no parent to add it
+</I>&gt;<i> &gt;     properly, so I changed v-&gt;clone() to v-&gt;clone(0).
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Just fixed CanorusML view in R559. Same issue.
+</I>&gt;<i> &gt;     mainwin.cpp:750 (r559) was     CASourceViewPort *v = new
+</I>&gt;<i> &gt;     CASourceViewPort(document(),
+</I>&gt;<i> &gt;     static_cast&lt;QWidget*&gt;(currentViewPort()-&gt;parent()));
+</I>&gt;<i> &gt;     now:     CASourceViewPort *v = new CASourceViewPort(document(), 0);
+</I>&gt;<i> &gt;     And it works.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Regards,
+</I>&gt;<i> &gt;     Itay
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     On 8/26/07, * <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;* &lt;
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         Hi Itay &amp; others.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         Thanks for the report.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         I'd require some assistance for the source views and
+</I>&gt;<i> &gt;         horizontal/vertical
+</I>&gt;<i> &gt;         splitters. I tried to fix these bugs but never managed it. I
+</I>&gt;<i> &gt;         can easily
+</I>&gt;<i> &gt;         reproduce the problems, but simply can't find any logical
+</I>&gt;<i> &gt;         explenation or
+</I>&gt;<i> &gt;         a suitable solution. For example, the code for LilyPond and
+</I>&gt;<i> &gt;         CanorusML
+</I>&gt;<i> &gt;         source view is exactly the same, but CanorusML does work whereas
+</I>&gt;<i> &gt;         LilyPond doesn't at all. Also adding a custom widget like a
+</I>&gt;<i> &gt;         button to
+</I>&gt;<i> &gt;         the splitter works fine. I think the problem started appearing
+</I>&gt;<i> &gt;         somewhere
+</I>&gt;<i> &gt;         around the new Qt 4.3. So it might be this related as well.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         In any way, I'd ask you Itay, if you could take a look at the
+</I>&gt;<i> &gt;         splitter
+</I>&gt;<i> &gt;         code and track the bug down or report any weird anomalies
+</I>&gt;<i> &gt;         occured while
+</I>&gt;<i> &gt;         bugfixing.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         Regards.
+</I>&gt;<i> &gt;         - Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;         _______________________________________________
+</I>&gt;<i> &gt;         Canorus-devel mailing list
+</I>&gt;<i> &gt;         <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt;         &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;         <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;         &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070827/8e703431/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070827/8e703431/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000207.html">[Canorus-devel] splitter crashes
+</A></li>
+	<LI>Next message: <A HREF="000210.html">[Canorus-devel] splitter crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#208">[ date ]</a>
+              <a href="thread.html#208">[ thread ]</a>
+              <a href="subject.html#208">[ subject ]</a>
+              <a href="author.html#208">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

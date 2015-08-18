@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] plugin descriptor reworked
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20plugin%20descriptor%20reworked&In-Reply-To=%3C459E8333.2030905%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000015.html">
+   <LINK REL="Next"  HREF="000016.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] plugin descriptor reworked</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20plugin%20descriptor%20reworked&In-Reply-To=%3C459E8333.2030905%40gmail.com%3E"
+       TITLE="[Canorus-devel] plugin descriptor reworked">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Jan  5 17:56:19 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000015.html">[Canorus-devel] activated vs triggered
+</A></li>
+        <LI>Next message: <A HREF="000016.html">[Canorus-devel] LAC 2007 Canorus Workshop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've been working the last two days hard and brought the long-awaited
+basic plugin&lt;-&gt;UI connectivity. Users can now finally add a custom menu
+entry to the menubar and an import/export filter to the import/export
+Canorus dialog.
+
+In short what I have done is that plugin now consists of various action
+tags, menu tags and/or toolbar tags. Localization is also supported for
+UI strings.
+
+== Plugin action ==
+Plugin action works similar to QAction. Apart from that, it has basic
+scripting properties:
+- name (probably the same as Qt's objectName - still thinking about it)
+- programming language
+- filename
+- function
+- needed arguments
+- is GUI rebuild needed after execution
+When called, it executes arbitrary external function in a script.
+
+Plugin action brings also the second part along - the aditional
+properties which tell when is the action triggered:
+- import filter (action activated when file-&gt;export and file is selected)
+- export filter (action activated when file-&gt;import and file is selected)
+- parent-menu or toolbar item (action activated when a menu or toolbar
+item clicked)
+- internal Canoruson-action (action activated on one of the built-in
+Canorus events eg. onScoreViewPortClick)
+Actions are defined in &lt;action&gt; stanza in canorusplugin descriptor xml file.
+
+== Plugin menu ==
+Plugin menu works similar to QMenu. It consists of various actions (ie.
+menu items).
+If parent-menu is set, then the menu is added to the parent menu object.
+If not, it's added to the top-level toolbar of the main window.
+Plugin menu is defined inside the &lt;menu&gt; stanza in canorusplugin
+descriptor xml file.
+
+== Plugin toolbar ==
+Should be similar to menu - a placeholder for various actions. Gonna be
+implemented when needed.
+
+I attached the example canorusplugin.xml descriptor file with some
+explenatory comments. I also committed a test plugin to SVN now which
+adds a simple export filter and a harmony analysis tool menu. It doesn't
+do anything though.
+
+
+Regards.
+- Matev&#382;
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: canorusplugin.txt
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070105/803e3678/attachment.txt">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070105/803e3678/attachment.txt</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070105/803e3678/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070105/803e3678/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000015.html">[Canorus-devel] activated vs triggered
+</A></li>
+	<LI>Next message: <A HREF="000016.html">[Canorus-devel] LAC 2007 Canorus Workshop
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#11">[ date ]</a>
+              <a href="thread.html#11">[ thread ]</a>
+              <a href="subject.html#11">[ subject ]</a>
+              <a href="author.html#11">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

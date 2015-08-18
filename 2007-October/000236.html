@@ -1,0 +1,97 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Rev 599 building
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Rev%20599%20building&In-Reply-To=%3C470F68B2.7020105%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000235.html">
+   <LINK REL="Next"  HREF="000237.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Rev 599 building</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Rev%20599%20building&In-Reply-To=%3C470F68B2.7020105%40schwaben.de%3E"
+       TITLE="[Canorus-devel] Rev 599 building">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Oct 12 14:29:38 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000235.html">[Canorus-devel] stuff for 0.5
+</A></li>
+        <LI>Next message: <A HREF="000237.html">[Canorus-devel] Rev 599 building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#236">[ date ]</a>
+              <a href="thread.html#236">[ thread ]</a>
+              <a href="subject.html#236">[ subject ]</a>
+              <a href="author.html#236">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello everybody,
+
+building R599 from a clean chechout stalls with these first messages:
+
+[ 13%] Building CXX object src/CMakeFiles/CanorusRuby.dir/rtmidi/RtMidi.o
+[ 14%] Building CXX object
+src/CMakeFiles/CanorusRuby.dir/interface/rtmididevice.o
+In file included from /home/rud/canorus/trunk/src/core/canorus.h:12,
+                 from
+/home/rud/canorus/trunk/src/interface/rtmididevice.cpp:12:
+/home/rud/canorus/trunk/src/ui/mainwin.h:17:24: error: ui_mainwin.h:
+Datei oder Verzeichnis nicht gefunden
+In file included from /home/rud/canorus/trunk/src/core/canorus.h:13,
+                 from
+/home/rud/canorus/trunk/src/interface/rtmididevice.cpp:12:
+.......
+
+Somehow the underscores should be slashes, to be the right path
+descriptor. Any idea what happended?
+
+And, have a small patch:
+
+--- playback.cpp        (Revision 599)
++++ playback.cpp        (Arbeitskopie)
+@@ -56,6 +56,7 @@
+        Destructor deletes the created arrays.
+ */
+ CAPlayback::~CAPlayback() {
++       delete _repeating;
+        delete _streamIdx;
+        delete _lastRepeatOpenIdx;
+        delete _curTime;
+
+Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000235.html">[Canorus-devel] stuff for 0.5
+</A></li>
+	<LI>Next message: <A HREF="000237.html">[Canorus-devel] Rev 599 building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#236">[ date ]</a>
+              <a href="thread.html#236">[ thread ]</a>
+              <a href="subject.html#236">[ subject ]</a>
+              <a href="author.html#236">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

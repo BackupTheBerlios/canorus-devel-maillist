@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] auto bar
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20auto%20bar&In-Reply-To=%3C48DF6EC6.2080101%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000551.html">
+   <LINK REL="Next"  HREF="000553.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] auto bar</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20auto%20bar&In-Reply-To=%3C48DF6EC6.2080101%40gmail.com%3E"
+       TITLE="[Canorus-devel] auto bar">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Sep 28 13:47:18 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000551.html">[Canorus-devel] transposition implemented
+</A></li>
+        <LI>Next message: <A HREF="000553.html">[Canorus-devel] auto bar
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#552">[ date ]</a>
+              <a href="thread.html#552">[ thread ]</a>
+              <a href="subject.html#552">[ subject ]</a>
+              <a href="author.html#552">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg.
+
+I'm currently in designing how to implement the auto bar stuff. I'd do
+something like when you insert a new note, it determines the current
+time signature and the last barline and if the timestart of the new note
+and the last barline is too big, it adds a barline in front of the new note.
+
+I'll also refactor a few methods inside CAVoice. There will only be 4
+methods for all the query stuff. All others will be its derivatives.
+- CAVoice::next(CAMusElement*)
+- CAVoice::nextByType(CAMusElementType, CAMusElement*)
+- CAVoice::previous(CAMusElement*)
+- CAVoice::previousByType(CAMusElementType, CAMusElement*)
+
+And if the CAMusElement* is null, it returns:
+- next(null) the first element in the voice
+- previous(null) the last element in the voice
+
+What do you think?
+
+
+Regards.
+-Matev&#382;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000551.html">[Canorus-devel] transposition implemented
+</A></li>
+	<LI>Next message: <A HREF="000553.html">[Canorus-devel] auto bar
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#552">[ date ]</a>
+              <a href="thread.html#552">[ thread ]</a>
+              <a href="subject.html#552">[ subject ]</a>
+              <a href="author.html#552">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

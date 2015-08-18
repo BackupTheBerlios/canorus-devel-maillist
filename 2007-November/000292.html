@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Copy &amp; Paste ideas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Copy%20%26%20Paste%20ideas&In-Reply-To=%3C4749307C.1080401%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000291.html">
+   <LINK REL="Next"  HREF="000290.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Copy &amp; Paste ideas</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Copy%20%26%20Paste%20ideas&In-Reply-To=%3C4749307C.1080401%40gmail.com%3E"
+       TITLE="[Canorus-devel] Copy &amp; Paste ideas">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Nov 25 09:21:16 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000291.html">[Canorus-devel] Copy &amp; Paste ideas
+</A></li>
+        <LI>Next message: <A HREF="000290.html">[Canorus-devel] Future of Print / Preview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+&gt;<i> I thought about the context level first, as in one of my rehearsals a cantor
+</I>&gt;<i> told me about her problems with the score program she is using. She could not
+</I>&gt;<i> simply move one staff to a different position. Canorus does this currently
+</I>&gt;<i> via context properties.
+</I>&gt;<i>   
+</I>I hadn't realized you could do this via context properties. Nice to 
+know. Ideally (in my mind) I would be able to drag a staff directly from 
+the main screen to a new location. Other staves would snap in place 
+around the relocated staff (similar to dragging a tab in Firefox).
+
+&gt;<i> I thought about copy &amp; paste for staffs (complete, i.e. with lyrics) and/or
+</I>&gt;<i> drag and drop of one staff at a different position. The problems arising are
+</I>&gt;<i> - what to do if the user wants to insert into a existing staff instead
+</I>&gt;<i>   of just moving around
+</I>&gt;<i> - how do I actually select one staff ?
+</I>&gt;<i> Alternatively (this works already now) the composer can add a new staff and
+</I>&gt;<i> selects the complete staff (all music elements) and cut/pastes them into the
+</I>&gt;<i> new staff. After that he can delete the old staff.
+</I>&gt;<i>
+</I>&gt;<i> The next question arose to me when I tested copy &amp; paste with several staffs.
+</I>&gt;<i> I selected music elements from three staffs and did an insert afterwards. How
+</I>&gt;<i> should canorus behave ?
+</I>&gt;<i> - add new staff(s) as needed if insertion staff is at a position where there
+</I>&gt;<i>   are not enough staff availables
+</I>&gt;<i> - paste the elements of all remaining staffs at the start of the sheet.
+</I>&gt;<i> - let the user first somehow select those staffs where he wants to insert
+</I>&gt;<i>   the elements (very flexible solution, but might be confusing to the composer)
+</I>&gt;<i> - ask the composer what to do
+</I>&gt;<i>   
+</I>I would avoid asking the composer what to do via a dialog. This would 
+get tedious.
+
+Most score editors I've worked with do not add extra staves when 
+pasting. Usually they paste what they can and leave out the rest.
+
+I would vote for &quot;let the user select those staffs where he wants to 
+insert the elements&quot; or simply allow the user to click on the starting 
+point for the insertion. Latests versions of Finale and Sibelius both 
+allow the latter. If you copy two staves, for example, you would click 
+on the the upper of two staves in a the new location to indicate the 
+insertion point.
+
+
+&gt;<i> Also it would be good to keep in mind which features could be
+</I>&gt;<i> implemented first and which of them at a later time.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I think first feature should be copy/pasting multiple staves, or voices. 
+Currently these are all merged to one staff and one voice (and even one 
+context if lyrics are included) when pasting. Probably copy/paste will 
+need some way to kept these separate.
+
+
+-- 
+David Bolton
+<A HREF="http://davidbolton.info">http://davidbolton.info</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000291.html">[Canorus-devel] Copy &amp; Paste ideas
+</A></li>
+	<LI>Next message: <A HREF="000290.html">[Canorus-devel] Future of Print / Preview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#292">[ date ]</a>
+              <a href="thread.html#292">[ thread ]</a>
+              <a href="subject.html#292">[ subject ]</a>
+              <a href="author.html#292">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

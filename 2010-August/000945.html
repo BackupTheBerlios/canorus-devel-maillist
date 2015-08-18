@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Embeddable sheet music render and player with events
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Embeddable%20sheet%20music%20render%20and%20player%20with%20events&In-Reply-To=%3C173961.51850.qm%40web50803.mail.re2.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000946.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Embeddable sheet music render and player with events</H1>
+    <B>P.GopalaKrishna</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Embeddable%20sheet%20music%20render%20and%20player%20with%20events&In-Reply-To=%3C173961.51850.qm%40web50803.mail.re2.yahoo.com%3E"
+       TITLE="[Canorus-devel] Embeddable sheet music render and player with events">gopalakrishna.palem at yahoo.com
+       </A><BR>
+    <I>Wed Aug 18 08:13:26 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000946.html">[Canorus-devel] Embeddable sheet music render and player with events
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I am the author of CarMusTy, Carnatic Music Typesetting application - looking 
+for ready-to-use notation renderers (sheet music rendering modules) that can be 
+plugged in and used. CarMusTy application is primarily target towards Carnatic 
+music and generates MIDI files and I would like to have the MIDI file be 
+represented as sheet music and played within CarMusTy supplied window (with the 
+support for highlighing the currently played notes).
+
+I came across the Canorus and see that it can render the MIDI files as sheet 
+music and play them with in its own UI.
+
+However, I would like to know how easy it is to *adapt* this sheet rendering &amp; 
+playback modules in to other applications (such as CarMusTy). 
+
+
+I am looking for something like, given a MIDI file, the Canorus should generate 
+a sheet music representation (may be as PNG or some other image that can be 
+displayed in any widget). For example,
+
+&#160;&#160;&#160; QImage* notation =&#160;Canorus::RenderMIDIAsNotation(strMIDIFilePath);
+&#160;
+&#160;&#160;&#160; myPlayerWidget-&gt;ShowImage(notation); // Let my widget display the notes
+&#160;
+&#160;&#160;&#160; Canorus::RenderMIDIAsSound(myPlayerWidget); // report player events to my 
+player widget to hightlight the current notes.
+
+CarMusTy is based on Qt and I observe that Canorus is also based on Qt. But not 
+sure about the dependencies within Canorus to decide how difficult it would be 
+just to &quot;borrow&quot; few back-end modules (such as the renderer and 
+player-with-events)&#160;without having to include everything.
+
+&#160;&#160;&#160; Appreciate any information.
+
+Thank you,
+Gopalakrishna Palem
+Creator of CFugue Runtime
+
+
+      
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20100817/0fbd35f1/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20100817/0fbd35f1/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000946.html">[Canorus-devel] Embeddable sheet music render and player with events
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#945">[ date ]</a>
+              <a href="thread.html#945">[ thread ]</a>
+              <a href="subject.html#945">[ subject ]</a>
+              <a href="author.html#945">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

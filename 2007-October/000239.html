@@ -1,0 +1,150 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Rev 599 building
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Rev%20599%20building&In-Reply-To=%3C003501c80cfd%2420a591c0%240323e551%40eolinc1%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000237.html">
+   <LINK REL="Next"  HREF="000240.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Rev 599 building</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Rev%20599%20building&In-Reply-To=%3C003501c80cfd%2420a591c0%240323e551%40eolinc1%3E"
+       TITLE="[Canorus-devel] Rev 599 building">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Oct 12 20:24:28 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000237.html">[Canorus-devel] Rev 599 building
+</A></li>
+        <LI>Next message: <A HREF="000240.html">[Canorus-devel] Rev 599 building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Colin,
+
+and welcome!
+
+Regards,
+Magnus from Sweden
+
+
+----- Original Message ----- 
+From: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+To: &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+Sent: Friday, October 12, 2007 6:07 PM
+Subject: Re: [Canorus-devel] Rev 599 building
+
+
+&gt;<i>
+</I>&gt;<i> Hi Georg,
+</I>&gt;<i>
+</I>&gt;<i> In my first attempts at compiling Canorus yesterday, I hit a similar 
+</I>&gt;<i> problem
+</I>&gt;<i> but found that a make clean &amp;&amp; make seemed to resolve itself.
+</I>&gt;<i>
+</I>&gt;<i> From my (very) brief investigation, I thought the filenames seemed correct
+</I>&gt;<i> but for some reason, some auto-generated header files were not being
+</I>&gt;<i> created. Im not sure how much confidence you can place in that assertion
+</I>&gt;<i> given Ive spent less than an hour looking at the Canorus source and did 2
+</I>&gt;<i> compilations. :)
+</I>&gt;<i>
+</I>&gt;<i> While Im here, may as well say Hi to all on the list. Im Colin from
+</I>&gt;<i> Scotland. :)
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> C.
+</I>&gt;<i>
+</I>&gt;&gt;<i>From: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i>Reply-To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i>To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i>Subject: [Canorus-devel] Rev 599 building
+</I>&gt;&gt;<i>Date: Fri, 12 Oct 2007 14:29:38 +0200
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Hello everybody,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>building R599 from a clean chechout stalls with these first messages:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>[ 13%] Building CXX object src/CMakeFiles/CanorusRuby.dir/rtmidi/RtMidi.o
+</I>&gt;&gt;<i>[ 14%] Building CXX object
+</I>&gt;&gt;<i>src/CMakeFiles/CanorusRuby.dir/interface/rtmididevice.o
+</I>&gt;&gt;<i>In file included from /home/rud/canorus/trunk/src/core/canorus.h:12,
+</I>&gt;&gt;<i>                  from
+</I>&gt;&gt;<i>/home/rud/canorus/trunk/src/interface/rtmididevice.cpp:12:
+</I>&gt;&gt;<i>/home/rud/canorus/trunk/src/ui/mainwin.h:17:24: error: ui_mainwin.h:
+</I>&gt;&gt;<i>Datei oder Verzeichnis nicht gefunden
+</I>&gt;&gt;<i>In file included from /home/rud/canorus/trunk/src/core/canorus.h:13,
+</I>&gt;&gt;<i>                  from
+</I>&gt;&gt;<i>/home/rud/canorus/trunk/src/interface/rtmididevice.cpp:12:
+</I>&gt;&gt;<i>.......
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Somehow the underscores should be slashes, to be the right path
+</I>&gt;&gt;<i>descriptor. Any idea what happended?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>And, have a small patch:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>--- playback.cpp        (Revision 599)
+</I>&gt;&gt;<i>+++ playback.cpp        (Arbeitskopie)
+</I>&gt;&gt;<i>@@ -56,6 +56,7 @@
+</I>&gt;&gt;<i>         Destructor deletes the created arrays.
+</I>&gt;&gt;<i>  */
+</I>&gt;&gt;<i>  CAPlayback::~CAPlayback() {
+</I>&gt;&gt;<i>+       delete _repeating;
+</I>&gt;&gt;<i>         delete _streamIdx;
+</I>&gt;&gt;<i>         delete _lastRepeatOpenIdx;
+</I>&gt;&gt;<i>         delete _curTime;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>Regards,
+</I>&gt;&gt;<i>Georg
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>_______________________________________________
+</I>&gt;&gt;<i>Canorus-devel mailing list
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i> _________________________________________________________________
+</I>&gt;<i> The next generation of Hotmail is here!  <A HREF="http://www.newhotmail.co.uk">http://www.newhotmail.co.uk</A>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000237.html">[Canorus-devel] Rev 599 building
+</A></li>
+	<LI>Next message: <A HREF="000240.html">[Canorus-devel] Rev 599 building
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#239">[ date ]</a>
+              <a href="thread.html#239">[ thread ]</a>
+              <a href="subject.html#239">[ subject ]</a>
+              <a href="author.html#239">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

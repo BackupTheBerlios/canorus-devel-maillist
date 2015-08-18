@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Build 933 breakage under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20933%20breakage%20under%20macosx&In-Reply-To=%3C8A9B8DA9-58A7-49A1-9DA8-6489A9FE2E8E%40titanium.sabren.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000648.html">
+   <LINK REL="Next"  HREF="000639.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Build 933 breakage under macosx</H1>
+    <B>Grzegorz Adam Hankiewicz</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20933%20breakage%20under%20macosx&In-Reply-To=%3C8A9B8DA9-58A7-49A1-9DA8-6489A9FE2E8E%40titanium.sabren.com%3E"
+       TITLE="[Canorus-devel] Build 933 breakage under macosx">gradha at titanium.sabren.com
+       </A><BR>
+    <I>Fri Feb 20 22:36:07 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000648.html">[Canorus-devel] Build 933 breakage under macosx
+</A></li>
+        <LI>Next message: <A HREF="000639.html">[Canorus-devel] pycli and windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#650">[ date ]</a>
+              <a href="thread.html#650">[ thread ]</a>
+              <a href="subject.html#650">[ subject ]</a>
+              <a href="author.html#650">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+El 19/02/2009, a las 1:04, Matev&#382; Jekovec escribi&#243;:
+
+&gt;<i> sorry for the delay - I've been fixing other bugs and doing RL work :)
+</I>&gt;<i> I applied the patch you sent me on 29th January in R943. Is there
+</I>&gt;<i> anything else I can do for Mac builds?
+</I>
+This one last patch would make sense, as now fonts are inside the app  
+bundle.
+
+I had not been paying attention to changes, looks like the latest  
+build doesn't even start up for me, it fails with the same sort of  
+messages I reported about a PPC:
+
+20/02/09 22:29:21 [0x0-0xa70a7].Canorus[8120] Error: scripts/ not found
+20/02/09 22:29:21 [0x0-0xa70a7].Canorus[8120] Error: _CanorusPython.so  
+not found
+20/02/09 22:29:22 [0x0-0xa70a7].Canorus[8120] ASSERT failure in  
+QList&lt;T&gt;::operator[]: &quot;index out of range&quot;, file /usr/local/Trolltech/ 
+Qt-4.4.0/include/QtCore/qlist.h, line 401
+20/02/09 22:29:22 com.apple.launchd[152] ([0x0-0xa70a7].Canorus[8120])  
+Exited with exit code: 1
+
+At least now both machines are consistent in behaviour.
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: remove_font.diff
+Type: application/octet-stream
+Size: 607 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20090220/e6fbb10b/attachment.obj">https://lists.berlios.de/pipermail/canorus-devel/attachments/20090220/e6fbb10b/attachment.obj</A>&gt;
+-------------- next part --------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000648.html">[Canorus-devel] Build 933 breakage under macosx
+</A></li>
+	<LI>Next message: <A HREF="000639.html">[Canorus-devel] pycli and windows
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#650">[ date ]</a>
+              <a href="thread.html#650">[ thread ]</a>
+              <a href="subject.html#650">[ subject ]</a>
+              <a href="author.html#650">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] clone() issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3Ca24024cb0802220229l4eca54b3t4b2d32070cbee4f7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000450.html">
+   <LINK REL="Next"  HREF="000459.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] clone() issues</H1>
+    <B>Itay Perl</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3Ca24024cb0802220229l4eca54b3t4b2d32070cbee4f7%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] clone() issues">itay.perl at gmail.com
+       </A><BR>
+    <I>Fri Feb 22 11:29:06 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000450.html">[Canorus-devel] clone() issues
+</A></li>
+        <LI>Next message: <A HREF="000459.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#451">[ date ]</a>
+              <a href="thread.html#451">[ thread ]</a>
+              <a href="subject.html#451">[ subject ]</a>
+              <a href="author.html#451">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+2008/2/22 Matev&#382; Jekovec &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;:
+
+&gt;<i> Yes, your idea is correct. The reason why I didn't implement this yet is
+</I>&gt;<i> the following copy&amp;paste scenario:
+</I>&gt;<i> 1) copy a chord
+</I>&gt;<i> 2) notes get cloned without a voice
+</I>&gt;<i> 3) paste a chord
+</I>&gt;<i> 4) the first note is pasted
+</I>&gt;<i> 5) the second note and the next ones are *appended* after the first note
+</I>&gt;<i> instead of added to the same chord
+</I>&gt;<i> Reason: CANote::isPartOfTheChord() function requires a voice which then
+</I>&gt;<i> gets the next/prev note and determines, if the note is part of the chord.
+</I>
+
+&gt;<i> Another problem is when pasting notes from multiple voices. How is pasting
+</I>&gt;<i> done then?
+</I>&gt;<i>
+</I>&gt;<i> Possible solutions:
+</I>&gt;<i> - I just noticed that the first issue could be solvable by comparing
+</I>&gt;<i> timeStarts of the notes in the clipboard. If TS is the same, then the notes
+</I>&gt;<i> are part of the same chord regardless to the voice.
+</I>
+- For the second issue, we could lock the copying down to a single voice or
+&gt;<i> instead of pasting elements simultaniously, append the elements one after
+</I>&gt;<i> another for other voices.
+</I>&gt;<i>
+</I>
+- Perhaps CAMimeData should hold the muselements in a voice? Copy would
+create a new voice for each voice of which some part is being copied, then
+Paste would be able to know how the notes are linked to each other. This
+solves both the chord problem and the cross-voice problem.
+How about cross-staff, or cross-context copy&amp;paste? CAMimeData would also be
+able to hold, for example, a staff and a function mark(ing) context. In this
+case, if there's no function mark..ing context available we could chose one
+of two behaviors: add the missing contexts, or disable pasting at that
+point.
+My personal choice would be to look downward for the needed contexts (i.e.
+paste from the selected context downwards). If some of the required contexts
+for the paste are not present in a cross-context paste, display message in
+the status-bar. Maybe in the case of cross-voice paste (which could be part
+of a cross-context paste of course) it'd be better to add voices if there
+are not enough in the staff. But then maybe not. What do you think?
+
+
+&gt;<i>
+</I>&gt;<i> btw. Couldn't the crash be fixed simply by destroying the clipboard first
+</I>&gt;<i> and then the document itself?
+</I>
+
+Yes, but I would call that a workaround.
+
+
+&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i>
+</I>
+Regards,
+Itay
+
+
+&gt;<i>
+</I>&gt;<i> 2008/2/21, Itay Perl &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>&gt;:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Hello all,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In the current design, some objects hold pointers to their containers,
+</I>&gt;<i> &gt; which are used in the destructor to remove themselves from it before being
+</I>&gt;<i> &gt; destroyed. This creates a problem when we clone those elements, for usage
+</I>&gt;<i> &gt; with Copy&amp;Paste (CAMimeData) or in Undo/Redo stacks. For example, a cloned
+</I>&gt;<i> &gt; CAPlayable has a pointer to the voice context of the original playable, but
+</I>&gt;<i> &gt; the voice doesn't have a pointer to the cloned playable in its element list.
+</I>&gt;<i> &gt; So, if the voice is destroyed while the clone is still alive, it will delete
+</I>&gt;<i> &gt; the original, but not the clone. When the clone is destroyed (~CAMimeData
+</I>&gt;<i> &gt; for example), it will try to access the dangling voice pointer. That's the
+</I>&gt;<i> &gt; reason for the crash you can see if you copy a few notes to the clipboard
+</I>&gt;<i> &gt; and quit canorus.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I think that such invalid conditions (e.g. playable has pointer to
+</I>&gt;<i> &gt; context, but context doesn't know about the playable) should not exist at
+</I>&gt;<i> &gt; all, so my solution would be to change the clone()s to clear those pointers
+</I>&gt;<i> &gt; in the clones. A clone() (no-arg) call would always create an &quot;orphan&quot;
+</I>&gt;<i> &gt; element, while e.g. CAPlayable::clone(CAVoice*) or
+</I>&gt;<i> &gt; CAMark::clone(CAMusElement*) would set the context pointer to the one given.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Any objections?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt; Itay
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080222/40cbe841/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080222/40cbe841/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000450.html">[Canorus-devel] clone() issues
+</A></li>
+	<LI>Next message: <A HREF="000459.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#451">[ date ]</a>
+              <a href="thread.html#451">[ thread ]</a>
+              <a href="subject.html#451">[ subject ]</a>
+              <a href="author.html#451">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

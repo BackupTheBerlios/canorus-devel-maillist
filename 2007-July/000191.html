@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Reducing modes in interface design
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Reducing%20modes%20in%20interface%20design&In-Reply-To=%3C469E7EE0.6080204%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000190.html">
+   <LINK REL="Next"  HREF="000192.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Reducing modes in interface design</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Reducing%20modes%20in%20interface%20design&In-Reply-To=%3C469E7EE0.6080204%40gmail.com%3E"
+       TITLE="[Canorus-devel] Reducing modes in interface design">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Jul 18 22:58:08 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000190.html">[Canorus-devel] Reducing modes in interface design
+</A></li>
+        <LI>Next message: <A HREF="000192.html">[Canorus-devel] Rev 541 compilation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#191">[ date ]</a>
+              <a href="thread.html#191">[ thread ]</a>
+              <a href="subject.html#191">[ subject ]</a>
+              <a href="author.html#191">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; wrote:
+&gt;<i> Canorus currently uses 4 distinct modes: Select mode (default), Edit
+</I>&gt;<i> mode, Insert mode and Playback mode. I think those modes are so
+</I>&gt;<i> elemental that can't and shouldn't be unified. When changing modes, the
+</I>&gt;<i> pretty obvious border of the score viewport changes so no &quot;mode errors&quot;
+</I>&gt;<i> should be done so easily. Mouse cursor should also be changed in the future.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>I think we might have a different understanding of modes. My working 
+definition is where the same behavior (by the user) produces different 
+results depending on the mode. Under this definition the &quot;Insert mode&quot; 
+you mention is technically three separate modes: &quot;Insert new staff 
+context,&quot; &quot;Insert new lyric context,&quot; &quot;Insert new function marking 
+context.&quot; An then there is
+
+I agree that Canorus does a good job of making modes visible but I think 
+&quot;mode errors&quot; may be more common than you think (perhaps in a different 
+way than you where thinking).
+
+The mixing of slurs and ties in Finale is one example of mode error.
+
+Another example of a mode error in Canorus is trying to enter a note on 
+the bass clef while the treble clef is selected. The result is 
+unexpected, but because I know about this particular modalism I can 
+easily recover.
+
+For a newbie it may be difficult to even get started as evidenced by 
+Martin's question on the user list a month ago. Martin complaining that 
+he couldn't work out how to enter a simple melody. The user expectation 
+was that note entry would be clearly visible on the interface. The quick 
+fix was to have the first staff selected by default upon opening. My 
+preference would be for Playable (and other context tools) to always be 
+visible and clicking on the screen inserts the note on the nearest staff.
+
+Another type of mode error is differences between programs. For whatever 
+reason Finale expects users to click on the staff instead of the actual 
+lyric to select a lyric syllable. Although it is more logical to click 
+on the actual syllable to edit a lyric (as is the behavior in Canorus), 
+humans are habit forming I must remember I am in &quot;Canorus mode&quot; rather 
+than &quot;Finale mode&quot; to overcome this habit.
+
+Matev&#382; wrote:
+&gt;<i> User should be able to simply cut the lower notes in the 1st voice, select 2nd voice and paste it at the same location and they should appear exactly the same but in the 2nd voice. This is also one of the main issues I have to resolve in my head before implementing the copy-paste code.
+</I>&gt;<i>
+</I>&gt;<i> What do you think?
+</I>&gt;<i>   
+</I>Interesting solution. I like it.
+
+-- 
+David Bolton
+<A HREF="http://davidbolton.info">http://davidbolton.info</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000190.html">[Canorus-devel] Reducing modes in interface design
+</A></li>
+	<LI>Next message: <A HREF="000192.html">[Canorus-devel] Rev 541 compilation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#191">[ date ]</a>
+              <a href="thread.html#191">[ thread ]</a>
+              <a href="subject.html#191">[ subject ]</a>
+              <a href="author.html#191">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

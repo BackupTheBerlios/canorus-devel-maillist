@@ -1,0 +1,191 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Exporting function to python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Exporting%20function%20to%20python&In-Reply-To=%3Cbc53d5c50802070549x4b6b1867j1f0cca191cc1cf96%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000436.html">
+   <LINK REL="Next"  HREF="000438.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Exporting function to python</H1>
+    <B>Stefan Sakalik</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Exporting%20function%20to%20python&In-Reply-To=%3Cbc53d5c50802070549x4b6b1867j1f0cca191cc1cf96%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Exporting function to python">rabbit6440 at gmail.com
+       </A><BR>
+    <I>Thu Feb  7 14:49:27 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000436.html">[Canorus-devel] Exporting function to python
+</A></li>
+        <LI>Next message: <A HREF="000438.html">[Canorus-devel] pitch, length, refactoring
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#437">[ date ]</a>
+              <a href="thread.html#437">[ thread ]</a>
+              <a href="subject.html#437">[ subject ]</a>
+              <a href="author.html#437">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>So, I've decided not to use PyQt. It could be integrated better into
+the gui, when it's a cpp widget (imho).
+I have managed to make the widget, it is a toolbar at the bottom of
+the window. It is activated from menu. It wors, sort of, but it's just
+a preview, very buggy, and unstable...And there are some ugly hacks.
+(READMEpycli.txt from pycli.tar.gz)
+newfiles, diffs are attached (in archive files are relative to src
+folder), and new pycli plugin, of couse.
+I'm sending my canorus doxyfile, it's my personal preference.
+
+So if you have some free time, please check it if it compiles, and
+(sort of) works...I mean something like print 'hello world' ;)
+
+Regards,
+Stefan
+
+2008/2/6, Matev&#382; Jekovec &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;:
+&gt;<i> Integrating C++ and Python GUI code (Qt) is not possible (yet?).
+</I>&gt;<i> Currently there are some hooks in Canorus to trigger external python
+</I>&gt;<i> scripts and passing Swig-converted C++ objects to Python (score notes
+</I>&gt;<i> for eg.). But as I said, sending a C++ Qt GUI object to Python is not
+</I>&gt;<i> possible - it's too complex, that's why PyQt exists.
+</I>&gt;<i>
+</I>&gt;<i> I would advise you to create your console widget in Python using PyQt4
+</I>&gt;<i> and trigger it using the menu or toolbar action (the way it currently
+</I>&gt;<i> works). We can extend these in future by offering checkbox or combobox
+</I>&gt;<i> type menus and add support for triggering scripts from toolbars in the
+</I>&gt;<i> future. But all this would still be defined in CanorusPlugin.xml though.
+</I>&gt;<i> Not directly using the code in the plugin.
+</I>&gt;<i>
+</I>&gt;<i> PyQt4 uses SIP for generating Qt4 C++ wrappers. Every sip object has
+</I>&gt;<i> _sipAPIDef pointer (see /usr/include/python2.5/sip.h). The struct offers
+</I>&gt;<i> methods like void* api_convert_to_cpp() (macro for sipConvertToCpp in
+</I>&gt;<i> PyQt4 source) which returns a pointer to the core C++ instance of the
+</I>&gt;<i> PyQt4 object. In the future we might use this to somehow manipulate with
+</I>&gt;<i> PyQt objects. But it's not nice. The problem is there is not much
+</I>&gt;<i> documentation on this but more hacking/trying.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> Ps. Use a global python variable for the console to stay awake and
+</I>&gt;<i> Canorus to run on:
+</I>&gt;<i> def someFunction():
+</I>&gt;<i>   global a
+</I>&gt;<i>   a = CAPyConsole()
+</I>&gt;<i>   a.show()
+</I>&gt;<i>
+</I>&gt;<i> Stefan Sakalik pravi:
+</I>&gt;<i> &gt; As for PyQt4, let's assume I want to create a Widget in python and
+</I>&gt;<i> &gt; then to use it in c++ in toolbar. So I would have to use SIP?.... Now
+</I>&gt;<i> &gt; I don't have experience with those things. Which one is less work, or
+</I>&gt;<i> &gt; are there any drawbacks in this approach?
+</I>&gt;<i> &gt; Isn't it better to use c++ class in python code?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt; Stefan
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2008/2/6, Matev&#382; Jekovec &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;&gt; You better create CAPyConsole in Python itself using PyQt4. Exporting Qt
+</I>&gt;<i> &gt;&gt; classes is a showstopper for swig (lots of ununderstandable Qt macros etc.).
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Otherwise, create .i descriptor file for your class and add it to
+</I>&gt;<i> &gt;&gt; CanorusPython library in CMakeLists.txt. You might also want to include
+</I>&gt;<i> &gt;&gt; the .cpp files in CanorusPython.
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; Regards.
+</I>&gt;<i> &gt;&gt; -Matev&#382;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt; rabbit pista pravi:
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; I'm working on that CLI...I have a class CAPyConsole, 2 functions
+</I>&gt;<i> &gt;&gt;&gt; there: QString buffered_input(), void buffered_output(QString str); or
+</I>&gt;<i> &gt;&gt;&gt; char* whatever.
+</I>&gt;<i> &gt;&gt;&gt; How to export them to python script, (convert to PyObject)? I was
+</I>&gt;<i> &gt;&gt;&gt; looking at things in scripting/, but I'm quite confused :/. Please
+</I>&gt;<i> &gt;&gt;&gt; help me.
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt; Regrads,
+</I>&gt;<i> &gt;&gt;&gt; Stefan
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt;&gt;
+</I>&gt;<i> &gt;&gt; _______________________________________________
+</I>&gt;<i> &gt;&gt; Canorus-devel mailing list
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt;&gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt;&gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: newfiles.tar.gz
+Type: application/x-gzip
+Size: 1997 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment.bin">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment.bin</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: svndiffs.tar.gz
+Type: application/x-gzip
+Size: 3295 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment-0001.bin">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment-0001.bin</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: pycli.tar.gz
+Type: application/x-gzip
+Size: 4248 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment-0002.bin">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment-0002.bin</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: canorus.Doxyfile.diff
+Type: text/x-patch
+Size: 1781 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment-0003.bin">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080207/4135af11/attachment-0003.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000436.html">[Canorus-devel] Exporting function to python
+</A></li>
+	<LI>Next message: <A HREF="000438.html">[Canorus-devel] pitch, length, refactoring
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#437">[ date ]</a>
+              <a href="thread.html#437">[ thread ]</a>
+              <a href="subject.html#437">[ subject ]</a>
+              <a href="author.html#437">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

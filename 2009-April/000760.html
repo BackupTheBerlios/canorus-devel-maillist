@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] [Canorus-user] Canorus and MIDI
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BCanorus-user%5D%20Canorus%20and%20MIDI&In-Reply-To=%3C200904050105.10692.dcuny%40lanset.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000759.html">
+   <LINK REL="Next"  HREF="000761.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] [Canorus-user] Canorus and MIDI</H1>
+    <B>David Cuny</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BCanorus-user%5D%20Canorus%20and%20MIDI&In-Reply-To=%3C200904050105.10692.dcuny%40lanset.com%3E"
+       TITLE="[Canorus-devel] [Canorus-user] Canorus and MIDI">dcuny at lanset.com
+       </A><BR>
+    <I>Sun Apr  5 10:05:06 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000759.html">[Canorus-devel] [Canorus-user] Canorus and MIDI
+</A></li>
+        <LI>Next message: <A HREF="000761.html">[Canorus-devel] [Canorus-user] MIDI input
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#760">[ date ]</a>
+              <a href="thread.html#760">[ thread ]</a>
+              <a href="subject.html#760">[ subject ]</a>
+              <a href="author.html#760">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, Reinhard.
+
+Thanks for the response!
+
+&gt;<i> Hopefully Matevz or Georg can answer that question. For me at this
+</I>&gt;<i> point I'm happy that I can input notes via my small keyboard.
+</I>
+Does it capture MIDI velocity as well? I haven't looked into the code at all, I've just browsed through the Doxogyn files.
+
+&gt;<i> I plan to do some transponation of a Bach sonata from violin to
+</I>&gt;<i> viola. So while input is important, but playback is low priority
+</I>&gt;<i> as I play it directly on the instrument.
+</I>
+I've only run it under Windows in a VPC and Linux via TiMidity. Under both scenarios, the playback has been pretty bad. It drops the first notes, and plays quarter notes at different durations. Since it's using an external library, I was surprised at how poorly it worked. (No insult intended). I haven't got a RT kernel, but I wouldn't think I'd need that for MIDI playback.
+
+&gt;<i> I just basically know that we use rtmidi for Midi output and the
+</I>&gt;<i> rest is up to the core. My personal next step for Canorus is to
+</I>&gt;<i> improve the usability and one step hencefore is to improve the
+</I>&gt;<i> overall control of music elements at the UI via keyboard, midi,
+</I>&gt;<i> context menus (and maybe more).
+</I>
+I've posted my list of newbie complaints to the user list.
+
+I think adding key bindings to emulate NWC's entry system would be a great bonus.
+
+&gt;<i> The main weekness currently is our main window class also having too
+</I>&gt;<i> much control function which has to be separated. This is also basic for
+</I>&gt;<i> implementing my own usability ideas.
+</I>
+In theory, you could drive the interface via a Python script. As long as the classes behind it were C++, it would probably be reasonably fast. But I suspect that it would be better if Canorus had a consistent and solid UI, instead of a bunch of flexible, but incomplete scripts.
+
+&gt;<i> Thanks to the plugin interface we mainly need to discuss how much to put
+</I>&gt;<i> at the interface level to Canorus for plugins. Though plugins are
+</I>&gt;<i> current written in python swig offers far more support.
+</I>
+I suspect that it would be best to standardize on a single plugin language for &quot;official&quot; development. You end up getting into a sort of &quot;Tower of Babel&quot; prediciment. Even Microsoft, which pushed .NET on the idea that you could run various languages with it (IronPython, ASP.NET, etc.) has pretty much standardized around C# as the &quot;one true language&quot;.
+
+&gt;<i> Also I'm considering to go to a virtual machine like parrot if
+</I>&gt;<i> interfacing and/or performance improvements can be achieved this way
+</I>&gt;<i> (i.e. we only provide the interface and don't have to care about
+</I>&gt;<i> the language you want to implement your Canorus plugin).
+</I>
+Since it's bound to the same Canorus API underneath, and most scripting languages are pretty much identical, my preference as a developer is to use a language that has good intellisense support. In that regard, Python does poorly, because it doesn't require types to be declared. Without type declarations, the editor doesn't know what class to associate a variable to. You could look at the assignments and make a guess, I suppose.
+
+Prolog is the exception to the rule, as far as scripting languages go. It's great for solving constraint-based problems (like voice leading, or even composing), but I wouldn't want to write UI code with it.
+
+
+&gt;<i> If there are limitations (except time to implement all our ideas :-)
+</I>&gt;<i> we'd like to hear about them. What has been largely discussed is
+</I>&gt;<i> layout of the score. I still hope that we can &quot;borrow&quot; some layout
+</I>&gt;<i> engine as an additional view for later (&gt; 1.0) versions of Canorus.
+</I>
+That sounds like the sort of thing that Prolog could do well. I haven't tried printing anything in Canorus, on the assumption that you were having Lilypond do the heavy lifting.
+
+I'd try it out on my machine, but right now Canorus is stuck &quot;Searching for recovery documents&quot;
+
+Dpes Canorus support chords and beaming yet? I thought it did, but I just checked the website, and I had been looking at a shot of NoteEdit, not Canorus.
+
+&gt;<i> It's all up to you of course, we'd be very happy to have you with
+</I>&gt;<i> our team even if it's only some hour per week. Good design ideas
+</I>&gt;<i> written down at the wiki without implementing code is already a
+</I>&gt;<i> big help (actually static and dynamic OD).
+</I>
+I'm looking for something that already supports a number of features that Canorus seems to be lacking. I'm about 60% done with my own Java notation code, and I'm not sure it if would be easier to keep working on my own project where I could be sure I'd have the features I want. The more I look at Canorus, the more there is that seems to be missing. Writing a complete notation program is quite an undertaking!
+
+I'll download the code from SVN some time next week and have a look at it.
+
+-- David Cuny
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000759.html">[Canorus-devel] [Canorus-user] Canorus and MIDI
+</A></li>
+	<LI>Next message: <A HREF="000761.html">[Canorus-devel] [Canorus-user] MIDI input
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#760">[ date ]</a>
+              <a href="thread.html#760">[ thread ]</a>
+              <a href="subject.html#760">[ subject ]</a>
+              <a href="author.html#760">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] bug report: editing impossible
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20bug%20report%3A%20editing%20impossible&In-Reply-To=%3C478A90A1.7070802%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000386.html">
+   <LINK REL="Next"  HREF="000395.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] bug report: editing impossible</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20bug%20report%3A%20editing%20impossible&In-Reply-To=%3C478A90A1.7070802%40schwaben.de%3E"
+       TITLE="[Canorus-devel] bug report: editing impossible">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Jan 13 23:28:49 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000386.html">[Canorus-devel] Attention translators
+</A></li>
+        <LI>Next message: <A HREF="000395.html">[Canorus-devel] bug report: editing impossible
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everybody,
+
+I'm having here a canorus document that doesn't allow me to finish the 
+song by adding additional notes. When I start canorus and load the 
+document, select a staff, select the last muselement in the staff, 
+activate quarter insertion (key 4), then try to insert a quarter note by 
+a left mouse click, canorus crashes. See the backtrace included. The 
+canorus xml file provoking this crash is available for some time on a 
+website:
+
+        <A HREF="http://www.candiesdandies.de/embraceable_you.xml">http://www.candiesdandies.de/embraceable_you.xml</A>
+
+Best Regards,
+Georg
+
+
+Starting program: /usr/local/bin/canorus
+[Thread debugging using libthread_db enabled]
+[New Thread 0xb6eed6d0 (LWP 27838)]
+[New Thread 0xb6b46b90 (LWP 27841)]
+[New Thread 0xb61ffb90 (LWP 27842)]
+[New Thread 0xb59feb90 (LWP 27843)]
+[New Thread 0xb51fdb90 (LWP 27844)]
+[New Thread 0xb47ffb90 (LWP 27845)]
+[New Thread 0xb3ffeb90 (LWP 27846)]
+[New Thread 0xb37fdb90 (LWP 27847)]
+[New Thread 0xb2ffcb90 (LWP 27848)]
+[New Thread 0xb1fffb90 (LWP 27853)]
+[Thread 0xb1fffb90 (LWP 27853) exited]
+drawableMusElement: 0x85b95f8, x,y=1917,478, w,h=1,37, dContext=0x85b1cc8
+musElement: 0x85c26f0, timeStart=14336, timeEnd=14336, dContext = 
+0x85b1cc8, context=0x85bda20
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread 0xb6eed6d0 (LWP 27838)]
+0x080dade5 in CASlur::setNoteEnd (this=0x0, noteEnd=0x862e940) at 
+/home/rud/canorus/trunk/src/core/slur.h:52
+52              inline void setNoteEnd( CANote *noteEnd ) { _noteEnd = 
+noteEnd; }
+(gdb) bt
+#0  0x080dade5 in CASlur::setNoteEnd (this=0x0, noteEnd=0x862e940) at 
+/home/rud/canorus/trunk/src/core/slur.h:52
+#1  0x080da6cb in CAStaff::clone (this=0x85aff38, s=0x8627940) at 
+/home/rud/canorus/trunk/src/core/staff.cpp:78
+#2  0x080d7121 in CASheet::clone (this=0x85a3800, doc=0x85b3db8) at 
+/home/rud/canorus/trunk/src/core/sheet.cpp:52
+#3  0x080d68ea in CASheet::clone (this=0x85a3800) at 
+/home/rud/canorus/trunk/src/core/sheet.h:25
+#4  0x080d60fb in CADocument::clone (this=0x85b3db8) at 
+/home/rud/canorus/trunk/src/core/document.cpp:58
+#5  0x080c8542 in CAUndoCommand (this=0x85b01f0, document=0x85b3db8, 
+text=@0xbfe38060)
+    at /home/rud/canorus/trunk/src/core/undocommand.cpp:45
+#6  0x080ca6e6 in CAUndo::createUndoCommand (this=0xb265b638, 
+d=0x85b3db8, text=@0xbfe3810c)
+    at /home/rud/canorus/trunk/src/core/undo.cpp:177
+#7  0x0811941d in CAMainWin::insertMusElementAt (this=0xb26593b0, 
+coords={xp = 1947, yp = 494}, v=0x855a498)
+    at /home/rud/canorus/trunk/src/ui/mainwin.cpp:1998
+#8  0x0811fa13 in CAMainWin::scoreViewPortMousePress (this=0xb26593b0, 
+e=0xbfe38a2c, coords={xp = 1947, yp = 494},
+    v=0x855a498) at /home/rud/canorus/trunk/src/ui/mainwin.cpp:1516
+#9  0x081b2cc1 in CAMainWin::qt_metacall (this=0xb26593b0, 
+_c=QMetaObject::InvokeMetaMethod, _id=90, _a=0xbfe387f8)
+    at /home/rud/canorus/trunk/src/moc_mainwin.cxx:352
+#10 0xb755f0c0 in QMetaObject::activate () from /usr/lib/libQtCore.so.4
+#11 0xb755fa02 in QMetaObject::activate () from /usr/lib/libQtCore.so.4
+#12 0x081b4416 in CAScoreViewPort::CAMousePressEvent (this=0x855a498, 
+_t1=0xbfe38a2c, _t2={xp = 1947, yp = 494},
+    _t3=0x855a498) at /home/rud/canorus/trunk/src/moc_scoreviewport.cxx:188
+#13 0x081a2567 in CAScoreViewPort::mousePressEvent (this=0x855a498, 
+e=0xbfe38a2c)
+    at /home/rud/canorus/trunk/src/widgets/scoreviewport.cpp:1088
+#14 0xb7a0082d in QWidget::event () from /usr/lib/libQtGui.so.4
+#15 0xb79bbc1d in QApplicationPrivate::notify_helper () from 
+/usr/lib/libQtGui.so.4
+#16 0xb79c238d in QApplication::notify () from /usr/lib/libQtGui.so.4
+#17 0xb754dd5b in QCoreApplication::notifyInternal () from 
+/usr/lib/libQtCore.so.4
+#18 0xb7a12733 in QETWidget::translateMouseEvent () from 
+/usr/lib/libQtGui.so.4
+#19 0xb7a11d96 in QApplication::x11ProcessEvent () from 
+/usr/lib/libQtGui.so.4
+#20 0xb7a3517a in ?? () from /usr/lib/libQtGui.so.4
+#21 0xbfe392f4 in ?? ()
+#22 0xbfe39028 in ?? ()
+#23 0xbfe38fa8 in ?? ()
+#24 0xb6f69ff4 in ?? () from /usr/lib/libxcb.so.1
+#25 0x00000000 in ?? ()
+(gdb)
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000386.html">[Canorus-devel] Attention translators
+</A></li>
+	<LI>Next message: <A HREF="000395.html">[Canorus-devel] bug report: editing impossible
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#384">[ date ]</a>
+              <a href="thread.html#384">[ thread ]</a>
+              <a href="subject.html#384">[ subject ]</a>
+              <a href="author.html#384">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

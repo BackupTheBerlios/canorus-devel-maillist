@@ -1,0 +1,135 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] norwegian/danish and other translation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20norwegian/danish%20and%20other%20translation&In-Reply-To=%3C474EEB54.4010304%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000304.html">
+   <LINK REL="Next"  HREF="000307.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] norwegian/danish and other translation</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20norwegian/danish%20and%20other%20translation&In-Reply-To=%3C474EEB54.4010304%40web.de%3E"
+       TITLE="[Canorus-devel] norwegian/danish and other translation">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Nov 29 17:39:48 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000304.html">[Canorus-devel] norwegian translation
+</A></li>
+        <LI>Next message: <A HREF="000307.html">[Canorus-devel] norwegian/danish and other translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Currently I only know of one tool being able to work on Qt ts
+(translation) files: That is the linguist. As our build system takes
+care of creating the translation files you don't have to manually
+use the tools the create them. Be aware though that every time you
+&quot;make&quot; the project the files will be updated. This can mean that you
+find obsolete entries in the file and new to be translated parts in the
+file when you update from SVN.
+
+In search for alternatives tools especially because handling of phrase files
+for translations are extremely problematic (the dialog for editing phrases
+blocks the entire application :-( ) I found a web tool:
+
+<A HREF="http://translate.sourceforge.net/wiki/pootle/index">http://translate.sourceforge.net/wiki/pootle/index</A>
+
+I leave it up to Matevz if we should add such a translation &quot;service&quot; to the
+Canorus Wiki / Homepage.
+
+The translate project itself provides tools for converting the ts files to
+po. See <A HREF="http://translate.sourceforge.net/wiki/toolkit/index">http://translate.sourceforge.net/wiki/toolkit/index</A> for more
+informations. This will certainly be helpful for all those NoteEdit translation
+files where you can fetch some of the music terms needed in Canorus too in an
+easier manner. Though I'd like to avoid ts -&gt; xliff -&gt; edit -&gt; xliff -&gt; ts
+route, I won't object if the tools work fine with qt 4.3 (after all qt does
+include their dtd for the ts files, so using translate-tools should work, we
+just need to make a tutorial or find one on the web). It would also be possible
+to create po files instead of xliff files.
+
+The tool kbabel would probably be the best replacement (it has even
+experimental code for xliff format ). Maybe they will also support ts/qph
+format somewhen in the future. The other tools I looked up for xliff are not
+bad but very generic and require a translation memory server or directory
+(something similar to qph phrase book).
+
+As kbabel also supports po files this could help you with the old noteedit
+translation files too. I haven't made any further research into that topic though.
+
+Best,
+
+Reinhard
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schrieb:
+&gt;<i> Hello.
+</I>&gt;<i> I'm surposed to translate Canorus into norwegian.
+</I>&gt;<i> I'm just wondering:
+</I>&gt;<i>  - do I have to wait until all features are added and then translate.
+</I>&gt;<i>  - or can start translating some of the text now and wait for the changes.
+</I>&gt;<i>  - how does it work then when the language-file is changed. how can I
+</I>&gt;<i> review the changes and then translate only the changed parts?
+</I>&gt;<i> 
+</I>&gt;<i> What translation-program do you prefere?
+</I>&gt;<i> 
+</I>&gt;<i> Dag Henning
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> Alt i ett. F&#229; Yahoo! Mail &lt;<A HREF="http://no.mail.yahoo.com">http://no.mail.yahoo.com</A>&gt; med
+</I>&gt;<i> adressekartotek, kalender og notisblokk.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000304.html">[Canorus-devel] norwegian translation
+</A></li>
+	<LI>Next message: <A HREF="000307.html">[Canorus-devel] norwegian/danish and other translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#306">[ date ]</a>
+              <a href="thread.html#306">[ thread ]</a>
+              <a href="subject.html#306">[ subject ]</a>
+              <a href="author.html#306">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

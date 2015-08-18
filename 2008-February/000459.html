@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] clone() issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3C47C1E6D2.3080909%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000451.html">
+   <LINK REL="Next"  HREF="000461.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] clone() issues</H1>
+    <B>David Bolton</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3C47C1E6D2.3080909%40gmail.com%3E"
+       TITLE="[Canorus-devel] clone() issues">davidkbolton at gmail.com
+       </A><BR>
+    <I>Sun Feb 24 22:51:14 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000451.html">[Canorus-devel] clone() issues
+</A></li>
+        <LI>Next message: <A HREF="000461.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#459">[ date ]</a>
+              <a href="thread.html#459">[ thread ]</a>
+              <a href="subject.html#459">[ subject ]</a>
+              <a href="author.html#459">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; Jekovec wrote:
+&gt;<i> Another problem is when pasting notes from multiple voices. How is 
+</I>&gt;<i> pasting done then?
+</I>&gt;<i>
+</I>&gt;<i> Possible solutions:
+</I>&gt;<i> - I just noticed that the first issue could be solvable by comparing 
+</I>&gt;<i> timeStarts of the notes in the clipboard. If TS is the same, then the 
+</I>&gt;<i> notes are part of the same chord regardless to the voice.
+</I>&gt;<i> - For the second issue, we could lock the copying down to a single 
+</I>&gt;<i> voice or instead of pasting elements simultaniously, append the 
+</I>&gt;<i> elements one after another for other voices.
+</I>
+I am not familiar with the internals of copying in Canorus. Is there a
+way to retain the structure of the CanorusML source (such as voice,
+staff, and context tags) that can be interpreted upon paste?
+
+Locking the copying down to a single voice might be handy every now and
+then, But limiting copy-paste to a single voice or staff by default is 
+tedious for the user.
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000451.html">[Canorus-devel] clone() issues
+</A></li>
+	<LI>Next message: <A HREF="000461.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#459">[ date ]</a>
+              <a href="thread.html#459">[ thread ]</a>
+              <a href="subject.html#459">[ subject ]</a>
+              <a href="author.html#459">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

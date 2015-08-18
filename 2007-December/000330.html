@@ -1,0 +1,243 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Bug crash on selection
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Bug%20crash%20on%20selection&In-Reply-To=%3C476A87DD.80100%40laposte.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000329.html">
+   <LINK REL="Next"  HREF="000332.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Bug crash on selection</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Bug%20crash%20on%20selection&In-Reply-To=%3C476A87DD.80100%40laposte.net%3E"
+       TITLE="[Canorus-devel] Bug crash on selection">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Dec 20 16:18:53 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000329.html">[Canorus-devel] Accidentals visible and Hidden rest
+</A></li>
+        <LI>Next message: <A HREF="000332.html">[Canorus-devel] Bug crash on selection
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I don't really know how to reproduce it exactly.
+
+Put several notes, and then a separation bar (simple), several notes, a
+second bar.
+Put some accidentals on the notes.
+
+Go to Edit mode and try to select all the notes, including the last
+single bar.
+Canorus crashes.
+
+(gdb) run
+Starting program: /home/leo/dev/canorus/trunk/src/canorus
+[Thread debugging using libthread_db enabled]
+[New Thread -1227938096 (LWP 563)]
+warning: the debug information found in
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqgif.so.debug&quot; does not match
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqgif.so&quot; (CRC mismatch).
+
+warning: the debug information found in
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqjpeg.so.debug&quot; does not match
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqjpeg.so&quot; (CRC mismatch).
+
+warning: the debug information found in
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqmng.so.debug&quot; does not match
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqmng.so&quot; (CRC mismatch).
+
+warning: the debug information found in
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqsvg.so.debug&quot; does not match
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqsvg.so&quot; (CRC mismatch).
+
+warning: the debug information found in
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqtiff.so.debug&quot; does not match
+&quot;/usr/lib/qt4/plugins/lib/imageformats/libqtiff.so&quot; (CRC mismatch).
+
+[New Thread -1231357040 (LWP 566)]
+[New Thread -1239749744 (LWP 567)]
+[New Thread -1248142448 (LWP 572)]
+[New Thread -1258292336 (LWP 577)]
+[New Thread -1266685040 (LWP 580)]
+[New Thread -1275077744 (LWP 582)]
+[New Thread -1283470448 (LWP 583)]
+[New Thread -1291863152 (LWP 584)]
+[New Thread -1300255856 (LWP 585)]
+[New Thread -1308648560 (LWP 586)]
+warning: the debug information found in
+&quot;/usr/lib/qt4/plugins/lib/iconengines/libqsvg.so.debug&quot; does not match
+&quot;/usr/lib/qt4/plugins/lib/iconengines/libqsvg.so&quot; (CRC mismatch).
+
+drawableMusElement: 0xb15be078, x,y=113,78, w,h=11,9, dContext=0xb50d2b48
+musElement: 0xb15929a8, timeStart=0, timeEnd=256, dContext = 0xb50d2b48,
+context=0xb1585260, voice=0, voiceNr=1, idxInVoice=3,
+voiceStaff=0xb1585260, pitch=31
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread -1227938096 (LWP 563)]
+0x080b33b4 in CAMusElement::musElementType (this=0x0) at
+/home/leo/dev/canorus/trunk/src/core/muselement.h:41
+41              CAMusElementType musElementType() { return
+_musElementType; }
+(gdb) bt full
+#0  0x080b33b4 in CAMusElement::musElementType (this=0x0) at
+/home/leo/dev/canorus/trunk/src/core/muselement.h:41
+No locals.
+#1  0x080b7399 in CAMusElement::isPlayable (this=0x0) at
+/home/leo/dev/canorus/trunk/src/core/muselement.cpp:62
+No locals.
+#2  0x080e7713 in CAMainWin::scoreViewPortMouseRelease (this=0xb50329d0,
+e=0xbf8ee720, coords={xp = 461, yp = 109}, c=0xb158c108)
+    at /home/leo/dev/canorus/trunk/src/ui/mainwin.cpp:1462
+        j = 0
+        musEltList = {{p = {static shared_null = {ref = {value = 18737},
+alloc = 0, begin = 0, end = 0, sharable = 1, array = {0x0}},
+      d = 0x870fd68}, d = 0x870fd68}}
+        i = 0
+        y = 84
+        w = 349
+        x = 112
+        h = 25
+        selectionRect = {x1 = 112, y1 = 84, x2 = 460, y2 = 108}
+        dcList = {{p = {static shared_null = {ref = {value = 18737},
+alloc = 0, begin = 0, end = 0, sharable = 1, array = {0x0}}, d =
+0x825a2b0},
+    d = 0x825a2b0}}
+#3  0x0817483f in CAMainWin::qt_metacall (this=0xb50329d0,
+_c=QMetaObject::InvokeMetaMethod, _id=80, _a=0xbf8ee488)
+    at /home/leo/dev/canorus/trunk/src/moc_mainwin.cxx:318
+No locals.
+#4  0xb73f4067 in QMetaObject::activate () from
+/usr/lib/qt4/lib/libQtCore.so.4
+No symbol table info available.
+#5  0xb73f49d5 in QMetaObject::activate () from
+/usr/lib/qt4/lib/libQtCore.so.4
+No symbol table info available.
+#6  0x08175eb6 in CAScoreViewPort::CAMouseReleaseEvent (this=0xb158c108,
+_t1=0xbf8ee720, _t2={xp = 461, yp = 109}, _t3=0xb158c108)
+    at /home/leo/dev/canorus/trunk/src/moc_scoreviewport.cxx:196
+        _a = {0x0, 0xbf8ee4a4, 0xbf8ee4a8, 0xbf8ee4b0}
+#7  0x0816508d in CAScoreViewPort::mouseReleaseEvent (this=0xb158c108,
+e=0xbf8ee720)
+    at /home/leo/dev/canorus/trunk/src/widgets/scoreviewport.cpp:1064
+No locals.
+#8  0xb78d8e24 in QWidget::event () from /usr/lib/qt4/lib/libQtGui.so.4
+No symbol table info available.
+#9  0xb7891c22 in QApplicationPrivate::notify_helper () from
+/usr/lib/qt4/lib/libQtGui.so.4
+No symbol table info available.
+#10 0xb7898838 in QApplication::notify () from
+/usr/lib/qt4/lib/libQtGui.so.4
+No symbol table info available.
+#11 0xb73e2628 in QCoreApplication::notifyInternal () from
+/usr/lib/qt4/lib/libQtCore.so.4
+No symbol table info available.
+#12 0xb78eafe4 in QETWidget::translateMouseEvent () from
+/usr/lib/qt4/lib/libQtGui.so.4
+---Type &lt;return&gt; to continue, or q &lt;return&gt; to quit---
+No symbol table info available.
+#13 0xb78ea6ce in QApplication::x11ProcessEvent () from
+/usr/lib/qt4/lib/libQtGui.so.4
+No symbol table info available.
+#14 0xb790e0ca in QEventDispatcherX11::processEvents () from
+/usr/lib/qt4/lib/libQtGui.so.4
+No symbol table info available.
+#15 0xb73e1a83 in QEventLoop::processEvents () from
+/usr/lib/qt4/lib/libQtCore.so.4
+No symbol table info available.
+#16 0xb73e1b8a in QEventLoop::exec () from /usr/lib/qt4/lib/libQtCore.so.4
+No symbol table info available.
+#17 0xb73e3e56 in QCoreApplication::exec () from
+/usr/lib/qt4/lib/libQtCore.so.4
+No symbol table info available.
+#18 0xb78912e4 in QApplication::exec () from /usr/lib/qt4/lib/libQtGui.so.4
+No symbol table info available.
+#19 0x0809fc91 in main (argc=1, argv=0xbf8ef1d4) at
+/home/leo/dev/canorus/trunk/src/main.cpp:130
+        mainApp = {&lt;QCoreApplication&gt; = {&lt;QObject&gt; = {_vptr.QObject =
+0xb7ebc028, static staticMetaObject = {d = {superdata = 0x0,
+          stringdata = 0xb744a260 &quot;QObject&quot;, data = 0xb744a2e0,
+extradata = 0x0}}, d_ptr = 0x8207878, static staticQtMetaObject = {d = {
+          superdata = 0x0, stringdata = 0xb744ce80 &quot;Qt&quot;, data =
+0xb744ea80, extradata = 0x0}}}, static staticMetaObject = {d = {
+        superdata = 0x8204b40, stringdata = 0xb7452be0
+&quot;QCoreApplication&quot;, data = 0xb7452c60, extradata = 0x0}}, static self =
+0xbf8eeeb4},
+  static staticMetaObject = {d = {superdata = 0xb747a1e4, stringdata =
+0xb7d9f880 &quot;QApplication&quot;, data = 0xb7d9fa80, extradata = 0x0}}}
+        splashPixmap = {&lt;QPaintDevice&gt; = {_vptr.QPaintDevice =
+0xb7ebd7f0, painters = 0}, data = 0x8231370}
+        splash = {&lt;QWidget&gt; = {&lt;QObject&gt; = {_vptr.QObject = 0xb7ecc1c8,
+static staticMetaObject = {d = {superdata = 0x0,
+          stringdata = 0xb744a260 &quot;QObject&quot;, data = 0xb744a2e0,
+extradata = 0x0}}, d_ptr = 0x8236a10, static staticQtMetaObject = {d = {
+          superdata = 0x0, stringdata = 0xb744ce80 &quot;Qt&quot;, data =
+0xb744ea80, extradata = 0x0}}}, &lt;QPaintDevice&gt; = {_vptr.QPaintDevice =
+0xb7ecc2ac,
+      painters = 0}, static staticMetaObject = {d = {superdata =
+0x8204b40, stringdata = 0xb7da2740 &quot;QWidget&quot;, data = 0xb7da2be0,
+extradata = 0x0}},
+    data = 0x8236a58}, static staticMetaObject = {d = {superdata =
+0x82052f8, stringdata = 0xb7de1060 &quot;QSplashScreen&quot;, data = 0xb7de11a0,
+      extradata = 0x0}}}
+        font = {static staticMetaObject = {d = {superdata = 0x0,
+stringdata = 0xb7ddcaa0 &quot;QFont&quot;, data = 0xb7ddcb60, extradata = 0x0}},
+  d = 0x8243258, resolve_mask = 3}
+        translationLocations = {{p = {static shared_null = {ref = {value
+= 18737}, alloc = 0, begin = 0, end = 0, sharable = 1, array = {0x0}},
+      d = 0x8243b60}, d = 0x8243b60}}
+        translator = {&lt;QObject&gt; = {_vptr.QObject = 0xb747a388, static
+staticMetaObject = {d = {superdata = 0x0, stringdata = 0xb744a260
+&quot;QObject&quot;,
+        data = 0xb744a2e0, extradata = 0x0}}, d_ptr = 0x8243aa0, static
+staticQtMetaObject = {d = {superdata = 0x0, stringdata = 0xb744ce80 &quot;Qt&quot;,
+        data = 0xb744ea80, extradata = 0x0}}}, static staticMetaObject =
+{d = {superdata = 0x8204b40, stringdata = 0xb7452fa0 &quot;QTranslator&quot;,
+      data = 0xb7452fc0, extradata = 0x0}}}
+        showSettingsPage = CASettingsDialog::UndefinedSettings
+(gdb)
+
+
+
+-- 
+Olivier FAURAX, <A HREF="http://ofaurax.free.fr/">http://ofaurax.free.fr/</A>
+Je cherche du boulot : <A HREF="http://ofaurax.free.fr/cv/">http://ofaurax.free.fr/cv/</A>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000329.html">[Canorus-devel] Accidentals visible and Hidden rest
+</A></li>
+	<LI>Next message: <A HREF="000332.html">[Canorus-devel] Bug crash on selection
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#330">[ date ]</a>
+              <a href="thread.html#330">[ thread ]</a>
+              <a href="subject.html#330">[ subject ]</a>
+              <a href="author.html#330">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

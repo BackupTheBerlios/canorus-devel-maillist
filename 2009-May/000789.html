@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] question about renamings and API changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20question%20about%20renamings%20and%20API%20changes&In-Reply-To=%3C4A05AA72.5000002%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000788.html">
+   <LINK REL="Next"  HREF="000795.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] question about renamings and API changes</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20question%20about%20renamings%20and%20API%20changes&In-Reply-To=%3C4A05AA72.5000002%40web.de%3E"
+       TITLE="[Canorus-devel] question about renamings and API changes">suamor at web.de
+       </A><BR>
+    <I>Sat May  9 18:08:18 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000788.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+        <LI>Next message: <A HREF="000795.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#789">[ date ]</a>
+              <a href="thread.html#789">[ thread ]</a>
+              <a href="subject.html#789">[ subject ]</a>
+              <a href="author.html#789">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+
+&gt;<i> Hi guys.
+</I>&gt;<i>
+</I>&gt;<i> As you know, our &quot;context&quot; describes the unlimited long structure which
+</I>&gt;<i> contains zero or many music elements. The term &quot;context&quot; was stolen from
+</I>&gt;<i> Lilypond and NoteEdit export to Lilypond. Looking further, &quot;context&quot; in
+</I>&gt;<i> lily does not necessarily describe this, but can be anything you want
+</I>&gt;<i> actually, so it's not the right word at all. My idea was to rename all
+</I>&gt;<i> &quot;context&quot; words to &quot;track&quot;. This brings the following work:
+</I>
+Yes, I'm still pro renaming, as the word context in itself is very
+abstract and I didn't hear about it before NoteEdit score editor (and I
+have to pay attention because even here we often use the word context
+in different semantic meanings)
+
+&gt;<i> 1) CAContext -&gt;  CATrack and other class renamings
+</I>&gt;<i> 2) getter/setter/query methods which contain word &quot;context&quot; -&gt;  &quot;track&quot;
+</I>&gt;<i> 3) renamings of the files themselves
+</I>
+This far I see no problems. Could be easily done with sed.
+
+&gt;<i> 4) renamings in Swig interfaces
+</I>
+The problem is here that existing plugins may break. We should therefore
+deprecate this api for about 2-3 version before we remove it.
+
+&gt;<i> 5) renamings in CanorusML file format - brings backward incompatibility.
+</I>
+Similar to above but not completely. Changes to the file formats might
+happpen in the future too so it might be useful to provide functions for
+doing the work in a way similar to lilypond but more powerful. So there
+is f.e. a method convert70, maybe later convert80 which is called then
+by convert70 when reading an old file. Of course the older the file the
+slower the loading will be. But as it is only a one time thing so I
+have no problems with this loading time.
+
+
+&gt;<i> 5.1) create CanorusMLConverter class (which we eventually will need
+</I>&gt;<i> anyway) to convert from older versions of our format to the new one
+</I>
+see above.
+
+&gt;<i> The job is pretty extensive, so I would like your opinions about this.
+</I>&gt;<i> Please write any other critics about the current API and score
+</I>&gt;<i> structure. Until we hit 1.0, we still have time to drastically change
+</I>&gt;<i> Canorus internals.
+</I>
+I only partially agree. I think after the next UI improvements
+especially in the usability department there will be many more people
+starting to use Canorus. So we should avoid drastic changes after that
+version which might be released already in autumn (depending on my own
+time and the time other developers can invest).
+
+&gt;<i> The complete new score structure I had in mind can be found here:
+</I>&gt;<i> <A HREF="http://jekovec.net/tmp/scorediagram.png">http://jekovec.net/tmp/scorediagram.png</A>
+</I>
+Did you change more since LAC in Parma to the diagram ?
+I haven't noticed any problems with it. Only thing is about the
+controls.. there will be many more for inputing all kings of musical
+elements. But I think it's better to model this in the context (not the
+above one :) of each element itself, so it's much more MVC like.
+
+Regards
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000788.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+	<LI>Next message: <A HREF="000795.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#789">[ date ]</a>
+              <a href="thread.html#789">[ thread ]</a>
+              <a href="subject.html#789">[ subject ]</a>
+              <a href="author.html#789">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

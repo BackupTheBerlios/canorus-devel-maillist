@@ -1,0 +1,108 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] midi import
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import&In-Reply-To=%3C4A1143D1.3020704%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000814.html">
+   <LINK REL="Next"  HREF="000817.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] midi import</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import&In-Reply-To=%3C4A1143D1.3020704%40gmail.com%3E"
+       TITLE="[Canorus-devel] midi import">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Mon May 18 13:17:37 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000814.html">[Canorus-devel] midi import
+</A></li>
+        <LI>Next message: <A HREF="000817.html">[Canorus-devel] midi import
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#815">[ date ]</a>
+              <a href="thread.html#815">[ thread ]</a>
+              <a href="subject.html#815">[ subject ]</a>
+              <a href="author.html#815">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg.
+
+I get the following error when compiling under Windows:
+
+cd C:\canorus\trunk\src &amp;&amp; C:\MinGW\bin\gcc.exe  -D__WINDOWS_MM__ -DCANORUS_VERSION=\&quot;0.7svn.R1065\&quot; -DUSE_SWIG -DUSE_PYTHON -DQT_DLL -DQT_SVG_LIB -DQT_HELP_LIB -DQT_WEBKIT_LIB -DQT_GUI_LIB -DQT_XML_LIB -DQT_CORE_LIB -D_CanorusPython_EXPORTS -IC:\canorus\trunk\src -IC:\canorus\trunk\src\zlib -IC:\Qt\4.4.3\include -IC:\Qt\4.4.3\include\QtSvg -IC:\Qt\4.4.3\include\QtHelp -IC:\Qt\4.4.3\include\QtWebKit -IC:\Qt\4.4.3\include\QtGui -IC:\Qt\4.4.3\include\QtXml -IC:\Qt\4.4.3\include\QtCore -IC:\Python25\include   -DSWIGCPP -o CMakeFiles\_CanorusPython.dir\import\pmidi\elements.c.obj   -c C:\canorus\trunk\src\import\pmidi\elements.c
+In file included from C:\canorus\trunk\src\import\pmidi\elements.c:20:
+C:\canorus\trunk\src\import\pmidi\/except.h:23: error: syntax error before &quot;sigjmp_buf&quot;
+C:\canorus\trunk\src\import\pmidi\/except.h:23: warning: no semicolon at end of struct or union
+mingw32-make[2]: *** [src/CMakeFiles/_CanorusPython.dir/import/pmidi/elements.c.obj] Error 1
+mingw32-make[2]: Leaving directory `C:/canorus/trunk'
+mingw32-make[1]: *** [src/CMakeFiles/_CanorusPython.dir/all] Error 2
+mingw32-make[1]: Leaving directory `C:/canorus/trunk'
+c:\mingw\bin\mingw32-make: *** [all] Error 2
+
+
+Regards.
+-M
+
+Georg Rudolph pravi:
+&gt;<i> Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i> the issues you mentioned I knew, it can be worked out. Your examples
+</I>&gt;<i> I'll try out, it's fun to have so many notes! More issues are many
+</I>&gt;<i> tracks per file, corrupted files etc.
+</I>&gt;<i>
+</I>&gt;<i> As you are available, r1065 enables midi file import per pmidi on all
+</I>&gt;<i> platforms. This should be checked.
+</I>&gt;<i>
+</I>&gt;<i> Our midi export is now correctly scaled with note lengths, and tempo
+</I>&gt;<i> probably needs an update too. Any anacrusis should be completed to a
+</I>&gt;<i> whole bar, not to irritate any midi import, I think.
+</I>&gt;<i>
+</I>&gt;<i> With long midi imports performance issues can easily be studied.
+</I>&gt;<i> Playback, insertion of tempo mark etc...
+</I>&gt;<i>
+</I>&gt;<i> Cleaning and documentation will be done in some way too,
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000814.html">[Canorus-devel] midi import
+</A></li>
+	<LI>Next message: <A HREF="000817.html">[Canorus-devel] midi import
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#815">[ date ]</a>
+              <a href="thread.html#815">[ thread ]</a>
+              <a href="subject.html#815">[ subject ]</a>
+              <a href="author.html#815">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

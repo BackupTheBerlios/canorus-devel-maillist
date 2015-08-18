@@ -1,0 +1,76 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] CAMidiExport and timelength
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAMidiExport%20and%20timelength&In-Reply-To=%3C4A1C0A70.1080909%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000834.html">
+   <LINK REL="Next"  HREF="000836.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] CAMidiExport and timelength</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAMidiExport%20and%20timelength&In-Reply-To=%3C4A1C0A70.1080909%40schwaben.de%3E"
+       TITLE="[Canorus-devel] CAMidiExport and timelength">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Tue May 26 17:27:44 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000834.html">[Canorus-devel] CAMidiExport and timelength
+</A></li>
+        <LI>Next message: <A HREF="000836.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#835">[ date ]</a>
+              <a href="thread.html#835">[ thread ]</a>
+              <a href="subject.html#835">[ subject ]</a>
+              <a href="author.html#835">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; Jekovec schrieb:
+&gt;<i> Do we really need the third parameter to send() function? I thought the 
+</I>&gt;<i> send() should need the same parameters as the midi event is described 
+</I>&gt;<i> (the time offset + n-bytes of data).
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Hi Matev&#382;,
+
+good catch, we don't, but we need _curTime as the time parameter. I'll
+arrange that. Btw, in midirecorder I still have to find out the proper
+scaling, I did a &quot;fix&quot; witch _curTime/2 wich works for the moment.
+
+Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000834.html">[Canorus-devel] CAMidiExport and timelength
+</A></li>
+	<LI>Next message: <A HREF="000836.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#835">[ date ]</a>
+              <a href="thread.html#835">[ thread ]</a>
+              <a href="subject.html#835">[ subject ]</a>
+              <a href="author.html#835">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

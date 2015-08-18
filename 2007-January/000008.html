@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] activated vs triggered
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20activated%20vs%20triggered&In-Reply-To=%3C200701041430.25366.jeeree%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000013.html">
+   <LINK REL="Next"  HREF="000009.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] activated vs triggered</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20activated%20vs%20triggered&In-Reply-To=%3C200701041430.25366.jeeree%40web.de%3E"
+       TITLE="[Canorus-devel] activated vs triggered">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Jan  4 14:30:25 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000013.html">[Canorus-devel] Python problem
+</A></li>
+        <LI>Next message: <A HREF="000009.html">[Canorus-devel] activated vs triggered
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, 
+
+Canorus rev 324 gives me the following errors when started:
+
+...
+QMetaObject::connectSlotsByName: No matching signal for 
+on_actionAbout_Canorus_activated()
+Object::connect: No such signal QAction::activated()
+Object::connect:  (receiver name: 'MainWindow')
+
+As a consequence no menuitem works. 
+
+This is because QAction doesn't have a activated Signal.
+(<A HREF="http://doc.trolltech.com/4.2/qaction.html">http://doc.trolltech.com/4.2/qaction.html</A>)
+In QT3 it had but I guess now you should simply use the &quot;triggered&quot; signal. 
+So the methods must be named on_actionAbout_Canorus_triggered().
+
+When I simply cange every activated in triggered in mainwindow.cpp/.h
+everytihng works again.
+Does it work for anybody without that change. Maybe its only because i 
+compiled QT without QT3 support. But even then triggered would be the right 
+way.
+
+Regards,
+Jeremias
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000013.html">[Canorus-devel] Python problem
+</A></li>
+	<LI>Next message: <A HREF="000009.html">[Canorus-devel] activated vs triggered
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#8">[ date ]</a>
+              <a href="thread.html#8">[ thread ]</a>
+              <a href="subject.html#8">[ subject ]</a>
+              <a href="author.html#8">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

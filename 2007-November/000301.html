@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] stuff for 0.5
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20stuff%20for%200.5&In-Reply-To=%3C474EB735.3040408%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000300.html">
+   <LINK REL="Next"  HREF="000303.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] stuff for 0.5</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20stuff%20for%200.5&In-Reply-To=%3C474EB735.3040408%40web.de%3E"
+       TITLE="[Canorus-devel] stuff for 0.5">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Nov 29 13:57:25 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000300.html">[Canorus-devel] Reminder: LAC 2008 in Cologne
+</A></li>
+        <LI>Next message: <A HREF="000303.html">[Canorus-devel] The Google Highly Open Participation Contest (fwd)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+As we are getting closer to Christmas I wanted to take a small look
+at the suggestion list for 0.5 (aka roadmap ;-)
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schrieb:
+&gt;<i> Hi Reinhard, Georg et al.
+</I>&gt;<i> 
+</I>&gt;<i> I'm going to implement CALilyPondClient class (inspired by
+</I>&gt;<i> <A HREF="http://doc.trolltech.com/4.3/qassistantclient.html">http://doc.trolltech.com/4.3/qassistantclient.html</A>) which locates and
+</I>&gt;<i> calls lilypond executable with given parameters.
+</I>&gt;<i> The idea of how to do printing/preview stuff is
+</I>&gt;<i> 1) Export document or its parts to Lily/ABC/whichever engraver format,
+</I>&gt;<i> using the existing CALilyPondExport class
+</I>&gt;<i> 2) Call the engraver, create PDF, by calling CALilyPondClient class
+</I>&gt;<i> 3) Preview/Print the PDF
+</I>
+I'm working on this part, the design gets closer to it's finish mainly some
+sequences have to be considered more closely. Also I want to start defining
+methods quite soon.
+
+&gt;<i> Even more, I'll probably first formalize things a bit:
+</I>&gt;<i> - Create CAExport class for all the export engines (CanorusML, Lily, in
+</I>&gt;<i> the future others). Same for CAImport.
+</I>&gt;<i> - CAEngraverClient class for calling custom engraver command and returns
+</I>&gt;<i> the PDF file as a stream for printing it and/or showing it in the PDF
+</I>&gt;<i> viewer widget (libpoppler)?
+</I>
+I've recently looked at PDF stuff and I'd go for libpoppler too concerning
+internal view of a created pdf file. But of course I will offer to the composer
+the possibility to use an external PDF viewer also like in NoteEdit.
+And the recently announced Gnu PDF stuff will not be supported directly by
+Canorus (it's a C lib, so it's not really useful for us).
+
+&gt;<i> About the User's manual, I'm looking at example
+</I>&gt;<i> <A HREF="http://doc.trolltech.com/4.3/assistant-simpletextviewer.html">http://doc.trolltech.com/4.3/assistant-simpletextviewer.html</A> which uses
+</I>&gt;<i> QAssistantClient class. To make this work, we need to write our
+</I>&gt;<i> documents in format Qt Assistant understands it. I didn't look much at
+</I>&gt;<i> this, I'm just brainstorming - could someone else look at it and tell
+</I>&gt;<i> the second opinion. We also want to have user's guide in PDF format as a
+</I>&gt;<i> booklet.
+</I>
+My vision is to have in the future a more complex documentation system similar
+to docbook but more user friendly. At the moment I consider lyx, but I'm not
+sure how advanced multiple document managed is advanced in that project. LaTeX
+itself supports it and it could be added manually quite easily.
+My goal is here to be able to put in or leave out parts of the documentation
+according to configuration options. The final format should be either html or
+pdf (I haven't researched how good links are supported by lyx; also we need to
+make the help viewer configurable). As lyx uses LaTeX backend it would also be
+possible to generate other (inbetween) formats.
+
+If we really want to use the Qt Assistant as well we would require tools
+adapting out html files to the qt html file format. I vote against it.
+
+&gt;<i> The third improvement is the support for fermata, arpeggio,
+</I>&gt;<i> stacatto/portato etc., fingerings, dynamic, tempo and custom text
+</I>&gt;<i> markings support. I'm still thinking about the most logical implementation.
+</I>&gt;<i> 
+</I>&gt;<i> I'd like some volunteers to work on other areas I won't have time:
+</I>&gt;<i> - NoteEdit import/export filter
+</I>&gt;<i> - MusicXML import/export filter
+</I>&gt;<i> - Docked widgets (Ikjasa?)
+</I>&gt;<i> - Norwegian translation (Dag?)
+</I>&gt;<i> - Bughunting - still lots of crashes etc.
+</I>
+Can't tell you, but you seem to have brought the export interface to a very
+useful level so the main task of import/export would be actually do it. I think
+the interface of the canorus ML model should lighten the implementation so you
+mainly need knowledge about the structure but not about the syntax itself.
+
+My preference of import filters:
+
+1) MusicXML Import, MusicXML Export
+
+Import is more import for me as export in the first step. As we have already
+Lilypond export, the minimal requirement for me for 0.5 is MusicXML import.
+We could ask Leon Vinken for help or just take a look and use some of the
+existing parsers (especially libmusicxml!) like NoteEdit or abc2xml
+
+2) NoteEdit Import
+
+To allow us quickly gain experience with the NoteEdit format and to finally
+start the transition from NoteEdit to Canorus this would have to be implemented
+after MusicXML Export. NoteEdit Export is for me very low priority.
+
+3) ABC Import/Export
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000300.html">[Canorus-devel] Reminder: LAC 2008 in Cologne
+</A></li>
+	<LI>Next message: <A HREF="000303.html">[Canorus-devel] The Google Highly Open Participation Contest (fwd)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#301">[ date ]</a>
+              <a href="thread.html#301">[ thread ]</a>
+              <a href="subject.html#301">[ subject ]</a>
+              <a href="author.html#301">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

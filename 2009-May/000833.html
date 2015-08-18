@@ -1,0 +1,77 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] midi export improved
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20export%20improved&In-Reply-To=%3CB931661D-69D2-4B46-B50A-EDC801CC93D4%40titanium.sabren.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000832.html">
+   <LINK REL="Next"  HREF="000834.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] midi export improved</H1>
+    <B>Grzegorz Adam Hankiewicz</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20export%20improved&In-Reply-To=%3CB931661D-69D2-4B46-B50A-EDC801CC93D4%40titanium.sabren.com%3E"
+       TITLE="[Canorus-devel] midi export improved">gradha at titanium.sabren.com
+       </A><BR>
+    <I>Mon May 25 12:07:50 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000832.html">[Canorus-devel] midi export improved
+</A></li>
+        <LI>Next message: <A HREF="000834.html">[Canorus-devel] CAMidiExport and timelength
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#833">[ date ]</a>
+              <a href="thread.html#833">[ thread ]</a>
+              <a href="subject.html#833">[ subject ]</a>
+              <a href="author.html#833">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+El 25/05/2009, a las 0:03, Georg Rudolph escribi&#243;:
+
+&gt;<i> PS: The difficulties with the nightly builds or the OS-X I can't do
+</I>&gt;<i> anything. svn is okay for me.
+</I>
+The problem is related to linking. Forcing cmake to show a full  
+commandline proves that even though placeAutoBar() exists in  
+CAMusElementFactory, the file muselementfactory.o doesn't exist by the  
+time the Python plugin is built.
+
+Svn must be ok for you because you are not linking the python plugin  
+in the same way or forgot to add muselementfactory to the  
+CMakeLists.txt macosx platform specific section, if such a thing exists.
+
+Not understanding cmake and the build process I don't know either how  
+to fix it.
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000832.html">[Canorus-devel] midi export improved
+</A></li>
+	<LI>Next message: <A HREF="000834.html">[Canorus-devel] CAMidiExport and timelength
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#833">[ date ]</a>
+              <a href="thread.html#833">[ thread ]</a>
+              <a href="subject.html#833">[ subject ]</a>
+              <a href="author.html#833">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

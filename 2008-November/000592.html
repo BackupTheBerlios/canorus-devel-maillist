@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] autotools versions
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20autotools%20versions&In-Reply-To=%3C20081109071029.GB28551%40keybit.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000589.html">
+   <LINK REL="Next"  HREF="000591.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] autotools versions</H1>
+    <B>strk</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20autotools%20versions&In-Reply-To=%3C20081109071029.GB28551%40keybit.net%3E"
+       TITLE="[Canorus-devel] autotools versions">strk at keybit.net
+       </A><BR>
+    <I>Sun Nov  9 08:10:29 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000589.html">[Canorus-devel] [Fwd: [Consortium] LAC 2009]
+</A></li>
+        <LI>Next message: <A HREF="000591.html">[Canorus-devel] autotools versions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#592">[ date ]</a>
+              <a href="thread.html#592">[ thread ]</a>
+              <a href="subject.html#592">[ subject ]</a>
+              <a href="author.html#592">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+I'm trying to build canorus with on ubuntu hardy.
+Your admin/cvs.sh script is a bit picky about autotool
+versions, stating &quot;or later&quot; and not allowing it.
+
+The attached patch doesn't do any math, but allow
+my versions (better then nothing).
+
+--strk; 
+
+ ()   ASCII Ribbon Campaign
+ /\   Keep it simple! 
+
+-------------- next part --------------
+Index: admin/cvs.sh
+===================================================================
+--- admin/cvs.sh	(revision 498)
++++ admin/cvs.sh	(working copy)
+@@ -29,7 +29,7 @@
+ {
+ AUTOCONF_VERSION=`$AUTOCONF --version | head -n 1`
+ case $AUTOCONF_VERSION in
+-  Autoconf*2.5* | autoconf*2.5* ) : ;;
++  Autoconf*2.5* | autoconf*2.5* | autoconf*2.6* ) : ;;
+   &quot;&quot; )
+     echo &quot;*** AUTOCONF NOT FOUND!.&quot;
+     echo &quot;*** KDE requires autoconf 2.52, 2.53 or 2.54&quot;
+@@ -44,7 +44,7 @@
+  
+ AUTOHEADER_VERSION=`$AUTOHEADER --version | head -n 1`
+ case $AUTOHEADER_VERSION in
+-  Autoconf*2.5* | autoheader*2.5* ) : ;;
++  Autoconf*2.5* | autoheader*2.5* | autoheader*2.6* ) : ;;
+   &quot;&quot; )
+     echo &quot;*** AUTOHEADER NOT FOUND!.&quot;
+     echo &quot;*** KDE requires autoheader 2.52 or 2.53 (part of autoconf)&quot;
+@@ -64,7 +64,7 @@
+     echo &quot;*** KDE requires automake 1.6.1 or newer&quot;
+     exit 1
+     ;;
+-  automake*1.6.* | automake*1.7* | automake*1.8.* | automake*1.9* ) : ;;
++  automake*1.6.* | automake*1.7* | automake*1.8.* | automake*1.9* | automake*1.10* ) : ;;
+   &quot;&quot; )
+     echo &quot;*** AUTOMAKE NOT FOUND!.&quot;
+     echo &quot;*** KDE requires automake 1.6.1 or newer&quot;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000589.html">[Canorus-devel] [Fwd: [Consortium] LAC 2009]
+</A></li>
+	<LI>Next message: <A HREF="000591.html">[Canorus-devel] autotools versions
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#592">[ date ]</a>
+              <a href="thread.html#592">[ thread ]</a>
+              <a href="subject.html#592">[ subject ]</a>
+              <a href="author.html#592">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

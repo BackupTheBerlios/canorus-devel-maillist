@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Command Actions and Slot invocation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Command%20Actions%20and%20Slot%20invocation&In-Reply-To=%3C4A06846D.7060603%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000807.html">
+   <LINK REL="Next"  HREF="000791.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Command Actions and Slot invocation</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Command%20Actions%20and%20Slot%20invocation&In-Reply-To=%3C4A06846D.7060603%40web.de%3E"
+       TITLE="[Canorus-devel] Command Actions and Slot invocation">suamor at web.de
+       </A><BR>
+    <I>Sun May 10 09:38:21 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000807.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+        <LI>Next message: <A HREF="000791.html">[Canorus-devel] score view rendering speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#790">[ date ]</a>
+              <a href="thread.html#790">[ thread ]</a>
+              <a href="subject.html#790">[ subject ]</a>
+              <a href="author.html#790">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+As I have basically finished the actions editor I thought about
+how to actually manage all the actions.
+
+I have created a CASingleAction class based on QAction. I thought
+this is necessary because I need to have additional informations
+like midi command and context (not the Canorus context/track but the
+context within the command is executed like mode, menu/toolbar).
+
+The class is very simple, only containing strings to access the data
+I need (and has also the drawback that I store some information in
+the base class as well as in my class to make the code more readable
+in the actions editor urrently).
+
+This leads to more questions which are described below. Basically
+I'm no thinking going back to QAction without CASingleAction.
+With setProperty I can store the needed information as well.
+
+If you come up with an easy solution for the CASingleAction problem
+and provide further advantages (possible future extensions) that
+cannot be covered with QAction I'd reconsider. One reason could be
+Plugin / Canorus API access to our actions.
+
+Regards,
+
+Reinhard
+
+P.S. Here is the discussion about the CASingleAction problem
+
+The question was now how do I exchange the QAction with my own class ?
+Or do I need both classes ? The actions are part of the user interface
+so it's not very practible to replace them as it would mean basically
+coding the UI by hand.
+The other possibility would be that some or several instances (maybe 
+factories or factory methods) create the single actions on base of the
+existing actions.
+
+The problem is now how do I actually create signal/slot ? as I don't
+want to do it by hand I'd need a kind of automatic SIGNAL-SIGNAL
+connection but inside the CASingleAction class. This would mean I
+need to read the information about the methods of the actual Action
+Slot (or get the method pointer/name). This smells a bit like reflection
+but the Slot is not part of QAction so I don't know if I actually can
+read that information somehow.
+
+Also I question if I really need the CASingleAction class. It only
+provides access to simple strings that can be stored via QObject
+directly. Concerning the API I currently can't imagine a plugin that
+needs to change the actions directly in more ways than Canorus itself
+provides via the action editor.
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000807.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+	<LI>Next message: <A HREF="000791.html">[Canorus-devel] score view rendering speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#790">[ date ]</a>
+              <a href="thread.html#790">[ thread ]</a>
+              <a href="subject.html#790">[ subject ]</a>
+              <a href="author.html#790">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

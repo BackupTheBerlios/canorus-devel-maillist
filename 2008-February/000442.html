@@ -1,0 +1,209 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Change suggestion for Canorus classes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Change%20suggestion%20for%20Canorus%20classes&In-Reply-To=%3C47B9F9FB.9000209%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000441.html">
+   <LINK REL="Next"  HREF="000443.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Change suggestion for Canorus classes</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Change%20suggestion%20for%20Canorus%20classes&In-Reply-To=%3C47B9F9FB.9000209%40web.de%3E"
+       TITLE="[Canorus-devel] Change suggestion for Canorus classes">suamor at web.de
+       </A><BR>
+    <I>Mon Feb 18 22:34:51 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000441.html">[Canorus-devel] Change suggestion for Canorus classes
+</A></li>
+        <LI>Next message: <A HREF="000443.html">[Canorus-devel] Change suggestion for Canorus classes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#442">[ date ]</a>
+              <a href="thread.html#442">[ thread ]</a>
+              <a href="subject.html#442">[ subject ]</a>
+              <a href="author.html#442">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello,
+
+I've managed it, it works :-). Unfortunately you need to add a static member
+function (say it's overloaded), I'd say to CACanorus class. The method is part
+of QMetaObject originally but it's located in the file QObject.cpp in source.
+
+Ideally the function should be changed by Trolltech, maybe there is really
+a different solution but I don't see which, as the connect method needs to
+have the receiver as slot and this obviously contradicts with the fact that
+the receiver does not have the signal objects stored in this case.
+
+I also tried to add a reference of the QAction classes to my test class
+but it still did not connect my slot to the signal.
+
+Reinhard
+
+Code:
+
+#include &lt;QMetaMethod&gt;
+
+(static)
+void CACanorus::connectSlotsByName(QObject *pOS, const QObject *pOR)
+{
+    if (!pOS || !pOR)
+        return;
+    const QMetaObject *mo = pOR-&gt;metaObject();
+    Q_ASSERT(mo);
+    const QObjectList list = qFindChildren&lt;QObject *&gt;(pOS, QString());
+    for (int i = 0; i &lt; mo-&gt;methodCount(); ++i) {
+        const char *slot = mo-&gt;method(i).signature();
+        Q_ASSERT(slot);
+        if (slot[0] != 'o' || slot[1] != 'n' || slot[2] != '_')
+            continue;
+        bool foundIt = false;
+        for(int j = 0; j &lt; list.count(); ++j) {
+            const QObject *co = list.at(j);
+            QByteArray objName = co-&gt;objectName().toAscii();
+            int len = objName.length();
+            if (!len || qstrncmp(slot + 3, objName.data(), len) || slot[len+3]
+!= '_')
+                continue;
+            const QMetaObject *smo = co-&gt;metaObject();
+            int sigIndex = smo-&gt;indexOfMethod(slot + len + 4);
+            if (sigIndex &lt; 0) { // search for compatible signals
+                int slotlen = qstrlen(slot + len + 4) - 1;
+                for (int k = 0; k &lt; co-&gt;metaObject()-&gt;methodCount(); ++k) {
+                    if (smo-&gt;method(k).methodType() != QMetaMethod::Signal)
+                        continue;
+
+                    if (!qstrncmp(smo-&gt;method(k).signature(), slot + len + 4,
+slotlen)) {
+                        sigIndex = k;
+                        break;
+                    }
+                }
+            }
+            if (sigIndex &lt; 0)
+                continue;
+            if (QMetaObject::connect(co, sigIndex, pOR, i)) {
+                foundIt = true;
+                break;
+            }
+        }
+        if (foundIt) {
+            // we found our slot, now skip all overloads
+            while (mo-&gt;method(i + 1).attributes() &amp; QMetaMethod::Cloned)
+                  ++i;
+        } else if (!(mo-&gt;method(i).attributes() &amp; QMetaMethod::Cloned)) {
+            qWarning(&quot;QMetaObject::connectSlotsByName: No matching signal for
+%s&quot;, slot);
+        }
+    }
+}
+
+Reinhard schrieb:
+&gt;<i> Hi,
+</I>&gt;<i> o 
+</I>&gt;<i> As you all know we use some form of the MVC (Model View Controller) pattern
+</I>&gt;<i> as a base for Canorus. Ideally we should have many control, model and view
+</I>&gt;<i> classes. Please take your time reading this quite long mail.
+</I>&gt;<i> 
+</I>&gt;<i> The situation now is that we have a huge CAMainWin class doing both view and
+</I>&gt;<i> control function because of two reasons:
+</I>&gt;<i> 
+</I>&gt;<i> 1) on_&lt;widget&gt;_&lt;signal&gt;(params) methods to create automatically slots from
+</I>&gt;<i>    signals caused by various user actions (menus, toolbars, keyboard, ...)
+</I>&gt;<i> 
+</I>&gt;<i> 2) many object instances (viewport, viewport container, mode) not directly
+</I>&gt;<i>    belonging to the core (i.e. the score data themselves) needing to be shared.
+</I>&gt;<i> 
+</I>&gt;<i> My first idea was to split CAMainWin into a view and control part but I gave
+</I>&gt;<i> up on it as it's getting too complicated to do that and we still have
+</I>&gt;<i> afterwards to split up those classes even more.
+</I>&gt;<i> 
+</I>&gt;<i> New suggestion: Do it in small steps, create small view (user interface) and
+</I>&gt;<i>                 control objects and integrate them into the CAMainWin.
+</I>&gt;<i> 
+</I>&gt;<i> To be able to have access to the objects needed in several methods we do create
+</I>&gt;<i> an object instance pool containing all the necessary data. Every class needing
+</I>&gt;<i> access to the data gets a reference to the pool in the constructor. The pool
+</I>&gt;<i> can control how many references on a certain object is in use.
+</I>&gt;<i> 
+</I>&gt;<i> In the pattern world it often only once (Singleton) exists, but we would need
+</I>&gt;<i> one per Canorus instance. Also usually an instance of an object is created when
+</I>&gt;<i> it is needed. For us some instances currently get created when users perform
+</I>&gt;<i> certain actions. The details would have to be discussed on object creation.
+</I>&gt;<i> 
+</I>&gt;<i> Some of you might think this is just like the NoteEdit resources file, but it
+</I>&gt;<i> certainy isn't. First only object being shared between several classes are in
+</I>&gt;<i> this pool and the access is only done via methods, no direct access to the
+</I>&gt;<i> objects (i.e. you get only object references).
+</I>&gt;<i> 
+</I>&gt;<i> Also we should minimize the number of those shared objects. It is often easier
+</I>&gt;<i> to give access to a data model of another module.
+</I>&gt;<i> 
+</I>&gt;<i> F.e. consider you make a module for voice management and need information about
+</I>&gt;<i> some sheet data in one method, here you either could directly give access to
+</I>&gt;<i> the sheet model or decide to combine voices and sheets into one module)
+</I>&gt;<i> 
+</I>&gt;<i> Still a technical problem is how to resolve signal/slot automatically in sub
+</I>&gt;<i> controls of the main window. I have to beter understand how this works in Qt
+</I>&gt;<i> first before being able to make suggestions.
+</I>&gt;<i> 
+</I>&gt;<i> This way we'd get three main classes, CAEditorWin managing user interface
+</I>&gt;<i> (view) objects, CAEditorCtl managing controls between view and data and
+</I>&gt;<i> finally the models themselves where CAEditorPool could be the shared object
+</I>&gt;<i> pool.
+</I>&gt;<i> 
+</I>&gt;<i> This concept allows us to make the split the work into small steps, reducing
+</I>&gt;<i> the size of the CAMainWin gradually. I'd rename it to CAEditorWin first as soon
+</I>&gt;<i> as the refactoring work is done.
+</I>&gt;<i> 
+</I>&gt;<i> I'd work with my printing and preview concept in this direction as an further
+</I>&gt;<i> example for this concept if you agree basically. More ideas are welcome.
+</I>&gt;<i> 
+</I>&gt;<i> I also wrote 5 rules based on this concept I will present (and maybe modify
+</I>&gt;<i> hencefor) if we decided about this suggestion.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks for having read this long mail :-)
+</I>&gt;<i> 
+</I>&gt;<i> Reinhard
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000441.html">[Canorus-devel] Change suggestion for Canorus classes
+</A></li>
+	<LI>Next message: <A HREF="000443.html">[Canorus-devel] Change suggestion for Canorus classes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#442">[ date ]</a>
+              <a href="thread.html#442">[ thread ]</a>
+              <a href="subject.html#442">[ subject ]</a>
+              <a href="author.html#442">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

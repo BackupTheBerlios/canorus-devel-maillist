@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Drum support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Drum%20support&In-Reply-To=%3C467E6D04.4090402%40xs4all.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000168.html">
+   <LINK REL="Next"  HREF="000170.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Drum support</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Drum%20support&In-Reply-To=%3C467E6D04.4090402%40xs4all.nl%3E"
+       TITLE="[Canorus-devel] Drum support">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Jun 24 15:09:24 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000168.html">[Canorus-devel] Bugs
+</A></li>
+        <LI>Next message: <A HREF="000170.html">[Canorus-devel] My opinion on drum notation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've written an article about drum notation and send it to Matev&#382; so he 
+can put it on the wiki and you can all read it.
+Today I was playing around with lilypond and found out that they already 
+have good drum support. (does canorus use lilypond as backend or does it 
+use it's own backend?)
+Actually everything is already possible i think, it just needs to be 
+implanted on a good way into canorus.
+I found how to define which line should be used for which instrument and 
+which icon should be used. Here's an example:
+#(define mydrums '(
+(bassdrum default #f -4)
+(snare default #f 0)
+(hightom default #f 3)
+(himidtom default #f 1)
+(lowtom default #f -3)
+(hihat cross #f 5)
+(pedalhihat cross #f -6)
+(openhihat cross &quot;open&quot; 5)
+(crashcymbal xcircle #f 6)
+(ridecymbal cross #f 6)))
+The first column is the instrument in their full name (which can be 
+found in ly/drumpitch-init.ly). The second column defines what icon 
+should be used. The third column is for setting aditional icons such as 
+a circle on top of an open hi-hat. The fourth column defines the 
+position. 0 is the middle line, if you use a higher number, it goes up, 
+if you use a lower number, it goes down.
+
+I also found how to make &quot;chords&quot; while not connecting them. (you know, 
+a hi-hat which is at the same time as a bass drum but not connected)
+You will have to use 2 different voices. There is more than one way to 
+do this:
+first one:
+
+up = \drummode { cymc8 cymr8 cymr8 cymr8 }
+down = \drummode { sn16 tomh16 tommh16 toml16 }
+
+\new DrumStaff &lt;&lt;
+\set DrumStaff.drumStyleTable = #(alist-&gt;hash-table mydrums)
+\new DrumVoice { \voiceOne \up }
+\new DrumVoice { \voiceTwo \down }
+ &gt;&gt;
+
+second one:
+
+     \new DrumStaff &lt;&lt;
+       \new DrumVoice = &quot;1&quot; { s1 *2 }
+       \new DrumVoice = &quot;2&quot; { s1 *2 }
+       \drummode {
+         bd4 sn4 bd4 sn4
+         &lt;&lt;
+           { \repeat unfold 16 hh16 }
+           \\
+           { bd4 sn4 bd4 sn4 }
+         &gt;&gt;
+       }
+     &gt;&gt;
+
+Something that i can't get to work is using more than one staff, so you 
+can fill a complete page with notes, not just one staff. I get an error 
+like this:
+`gs -q -dSAFER -dEPSCrop -dCompatibilityLevel=1.4 -dNOPAUSE -dBATCH 
+-r1200 -sDEVICE=pdfwrite -sOutputFile=&quot;test-2.pdf&quot; -c .setpdfwrite -f 
+&quot;test-2.eps&quot;' failed (256)
+If anyone knows the solution, please let me know.
+
+Some links to the documentation of lilypond:
+<A HREF="http://lilypond.org/doc/v2.10/Documentation/user/lilypond/Entering-percussion#Entering-percussion">http://lilypond.org/doc/v2.10/Documentation/user/lilypond/Entering-percussion#Entering-percussion</A>
+<A HREF="http://lilypond.org/doc/v2.10/Documentation/user/lilypond/Percussion-staves#Percussion-staves">http://lilypond.org/doc/v2.10/Documentation/user/lilypond/Percussion-staves#Percussion-staves</A>
+<A HREF="http://lilypond.org/doc/v2.10/Documentation/user/lilypond/Ghost-notes#Ghost-notes">http://lilypond.org/doc/v2.10/Documentation/user/lilypond/Ghost-notes#Ghost-notes</A> 
+(maybe it's not drum specific, but you can use it for drum notation)
+
+Now i hope canorus is using lilypond as backend because else, i searched 
+in this documentation for nothing :P
+
+Regards Zeelander
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000168.html">[Canorus-devel] Bugs
+</A></li>
+	<LI>Next message: <A HREF="000170.html">[Canorus-devel] My opinion on drum notation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#169">[ date ]</a>
+              <a href="thread.html#169">[ thread ]</a>
+              <a href="subject.html#169">[ subject ]</a>
+              <a href="author.html#169">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

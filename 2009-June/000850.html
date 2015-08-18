@@ -1,0 +1,112 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] send() parameters
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20send%28%29%20parameters&In-Reply-To=%3C4A243F81.5000408%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000849.html">
+   <LINK REL="Next"  HREF="000851.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] send() parameters</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20send%28%29%20parameters&In-Reply-To=%3C4A243F81.5000408%40gmail.com%3E"
+       TITLE="[Canorus-devel] send() parameters">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Mon Jun  1 22:52:17 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000849.html">[Canorus-devel] send() parameters
+</A></li>
+        <LI>Next message: <A HREF="000851.html">[Canorus-devel] multiple sheets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#850">[ date ]</a>
+              <a href="thread.html#850">[ thread ]</a>
+              <a href="subject.html#850">[ subject ]</a>
+              <a href="author.html#850">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg.
+
+Yes, only &quot;time&quot; would be better. You can find the following terms in 
+Canorus code:
+- timeStart - absolute start of music event
+- timeLength - length of music event
+- timeEnd - absolute end of the music event calculated from timeStart + 
+timeLength
+- playableLength - musical length of notes, rests (quarter, whole, half)
+
+Any timeLength can be translated to a series of playableLengths and the 
+other way around as well. TimeLength 256 is defined as a playableLength 
+quarter note. TimeLength is not affected by the Tempo.
+
+
+Regards.
+-Matev&#382;
+
+Georg Rudolph pravi:
+&gt;<i> Matev&#382; Jekovec schrieb:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi Georg.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I still don't understand the parameters in CAMidiDevice::send()...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I thought you should put a timeOffset as the second parameter - I 
+</I>&gt;&gt;<i> thought the second parameter is the MIDI offset in front of the sysex 
+</I>&gt;&gt;<i> message. So you should put the timeOffset instead of the timeLength. 
+</I>&gt;&gt;<i> TimeLength should probably mean NOTE-ON + NOTE-OFF combination in my 
+</I>&gt;&gt;<i> opinion.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i> the differentiation (offset) is done in CAMidiExport::send(). 
+</I>&gt;<i> CARtMidiDevice::send() doesn't use this time parameter at all. Like in
+</I>&gt;<i> sendMetaEvent() I preferred to do these midi qirks in CAMidiExport,
+</I>&gt;<i> because it's only needed there.
+</I>&gt;<i>
+</I>&gt;<i> timeLength is a name I got from
+</I>&gt;<i> CAPlayableLength::playableLengthToTimeLength(), and it means a time
+</I>&gt;<i> scaled like note values. Maybe time would be the right name, like it is
+</I>&gt;<i> all around in canorus.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000849.html">[Canorus-devel] send() parameters
+</A></li>
+	<LI>Next message: <A HREF="000851.html">[Canorus-devel] multiple sheets
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#850">[ date ]</a>
+              <a href="thread.html#850">[ thread ]</a>
+              <a href="subject.html#850">[ subject ]</a>
+              <a href="author.html#850">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Pythpn path strikes again (was Re: Important: CACan format)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Pythpn%20path%20strikes%20again%20%28was%20Re%3A%20Important%3A%20CACan%0A%20format%29&In-Reply-To=%3C47A2B2E7.70403%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000419.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Pythpn path strikes again (was Re: Important: CACan format)</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Pythpn%20path%20strikes%20again%20%28was%20Re%3A%20Important%3A%20CACan%0A%20format%29&In-Reply-To=%3C47A2B2E7.70403%40web.de%3E"
+       TITLE="[Canorus-devel] Pythpn path strikes again (was Re: Important: CACan format)">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Feb  1 06:49:27 CET 2008</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000419.html">[Canorus-devel] Python-based CLI?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#418">[ date ]</a>
+              <a href="thread.html#418">[ thread ]</a>
+              <a href="subject.html#418">[ subject ]</a>
+              <a href="author.html#418">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I think it is not that easy, I don't exactly know how other programs look but
+to me it seems we have to use the pathes from ld too (like /usr/lib64/python2.5
+on Lin/Mac and LIB from Windows (though that might be undefined too). Also the
+user might want to set it manually so we would either need an cmake option or
+add something to the setting. We need to make a difference between a pre-
+compiled Canorus version and the runtime too, it seems to me.
+
+Kind regards,
+
+Reinhard
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schrieb:
+&gt;<i> Looking in PATH would be logical, yes. But only on Windows probably.
+</I>&gt;<i> Usual Python installation looks like C:\Python25 - this is where python
+</I>&gt;<i> installation and python.exe is located. And the pythonLib directory
+</I>&gt;<i> points to C:\Python25\Lib.
+</I>&gt;<i> 
+</I>&gt;<i> So something like append python.exe location + &quot;/Lib&quot; should probably work.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;&gt;<i> About Python again - this solution works for the windows packages, but
+</I>&gt;&gt;<i> doesn't work when someone compiles canorus from sources, under
+</I>&gt;&gt;<i> windows.  pythonLib is not on svn, so compiling and running doesn't
+</I>&gt;&gt;<i> work. Couldn't canorus look for a compatible python version in PATH
+</I>&gt;&gt;<i> and then check for pythonLib, if none found?
+</I>&gt;&gt;<i>
+</I>
+&lt;skipped&gt;
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000419.html">[Canorus-devel] Python-based CLI?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#418">[ date ]</a>
+              <a href="thread.html#418">[ thread ]</a>
+              <a href="subject.html#418">[ subject ]</a>
+              <a href="author.html#418">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

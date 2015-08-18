@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Fonts under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fonts%20under%20macosx&In-Reply-To=%3C4A572D40.4030704%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000878.html">
+   <LINK REL="Next"  HREF="000880.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Fonts under macosx</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fonts%20under%20macosx&In-Reply-To=%3C4A572D40.4030704%40gmail.com%3E"
+       TITLE="[Canorus-devel] Fonts under macosx">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Fri Jul 10 14:00:00 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000878.html">[Canorus-devel] Fonts under macosx
+</A></li>
+        <LI>Next message: <A HREF="000880.html">[Canorus-devel] Fonts under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#879">[ date ]</a>
+              <a href="thread.html#879">[ thread ]</a>
+              <a href="subject.html#879">[ subject ]</a>
+              <a href="author.html#879">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard.
+
+The problem with fonts was specific to Mac OS X AFAIK. Ubuntu uses Qt 
+4.5.0 and works fine.
+
+About the release - I didn't have time to change any internals yet 
+(barlines and other shared elements part of the staffs instead of the 
+voices). But I looked into faster rendering (using QGraphicsView), but 
+haven't committed any code yet.
+
+Maybe we should release version 0.7.5 at the end of the summer. 
+Noteworthy features and improvements for the release:
+- Import and export:
+ - Vastly improved Midi import using PMidi backend
+ - Export of articulation marks, fingering, dynamic marks etc. to Lilypond
+ - Improved MusicXml import (instrument and midi channel, movement-title)
+- Improved GUI and user experience:
+ - Automatic animated scroll while playback
+ - Progress bar when loading (TODO for saving)
+ - Tab and Shift+tab for next and previous voice
+ - Faster score rendering (TODO)
+ - Keyboard and Midi shortcuts (partly TODO)
+- Updated RtMidi library
+- Internal cleanups
+
+Btw. I commited a few fixes to the Windows version of Canorus. I can 
+confirm that on Vista it builds and installs now, fonts work fine, print 
+preview and export to PDF using LilyPond works out of the box, if Lily 
+is installed. So it's usable on Windows.
+
+
+Regards.
+-Matev&#382;
+
+Reinhard Katzmann pravi:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Thanks to Mandriva updates I can confirm it works here too (after make 
+</I>&gt;<i> install - I didn't test non-installation). So I conclude that most
+</I>&gt;<i> distributions should have no problems. The question is when can we
+</I>&gt;<i> expect the distributions to have the recent Qt version included ?
+</I>&gt;<i> Mine came just recently on an update.
+</I>&gt;<i>
+</I>&gt;<i> Except for the keyboard/midi command editor how far is the inbetween
+</I>&gt;<i> release grown ? I have three concerts until end of Jule so my tigme
+</I>&gt;<i> is somehwat more limited.
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000878.html">[Canorus-devel] Fonts under macosx
+</A></li>
+	<LI>Next message: <A HREF="000880.html">[Canorus-devel] Fonts under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#879">[ date ]</a>
+              <a href="thread.html#879">[ thread ]</a>
+              <a href="subject.html#879">[ subject ]</a>
+              <a href="author.html#879">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

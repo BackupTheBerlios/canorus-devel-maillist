@@ -1,0 +1,178 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Rev 599 building
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Rev%20599%20building&In-Reply-To=%3C4710CBFF.9010602%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000242.html">
+   <LINK REL="Next"  HREF="000244.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Rev 599 building</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Rev%20599%20building&In-Reply-To=%3C4710CBFF.9010602%40gmail.com%3E"
+       TITLE="[Canorus-devel] Rev 599 building">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Oct 13 15:45:35 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000242.html">[Canorus-devel] Rev 599 building
+</A></li>
+        <LI>Next message: <A HREF="000244.html">[Canorus-devel] compilation fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>CARtMidiDevice only need to include canorus.h for the midiDevice()
+method. Code will look something like this:
+
+#ifndef SWIGCPP
+#include &quot;canorus.h&quot;
+void onRtMidiInEvent(...) {
+    emit CACanorus::midiDevice()-&gt;midiInEvent(...);
+}
+#else
+void onRtMidiInEvent(...) {
+    cout &lt;&lt; midiInInfo...
+    or call some python callback function?
+}
+#endif
+
+So when compiling the python canorus library, we won't need CACanorus
+and GUI part (SWIGCPP is defined). But when compiling the application,
+it will get included as well as the behaviour for onMidiInEvent() will
+change.
+
+Even more, I'd define onRtMidiInEvent for python in canoruspython.i. And
+the default behaviour in rtmididevice.cpp.
+
+
+Regards.
+-Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I don't get the idea. If you don't include canorus.h, you can't emit
+</I>&gt;<i> the signal...
+</I>&gt;<i> There's still a dependency of the core part on the GUI part. CACanorus
+</I>&gt;<i> has methods for both the core part and the GUI part. There are other
+</I>&gt;<i> {core,interface}/* files that include core/canorus.h. How can you
+</I>&gt;<i> just...not include it?
+</I>&gt;<i> Maybe we should split CACanorus? Core methods (including midiDevice)
+</I>&gt;<i> in one class, GUI methods in another.
+</I>&gt;<i>
+</I>&gt;<i> @Georg: ui_mainwin.h is auto-generated (output of uic).
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> On 10/13/07, *<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;*
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     Hi everybody.
+</I>&gt;<i>
+</I>&gt;<i>     The problem began when Midi-in support was implemented. The
+</I>&gt;<i>     problem is
+</I>&gt;<i>     that RtMidiDevice needs CACanorus::midiDevice() function for
+</I>&gt;<i>     getting the
+</I>&gt;<i>     current midi device and emmitting the midi in event. I'm gonna fix
+</I>&gt;<i>     that
+</I>&gt;<i>     by including canorus.h only when compiling the Canorus application
+</I>&gt;<i>     and
+</I>&gt;<i>     not the library. I'm gonna define SWIGCPP macro for this when
+</I>&gt;<i>     compiling
+</I>&gt;<i>     the library only.
+</I>&gt;<i>
+</I>&gt;<i>     Any better ideas?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Regards.
+</I>&gt;<i>     -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt; pravi:
+</I>&gt;<i>     &gt; Hi Colin, hi everybody,
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; line 17 in trunk/src/ui/mainwin.h, in a clean checkout, reads
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; #include &quot;ui_mainwin.h&quot;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; which seems to me having a faulty underscore. For me make clean
+</I>&gt;<i>     didn't
+</I>&gt;<i>     &gt; help. Additionally, does a header file need to include itself, which
+</I>&gt;<i>     &gt; anyway would be inhibited by the ifdef. I get these underscores
+</I>&gt;<i>     in a few
+</I>&gt;<i>     &gt; more places. Strange.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; Regards,
+</I>&gt;<i>     &gt; Georg
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; _______________________________________________
+</I>&gt;<i>     &gt; Canorus-devel mailing list
+</I>&gt;<i>     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Canorus-devel mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20071013/00a94b0f/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20071013/00a94b0f/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000242.html">[Canorus-devel] Rev 599 building
+</A></li>
+	<LI>Next message: <A HREF="000244.html">[Canorus-devel] compilation fixed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#243">[ date ]</a>
+              <a href="thread.html#243">[ thread ]</a>
+              <a href="subject.html#243">[ subject ]</a>
+              <a href="author.html#243">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

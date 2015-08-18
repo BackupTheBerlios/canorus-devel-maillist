@@ -1,0 +1,134 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] r1066 doesn't link under MacOSX
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20r1066%20doesn%27t%20link%20under%20MacOSX&In-Reply-To=%3C4A118AB5.2030008%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000818.html">
+   <LINK REL="Next"  HREF="000820.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] r1066 doesn't link under MacOSX</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20r1066%20doesn%27t%20link%20under%20MacOSX&In-Reply-To=%3C4A118AB5.2030008%40gmail.com%3E"
+       TITLE="[Canorus-devel] r1066 doesn't link under MacOSX">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Mon May 18 18:20:05 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000818.html">[Canorus-devel] r1066 doesn't link under MacOSX
+</A></li>
+        <LI>Next message: <A HREF="000820.html">[Canorus-devel] r1066 doesn't link under MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#819">[ date ]</a>
+              <a href="thread.html#819">[ thread ]</a>
+              <a href="subject.html#819">[ subject ]</a>
+              <a href="author.html#819">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Georg, Is the pmidi code in Canorus still dependent on Alsa and which files?
+
+Regards.
+-M
+
+Georg Rudolph pravi:
+&gt;<i> Grzegorz Adam Hankiewicz schrieb:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Strangely the problem is not the same for both architectures. I wonder  
+</I>&gt;&gt;<i> if I broke something in my Xcode due to the architecture warnings.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> INFO:root:Checking out 'trunk' commit of 1066.
+</I>&gt;&gt;<i> INFO:root:Exporting tree...
+</I>&gt;&gt;<i> INFO:root:Calling cmake...
+</I>&gt;&gt;<i> INFO:root:Calling make...
+</I>&gt;&gt;<i> ERROR:root:Error running command ['make', 'install']
+</I>&gt;&gt;<i> ERROR:root:Return value 2
+</I>&gt;&gt;<i> ERROR:root:Undefined symbols for architecture i386:
+</I>&gt;&gt;<i>    &quot;CAMusElementFactory::placeAutoBar(CAPlayable*)&quot;, referenced from:
+</I>&gt;&gt;<i>        CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+</I>&gt;&gt;<i> CAStaff*, CAVoice*)in midiimport.cpp.o
+</I>&gt;&gt;<i>        CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+</I>&gt;&gt;<i> CAStaff*, CAVoice*)in midiimport.cpp.o
+</I>&gt;&gt;<i> ld: symbol(s) not found for architecture i386
+</I>&gt;&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;&gt;<i> ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/glib.c.o,  
+</I>&gt;&gt;<i> file is not of required architecture
+</I>&gt;&gt;<i> ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/ 
+</I>&gt;&gt;<i> elements.c.o, file is not of required architecture
+</I>&gt;&gt;<i> ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/except.c.o,  
+</I>&gt;&gt;<i> file is not of required architecture
+</I>&gt;&gt;<i> ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/mdutil.c.o,  
+</I>&gt;&gt;<i> file is not of required architecture
+</I>&gt;&gt;<i> ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/ 
+</I>&gt;&gt;<i> midiread.c.o, file is not of required architecture
+</I>&gt;&gt;<i> ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/wrapper.c.o,  
+</I>&gt;&gt;<i> file is not of required architecture
+</I>&gt;&gt;<i> Undefined symbols for architecture ppc:
+</I>&gt;&gt;<i>    &quot;CAMusElementFactory::placeAutoBar(CAPlayable*)&quot;, referenced from:
+</I>&gt;&gt;<i>        CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+</I>&gt;&gt;<i> CAStaff*, CAVoice*)in midiimport.cpp.o
+</I>&gt;&gt;<i>        CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+</I>&gt;&gt;<i> CAStaff*, CAVoice*)in midiimport.cpp.o
+</I>&gt;&gt;<i>    &quot;_pmidi_out&quot;, referenced from:
+</I>&gt;&gt;<i>        _pmidi_out$non_lazy_ptr in midiimport.cpp.o
+</I>&gt;&gt;<i>    &quot;_pmidi_open_midi_file&quot;, referenced from:
+</I>&gt;&gt;<i>        CAMidiImport::importSheetImplPmidiParser(CASheet*)       in  
+</I>&gt;&gt;<i> midiimport.cpp.o
+</I>&gt;&gt;<i>    &quot;_pmidi_parse_midi_file&quot;, referenced from:
+</I>&gt;&gt;<i>        CAMidiImport::importSheetImplPmidiParser(CASheet*)       in  
+</I>&gt;&gt;<i> midiimport.cpp.o
+</I>&gt;&gt;<i> ld: symbol(s) not found for architecture ppc
+</I>&gt;&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;&gt;<i> lipo: can't open input file: /var/folders/Us/UsO0wLwGFdiPPMqe80vxZ+++ 
+</I>&gt;&gt;<i> +TI/-Tmp-//cchjGfgn.out (No such file or directory)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Hmm, no idea. It happens even after a clean checkout, a cmake cache
+</I>&gt;<i> problem? To inhibit the compilation and use of pmidi parts the changes
+</I>&gt;<i> from r1064 to r1065 have to be reversed. Other than that I can't help,
+</I>&gt;<i> in either architecture, I'm afraid.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Georg
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000818.html">[Canorus-devel] r1066 doesn't link under MacOSX
+</A></li>
+	<LI>Next message: <A HREF="000820.html">[Canorus-devel] r1066 doesn't link under MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#819">[ date ]</a>
+              <a href="thread.html#819">[ thread ]</a>
+              <a href="subject.html#819">[ subject ]</a>
+              <a href="author.html#819">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

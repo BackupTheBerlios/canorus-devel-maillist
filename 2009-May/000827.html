@@ -1,0 +1,93 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Crash on quit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Crash%20on%20quit&In-Reply-To=%3C4A12C526.3050603%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000826.html">
+   <LINK REL="Next"  HREF="000829.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Crash on quit</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Crash%20on%20quit&In-Reply-To=%3C4A12C526.3050603%40web.de%3E"
+       TITLE="[Canorus-devel] Crash on quit">suamor at web.de
+       </A><BR>
+    <I>Tue May 19 16:41:42 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000826.html">[Canorus-devel] Bug with Midi connections
+</A></li>
+        <LI>Next message: <A HREF="000829.html">[Canorus-devel] Crash on quit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#827">[ date ]</a>
+              <a href="thread.html#827">[ thread ]</a>
+              <a href="subject.html#827">[ subject ]</a>
+              <a href="author.html#827">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+After having loaded and tweaked a score with several sheets
+I get the following crash when quitting Canorus:
+
+Program received signal SIGSEGV, Segmentation fault.
+0x00007fddf3f7325d in ?? () from /usr/lib64/libQtCore.so.4
+Missing debug package(s)
+
+(several thousands ;) )
+
+(gdb) bt
+#0  0x00007fddf3f7325d in ?? () from /usr/lib64/libQtCore.so.4
+#1  0x00007fddf3f73291 in ?? () from /usr/lib64/libQtCore.so.4
+#2  0x00007fddf3f73830 in ?? () from /usr/lib64/libQtCore.so.4
+#3  0x00007fddf3f73971 in QRegExp::~QRegExp () from 
+/usr/lib64/libQtCore.so.4
+#4  0x00007fddf1e828fd in exit () from /lib64/libc.so.6
+#5  0x00007fddf1e6c44d in __libc_start_main () from /lib64/libc.so.6
+#6  0x0000000000491459 in _start () at ../sysdeps/x86_64/elf/start.S:113
+
+I could not track down the reason.
+I used my midi keyboard for note entry.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000826.html">[Canorus-devel] Bug with Midi connections
+</A></li>
+	<LI>Next message: <A HREF="000829.html">[Canorus-devel] Crash on quit
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#827">[ date ]</a>
+              <a href="thread.html#827">[ thread ]</a>
+              <a href="subject.html#827">[ subject ]</a>
+              <a href="author.html#827">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

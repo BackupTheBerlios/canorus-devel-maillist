@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Basic midi keyboard score input
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Basic%20midi%20keyboard%20score%20input&In-Reply-To=%3C48F0B9A6.3020809%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000568.html">
+   <LINK REL="Next"  HREF="000569.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Basic midi keyboard score input</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Basic%20midi%20keyboard%20score%20input&In-Reply-To=%3C48F0B9A6.3020809%40schwaben.de%3E"
+       TITLE="[Canorus-devel] Basic midi keyboard score input">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Sat Oct 11 16:35:18 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000568.html">[Canorus-devel] Print Preview
+</A></li>
+        <LI>Next message: <A HREF="000569.html">[Canorus-devel] Print Preview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382; and everybody,
+
+createUndo() and placeAutoBar() ar now working at midi keybd input, see
+r830. And it should be crash save with concurrent gui editing :) What I
+couldn't manage is highlighting the (last) note entry of a given time,
+but other chord members get red as expected. That said
+
+    QList&lt;CAMusElement*&gt; list; list &lt;&lt; .... ;
+    voice-&gt;addToSelection( list );
+
+seems not to work as I would like to. Maybe someone has a hint? This I
+would like to solve and continue with &quot;insert at selected note&quot;. To
+split insertions when the rest of the bar is not enough I will maybe
+work on. We should probably have a function for this in voice.cpp.
+
+Have a good time,
+Georg
+
+&gt;<i> .....
+</I>&gt;<i> CACanorus::undo()-&gt;createUndoCommand( document(), tr(&quot;midi note
+</I>&gt;<i> insertion&quot;, &quot;undo&quot;) );
+</I>&gt;<i>
+</I>&gt;<i> // ... call CAVoice operations and change the score here ...
+</I>&gt;<i>
+</I>&gt;<i> CACanorus::undo()-&gt;pushUndoCommand();
+</I>&gt;<i>
+</I>&gt;<i> The createUndoCommand() creates a local copy of the current document and
+</I>&gt;<i> pushUndoCommand() pushes the old copy to the undo stack. If you don't
+</I>&gt;<i> call the pushUndoCommand() (eg. an error when inserting notes), it's
+</I>&gt;<i> simply deleted the next time you call the createUndoCommand(), so it's
+</I>&gt;<i> no memory leak. The tr() inside the createUndoCommand() is the text in
+</I>&gt;<i> the undo/redo dropdown widget.
+</I>&gt;<i>
+</I>&gt;<i> The GUI stuff should probably go into the Playback tab in Settings and
+</I>&gt;<i> should look like this:
+</I>&gt;<i> /--- Midi Keyboard input --\
+</I>&gt;<i> &lt;checkbox&gt; Enable music insertion using Midi keyboard
+</I>&gt;<i> Special Midi buttons:
+</I>&gt;<i> &lt;checkbox&gt; Insert rest          &lt;button&gt;
+</I>&gt;<i> &lt;checkbox&gt; Toggle auto bar &lt;button&gt;
+</I>&gt;<i>
+</I>&gt;<i> And you could click on the button and calibrate (hit the key on the
+</I>&gt;<i> keyboard and store that midi value).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> What do you think?
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> Georg Rudolph pravi:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi all,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> in r811 there is now basic non realtime midi keyboard notes input. For
+</I>&gt;&gt;<i> this you need to connect the midi keyboard, select the insert mode, and
+</I>&gt;&gt;<i> a note duration with the computer keyboard, and hit the midi keyboard :)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Signature keys are recognized, not yet tuplets. Next things I would like
+</I>&gt;&gt;<i> to implement is tracking the input scene, and insert, not only append.
+</I>&gt;&gt;<i> Selection of a rythm pattern seems also very desirable to me.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I recommend, that one of our gui knowledgable developers implements a
+</I>&gt;&gt;<i> second config for the computer keyboard commands, that these could also
+</I>&gt;&gt;<i> be adjustable midi pitch commands. I would gladly program the backend,
+</I>&gt;&gt;<i> for example to configure midi keyboard keys as insert rest, select
+</I>&gt;&gt;<i> punctuation, periodic or singular, note durations, toggle auto bar
+</I>&gt;&gt;<i> insertion ....
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> During this effort I learned more about the canorus inner workings :)
+</I>&gt;&gt;<i> So let's see how things are going,
+</I>&gt;&gt;<i> Regards,
+</I>&gt;&gt;<i> Georg
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000568.html">[Canorus-devel] Print Preview
+</A></li>
+	<LI>Next message: <A HREF="000569.html">[Canorus-devel] Print Preview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#567">[ date ]</a>
+              <a href="thread.html#567">[ thread ]</a>
+              <a href="subject.html#567">[ subject ]</a>
+              <a href="author.html#567">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

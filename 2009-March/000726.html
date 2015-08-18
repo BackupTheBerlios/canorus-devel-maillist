@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Print / Preview with sheets
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Print%20/%20Preview%20with%20sheets&In-Reply-To=%3C49BE560E.8050102%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000725.html">
+   <LINK REL="Next"  HREF="000727.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Print / Preview with sheets</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Print%20/%20Preview%20with%20sheets&In-Reply-To=%3C49BE560E.8050102%40gmail.com%3E"
+       TITLE="[Canorus-devel] Print / Preview with sheets">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Mon Mar 16 14:37:18 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000725.html">[Canorus-devel] Print / Preview with sheets
+</A></li>
+        <LI>Next message: <A HREF="000727.html">[Canorus-devel] Bug #15392 Keyboard ALT shortcuts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#726">[ date ]</a>
+              <a href="thread.html#726">[ thread ]</a>
+              <a href="subject.html#726">[ subject ]</a>
+              <a href="author.html#726">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+I think there is no need to change the API actually. CAExport already
+offers exportDocument(), exportSheet() etc. It's not implemented for
+every CAExport class though, because we didn't need it yet.
+
+I think it's more the question of the GUI - should it print the
+currently selected sheet or the whole document when a user clicks
+File-&gt;Print.
+
+IMO you should wait for a week or so for the 0.7 release and implement
+this afterwards. Printing should *not* be broken by any chance.
+
+
+Regards.
+-Matev&#382;
+
+Reinhard Katzmann pravi:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Print / Preview works fine with Qt4.5 as well (again with print I tested only
+</I>&gt;<i> print to file...)
+</I>&gt;<i>
+</I>&gt;<i> One question: It's easy to implement printing to a certain sheet. On print
+</I>&gt;<i> preview I consider doing this for the currently selected sheet.
+</I>&gt;<i>
+</I>&gt;<i> But!
+</I>&gt;<i>
+</I>&gt;<i> The question is if we should implement anything with sheets and export right
+</I>&gt;<i> now. It's easy for the sheet currently selected but it's not that easy for
+</I>&gt;<i> a whole document.
+</I>&gt;<i>
+</I>&gt;<i> This would concern also all export function. So I would need to modify all
+</I>&gt;<i> places where the export is invoked and it would be an API enhancement.
+</I>&gt;<i>
+</I>&gt;<i> To easily implement it I'd first change API with the extra parameter so the
+</I>&gt;<i> compiler shows me all places where the export function is used. Later in
+</I>&gt;<i> the game I will make this parameter optional.
+</I>&gt;<i>
+</I>&gt;<i> Too critical at this time ? I see the above as a bug and without having
+</I>&gt;<i> looked at the code it shouldn't be that critical changes. OTOH it would
+</I>&gt;<i> mean a big step forward concerning our document/sheet logic.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000725.html">[Canorus-devel] Print / Preview with sheets
+</A></li>
+	<LI>Next message: <A HREF="000727.html">[Canorus-devel] Bug #15392 Keyboard ALT shortcuts
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#726">[ date ]</a>
+              <a href="thread.html#726">[ thread ]</a>
+              <a href="subject.html#726">[ subject ]</a>
+              <a href="author.html#726">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

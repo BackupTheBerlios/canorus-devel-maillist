@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] attention plugin developers
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-September/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20attention%20plugin%20developers&In-Reply-To=%3C46F39A82.8070602%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000230.html">
+   <LINK REL="Next"  HREF="000233.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] attention plugin developers</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20attention%20plugin%20developers&In-Reply-To=%3C46F39A82.8070602%40gmail.com%3E"
+       TITLE="[Canorus-devel] attention plugin developers">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Sep 21 12:18:42 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000230.html">[Canorus-devel] Canorus 0.4rc release
+</A></li>
+        <LI>Next message: <A HREF="000233.html">[Canorus-devel] Crash when inserting a new sheet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#232">[ date ]</a>
+              <a href="thread.html#232">[ thread ]</a>
+              <a href="subject.html#232">[ subject ]</a>
+              <a href="author.html#232">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I cleaned up and polished Canorus interfaces to plugins. Some things
+have changed and plugin developers should not be too upset when they
+find out that their plugin doesn't work anymore with the latest SVN
+version of Canorus.
+
+Plugin developers should now:
+1) use &quot;import CanorusPython&quot; instead of _CanorusPython. They should
+only use the Swig proxy classes and programm the object-way.
+Example before:
+Document_setTitle( myDocument, &quot;Jingle bells&quot; )
+Now:
+myDocument.setTitle( &quot;Jingle bells&quot; )
+
+2) argument order is now changed in the following classes: Sheet, Staff,
+LyricsContext, FunctionMarkingContext and Voice. In short, name is now
+always the first argument and some other arguments now became optional.
+Check the source for details. I'll upload doxygen docs to the website
+when 0.4 final is out.
+
+I already updated the newdocument.py and Harmonia plugin to work with
+the latest SVN version. You can check it out.
+
+I also removed pluginTest from the SVN. The example and its detailed
+description can now be found on the wiki page &quot;Plugins&quot;.
+
+
+Regards.
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070921/0b0bcf1c/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070921/0b0bcf1c/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000230.html">[Canorus-devel] Canorus 0.4rc release
+</A></li>
+	<LI>Next message: <A HREF="000233.html">[Canorus-devel] Crash when inserting a new sheet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#232">[ date ]</a>
+              <a href="thread.html#232">[ thread ]</a>
+              <a href="subject.html#232">[ subject ]</a>
+              <a href="author.html#232">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,102 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Printing and preview from file
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Printing%20and%20preview%20from%20file&In-Reply-To=%3C47D2CCFF.1010807%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000488.html">
+   <LINK REL="Next"  HREF="000490.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Printing and preview from file</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Printing%20and%20preview%20from%20file&In-Reply-To=%3C47D2CCFF.1010807%40web.de%3E"
+       TITLE="[Canorus-devel] Printing and preview from file">suamor at web.de
+       </A><BR>
+    <I>Sat Mar  8 18:29:35 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000488.html">[Canorus-devel] Update on printing
+</A></li>
+        <LI>Next message: <A HREF="000490.html">[Canorus-devel] Why not Postscript?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#489">[ date ]</a>
+              <a href="thread.html#489">[ thread ]</a>
+              <a href="subject.html#489">[ subject ]</a>
+              <a href="author.html#489">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+The last days I did not have much time to think about the above
+topic being the main thing to be done for the first print prototype.
+Also I'm still a bit sick (since yesterday actually, but it's getting
+better every hour luckily).
+
+I've been thinking about integrating of the poppler lib to canorus
+archive / repository, but I'm unsure about that because
+- uses automake, &gt;300 lines configure.ac script
+  we'd need to convert this script to cmake or have a automake
+  dependency for just the poppler build
+- has dependencies on cairo, pkgconfig, gtk2, glib (don't know if
+  this is only for the gtk pdf output preview)
+- huge archive (&gt; 7 MB)
+
+According to my rpm dependency check to the already compiled lib it
+seems to only require freetype, so we could create a dependency on
+this dll without any additional dependencies (qt4 requires freetype too).
+
+The advantage of poppler is that there is an existing qt4 integration,
+so I guess &quot;simply&quot; by using renderToImage method we could draw on a printer
+field (have yet to look at an example).
+
+I also looked at qt4 lab but currently there seems to be not any progress
+in the &quot;print from file&quot; field as fas as I have seen it (neither postscript
+not pdf). Anything more specific in that direction is platform-dependant,
+sometimes even driver or tool-dependant (like having ghostscript installed
+in windows for postscript output). As a conclustion I would urgently recommand
+to not even closely think into such a direction as a solution for printing.
+
+Conclusion: We should stick up with poppler or any similar library for
+postscript/pdf printing, not integrate it with canorus but have it as an
+external dependency. For windows users we should ship a precompiled dll.
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000488.html">[Canorus-devel] Update on printing
+</A></li>
+	<LI>Next message: <A HREF="000490.html">[Canorus-devel] Why not Postscript?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#489">[ date ]</a>
+              <a href="thread.html#489">[ thread ]</a>
+              <a href="subject.html#489">[ subject ]</a>
+              <a href="author.html#489">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

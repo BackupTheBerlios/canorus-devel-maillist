@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] auto bar
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20auto%20bar&In-Reply-To=%3C48F7BF78.7040104%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000569.html">
+   <LINK REL="Next"  HREF="000571.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] auto bar</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20auto%20bar&In-Reply-To=%3C48F7BF78.7040104%40schwaben.de%3E"
+       TITLE="[Canorus-devel] auto bar">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Fri Oct 17 00:26:00 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000569.html">[Canorus-devel] Print Preview
+</A></li>
+        <LI>Next message: <A HREF="000571.html">[Canorus-devel] release dates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#570">[ date ]</a>
+              <a href="thread.html#570">[ thread ]</a>
+              <a href="subject.html#570">[ subject ]</a>
+              <a href="author.html#570">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+in r840 I included in CAPlayableLength two helper functions for note
+splitting tasks. For a given timeLength they return the list of proper
+CAPlayableLength's:
+
+QList&lt;CAPlayableLength&gt; timeLengthToPlayableLengthList( int timeLength )
+    returns a list note/rest lengths with the allowed number of dots,
+which is maximum four in the gui.
+
+QList&lt;CAPlayableLength&gt; matchToBars( CAPlayableLength len, int
+timeStart, CABarline *lastBarline, CATimeSignature *ts )
+    returns a list of note/rest lengths like above, but the splits also
+are in harmony with barlines, so configureAutoBar() can be used while
+inserting the notes in the voice.
+
+I think in copying/moving/rearranging the barlines these functions might
+be useful. Of course, everything can be discussed.
+Best Regards,
+
+Georg
+
+
+ps.:CAPlayableLength timeLengthToPlayableLength() is depreciated, is
+only in temporarily for my reference.
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000569.html">[Canorus-devel] Print Preview
+</A></li>
+	<LI>Next message: <A HREF="000571.html">[Canorus-devel] release dates
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#570">[ date ]</a>
+              <a href="thread.html#570">[ thread ]</a>
+              <a href="subject.html#570">[ subject ]</a>
+              <a href="author.html#570">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

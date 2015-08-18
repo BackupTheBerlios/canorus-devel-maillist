@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] some stuff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3C46D1F7DE.1030007%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000204.html">
+   <LINK REL="Next"  HREF="000211.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] some stuff</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3C46D1F7DE.1030007%40gmail.com%3E"
+       TITLE="[Canorus-devel] some stuff">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Aug 26 23:59:58 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000204.html">[Canorus-devel] some stuff
+</A></li>
+        <LI>Next message: <A HREF="000211.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#209">[ date ]</a>
+              <a href="thread.html#209">[ thread ]</a>
+              <a href="subject.html#209">[ subject ]</a>
+              <a href="author.html#209">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David!
+
+I can confirm this now as well. The problem appeared in R540 where we
+moved from non-object Canorus interface for Python to the objective one.
+Now, Canorus also needs the other .py library files besides
+python25.dll. So a quick solution might be to:
+1) Download the latest python from www.python.org
+2) Install/Extract it to eg. c:\python25
+3) Copy the content c:\python25\lib to your c:\Program files\Canorus so
+Canorus can find new.py, types.py and others.
+
+The right solution would be to ship all these Python files needed by
+Canorus along the installation package. The only problem I see it is
+that the .py interfaces add another 3MB to our installation package and
+another 13MB to the installed application.
+
+On Linux it's much simplier as we just add package python25 as a
+dependency and the package management system automagically downloads the
+needed files (not to mention that python is probably preinstalled on
+most distros anyway).
+
+I added this on my TODO list and will fix it asap to make windows builds
+once again useful. Thanks for the report!
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;&gt;<i> Some regressions:
+</I>&gt;&gt;&gt;<i> * Cannot create new documents (&quot;ImportError: No module name new&quot;)
+</I>&gt;&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> That's weird. I can't reproduce this. Is this the whole output? Would
+</I>&gt;&gt;<i> expect something like newDocument or newDefaultDocument, not just &quot;new&quot;.
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> I'm using the Windows build. The error started happening several builds 
+</I>&gt;<i> back. Below is the full error message that appears at startup. One thing 
+</I>&gt;<i> I notice about the error message is the mixture of forward slashes (/) 
+</I>&gt;<i> and back slashes (\) in the file names.
+</I>&gt;<i>
+</I>&gt;<i> 'import site' failed; use -v for traceback
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;&lt;string&gt;&quot;, line 1, in &lt;module&gt;
+</I>&gt;<i>   File &quot;C:\Program Files\Canorus\CanorusPython.py&quot;, line 8, in &lt;module&gt;
+</I>&gt;<i>     import new
+</I>&gt;<i> ImportError: No module named new
+</I>&gt;<i> QObject::startTimer: timers cannot be started from another thread
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>   File &quot;C:/Program Files/Canorus/scripts\newdocument.py&quot;, line 1, in 
+</I>&gt;<i> &lt;module&gt;
+</I>&gt;<i>     from CanorusPython import *
+</I>&gt;<i>   File &quot;C:\Program Files\Canorus\CanorusPython.py&quot;, line 8, in &lt;module
+</I>&gt;<i>     import new
+</I>&gt;<i> ImportError: No module named new
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070826/658e120c/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070826/658e120c/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000204.html">[Canorus-devel] some stuff
+</A></li>
+	<LI>Next message: <A HREF="000211.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#209">[ date ]</a>
+              <a href="thread.html#209">[ thread ]</a>
+              <a href="subject.html#209">[ subject ]</a>
+              <a href="author.html#209">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

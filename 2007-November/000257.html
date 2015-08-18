@@ -1,0 +1,142 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] New Programmer
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20New%20Programmer&In-Reply-To=%3C1194416908.9283.3.camel%40Danhome.dan.home.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000258.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] New Programmer</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20New%20Programmer&In-Reply-To=%3C1194416908.9283.3.camel%40Danhome.dan.home.net%3E"
+       TITLE="[Canorus-devel] New Programmer">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Nov  7 07:28:28 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000258.html">[Canorus-devel] New Programmer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#257">[ date ]</a>
+              <a href="thread.html#257">[ thread ]</a>
+              <a href="subject.html#257">[ subject ]</a>
+              <a href="author.html#257">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi folks,
+
+I'm still here.  I'm new to linux, so getting set up took a while, but
+I've finally got the whole thing compiled and running.
+
+I hadn't thought of envelopes for dynamics, but that seems as important
+as variable tempos.
+
+If someone puts me on as a developer, I could get started doing
+something.  My user name at berlios is: 'dgrubbs'.  I'd be happy to work
+on whatever you think would be most useful at the moment, though I do
+have a suggestion...
+
+The midi output, at least on my computer, is terrible.  It misses the
+first few notes, and barely sounds the rest of them; and this is with
+just a simple melody.  I don't know if this is because the whole thing
+isn't optimized properly, or if the RTMidi class just isn't very good.
+I don't know how well it works on other systems, but it seems important
+that the midi output works correctly.  It would be hard to test some of
+the other stuff without it.  I don't know if others have this problem,
+or if someone else is working on this.
+
+Dan
+
+
+On Mon, 2007-10-29 at 16:27 +0100, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+wrote: 
+
+&gt;<i> Hi Dan,
+</I>&gt;<i> 
+</I>&gt;<i> I'm happy to read this. Microtonal music should not be too hard to
+</I>&gt;<i> implement. First thing you want to do is change accidentals() in CANote
+</I>&gt;<i> from int to float.  Second is probably the GUI for this (which btw. we
+</I>&gt;<i> currently only offer +/- keys for accs, no icons etc. yet - this should
+</I>&gt;<i> go into playable toolbar). And the third thing, playing (setting midi
+</I>&gt;<i> tune value?) and import/export and printing using LilyPond. Lily already
+</I>&gt;<i> supports quarter-tone
+</I>&gt;<i> <A HREF="http://lilypond.org/doc/v2.11/Documentation/user/lilypond-big-page#Micro-tones">http://lilypond.org/doc/v2.11/Documentation/user/lilypond-big-page#Micro-tones</A>
+</I>&gt;<i> so we should keep its compatibility at least for quarter-tones.
+</I>&gt;<i> 
+</I>&gt;<i> Expression mark context (for tempo, dynamics etc.) is on my TODO list
+</I>&gt;<i> for version 0.5 and should be implemented someday in November :). The
+</I>&gt;<i> non-linear tempo sounds very tempting. Maybe we should write envelopes
+</I>&gt;<i> for dynamic and tempo.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; Hi Folks,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm a musician and a pretty good programmer.  I was looking for some
+</I>&gt;<i> &gt; open source music composition/player code to which I could add some
+</I>&gt;<i> &gt; features I've been wanting.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'd like to add support for microtonal music.  In particular, I'd like
+</I>&gt;<i> &gt; to see not only quarter-tones, but sixth-tones, or any other tones one
+</I>&gt;<i> &gt; might imagine. This could also be used to let people use different
+</I>&gt;<i> &gt; temperaments for playing music.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; It would also be nice to have better control of tempi, such as long
+</I>&gt;<i> &gt; accelerandos or decelerandos that are not just linear.  For example, an
+</I>&gt;<i> &gt; accelerando that starts gradually and speeds up much faster at the end,
+</I>&gt;<i> &gt; or a change in tempo that speeds up and slows down in waves over the
+</I>&gt;<i> &gt; course of the whole piece of music.  Such an implementation might also
+</I>&gt;<i> &gt; allow for different styles of playing, such as the swing style one
+</I>&gt;<i> &gt; person was looking for.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Anyway, as you are still developing this, I thought it would be useful
+</I>&gt;<i> &gt; to see if I could add to your project. I'd be happy to help in whatever
+</I>&gt;<i> &gt; way I can if the project would allow a useful way of composing with
+</I>&gt;<i> &gt; microtones.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Dan Grubbs
+</I>&gt;<i> &gt;   
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20071107/c158245c/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20071107/c158245c/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000258.html">[Canorus-devel] New Programmer
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#257">[ date ]</a>
+              <a href="thread.html#257">[ thread ]</a>
+              <a href="subject.html#257">[ subject ]</a>
+              <a href="author.html#257">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

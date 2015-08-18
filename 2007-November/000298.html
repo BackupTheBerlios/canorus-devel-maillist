@@ -1,0 +1,153 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Default document location on Windows
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Default%20document%20location%20on%20Windows&In-Reply-To=%3C474E8196.4080107%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000296.html">
+   <LINK REL="Next"  HREF="000299.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Default document location on Windows</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Default%20document%20location%20on%20Windows&In-Reply-To=%3C474E8196.4080107%40web.de%3E"
+       TITLE="[Canorus-devel] Default document location on Windows">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Nov 29 10:08:38 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000296.html">[Canorus-devel] Default document location on Windows
+</A></li>
+        <LI>Next message: <A HREF="000299.html">[Canorus-devel] abc2xml findings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Well upon install of Canorus we would have to use homeDir method first.
+If that it not found on the computer we would either ask the user or search
+for it (home is used for settings, not for documents), I'd say the first
+because we'd need to combine for all supported languages also platform
+dependent directory names (I don't like that).
+
+After that we could use the method described to find out the document directory:
+
+&lt;cite&gt;
+
+A QDir can point to a file using either a relative or an absolute path.
+Absolute paths begin with the directory separator (optionally preceded by a
+drive specification under Windows). Relative file names begin with a directory
+name or a file name and specify a path relative to the current directory.
+Examples of absolute paths:
+ QDir(&quot;/home/user/Documents&quot;)
+ QDir(&quot;C:/Documents and Settings&quot;)
+On Windows, the second of the examples above will be translated to C:\My
+Documents when used to access files.
+
+&lt;/cite&gt;
+
+I have no idea if this is platform independent, I have neither a Windows
+test or a MacOS-X test installation to try it out. If it does not work
+we need to implement a class doing exactly that, define default folders
+for each platform. Upon start of Canorus this class would be queried for
+the default document folder. Also we'd need to do the proper translation
+of course. Without translation the user would need to be asked upon install
+for the document folder.
+
+BTW: According to my 4.3.1 docs the methods are home, root, temp.
+And there was a discussion on that subject last year in summmer on
+the qt mailing list. I've no idea if the above was introduced to help
+solving that problem:
+
+<A HREF="http://lists.trolltech.com/qt-interest/2006-11/msg00324.html">http://lists.trolltech.com/qt-interest/2006-11/msg00324.html</A>
+
+Best,
+
+Reinhard
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schrieb:
+&gt;<i> Ugh.. this one is difficult. The problem is that only homeDir(),
+</I>&gt;<i> tempDir() and rootDir() are defined in Qt's QDir class.
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="http://doc.trolltech.com/4.3/qdir.html">http://doc.trolltech.com/4.3/qdir.html</A>
+</I>&gt;<i> 
+</I>&gt;<i> The problem why not simply append &quot;My Documents&quot; is that this phrase is
+</I>&gt;<i> usually translated - &quot;Moji dokumenti&quot; in Slovenian for example. The
+</I>&gt;<i> solution would be to add &quot;My Documents&quot; as a translation word into
+</I>&gt;<i> translation. But what if the directory name is English, but locale
+</I>&gt;<i> Slovenian (eg. my Windows are like this).
+</I>&gt;<i> 
+</I>&gt;<i> Any ideas? Reinhard?
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;&gt;<i> The default document location on Windows should be
+</I>&gt;&gt;<i> C:/Documents and Settings/David Bolton/My Documents
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> (Where &quot;David Bolton&quot; is the name of the user profile.)
+</I>&gt;&gt;<i> In the current SVN the default document location is
+</I>&gt;&gt;<i> C:/Documents and Settings/David Bolton/
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The root profile folder in Windows contains system files not intended
+</I>&gt;&gt;<i> for normal viewing. The root profile folder would probably confuse
+</I>&gt;&gt;<i> casual computer users.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Also the left-hand column is missing default locations present in
+</I>&gt;&gt;<i> native open/save dialogs such as &quot;My Recent Documents,&quot; &quot;Desktop,&quot; &quot;My
+</I>&gt;&gt;<i> Documents,&quot; &quot;My Computer,&quot; and &quot;My Network Places.&quot; See the
+</I>&gt;&gt;<i> screenshots attached for a comparison of a native dialog (from
+</I>&gt;&gt;<i> Microsoft Word 2003) and the current Canorus dialog. Although I like
+</I>&gt;&gt;<i> some of the features of the new open/save dialogs in the SVN, the
+</I>&gt;&gt;<i> open/save dialogs in the stable branch had a more native look and feel.
+</I>&gt;&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000296.html">[Canorus-devel] Default document location on Windows
+</A></li>
+	<LI>Next message: <A HREF="000299.html">[Canorus-devel] abc2xml findings
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#298">[ date ]</a>
+              <a href="thread.html#298">[ thread ]</a>
+              <a href="subject.html#298">[ subject ]</a>
+              <a href="author.html#298">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

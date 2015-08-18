@@ -1,0 +1,145 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus User's guide
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20User%27s%20guide&In-Reply-To=%3Ca24024cb0901291427n7eec404aueb186ef9e0d2eaee%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000629.html">
+   <LINK REL="Next"  HREF="000631.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus User's guide</H1>
+    <B>Itay Perl</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20User%27s%20guide&In-Reply-To=%3Ca24024cb0901291427n7eec404aueb186ef9e0d2eaee%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Canorus User's guide">itay.perl at gmail.com
+       </A><BR>
+    <I>Thu Jan 29 23:27:04 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000629.html">[Canorus-devel] Canorus User's guide
+</A></li>
+        <LI>Next message: <A HREF="000631.html">[Canorus-devel] Midi in Linux and Windows (and Mac)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#630">[ date ]</a>
+              <a href="thread.html#630">[ thread ]</a>
+              <a href="subject.html#630">[ subject ]</a>
+              <a href="author.html#630">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+
+On Thu, Jan 29, 2009 at 5:26 PM, Matev&#382; Jekovec &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;wrote:
+
+&gt;<i> Hi guys &amp; Andrew.
+</I>&gt;<i>
+</I>&gt;<i> I added support for showing user's guide in R916 when clicking
+</I>&gt;<i> Help-&gt;User's guide. I currently run external application assistant to
+</I>&gt;<i> show you the User's guide. It tries to open the User's guide in user
+</I>&gt;<i> language (searches for your_language.qhc QtHelp file).
+</I>&gt;<i>
+</I>&gt;<i> Currently the process to compile the User's guide is a bit complex
+</I>&gt;<i> (Makefile exists for this):
+</I>&gt;<i> 1. Lyx source is the editable User's guide source located in
+</I>&gt;<i> doc/usersguide/your_language.lyx
+</I>&gt;<i> 2. Export from Lyx to plain Latex (generates .tex file and converts
+</I>&gt;<i> images to .eps formats) - this step must be done by user. I uploaded
+</I>&gt;<i> current .tex file to SVN so you don't need to do it yourself, but .tex
+</I>&gt;<i> file should be removed from SVN in the future.
+</I>&gt;<i> 3. Latex, ps2pdf and friends are run to produce printable PDF version of
+</I>&gt;<i> our User's guide
+</I>&gt;<i> 4. htlatex and friends are used to produce HTML version of our User's
+</I>&gt;<i> guide which are used by Canorus
+</I>&gt;<i> 5. qcollectiongenerator is run to produce QtHelp files from HTML files,
+</I>&gt;<i> .qhp and qhcp descriptors
+</I>&gt;<i>
+</I>
+&gt;<i> Issues:
+</I>&gt;<i> 1. In the future I'd like to show the help inside Canorus in a docked
+</I>&gt;<i> widget at the right maybe. Currently we have to ship Assistant
+</I>&gt;<i> application along Canorus executable.
+</I>&gt;<i> 2. htlatex produce poor HTML quality, especially when doing
+</I>&gt;<i> png-&gt;eps-&gt;back to png.
+</I>&gt;<i> 3. Lyx/Latex doesn't support SVG images. We have to export our media to
+</I>&gt;<i> PNG.
+</I>&gt;<i> 4. I'd like to automate the Lyx -&gt; Plain Latex step.
+</I>&gt;<i> 5. .qhcp files contain structure of Qt help files. There is a tree
+</I>&gt;<i> structure for chapters by saying Chapter name -&gt; HTML file and its
+</I>&gt;<i> reference (eg. en.html#chapter1). This structure is then seen at the
+</I>&gt;<i> left side when reading through the Guide. Currently, if you add a
+</I>&gt;<i> chapter in Lyx, you also have to add a chapter in .qhcp file. I'd like
+</I>&gt;<i> to automate this somehow.
+</I>&gt;<i>
+</I>
+Okay, here are some possible solutions:
+1. According to this:
+<A HREF="http://doc.trolltech.com/4.4/qthelp.html#using-qt-helpit">http://doc.trolltech.com/4.4/qthelp.html#using-qt-helpit</A>'s possible to
+get the help to show in a QTextBrowser which can be docked
+into the main window.
+2. It's the eps images in doc/userguide/images that are of poor quality. I
+tried re-converting canorus.svg and insertplayable.png to eps using inkscape
+and the results are much better.
+3. I think EPS can be used as a vector format so AFAICT svg-&gt;eps-&gt;pdf
+shouldn't be a problem. In the HTML version, I don't think SVG is going to
+work, not without a lot of work (qtwebkit?)
+4. Lyx-&gt;LaTeX can be done by command: lyx -e latex file.lyx.
+5. I've noticed that htlatex produces a file en.4ct which contains the HTML
+anchor name for each section. It could be parsed with a bash script to
+produce the necessary XML. Er, right, windows...
+
+
+Also pdflatex should be run _twice_ to get the TOC to show in the PDF.
+
+
+&gt;<i> I would like your opinions about this. Maybe Latex is not the right tool
+</I>&gt;<i> for our job (docbook, doxygen?).
+</I>&gt;<i>
+</I>
+Personally I like LaTeX a lot, and I think Lyx is a suitable format.
+
+Regards,
+Itay
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20090129/c155bedd/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20090129/c155bedd/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000629.html">[Canorus-devel] Canorus User's guide
+</A></li>
+	<LI>Next message: <A HREF="000631.html">[Canorus-devel] Midi in Linux and Windows (and Mac)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#630">[ date ]</a>
+              <a href="thread.html#630">[ thread ]</a>
+              <a href="subject.html#630">[ subject ]</a>
+              <a href="author.html#630">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

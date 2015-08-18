@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Crash on quit
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Crash%20on%20quit&In-Reply-To=%3C4A12C5DB.8050701%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000827.html">
+   <LINK REL="Next"  HREF="000830.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Crash on quit</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Crash%20on%20quit&In-Reply-To=%3C4A12C5DB.8050701%40web.de%3E"
+       TITLE="[Canorus-devel] Crash on quit">suamor at web.de
+       </A><BR>
+    <I>Tue May 19 16:44:43 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000827.html">[Canorus-devel] Crash on quit
+</A></li>
+        <LI>Next message: <A HREF="000830.html">[Canorus-devel] RtMidi Update and Midi crash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#829">[ date ]</a>
+              <a href="thread.html#829">[ thread ]</a>
+              <a href="subject.html#829">[ subject ]</a>
+              <a href="author.html#829">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I've attached the file I'm working on, I hope this is of some help.
+
+Regards
+
+Reinhard Katzmann wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> After having loaded and tweaked a score with several sheets
+</I>&gt;<i> I get the following crash when quitting Canorus:
+</I>&gt;<i>
+</I>&gt;<i> Program received signal SIGSEGV, Segmentation fault.
+</I>&gt;<i> 0x00007fddf3f7325d in ?? () from /usr/lib64/libQtCore.so.4
+</I>&gt;<i> Missing debug package(s)
+</I>&gt;<i>
+</I>&gt;<i> (several thousands ;) )
+</I>&gt;<i>
+</I>&gt;<i> (gdb) bt
+</I>&gt;<i> #0 0x00007fddf3f7325d in ?? () from /usr/lib64/libQtCore.so.4
+</I>&gt;<i> #1 0x00007fddf3f73291 in ?? () from /usr/lib64/libQtCore.so.4
+</I>&gt;<i> #2 0x00007fddf3f73830 in ?? () from /usr/lib64/libQtCore.so.4
+</I>&gt;<i> #3 0x00007fddf3f73971 in QRegExp::~QRegExp () from
+</I>&gt;<i> /usr/lib64/libQtCore.so.4
+</I>&gt;<i> #4 0x00007fddf1e828fd in exit () from /lib64/libc.so.6
+</I>&gt;<i> #5 0x00007fddf1e6c44d in __libc_start_main () from /lib64/libc.so.6
+</I>&gt;<i> #6 0x0000000000491459 in _start () at ../sysdeps/x86_64/elf/start.S:113
+</I>&gt;<i>
+</I>&gt;<i> I could not track down the reason.
+</I>&gt;<i> I used my midi keyboard for note entry.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: sonata-hminor.xml
+Type: text/xml
+Size: 343099 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20090519/305cfce0/attachment.xml">https://lists.berlios.de/pipermail/canorus-devel/attachments/20090519/305cfce0/attachment.xml</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000827.html">[Canorus-devel] Crash on quit
+</A></li>
+	<LI>Next message: <A HREF="000830.html">[Canorus-devel] RtMidi Update and Midi crash
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#829">[ date ]</a>
+              <a href="thread.html#829">[ thread ]</a>
+              <a href="subject.html#829">[ subject ]</a>
+              <a href="author.html#829">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] &quot;new document&quot; does not work?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C9a4db0e10802262305w568f3b6agf88cdc4550a62081%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000468.html">
+   <LINK REL="Next"  HREF="000470.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] &quot;new document&quot; does not work?</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C9a4db0e10802262305w568f3b6agf88cdc4550a62081%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] &quot;new document&quot; does not work?">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Wed Feb 27 08:05:59 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000468.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+        <LI>Next message: <A HREF="000470.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#469">[ date ]</a>
+              <a href="thread.html#469">[ thread ]</a>
+              <a href="subject.html#469">[ subject ]</a>
+              <a href="author.html#469">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>That's ok. newDefaultDocument() only modifies the existing document and
+doesn't return anything.
+
+At the end, if you do:
+doc.sheetCount()
+It should print 1 and
+doc.sheetAt(0).staffCount()
+should print 2 etc.
+
+Regards.
+-Matev&#382;
+
+2008/2/26, Michal Kolodziejczyk &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">miko at wp.pl</A>&gt;:
+&gt;<i>
+</I>&gt;<i> Matev&#382; Jekovec wrote:
+</I>&gt;<i> &gt; When you call
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a=newdocument.newDefaultDocument({})
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; the empty argument you passed should be an already created document -
+</I>&gt;<i> &gt; this script only adds two staffs with two voices, names them correctly
+</I>&gt;<i> &gt; and adds clefs and time signatures at the beginning.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; You can create new document by calling
+</I>&gt;<i> &gt; import CanorusPython
+</I>&gt;<i> &gt; doc = CanorusPython.CADocument()
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; and then
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a=newdocument.newDefaultDocument(doc)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> OK, I did, and maybe there is a hint?
+</I>&gt;<i>   &gt;&gt;&gt; doc = CanorusPython.CADocument()
+</I>&gt;<i>   &gt;&gt;&gt; a=newdocument.newDefaultDocument(doc)
+</I>&gt;<i>   &gt;&gt;&gt; print(a)
+</I>&gt;<i> None
+</I>&gt;<i>   &gt;&gt;&gt; print(doc)
+</I>&gt;<i> &lt;CanorusPython.CADocument; proxy of &lt;Swig Object of type 'CADocument *'
+</I>&gt;<i> at 0x8134820&gt; &gt;
+</I>&gt;<i>
+</I>&gt;<i> I suppose a should not be None?
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i>         miko
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080227/7a5e8358/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080227/7a5e8358/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000468.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+	<LI>Next message: <A HREF="000470.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#469">[ date ]</a>
+              <a href="thread.html#469">[ thread ]</a>
+              <a href="subject.html#469">[ subject ]</a>
+              <a href="author.html#469">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] prop for tuplet beat selection
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20prop%20for%20tuplet%20beat%20selection&In-Reply-To=%3C48EC4D1A.9000209%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000564.html">
+   <LINK REL="Next"  HREF="000566.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] prop for tuplet beat selection</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20prop%20for%20tuplet%20beat%20selection&In-Reply-To=%3C48EC4D1A.9000209%40schwaben.de%3E"
+       TITLE="[Canorus-devel] prop for tuplet beat selection">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Wed Oct  8 08:03:06 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000564.html">[Canorus-devel] anacrusis export
+</A></li>
+        <LI>Next message: <A HREF="000566.html">[Canorus-devel] Print Preview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+when doing tuplets I would like to propose a slight change of the input
+policy. Let's assume we want to have the following tuplet 3/2:
+    eighth eighth quarter quarter
+
+With the mouse we can start the triplet by placing a first quarter note,
+then overwrite the first note with an eighth, which could split the
+quarter to eighths, which wouldn't work now, because it's not
+implemented yet. But with the rests such a split is already working,
+which you could try. So far the policy would be consistent.
+
+The matter changes when I look at midi keyboard input, which is strictly
+linear. Thus I propose to select, then hold fixed, the tuplet beat time
+when the tuplet is selected (pressed down), so you can change the length
+of the first tuplet note without interference with the tuplet beat.
+
+I think tuplets with different time elements are not so seldom. What do
+you think?
+
+And this: I think we could restrict the selection of the tuplet
+denominator to 2,4,8, because others are of no use as I can think of,
+although I could be wrong.
+
+Best Regards,
+Georg
+
+
+
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000564.html">[Canorus-devel] anacrusis export
+</A></li>
+	<LI>Next message: <A HREF="000566.html">[Canorus-devel] Print Preview
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#565">[ date ]</a>
+              <a href="thread.html#565">[ thread ]</a>
+              <a href="subject.html#565">[ subject ]</a>
+              <a href="author.html#565">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

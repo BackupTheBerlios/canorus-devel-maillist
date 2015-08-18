@@ -1,0 +1,101 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] midi import does chords
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import%20does%20chords&In-Reply-To=%3C4A59B91F.5060100%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000885.html">
+   <LINK REL="Next"  HREF="000887.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] midi import does chords</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import%20does%20chords&In-Reply-To=%3C4A59B91F.5060100%40gmail.com%3E"
+       TITLE="[Canorus-devel] midi import does chords">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Jul 12 12:21:19 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000885.html">[Canorus-devel] midi import does chords
+</A></li>
+        <LI>Next message: <A HREF="000887.html">[Canorus-devel] midi import does chords
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#886">[ date ]</a>
+              <a href="thread.html#886">[ thread ]</a>
+              <a href="subject.html#886">[ subject ]</a>
+              <a href="author.html#886">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I think in the future we should move the shared signs outside the voice 
+(to CAStaff directly). And I wouldn't use CAVoiceCtl and CAStaffCtl 
+classes but put all the control stuff into the CAVoice and CAStaff 
+itself (not many public control functions will exist I think - maybe 5, 
+others are more model for insertion/deletion). This way we would 
+simplify the score operations to the core classes CAVoice, CAStaff etc. 
+No special control classes would be needed for the Python developer.
+
+I would create class CAQuantization for the tuplet and other quantiazion 
+operations. I would create CAMainWinMode, CAMainWinInsert, 
+CAMainWinDelete, CAMainWinEdit for the GUI operations specific to the 
+current mode.
+
+I need Reinhard's opinion on this though.
+
+
+Regards.
+-Matev&#382;
+&gt;<i> Editing functions (or parts) in ui/mainwin.cpp that don't use xy-coords
+</I>&gt;<i> any more should be moved to staff.cpp or voice.cpp, to reduce mainwin
+</I>&gt;<i> and to avoid duplicates of edit functions.
+</I>&gt;<i>
+</I>&gt;<i> I wouldn't hold back features because of translation set backs.
+</I>&gt;<i>
+</I>&gt;<i> So, Best Regards,
+</I>&gt;<i> Georg
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000885.html">[Canorus-devel] midi import does chords
+</A></li>
+	<LI>Next message: <A HREF="000887.html">[Canorus-devel] midi import does chords
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#886">[ date ]</a>
+              <a href="thread.html#886">[ thread ]</a>
+              <a href="subject.html#886">[ subject ]</a>
+              <a href="author.html#886">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

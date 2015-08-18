@@ -1,0 +1,202 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Important: CACan format
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Important%3A%20CACan%20format&In-Reply-To=%3Ca24024cb0801310653h1f6ded81i8fd9d3c940050b2b%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000412.html">
+   <LINK REL="Next"  HREF="000414.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Important: CACan format</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Important%3A%20CACan%20format&In-Reply-To=%3Ca24024cb0801310653h1f6ded81i8fd9d3c940050b2b%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Important: CACan format">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Jan 31 15:53:35 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000412.html">[Canorus-devel] Important: CACan format
+</A></li>
+        <LI>Next message: <A HREF="000414.html">[Canorus-devel] Important: CACan format
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#413">[ date ]</a>
+              <a href="thread.html#413">[ thread ]</a>
+              <a href="subject.html#413">[ subject ]</a>
+              <a href="author.html#413">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Could you send me a .can file you can't open?
+
+Regarding pythonLib - maybe canorus could check whether pythonLib  is
+needed/whether python is in PATH before looking for pythonLib? this would
+most probably solve my error.
+
+Regards,
+Itay
+
+2008/1/31 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;:
+
+&gt;<i> Saving a CAN file is ok on Win. But if I open any (Linux or
+</I>&gt;<i> Windows-generated) .can file, there is an error. Using R713.
+</I>&gt;<i>
+</I>&gt;<i> pythonLib is a directory where Python is installed on Windows. This is
+</I>&gt;<i> usually C:\Program files\Canorus\pythonLib. It is needed when loading
+</I>&gt;<i> CanorusPython.py because it needs at least new.py and some others.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I fixed a bug with saving an open can (which resulted in an empty file).
+</I>&gt;<i> &gt; I'm unable to reproduce the bug you mentioned. I use an MSYS GCC build
+</I>&gt;<i> &gt; on a win 2000 VM. I have no problem opening a can archive created on
+</I>&gt;<i> &gt; the linux host, or vice versa.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; OT:
+</I>&gt;<i> &gt; I'm getting some python issues on win 2000. I can't start canorus/win
+</I>&gt;<i> &gt; in GDB, with python enabled. I get a segfault:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; #0  0x78001d0b in strlen () from C:\WINNT\system32\msvcrt.dll
+</I>&gt;<i> &gt; #1  0x00516f2d in SWIG_FromCharPtr (
+</I>&gt;<i> &gt;     cptr=0x4427448
+</I>&gt;<i> &gt; &quot;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;
+</I>&gt;<i> &gt; &#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&quot;...)
+</I>&gt;<i> &gt;     at c:/canorus/src/scripting/canoruspythonPYTHON_wrap.cxx:2882
+</I>&gt;<i> &gt; #2  0x00516e96 in _wrap_tr (args=0x39d3dd0)
+</I>&gt;<i> &gt;     at c:/canorus/src/scripting/canoruspythonPYTHON_wrap.cxx:3265
+</I>&gt;<i> &gt; #3  0x1e08e137 in python25!PyCFunction_Call ()
+</I>&gt;<i> &gt;    from C:\WINNT\system32\python25.dll
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Which looks similar to this valgrind error:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ==9940== Invalid read of size 1
+</I>&gt;<i> &gt; ==9940==    at 0x81EB659: SWIG_FromCharPtr(char const*)
+</I>&gt;<i> &gt; (canoruspythonPYTHON_wrap.cxx:2872)
+</I>&gt;<i> &gt; ==9940==    by 0x81ED89B: _wrap_tr (canoruspythonPYTHON_wrap.cxx:3262)
+</I>&gt;<i> &gt; ==9940==    by 0x8279F62: PyCFunction_Call (in
+</I>&gt;<i> &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i> &gt; ==9940==    by 0x8237A09: PyEval_EvalFrame (in
+</I>&gt;<i> &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i> &gt; ==9940==    by 0x8238A38: PyEval_EvalCodeEx (in
+</I>&gt;<i> &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i> &gt; ==9940==    by 0x8279239: function_call (in
+</I>&gt;<i> &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i> &gt; ==9940==    by 0x81EF611: PyObject_Call (in
+</I>&gt;<i> &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i> &gt; ==9940==    by 0x8232555: PyEval_CallObjectWithKeywords (in
+</I>&gt;<i> &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i> &gt; ==9940==    by 0x80EE604: CASwigPython::callFunction(QString, QString,
+</I>&gt;<i> &gt; QList&lt;_object*&gt;) (swigpython.cpp:96)
+</I>&gt;<i> &gt; ==9940==    by 0x811F8C8: CAMainWin::newDocument() (mainwin.cpp:795)
+</I>&gt;<i> &gt; ==9940==    by 0x80BD4EB: main (main.cpp:118)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; But (surprisingly!) only window msvcrt crashes on this...
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I also experienced a crash on line 40 of swigpython.cpp:
+</I>&gt;<i> &gt; PyRun_SimpleString((QString(&quot;sys.path.append
+</I>&gt;<i> ('&quot;)+CACanorus::locateResourceDir(&quot;pythonLib&quot;).at(0)+&quot;/pythonLib')&quot;).toStdString().c_str());
+</I>&gt;<i> &gt; Apparently I don't have a 'pythonLib', and commenting this line out
+</I>&gt;<i> &gt; solved the error. Is it needed?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt; Itay
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; On Jan 27, 2008 11:50 PM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt; wrote:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     I think this is the same bug:
+</I>&gt;<i> &gt;
+</I>&gt;<i> <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>
+</I>&gt;<i> &gt;     &lt;
+</I>&gt;<i> <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Looks like no .can files can be loaded no matter where was it saved.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Regards.
+</I>&gt;<i> &gt;     -Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Matev&#382; Jekovec pravi:
+</I>&gt;<i> &gt;     &gt; Hi Itay.
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; The .can fileformats are somehow not cross-platform independent.
+</I>&gt;<i> &gt;     I tried
+</I>&gt;<i> &gt;     &gt; opening a .can file saved on Linux on Windows and it returns an
+</I>&gt;<i> &gt;     error.
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; Could you please look at it? This should be fixed asap, but won't
+</I>&gt;<i> go
+</I>&gt;<i> &gt;     &gt; into 0.5 release though. Maybe 0.5.1 right after.
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; Regards.
+</I>&gt;<i> &gt;     &gt; -Matev&#382;
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     _______________________________________________
+</I>&gt;<i> &gt;     Canorus-devel mailing list
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A> &lt;mailto:
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080131/a5dd2503/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080131/a5dd2503/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000412.html">[Canorus-devel] Important: CACan format
+</A></li>
+	<LI>Next message: <A HREF="000414.html">[Canorus-devel] Important: CACan format
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#413">[ date ]</a>
+              <a href="thread.html#413">[ thread ]</a>
+              <a href="subject.html#413">[ subject ]</a>
+              <a href="author.html#413">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

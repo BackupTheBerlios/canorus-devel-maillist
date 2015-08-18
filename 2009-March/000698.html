@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Fonts under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fonts%20under%20macosx&In-Reply-To=%3C7F472A8B-ABFB-4661-80A5-C6F329DC1904%40titanium.sabren.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000697.html">
+   <LINK REL="Next"  HREF="000699.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Fonts under macosx</H1>
+    <B>Grzegorz Adam Hankiewicz</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fonts%20under%20macosx&In-Reply-To=%3C7F472A8B-ABFB-4661-80A5-C6F329DC1904%40titanium.sabren.com%3E"
+       TITLE="[Canorus-devel] Fonts under macosx">gradha at titanium.sabren.com
+       </A><BR>
+    <I>Wed Mar 11 20:00:46 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000697.html">[Canorus-devel] Fonts under macosx
+</A></li>
+        <LI>Next message: <A HREF="000699.html">[Canorus-devel] Backup Administrator GSoC 2009
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#698">[ date ]</a>
+              <a href="thread.html#698">[ thread ]</a>
+              <a href="subject.html#698">[ subject ]</a>
+              <a href="author.html#698">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+El 11/03/2009, a las 19:57, Grzegorz Adam Hankiewicz escribi&#243;:
+
+&gt;<i> Now that fonts work I tried to load an xml example and got garbage  
+</I>&gt;<i> for notes. Any ideas about this?
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://dl.getdropbox.com/u/145894/bad_notes.png">http://dl.getdropbox.com/u/145894/bad_notes.png</A>
+</I>
+Forgot to put some logs of the application. Presumably zero widths and  
+negative heights have something to do with the garbage, unless it's  
+just that the string formatting is not the correct type.
+
+11/03/09 19:46:55 [0x0-0xd50d5].Canorus[9096] drawableMusElement:  
+0x1b237360, x,y=144,-65318, w,h=0,131072, dContext=0x1b230190
+11/03/09 19:46:55 [0x0-0xd50d5].Canorus[9096] musElement: 0x1b2cabe0,  
+timeStart=0, timeEnd=0, context=0x1b2ca5c0, voice=0x1b18e2c0,  
+voiceNr=1, idxInVoice=6, voiceStaff=0x1b2ca5c0, pitch=-1
+11/03/09 19:46:55 [0x0-0xd50d5].Canorus[9096] drawableMusElement:  
+0x1b237460, x,y=144,-1572646, w,h=0,3145728, dContext=0x1b230190 
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000697.html">[Canorus-devel] Fonts under macosx
+</A></li>
+	<LI>Next message: <A HREF="000699.html">[Canorus-devel] Backup Administrator GSoC 2009
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#698">[ date ]</a>
+              <a href="thread.html#698">[ thread ]</a>
+              <a href="subject.html#698">[ subject ]</a>
+              <a href="author.html#698">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

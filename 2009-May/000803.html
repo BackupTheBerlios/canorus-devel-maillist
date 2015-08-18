@@ -1,0 +1,120 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Printing/Export second/... sheet
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Printing/Export%20second/...%20sheet&In-Reply-To=%3C4A0FF1F6.90006%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000802.html">
+   <LINK REL="Next"  HREF="000805.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Printing/Export second/... sheet</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Printing/Export%20second/...%20sheet&In-Reply-To=%3C4A0FF1F6.90006%40web.de%3E"
+       TITLE="[Canorus-devel] Printing/Export second/... sheet">suamor at web.de
+       </A><BR>
+    <I>Sun May 17 13:16:06 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000802.html">[Canorus-devel] Printing/Export second/... sheet
+</A></li>
+        <LI>Next message: <A HREF="000805.html">[Canorus-devel] R1057: Printing/Preview/Export from current sheet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg,
+
+Georg Rudolph wrote:
+&gt;<i> High Reinhard, Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i> for playback, midi-export, printing, it would be nice to have, like
+</I>&gt;<i> document properties, a menue to select vertically the voices to be
+</I>&gt;<i> processed. Additionally, by selecting part of a staff, horizontal
+</I>&gt;<i> reduction of the played, exported data could be achieved. To do this
+</I>&gt;<i> only with copying and deleting would be not so elegant.
+</I>
+Can't say much about voices to be printed (how to implement it in an 
+elegant way, menu is too much work for sure, it should be a somehow
+&quot;clickable&quot; selection. Menu would only work if the menu isn't closed
+during selection. The better way would be a selection view, probably
+not only for voices but for other context/tracks as well ?
+
+Implementation wise the export(ctl) -&gt; still missing, printctl and
+previewctl are in need of enhancement. The whole process is not
+trivial. Currently it's only one (with extension to complete document
+printing probably three) line(s) of code in every class.
+
+The new variant would force us to rethink where to implement the
+reading of the selected music elements the user wants to print. Export
+does not work as it has (and should not have) any relation to mainwin.
+Maybe we need a exportctl base class being used by exportctl, printctl
+and previewctl to implement the actual document selection.
+Someone else but me with better score knowledge would have to implement
+this idea.
+The method would also be required to ask the user if he wishes to
+print the selection or current sheet.
+
+I have already implemented printing on current sheet which works. The
+only problem is that printing and preview still need exportSheet()
+methods. After implementing I will commit it.
+
+Regards,
+
+Reinhard
+
+&gt;<i> Regards,
+</I>&gt;<i> Georg
+</I>&gt;<i>
+</I>&gt;<i> ps: Midi import works already quite well with pmidi, so I get easily
+</I>&gt;<i> huge scores now :) When gotten rid of the alsa seq dependency I'll check
+</I>&gt;<i> it in.
+</I>
+Didn't test midi import, but export yesterday failed for me (the piece
+played in Canorus is ok, but after export it sounds very different...)
+Is there already a way to change midi tempo inside Canorus ?
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000802.html">[Canorus-devel] Printing/Export second/... sheet
+</A></li>
+	<LI>Next message: <A HREF="000805.html">[Canorus-devel] R1057: Printing/Preview/Export from current sheet
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#803">[ date ]</a>
+              <a href="thread.html#803">[ thread ]</a>
+              <a href="subject.html#803">[ subject ]</a>
+              <a href="author.html#803">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

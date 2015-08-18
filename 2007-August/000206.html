@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] splitter crashes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20splitter%20crashes&In-Reply-To=%3Ca24024cb0708260522x749e9a42x1e7b29a2b6a7e7ba%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000205.html">
+   <LINK REL="Next"  HREF="000207.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] splitter crashes</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20splitter%20crashes&In-Reply-To=%3Ca24024cb0708260522x749e9a42x1e7b29a2b6a7e7ba%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] splitter crashes">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Aug 26 14:22:28 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000205.html">[Canorus-devel] splitter crashes
+</A></li>
+        <LI>Next message: <A HREF="000207.html">[Canorus-devel] splitter crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I found and fixed an undo crash (was visible now when CanorusML view works)
+in r560. I also fixed a null pointer error in CAMainWin::setMode().
+
+I tried running Valgrind on Canorus. I got this error message: &quot;More than
+10000000 total errors detected.  I'm not reporting any more.&quot; I've never
+thought I'd ever, ever need to use --error-limit=no.
+10 million errors, for Bach's sake! Most of them come from Qt (our bugs?
+Qt's? Valgrind's? All answers correct?), some from python-swig.
+IMO we should look into those before quitting beta.
+
+Regards,
+Itay
+
+On 8/26/07, Itay Perl &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i> IIRC, the splitter problems started before Qt 4.3.
+</I>&gt;<i>
+</I>&gt;<i> I've fixed the window-&gt;split.* menu items in R558. It seems that the
+</I>&gt;<i> splitter must get the widget with no parent to add it properly, so I changed
+</I>&gt;<i> v-&gt;clone() to v-&gt;clone(0).
+</I>&gt;<i>
+</I>&gt;<i> Just fixed CanorusML view in R559. Same issue.
+</I>&gt;<i> mainwin.cpp:750 (r559) was     CASourceViewPort *v = new
+</I>&gt;<i> CASourceViewPort(document(),
+</I>&gt;<i> static_cast&lt;QWidget*&gt;(currentViewPort()-&gt;parent()));
+</I>&gt;<i> now:     CASourceViewPort *v = new CASourceViewPort(document(), 0);
+</I>&gt;<i> And it works.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> On 8/26/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hi Itay &amp; others.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Thanks for the report.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'd require some assistance for the source views and horizontal/vertical
+</I>&gt;<i> &gt; splitters. I tried to fix these bugs but never managed it. I can easily
+</I>&gt;<i> &gt; reproduce the problems, but simply can't find any logical explenation or
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; a suitable solution. For example, the code for LilyPond and CanorusML
+</I>&gt;<i> &gt; source view is exactly the same, but CanorusML does work whereas
+</I>&gt;<i> &gt; LilyPond doesn't at all. Also adding a custom widget like a button to
+</I>&gt;<i> &gt; the splitter works fine. I think the problem started appearing somewhere
+</I>&gt;<i> &gt; around the new Qt 4.3. So it might be this related as well.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; In any way, I'd ask you Itay, if you could take a look at the splitter
+</I>&gt;<i> &gt; code and track the bug down or report any weird anomalies occured while
+</I>&gt;<i> &gt; bugfixing.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards.
+</I>&gt;<i> &gt; - Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070826/50450777/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070826/50450777/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000205.html">[Canorus-devel] splitter crashes
+</A></li>
+	<LI>Next message: <A HREF="000207.html">[Canorus-devel] splitter crashes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#206">[ date ]</a>
+              <a href="thread.html#206">[ thread ]</a>
+              <a href="subject.html#206">[ subject ]</a>
+              <a href="author.html#206">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

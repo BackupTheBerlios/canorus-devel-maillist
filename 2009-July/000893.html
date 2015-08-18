@@ -1,0 +1,80 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] volta bracket support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20volta%20bracket%20support&In-Reply-To=%3C4A61BE60.9000209%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000901.html">
+   <LINK REL="Next"  HREF="000894.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] volta bracket support</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20volta%20bracket%20support&In-Reply-To=%3C4A61BE60.9000209%40schwaben.de%3E"
+       TITLE="[Canorus-devel] volta bracket support">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Sat Jul 18 14:21:52 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000901.html">[Canorus-devel] Compiler optimizations
+</A></li>
+        <LI>Next message: <A HREF="000894.html">[Canorus-devel] Canorus - Translation of Canorus into czech -	link to the canorus.berlios.de
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#893">[ date ]</a>
+              <a href="thread.html#893">[ thread ]</a>
+              <a href="subject.html#893">[ subject ]</a>
+              <a href="author.html#893">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everyone,
+
+for lilypond export I crafted a preliminary hack to have volta brackets
+in the score. With special text marks you get the following:
+
+    voltaRepeat &lt;some Text&gt;   bracket to the next RepeatClose or
+RepeatCloseOpen
+    voltaBar &lt;some Text&gt;         bracket to the next bar line
+
+This is a reasonable hack, I think, until we have a proper gui for a
+dedicated element. Some explanation is in the .ly file, in which we need
+now the special function voltaStart. Comments are welcome, and if this
+hack has a chance of a longer life I could also describe it in our manual.
+
+It's only, because I need volta brackets quite often. One lilypond
+warning I couln't get rid of, still looking into this.
+Best Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000901.html">[Canorus-devel] Compiler optimizations
+</A></li>
+	<LI>Next message: <A HREF="000894.html">[Canorus-devel] Canorus - Translation of Canorus into czech -	link to the canorus.berlios.de
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#893">[ date ]</a>
+              <a href="thread.html#893">[ thread ]</a>
+              <a href="subject.html#893">[ subject ]</a>
+              <a href="author.html#893">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

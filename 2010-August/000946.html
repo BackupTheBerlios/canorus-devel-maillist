@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Embeddable sheet music render and player with events
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Embeddable%20sheet%20music%20render%20and%20player%20with%0A%20events&In-Reply-To=%3C20100818182650.7d5db860%40ext-ubu-msi%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000945.html">
+   <LINK REL="Next"  HREF="000947.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Embeddable sheet music render and player with events</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Embeddable%20sheet%20music%20render%20and%20player%20with%0A%20events&In-Reply-To=%3C20100818182650.7d5db860%40ext-ubu-msi%3E"
+       TITLE="[Canorus-devel] Embeddable sheet music render and player with events">suamor at web.de
+       </A><BR>
+    <I>Wed Aug 18 18:26:50 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000945.html">[Canorus-devel] Embeddable sheet music render and player with events
+</A></li>
+        <LI>Next message: <A HREF="000947.html">[Canorus-devel] Embeddable sheet music render and player with	events
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#946">[ date ]</a>
+              <a href="thread.html#946">[ thread ]</a>
+              <a href="subject.html#946">[ subject ]</a>
+              <a href="author.html#946">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Gopalakrishna,
+
+Am Tue, 17 Aug 2010 23:13:26 -0700 (PDT)
+gab &quot;P.GopalaKrishna&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">gopalakrishna.palem at yahoo.com</A>&gt; folgendes zu Papier:
+
+&gt;<i> Hello,
+</I>&gt;<i> 
+</I>&gt;<i> I am the author of CarMusTy, Carnatic Music Typesetting application -
+</I>&gt;<i> looking for ready-to-use notation renderers (sheet music rendering modules)
+</I>&gt;<i> that can be plugged in and used. CarMusTy application is primarily target
+</I>&gt;<i> towards Carnatic music and generates MIDI files and I would like to have
+</I>&gt;<i> the MIDI file be represented as sheet music and played within CarMusTy
+</I>&gt;<i> supplied window (with the support for highlighing the currently played
+</I>&gt;<i> notes).
+</I>
+This sounds like an interesting project but I'm not sure how much of it
+is common with the existing score programs (especially the ones having
+full midi support, i.e. sequencer and score editing/rendering capabilities.
+
+&gt;<i> I came across the Canorus and see that it can render the MIDI files as
+</I>&gt;<i> sheet music and play them with in its own UI.
+</I>
+Yes, we have that possibility. Note though that Canorus is no sequencer
+so it's main focus is on score editing and less on the midi department
+like instrument selection/manipulation, midi playback. You need partially
+separate software to fullfill this task (like timidity or qsynth/fluidsynth).
+
+&gt;<i> However, I would like to know how easy it is to *adapt* this sheet
+</I>&gt;<i> rendering &amp; playback modules in to other applications (such as CarMusTy). 
+</I>
+We have plans to split up Canorus into shared libraries, so the API
+for the user interface, core and other modules can be used from other
+programs as well. Currently this isn't easily possible. This will probably
+happen soon after or before our next release (no estimation exists yet about
+when this will happen but I wouldn't expect it before October this year).
+
+&gt;<i> 
+</I>&gt;<i> I am looking for something like, given a MIDI file, the Canorus should
+</I>&gt;<i> generate a sheet music representation (may be as PNG or some other image
+</I>&gt;<i> that can be displayed in any widget). For example,
+</I>&gt;<i> 
+</I>&gt;<i> &#160;&#160;&#160; QImage* notation =&#160;Canorus::RenderMIDIAsNotation(strMIDIFilePath);
+</I>&gt;<i> &#160;
+</I>&gt;<i> &#160;&#160;&#160; myPlayerWidget-&gt;ShowImage(notation); // Let my widget display the notes
+</I>&gt;<i> &#160;
+</I>&gt;<i> &#160;&#160;&#160; Canorus::RenderMIDIAsSound(myPlayerWidget); // report player events to
+</I>&gt;<i> my player widget to hightlight the current notes.
+</I>
+Note that Canorus does only have a simple rendering from left to right. If
+you need sophisticated rendering, then you will have either to write your
+own rendering engine for Canorus or use the Lilypond backend and render
+the created PDF or SVG file to a separate Qt window (like we can do it for
+the preview - we use the Qt SVG rendering engine and create the Image from
+there).
+
+So basically you'd need to
+a) Load the midi file 
+b) Convert the midi data to a Canorus score
+c) &quot;print&quot; an svg image
+
+&gt;<i> CarMusTy is based on Qt and I observe that Canorus is also based on Qt. But
+</I>&gt;<i> not sure about the dependencies within Canorus to decide how difficult it
+</I>&gt;<i> would be just to &quot;borrow&quot; few back-end modules (such as the renderer and 
+</I>&gt;<i> player-with-events)&#160;without having to include everything.
+</I>&gt;<i> 
+</I>&gt;<i> &#160;&#160;&#160; Appreciate any information.
+</I>
+We try to keep dependencies as low as possible as well. The whole Canorus
+including plugins requires python additionally to the normal Canorus
+dependencies (you can use ldd to find out all the libs included in the
+program - the modules required by you probably don't need all those libs.
+
+&gt;<i> Thank you,
+</I>&gt;<i> Gopalakrishna Palem
+</I>&gt;<i> Creator of CFugue Runtime
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i>       
+</I>
+Regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000945.html">[Canorus-devel] Embeddable sheet music render and player with events
+</A></li>
+	<LI>Next message: <A HREF="000947.html">[Canorus-devel] Embeddable sheet music render and player with	events
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#946">[ date ]</a>
+              <a href="thread.html#946">[ thread ]</a>
+              <a href="subject.html#946">[ subject ]</a>
+              <a href="author.html#946">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Plugins, threads, ideas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Plugins%2C%20threads%2C%20ideas&In-Reply-To=%3C47C8012F.2070409%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000474.html">
+   <LINK REL="Next"  HREF="000476.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Plugins, threads, ideas</H1>
+    <B>&#352;tefan Sakal&#237;k</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Plugins%2C%20threads%2C%20ideas&In-Reply-To=%3C47C8012F.2070409%40gmail.com%3E"
+       TITLE="[Canorus-devel] Plugins, threads, ideas">rabbit6440 at gmail.com
+       </A><BR>
+    <I>Fri Feb 29 13:57:19 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000474.html">[Canorus-devel] Workshop at LAC 2008 in K&#246;ln / Cologne
+</A></li>
+        <LI>Next message: <A HREF="000476.html">[Canorus-devel] pycli changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#475">[ date ]</a>
+              <a href="thread.html#475">[ thread ]</a>
+              <a href="subject.html#475">[ subject ]</a>
+              <a href="author.html#475">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+So I've been considering whether use threads or processes, and how to do 
+it. It seems that calling scripts as new process using swig is too 
+complicated. Let's use threads. If something happens with pycli or other 
+plugin, thread containing it should be killed [and created new, 
+depends]. I'm not going to use signals either.
+
+Idea1: I want for canorus to provide plugin depencies, for example: 
+plugin A wants to get input using an inputbox, and plugin B provides 
+this functionality...so plugin A tells canours to call plugin B, to get 
+that input (I think making this in PyQT would be easier, than in c++/qt; 
+so that's why is it in plugin).
+
+Another idea: there's a site mutopiaproject.org, there are many 
+classical GPLd sheets. So let's make a plugin, that would download 
+sheets from there automatically, convert from lilypond to canorus 
+format. (a depency) and open that sheet =&gt; to make it as easy [and 
+simple!] as possible for the user.
+
+I think the CLI could help very much. Let's say you want to call 
+function in a plugin, so you write in the cli: &quot;/callfunction 'plugin' 
+'function' arguments, and you can debug the functions. Or you can edit 
+the plugin without closing canorus...(/recompile 'plugin' .py -&gt; pyc; 
+don't know much about ruby), I hope it's possible. (internal CLI 
+commands would start with &quot;/&quot;).
+
+That are some of my ideas. If you have any other, post them.
+
+Regards,
+Stefan
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000474.html">[Canorus-devel] Workshop at LAC 2008 in K&#246;ln / Cologne
+</A></li>
+	<LI>Next message: <A HREF="000476.html">[Canorus-devel] pycli changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#475">[ date ]</a>
+              <a href="thread.html#475">[ thread ]</a>
+              <a href="subject.html#475">[ subject ]</a>
+              <a href="author.html#475">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

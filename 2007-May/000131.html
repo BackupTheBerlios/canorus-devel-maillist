@@ -1,0 +1,159 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Windows SVG problem, fixed!
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Windows%20SVG%20problem%2C%20fixed%21&In-Reply-To=%3Ca24024cb0705240212n67075f48s8c563cbd43faacfd%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000130.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Windows SVG problem, fixed!</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Windows%20SVG%20problem%2C%20fixed%21&In-Reply-To=%3Ca24024cb0705240212n67075f48s8c563cbd43faacfd%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Windows SVG problem, fixed!">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu May 24 11:12:52 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000130.html">[Canorus-devel] Windows SVG problem, fixed!
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The qsvg plugin tells QIcon how to render SVG (using QSvgRenderer or
+something from the QtSvg library).
+Here's a quote from the QIcon docs: &quot;With
+QIconEnginePlugin&lt;<A HREF="http://doc.trolltech.com/4.2/qiconengineplugin.html">http://doc.trolltech.com/4.2/qiconengineplugin.html</A>&gt;it
+is possible to register different icon engines for different file
+suffixes, so you could provide a SVG icon engine or any other scalable
+format.&quot;
+The qsvg plugin does exactly that.
+
+I had the same linking error, and building qsvg statically solved it. I just
+had to add &quot;CONFIG += staticlib&quot; to the plugin's .pro.
+
+Regards,
+Itay
+On 5/24/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+wrote:
+&gt;<i>
+</I>&gt;<i> The exact error message is
+</I>&gt;<i> undefined reference: qt_plugin_instance_qsvg()
+</I>&gt;<i>
+</I>&gt;<i> As Q_IMPORT_PLUGIN(qsvg) fails - the dynamically linked library is
+</I>&gt;<i> obviously not found in default configuration and therefore icons not
+</I>&gt;<i> drawn. What it bothers me is what does libQtSvg provide and what is
+</I>&gt;<i> libqsvg needed for. Maybe there is a special way how to use plugins in
+</I>&gt;<i> Qt4. Reinhard?
+</I>
+
+
+Regards.
+&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; Hello list!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; After seeing the conversation over at canorus-users a few days ago, I
+</I>&gt;<i> &gt; tried, and noticed that the svg icons didn't work on my father's
+</I>&gt;<i> &gt; laptop (Windows 2000) either. Nor they worked on WINE on my PC.
+</I>&gt;<i> &gt; I managed to get a working MinGW x-compiler for linux and a compiled
+</I>&gt;<i> &gt; Qt/Win. (I can't compile Canorus under windows 2000; I get an &quot;Input
+</I>&gt;<i> &gt; line too long&quot; message on linking, even when making the link command
+</I>&gt;<i> &gt; as short as I can with SUBST.)
+</I>&gt;<i> &gt; Anyway, I think I fixed it. Here are the details. If anydev can test
+</I>&gt;<i> &gt; it and make the necessary changes to CMakeLists.txt, it'd be great, as
+</I>&gt;<i> &gt; I don't have the time.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; First,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Index: src/main.cpp
+</I>&gt;<i> &gt; ===================================================================
+</I>&gt;<i> &gt; --- src/main.cpp        (revision 492)
+</I>&gt;<i> &gt; +++ src/main.cpp        (working copy)
+</I>&gt;<i> &gt; @@ -9,6 +9,7 @@
+</I>&gt;<i> &gt;  #include &lt;QApplication&gt;
+</I>&gt;<i> &gt;  #include &lt;QTranslator&gt;
+</I>&gt;<i> &gt;  #include &lt;QLocale&gt;
+</I>&gt;<i> &gt; +#include &lt;QtPlugin&gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;  // Python.h needs to be loaded first!
+</I>&gt;<i> &gt;  #include &quot;core/canorus.h&quot;
+</I>&gt;<i> &gt; @@ -25,6 +26,8 @@
+</I>&gt;<i> &gt;  }
+</I>&gt;<i> &gt;  #endif
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; +Q_IMPORT_PLUGIN(qsvg)
+</I>&gt;<i> &gt; +
+</I>&gt;<i> &gt;  /*!
+</I>&gt;<i> &gt;         Main function. This is the first function called when Canorus
+</I>&gt;<i> &gt; is run.
+</I>&gt;<i> &gt;         It initializes CACanorus class and creates the main window.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Then I had to build a static version of the qsvg plugin
+</I>&gt;<i> &gt; (qt-win-opensource-src-4.2.3/src/plugins/iconengines/svgiconengine/)
+</I>&gt;<i> &gt; and edit CMakeLists.txt to link against it (actually I edited the link
+</I>&gt;<i> &gt; command manually, since CMake got confused with mingw).
+</I>&gt;<i> &gt; Afterwards the icons worked on my father's laptop.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Does it work for you? Any idea why icons did appear for linux users?
+</I>&gt;<i> &gt; I'm a bit confused.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards,
+</I>&gt;<i> &gt; Itay
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070524/0a5b90cf/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070524/0a5b90cf/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000130.html">[Canorus-devel] Windows SVG problem, fixed!
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#131">[ date ]</a>
+              <a href="thread.html#131">[ thread ]</a>
+              <a href="subject.html#131">[ subject ]</a>
+              <a href="author.html#131">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

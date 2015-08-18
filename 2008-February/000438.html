@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] pitch, length, refactoring
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20pitch%2C%20length%2C%20refactoring&In-Reply-To=%3C47AB0F33.7000708%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000437.html">
+   <LINK REL="Next"  HREF="000439.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] pitch, length, refactoring</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20pitch%2C%20length%2C%20refactoring&In-Reply-To=%3C47AB0F33.7000708%40gmail.com%3E"
+       TITLE="[Canorus-devel] pitch, length, refactoring">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Thu Feb  7 15:01:23 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000437.html">[Canorus-devel] Exporting function to python
+</A></li>
+        <LI>Next message: <A HREF="000439.html">[Canorus-devel] Canorus bugs with old scores
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#438">[ date ]</a>
+              <a href="thread.html#438">[ thread ]</a>
+              <a href="subject.html#438">[ subject ]</a>
+              <a href="author.html#438">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys.
+
+I added CADiatonicPitch, CAPlayableLength and CAInterval classes which
+describe note pitch (note name+accidentals), playable length
+(length+number of dots) and interval (perfect fourth, major second etc.).
+
+I'm currently implementing CAInterval functionalities, so we can sum
+pitch+interval=new pitch and implement transpose function then. The main
+reason why I did this from the first place is the work on Harmonia - I
+need lots of note and interval manipulation and it's the best to have it
+implemented in C++ Canorus library and not in Python.
+
+I also renamed CAFunctionMarking and CAFunctionMarkingContext to
+CAFunctionMark and CAFunctionMarkContext.
+
+I've rewritten the half of notes and rests stuff so I probably broke
+something or a lot ;) Please test.
+
+
+Regards.
+-Matev&#382;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000437.html">[Canorus-devel] Exporting function to python
+</A></li>
+	<LI>Next message: <A HREF="000439.html">[Canorus-devel] Canorus bugs with old scores
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#438">[ date ]</a>
+              <a href="thread.html#438">[ thread ]</a>
+              <a href="subject.html#438">[ subject ]</a>
+              <a href="author.html#438">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

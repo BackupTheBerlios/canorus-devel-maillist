@@ -1,0 +1,365 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] activated vs triggered
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20activated%20vs%20triggered&In-Reply-To=%3C200701052050.03027.jeeree%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000010.html">
+   <LINK REL="Next"  HREF="000015.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] activated vs triggered</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20activated%20vs%20triggered&In-Reply-To=%3C200701052050.03027.jeeree%40web.de%3E"
+       TITLE="[Canorus-devel] activated vs triggered">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Jan  5 20:50:02 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000010.html">[Canorus-devel] activated vs triggered
+</A></li>
+        <LI>Next message: <A HREF="000015.html">[Canorus-devel] activated vs triggered
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#12">[ date ]</a>
+              <a href="thread.html#12">[ thread ]</a>
+              <a href="subject.html#12">[ subject ]</a>
+              <a href="author.html#12">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, 
+
+just made a small patch against rev 331 replacing ..._activated	 
+with ..._triggered in mainwin.cpp and mainwin.h,
+so that canorus runs without qt3 support build into qt4 (especially for all 
+the minimalistic gentoo users out there) 
+
+Index: src/ui/mainwin.cpp
+===================================================================
+--- src/ui/mainwin.cpp	(Revision 331)
++++ src/ui/mainwin.cpp	(Arbeitskopie)
+@@ -315,7 +315,7 @@
+ 		this-&gt;showNormal();
+ }
+ 
+-void CAMainWin::on_actionSplit_horizontally_activated() {
++void CAMainWin::on_actionSplit_horizontally_triggered() {
+ 	CAViewPort *v = (CAViewPort *)_currentScrollWidget-&gt;splitHorizontally();
+ 	v-&gt;setWindowIcon(QIcon(QString::fromUtf8(&quot;:/menu/images/clogosm.png&quot;)));
+ 	if (v-&gt;viewPortType() == CAViewPort::ScoreViewPort) {
+@@ -334,7 +334,7 @@
+ 	setMode(_currentMode);	//updates the new viewport border settings
+ }
+ 
+-void CAMainWin::on_actionSplit_vertically_activated() {
++void CAMainWin::on_actionSplit_vertically_triggered() {
+ 	CAViewPort *v = (CAViewPort *)_currentScrollWidget-&gt;splitVertically();
+ 
+ 	v-&gt;setWindowIcon(QIcon(QString::fromUtf8(&quot;:/menu/images/clogosm.png&quot;)));
+@@ -354,7 +354,7 @@
+ 	setMode(_currentMode);	//updates the new viewport border settings
+ }
+ 
+-void CAMainWin::on_actionUnsplit_activated() {
++void CAMainWin::on_actionUnsplit_triggered() {
+ 	CAViewPort *v = _currentScrollWidget-&gt;unsplit();
+ 	if (v)
+ 		_viewPortList.removeAll(v);
+@@ -364,7 +364,7 @@
+ 	moMainWin.actionUnsplit-&gt;setEnabled(false);
+ }
+ 
+-void CAMainWin::on_actionSource_view_perspective_activated() {
++void CAMainWin::on_actionSource_view_perspective_triggered() {
+ 	CASourceViewPort *v = new CASourceViewPort(&amp;_document, 
+_activeViewPort-&gt;parent());
+ 	_currentScrollWidget-&gt;addViewPort(v);
+ 	
+@@ -381,7 +381,7 @@
+ 	setMode(_currentMode);	//updates the new viewport border settings
+ }
+ 
+-void CAMainWin::on_actionNew_viewport_activated() {
++void CAMainWin::on_actionNew_viewport_triggered() {
+ 	CAViewPort *v = _currentScrollWidget-&gt;newViewPort(_activeViewPort);
+ 
+ 	v-&gt;setWindowIcon(QIcon(QString::fromUtf8(&quot;:/menu/images/clogosm.png&quot;)));
+@@ -398,15 +398,15 @@
+ 	setMode(_currentMode);	//updates the new viewport border settings
+ }
+ 
+-void CAMainWin::on_actionNew_activated() {
++void CAMainWin::on_actionNew_triggered() {
+ 	newDocument();
+ }
+ 
+-void CAMainWin::on_actionNew_sheet_activated() {
++void CAMainWin::on_actionNew_sheet_triggered() {
+ 	
+addSheet(_document.addSheet(tr(&quot;Sheet %1&quot;).arg(QString::number(_document.sheetCount()+1))));			//add 
+a new empty sheet
+ }
+ 
+-void CAMainWin::on_actionNew_staff_activated() {
++void CAMainWin::on_actionNew_staff_triggered() {
+ 	if (_activeViewPort-&gt;viewPortType() != CAViewPort::ScoreViewPort)
+ 		return;
+ 	
+@@ -470,7 +470,7 @@
+ 	}	//switch(mode)
+ }
+ 
+-void CAMainWin::on_action_Clef_activated() {
++void CAMainWin::on_action_Clef_triggered() {
+ 	setMode(InsertMode);
+ 	mpoMEFactory-&gt;setMusElementType( CAMusElement::Clef );
+ 	actionNoteSelect-&gt;setChecked( false );
+@@ -889,7 +889,7 @@
+ 			_defaultRtMidiOutPort = -1;
+ 			
+ 	} else {
+-		on_actionMIDI_Setup_activated();
++		on_actionMIDI_Setup_triggered();
+ 	}
+ }
+ 
+@@ -958,22 +958,22 @@
+ 	_lockScrollPlayback = val;
+ }
+ 
+-void CAMainWin::on_actionZoom_to_selection_activated() {
++void CAMainWin::on_actionZoom_to_selection_triggered() {
+ 	if (_activeViewPort-&gt;viewPortType() == CAViewPort::ScoreViewPort)
+ 		((CAScoreViewPort*)_activeViewPort)-&gt;zoomToSelection(_animatedScroll);
+ }
+ 
+-void CAMainWin::on_actionZoom_to_fit_activated() {
++void CAMainWin::on_actionZoom_to_fit_triggered() {
+ 	if (_activeViewPort-&gt;viewPortType() == CAViewPort::ScoreViewPort)
+ 		((CAScoreViewPort*)_activeViewPort)-&gt;zoomToFit();
+ }
+ 
+-void CAMainWin::on_actionZoom_to_width_activated() {
++void CAMainWin::on_actionZoom_to_width_triggered() {
+ 	if (_activeViewPort-&gt;viewPortType() == CAViewPort::ScoreViewPort)
+ 		((CAScoreViewPort*)_activeViewPort)-&gt;zoomToWidth();
+ }
+ 
+-void CAMainWin::on_actionZoom_to_height_activated() {
++void CAMainWin::on_actionZoom_to_height_triggered() {
+ 	if (_activeViewPort-&gt;viewPortType() == CAViewPort::ScoreViewPort)
+ 		((CAScoreViewPort*)_activeViewPort)-&gt;zoomToHeight();
+ }
+@@ -982,7 +982,7 @@
+ 	delete _pluginManager;
+ }
+ 
+-void CAMainWin::on_actionOpen_activated() {
++void CAMainWin::on_actionOpen_triggered() {
+ 	QString s = QFileDialog::getOpenFileName(
+ 	                this,
+ 	                tr(&quot;Choose a file to open&quot;),
+@@ -1009,7 +1009,7 @@
+ 	}               
+ }
+ 
+-void CAMainWin::on_actionSave_activated() {
++void CAMainWin::on_actionSave_triggered() {
+ 	QString s;
+ 	if (_fileName.isEmpty()) { 
+ 		s = QFileDialog::getSaveFileName(
+@@ -1036,7 +1036,7 @@
+ 	}               
+ }
+ 
+-void CAMainWin::on_actionSave_as_activated() {
++void CAMainWin::on_actionSave_as_triggered() {
+ 	QString s = QFileDialog::getSaveFileName(
+ 	                this,
+ 	                tr(&quot;Choose a file to save&quot;),
+@@ -1060,7 +1060,7 @@
+ 	}
+ }
+ 
+-void CAMainWin::on_actionExport_activated() {
++void CAMainWin::on_actionExport_triggered() {
+ 	QStringList fileNames;
+ 	int ffound = _exportDialog-&gt;exec();
+ 	if (ffound)
+@@ -1087,7 +1087,7 @@
+ 	}              
+ }
+ 
+-void CAMainWin::on_actionImport_activated() {
++void CAMainWin::on_actionImport_triggered() {
+ 	QStringList fileNames;
+ 	int ffound = _importDialog-&gt;exec();
+ 	if (ffound)
+@@ -1162,7 +1162,7 @@
+ 	fflush( stdout );
+ 	if( bOn )
+ 	{
+-		on_action_Clef_activated();
++		on_action_Clef_triggered();
+ 		actionNoteSelect-&gt;setChecked( false );
+ 		actionTimeSigSelect-&gt;setChecked( false );	
+ 	}
+@@ -1225,7 +1225,7 @@
+ 	}
+ }
+ 	
+-void CAMainWin::on_action_Key_signature_activated() {
++void CAMainWin::on_action_Key_signature_triggered() {
+ 	setKeySigPSPVisible( true );
+ 	mpoKeySigPSP-&gt;setWindowIcon(QIcon(QString::fromUtf8
+(&quot;:/menu/images/clogosm.png&quot;)));
+ 	mpoKeySigPSP-&gt;setFocusPolicy(Qt::ClickFocus);
+@@ -1241,7 +1241,7 @@
+ 	actionTimeSigSelect-&gt;setChecked( false );	
+ }
+ 
+-void CAMainWin::on_action_Time_signature_activated() {
++void CAMainWin::on_action_Time_signature_triggered() {
+ 	setTimeSigPSPVisible( true );
+ 	
+ 	mpoTimeSigPSP-&gt;setWindowIcon(QIcon(QString::fromUtf8
+(&quot;:/menu/images/clogosm.png&quot;)));
+@@ -1270,16 +1270,16 @@
+ 	input.setData(docString);
+ 	_document = *CACanorusML::openDocument(&amp;input, this);
+ 	
+-	on_actionSource_view_perspective_activated();
++	on_actionSource_view_perspective_triggered();
+ 	rebuildUI();
+ }
+ 
+-void CAMainWin::on_actionAbout_Qt_activated()
++void CAMainWin::on_actionAbout_Qt_triggered()
+ {
+ 	QMessageBox::aboutQt( this, tr(&quot;About Qt&quot;) );
+ }
+ 
+-void CAMainWin::on_actionAbout_Canorus_activated()
++void CAMainWin::on_actionAbout_Canorus_triggered()
+ {
+ 	QMessageBox::about ( this, tr(&quot;About Canorus&quot;),
+ 	tr(&quot;Canorus - The next generation music score editor\n\n\
+@@ -1291,7 +1291,7 @@
+ Homepage: <A HREF="http://www.canorus.org">http://www.canorus.org</A>&quot;).arg(CANORUS_VERSION) );
+ }
+ 
+-void CAMainWin::on_actionMIDI_Setup_activated() {
++void CAMainWin::on_actionMIDI_Setup_triggered() {
+ 	CAMidiSetupDialog(this, _midi-&gt;getInputPorts(), _midi-&gt;getOutputPorts(), 
+&amp;_defaultRtMidiInPort, &amp;_defaultRtMidiOutPort);
+ 	_settings-&gt;setValue(&quot;rtmidi/defaultoutputport&quot;, _defaultRtMidiOutPort);
+ 	_settings-&gt;setValue(&quot;rtmidi/defaultinputport&quot;, _defaultRtMidiInPort);
+Index: src/ui/mainwin.h
+===================================================================
+--- src/ui/mainwin.h	(Revision 331)
++++ src/ui/mainwin.h	(Arbeitskopie)
+@@ -142,47 +142,47 @@
+ 	////////////////////////////////////////////////////
+ 	void closeEvent(QCloseEvent *event);
+ 	//File menu
+-	void on_actionNew_activated();
+-	void on_actionNew_sheet_activated();
+-	void on_actionOpen_activated();
+-	void on_actionSave_activated();
+-	void on_actionSave_as_activated();
+-	void on_actionExport_activated();
+-	void on_actionImport_activated();
++	void on_actionNew_triggered();
++	void on_actionNew_sheet_triggered();
++	void on_actionOpen_triggered();
++	void on_actionSave_triggered();
++	void on_actionSave_as_triggered();
++	void on_actionExport_triggered();
++	void on_actionImport_triggered();
+ 	
+ 	//Edit menu
+-	void on_actionMIDI_Setup_activated();
++	void on_actionMIDI_Setup_triggered();
+ 	
+ 	//Insert menu
+-	void on_actionNew_staff_activated();
+-	void on_action_Clef_activated();
+-	void on_action_Key_signature_activated();
+-	void on_action_Time_signature_activated();
++	void on_actionNew_staff_triggered();
++	void on_action_Clef_triggered();
++	void on_action_Key_signature_triggered();
++	void on_action_Time_signature_triggered();
+ 
+ 	//View menu
+ 	void on_action_Fullscreen_toggled(bool);
+ 	void on_actionAnimated_scroll_toggled(bool);
+ 	void on_actionLock_scroll_playback_toggled(bool);
+-	void on_actionZoom_to_selection_activated();
+-	void on_actionZoom_to_fit_activated();
+-	void on_actionZoom_to_width_activated();
+-	void on_actionZoom_to_height_activated();
++	void on_actionZoom_to_selection_triggered();
++	void on_actionZoom_to_fit_triggered();
++	void on_actionZoom_to_width_triggered();
++	void on_actionZoom_to_height_triggered();
+ 	
+ 	//Playback menu
+ 	void on_actionPlay_toggled(bool);
+ 	
+ 	//Perspective menu
+-	void on_actionSource_view_perspective_activated();
++	void on_actionSource_view_perspective_triggered();
+ 	
+ 	//Window menu
+-	void on_actionSplit_horizontally_activated();
+-	void on_actionSplit_vertically_activated();
+-	void on_actionUnsplit_activated();
+-	void on_actionNew_viewport_activated();
++	void on_actionSplit_horizontally_triggered();
++	void on_actionSplit_vertically_triggered();
++	void on_actionUnsplit_triggered();
++	void on_actionNew_viewport_triggered();
+ 	
+ 	//Help menu
+-	void on_actionAbout_Qt_activated();
+-	void on_actionAbout_Canorus_activated();
++	void on_actionAbout_Qt_triggered();
++	void on_actionAbout_Canorus_triggered();
+ 
+ 	// Toolbar 
+ 	void sl_mpoVoiceNum_valChanged(int iVoice);
+
+Regards Jeremias
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000010.html">[Canorus-devel] activated vs triggered
+</A></li>
+	<LI>Next message: <A HREF="000015.html">[Canorus-devel] activated vs triggered
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#12">[ date ]</a>
+              <a href="thread.html#12">[ thread ]</a>
+              <a href="subject.html#12">[ subject ]</a>
+              <a href="author.html#12">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

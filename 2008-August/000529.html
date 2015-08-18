@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Transposition
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Transposition&In-Reply-To=%3C48B86D43.8010008%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000528.html">
+   <LINK REL="Next"  HREF="000527.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Transposition</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Transposition&In-Reply-To=%3C48B86D43.8010008%40gmail.com%3E"
+       TITLE="[Canorus-devel] Transposition">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Fri Aug 29 23:42:27 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000528.html">[Canorus-devel] Transposition
+</A></li>
+        <LI>Next message: <A HREF="000527.html">[Canorus-devel] tuplets implemented
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#529">[ date ]</a>
+              <a href="thread.html#529">[ thread ]</a>
+              <a href="subject.html#529">[ subject ]</a>
+              <a href="author.html#529">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Transposition is not yet implemented, but should not be a problem. The
+backend is already there - you could take a look at CADiatonicPitch
+(note name + accs) and CAInterval (prime, second, perfect, major etc.).
+Every note has a diatonic pitch value set. And CADiatonicPitch has +
+operator implemented for the interval. So you can do existing pitch +
+interval = new pitch and apply the new pitch to all the selected notes.
+Heh, we even have the + defined for the intervals (eg. prime + third =
+third).
+
+The most interesting thing would actually be to provide a GUI for the
+transposition. Also, what happens to the key signature.
+
+This is on our TODO list for version 0.6 anyway. If you're interested
+in, you can contribute this feature!
+
+
+Regards.
+-Matev&#382;
+
+Sam Pattuzzi pravi:
+&gt;<i> Hi
+</I>&gt;<i>
+</I>&gt;<i> I've joined the list in the hope I could help out. I am a very novice 
+</I>&gt;<i> programmer but willing to learn more. I picked this project because a friend 
+</I>&gt;<i> will not be able to convert to Linux without a Sibelius alternative. She has 
+</I>&gt;<i> tried NoteEdit and liked it apart from the fact it missed one feature that 
+</I>&gt;<i> Sibelius calls the transpose button. I could see that this is the project 
+</I>&gt;<i> NoteEdit devs have moved to, so I have chosen to help out here. Hope you will 
+</I>&gt;<i> have me.
+</I>&gt;<i>
+</I>&gt;<i> Ok, thats my intro out of the way, now onto real topics. Has transpose already 
+</I>&gt;<i> been implemented in Canorus? If not, maybe it is something that I could work 
+</I>&gt;<i> on.
+</I>&gt;<i>
+</I>&gt;<i> Sam Pattuzzi
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000528.html">[Canorus-devel] Transposition
+</A></li>
+	<LI>Next message: <A HREF="000527.html">[Canorus-devel] tuplets implemented
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#529">[ date ]</a>
+              <a href="thread.html#529">[ thread ]</a>
+              <a href="subject.html#529">[ subject ]</a>
+              <a href="author.html#529">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Change suggestion for Canorus classes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Change%20suggestion%20for%20Canorus%20classes&In-Reply-To=%3C47B20056.30401%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000440.html">
+   <LINK REL="Next"  HREF="000442.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Change suggestion for Canorus classes</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Change%20suggestion%20for%20Canorus%20classes&In-Reply-To=%3C47B20056.30401%40web.de%3E"
+       TITLE="[Canorus-devel] Change suggestion for Canorus classes">suamor at web.de
+       </A><BR>
+    <I>Tue Feb 12 21:23:50 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000440.html">[Canorus-devel] key signature changed
+</A></li>
+        <LI>Next message: <A HREF="000442.html">[Canorus-devel] Change suggestion for Canorus classes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#441">[ date ]</a>
+              <a href="thread.html#441">[ thread ]</a>
+              <a href="subject.html#441">[ subject ]</a>
+              <a href="author.html#441">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+As you all know we use some form of the MVC (Model View Controller) pattern
+as a base for Canorus. Ideally we should have many control, model and view
+classes. Please take your time reading this quite long mail.
+
+The situation now is that we have a huge CAMainWin class doing both view and
+control function because of two reasons:
+
+1) on_&lt;widget&gt;_&lt;signal&gt;(params) methods to create automatically slots from
+   signals caused by various user actions (menus, toolbars, keyboard, ...)
+
+2) many object instances (viewport, viewport container, mode) not directly
+   belonging to the core (i.e. the score data themselves) needing to be shared.
+
+My first idea was to split CAMainWin into a view and control part but I gave
+up on it as it's getting too complicated to do that and we still have
+afterwards to split up those classes even more.
+
+New suggestion: Do it in small steps, create small view (user interface) and
+                control objects and integrate them into the CAMainWin.
+
+To be able to have access to the objects needed in several methods we do create
+an object instance pool containing all the necessary data. Every class needing
+access to the data gets a reference to the pool in the constructor. The pool
+can control how many references on a certain object is in use.
+
+In the pattern world it often only once (Singleton) exists, but we would need
+one per Canorus instance. Also usually an instance of an object is created when
+it is needed. For us some instances currently get created when users perform
+certain actions. The details would have to be discussed on object creation.
+
+Some of you might think this is just like the NoteEdit resources file, but it
+certainy isn't. First only object being shared between several classes are in
+this pool and the access is only done via methods, no direct access to the
+objects (i.e. you get only object references).
+
+Also we should minimize the number of those shared objects. It is often easier
+to give access to a data model of another module.
+
+F.e. consider you make a module for voice management and need information about
+some sheet data in one method, here you either could directly give access to
+the sheet model or decide to combine voices and sheets into one module)
+
+Still a technical problem is how to resolve signal/slot automatically in sub
+controls of the main window. I have to beter understand how this works in Qt
+first before being able to make suggestions.
+
+This way we'd get three main classes, CAEditorWin managing user interface
+(view) objects, CAEditorCtl managing controls between view and data and
+finally the models themselves where CAEditorPool could be the shared object
+pool.
+
+This concept allows us to make the split the work into small steps, reducing
+the size of the CAMainWin gradually. I'd rename it to CAEditorWin first as soon
+as the refactoring work is done.
+
+I'd work with my printing and preview concept in this direction as an further
+example for this concept if you agree basically. More ideas are welcome.
+
+I also wrote 5 rules based on this concept I will present (and maybe modify
+hencefor) if we decided about this suggestion.
+
+Thanks for having read this long mail :-)
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000440.html">[Canorus-devel] key signature changed
+</A></li>
+	<LI>Next message: <A HREF="000442.html">[Canorus-devel] Change suggestion for Canorus classes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#441">[ date ]</a>
+              <a href="thread.html#441">[ thread ]</a>
+              <a href="subject.html#441">[ subject ]</a>
+              <a href="author.html#441">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

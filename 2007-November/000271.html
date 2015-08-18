@@ -1,0 +1,156 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] a crash report, leading rest
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20a%20crash%20report%2C%20leading%20rest&In-Reply-To=%3C474063D2.50801%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000270.html">
+   <LINK REL="Next"  HREF="000272.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] a crash report, leading rest</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20a%20crash%20report%2C%20leading%20rest&In-Reply-To=%3C474063D2.50801%40schwaben.de%3E"
+       TITLE="[Canorus-devel] a crash report, leading rest">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Nov 18 17:09:54 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000270.html">[Canorus-devel] gpl3?
+</A></li>
+        <LI>Next message: <A HREF="000272.html">[Canorus-devel] a crash report, leading rest
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+tried to use canorus for a track, and got a reproducable crash, which
+I'm reporting here with a sufficiently small example. When I start
+canorus, Rev. 624, open the attached file, and want to add in the second
+staff a quaver (an eighth note) f after the rest, I get immediately a
+crash. Inside gdb, canorus crashes at inserting the second f there:
+
+This GDB was configured as &quot;i586-suse-linux&quot;...Using host libthread_db
+library &quot;/lib/libthread_db.so.1&quot;.
+
+(gdb) run
+Starting program: /home/rud/canorus/trunk/src/canorus
+Failed to read a valid object file image from memory.
+[Thread debugging using libthread_db enabled]
+[New Thread -1224537888 (LWP 5091)]
+[New Thread -1228293232 (LWP 5094)]
+[New Thread -1238369392 (LWP 5095)]
+[New Thread -1246762096 (LWP 5096)]
+[New Thread -1255154800 (LWP 5097)]
+[New Thread -1263547504 (LWP 5098)]
+[New Thread -1271940208 (LWP 5099)]
+[New Thread -1282409584 (LWP 5100)]
+[New Thread -1290802288 (LWP 5101)]
+[New Thread -1303381104 (LWP 5102)]
+[Thread -1303381104 (LWP 5102) exited]
+
+Program received signal SIGSEGV, Segmentation fault.
+[Switching to Thread -1224537888 (LWP 5091)]
+0x080bd0ce in CAMusElement::musElementType (this=0x0) at
+/home/rud/canorus/trunk/src/core/muselement.h:38
+38              CAMusElementType musElementType() { return
+_musElementType; }
+(gdb) bt
+#0  0x080bd0ce in CAMusElement::musElementType (this=0x0) at
+/home/rud/canorus/trunk/src/core/muselement.h:38
+#1  0x080c188f in CAMusElementFactory::configureNote (this=0x85bad40,
+voice=0x85c6630, coords={xp = 180, yp = 190},
+    drawableStaff=0xb2696690, left=0xb2690ad8) at
+/home/rud/canorus/trunk/src/core/muselementfactory.cpp:181
+#2  0x080ea82b in CAMainWin::insertMusElementAt (this=0xb390fe38,
+coords={xp = 180, yp = 190}, v=0xb26969b0)
+    at /home/rud/canorus/trunk/src/ui/mainwin.cpp:1751
+#3  0x080f0380 in CAMainWin::scoreViewPortMousePress (this=0xb390fe38,
+e=0xbf9bdeec, coords={xp = 180, yp = 190},
+    v=0xb26969b0) at /home/rud/canorus/trunk/src/ui/mainwin.cpp:1305
+#4  0x08174c53 in CAMainWin::qt_metacall (this=0xb390fe38,
+_c=QMetaObject::InvokeMetaMethod, _id=76, _a=0xbf9bdc78)
+    at /home/rud/canorus/trunk/src/moc_mainwin.cxx:310
+#5  0xb759ddb1 in QMetaObject::activate () from /usr/lib/libQtCore.so.4
+#6  0xb759e8b2 in QMetaObject::activate () from /usr/lib/libQtCore.so.4
+#7  0x08175df4 in CAScoreViewPort::CAMousePressEvent (this=0xb26969b0,
+_t1=0xbf9bdeec, _t2={xp = 180, yp = 190},
+    _t3=0xb26969b0) at /home/rud/canorus/trunk/src/moc_scoreviewport.cxx:189
+#8  0x081661b0 in CAScoreViewPort::mousePressEvent (this=0xb26969b0,
+e=0xbf9bdeec)
+    at /home/rud/canorus/trunk/src/widgets/scoreviewport.cpp:1062
+#9  0xb79db195 in QWidget::event () from /usr/lib/libQtGui.so.4
+#10 0xb7996390 in QApplicationPrivate::notify_helper () from
+/usr/lib/libQtGui.so.4
+#11 0xb799c697 in QApplication::notify () from /usr/lib/libQtGui.so.4
+#12 0xb758cc8b in QCoreApplication::notifyInternal () from
+/usr/lib/libQtCore.so.4
+#13 0xb79ebdd6 in QETWidget::translateMouseEvent () from
+/usr/lib/libQtGui.so.4
+#14 0xb79eb4f3 in QApplication::x11ProcessEvent () from
+/usr/lib/libQtGui.so.4
+#15 0xb7a0d745 in QEventDispatcherX11::processEvents () from
+/usr/lib/libQtGui.so.4
+#16 0xb758c1c8 in QEventLoop::processEvents () from /usr/lib/libQtCore.so.4
+#17 0xb758c2dc in QEventLoop::exec () from /usr/lib/libQtCore.so.4
+#18 0xb758e958 in QCoreApplication::exec () from /usr/lib/libQtCore.so.4
+#19 0xb7995aa7 in QApplication::exec () from /usr/lib/libQtGui.so.4
+#20 0x080aab97 in main (argc=1, argv=0xbf9be914) at
+/home/rud/canorus/trunk/src/main.cpp:130
+(gdb)
+
+The CanorusML file I loaded is the attached one.
+
+Something else about inserting notes punctuated: An insertion after a
+punctuation get's the punctuation too, although the preview note doesn't
+show that. So I have to cycle through the triple punctuation to get to
+the not punctuated insert. Is there a key to reset punctuation?
+
+Looking forward for a nice canorus, Regards,
+Georg
+
+
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: test_canorus.xml
+Type: text/xml
+Size: 2254 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20071118/6ccf6b2d/attachment.xml">https://lists.berlios.de/pipermail/canorus-devel/attachments/20071118/6ccf6b2d/attachment.xml</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000270.html">[Canorus-devel] gpl3?
+</A></li>
+	<LI>Next message: <A HREF="000272.html">[Canorus-devel] a crash report, leading rest
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#271">[ date ]</a>
+              <a href="thread.html#271">[ thread ]</a>
+              <a href="subject.html#271">[ subject ]</a>
+              <a href="author.html#271">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

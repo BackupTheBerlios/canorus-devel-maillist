@@ -1,0 +1,78 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] SoC, plugins, threads &amp; processes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20SoC%2C%20plugins%2C%20threads%20%26%20processes&In-Reply-To=%3C47CAA78E.5090002%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000485.html">
+   <LINK REL="Next"  HREF="000487.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] SoC, plugins, threads &amp; processes</H1>
+    <B>&#352;tefan Sakal&#237;k</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20SoC%2C%20plugins%2C%20threads%20%26%20processes&In-Reply-To=%3C47CAA78E.5090002%40gmail.com%3E"
+       TITLE="[Canorus-devel] SoC, plugins, threads &amp; processes">rabbit6440 at gmail.com
+       </A><BR>
+    <I>Sun Mar  2 14:11:42 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000485.html">[Canorus-devel] pycli 2nd
+</A></li>
+        <LI>Next message: <A HREF="000487.html">[Canorus-devel] SoC, plugins, threads &amp; processes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi.
+&gt;<i>
+</I>&gt;<i> For me I'd prefer processes all the except being extremely careful about
+</I>&gt;<i> synchronisation stuff.
+</I>&gt;<i>   
+</I>
+Yes, you are right, I've changed my mind. When I tried to call python 
+scripts from pyconsole, canorus crashed. I guess it's because C/Python 
+won't work when used in multiple threads in the same process. 
+Nevertheless, when using plugins &amp; threads, it's very unstable.
+I don't know very much about processes. How would they communicate; 
+through a library? Would we need to create another application or 
+something?...
+Can you please explain your concept?
+
+Regards,
+&#352;tefan
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000485.html">[Canorus-devel] pycli 2nd
+</A></li>
+	<LI>Next message: <A HREF="000487.html">[Canorus-devel] SoC, plugins, threads &amp; processes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#486">[ date ]</a>
+              <a href="thread.html#486">[ thread ]</a>
+              <a href="subject.html#486">[ subject ]</a>
+              <a href="author.html#486">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

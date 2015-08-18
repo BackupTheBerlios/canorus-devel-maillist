@@ -1,0 +1,183 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus library proposal
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20library%20proposal&In-Reply-To=%3C4B9D0007.6030907%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000930.html">
+   <LINK REL="Next"  HREF="000934.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus library proposal</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%20library%20proposal&In-Reply-To=%3C4B9D0007.6030907%40web.de%3E"
+       TITLE="[Canorus-devel] Canorus library proposal">suamor at web.de
+       </A><BR>
+    <I>Sun Mar 14 16:25:59 CET 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000930.html">[Canorus-devel] Canorus library proposal
+</A></li>
+        <LI>Next message: <A HREF="000934.html">[Canorus-devel] Canorus library proposal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#933">[ date ]</a>
+              <a href="thread.html#933">[ thread ]</a>
+              <a href="subject.html#933">[ subject ]</a>
+              <a href="author.html#933">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+It was just a thought because of the plugin writers that maybe don't
+want to use a large lib. Looking at the file sizes I agree that this
+is not a problem for a long time ahead, so no problem with me on three
+or four libraries until we get bloat alerts ;) The only thing which
+might be useful earlier is to have a separate lib for the export and
+import (but I'd not split it up until we have a NoteEdit similar number
+of import and exports).
+
+The grouping itself was just done for me and plugin writers to get a
+quick overview what Canorus offers.
+
+Also if color belongs to config (settings ?) why not put it to
+libCanorusGUI ? The settings core itself is very small up to now,
+most part of it are user interface anyway. I currently lack to see
+a case when config is needed with a core plugin.
+
+If we ever need/want to create static libraries we still can consider
+if there is a need for further splitup. On my 64bit Mandriva the Qt
+QtCore Lib is 2,2M and QtGui is 9,7M. The largest library is QtWebKit.
+Even for a mobile device nowadays these sizes are not a problem.
+With debug symbols Canorus itself seems large, but stripped down it is
+3,3M on my system. When I load the &quot;All features file&quot; the virtual memory
+usage is below 1M.
+
+Regards,
+
+Reinhard
+
+Am 13.03.2010 20:17, schrieb Matev&#382; Jekovec:
+
+&gt;<i> Hi Reinhard.
+</I>&gt;<i> 
+</I>&gt;<i> I read your proposal, but I fear we are putting too much effort into
+</I>&gt;<i> modularizing and spliting Canorus to so many libraries. First, you have
+</I>&gt;<i> to ask yourself why would you want to split Canorus to libraries from
+</I>&gt;<i> the first place? IMO, splitting to libCanorusCore, libCanorusGUI and
+</I>&gt;<i> libCanorusPython for scripting would be more than enough. For me,
+</I>&gt;<i> splitting to these three libs would be enough because I need Canorus
+</I>&gt;<i> model linkage to other applications, especially web applications which
+</I>&gt;<i> don't need the GUI. For Qt dependencies, I fear even libCanorusCore
+</I>&gt;<i> would have to link with all Qt libraries, including libQtGui, because we
+</I>&gt;<i> use colors in our config file, which are part of the libQtGui.
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> On 12. 03. 2010 20:54, Reinhard Katzmann wrote:
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> By looking over all existing Canorus classes I did start to write
+</I>&gt;&gt;<i> a small guide describing the Canorus libraries as they could be.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I avoided class or file names and the current directory hierarchy
+</I>&gt;&gt;<i> but only looked how these are logically combined (sometimes I
+</I>&gt;&gt;<i> added ideas for refactoring, mainly split up into more classes).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I checked this document into the developers guide directory in
+</I>&gt;&gt;<i> &quot;libraries&quot; subfolder&quot; (r1197). Also I attached it to this mail.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Here is my proposal of the libraries:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> a) Overview
+</I>&gt;&gt;<i> libCanorusFile
+</I>&gt;&gt;<i> libCanorusScoreModel
+</I>&gt;&gt;<i> libCanorusScoreHandling (Playback, various manipulations)
+</I>&gt;&gt;<i> libCanorusExpImp
+</I>&gt;&gt;<i> libCanorusMidi
+</I>&gt;&gt;<i> libCanorusMisc (Editing and Program Execution)
+</I>&gt;&gt;<i> libCanorusUI
+</I>&gt;&gt;<i> libCanorusWidget
+</I>&gt;&gt;<i> libCanorusLayout
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> b) Comments
+</I>&gt;&gt;<i> I hope that I did no mistakes. Maybe there could be more
+</I>&gt;&gt;<i> logically splitted groups as some of them are already more
+</I>&gt;&gt;<i> than ten 10 classes (I prefer small groups to not loose overview).
+</I>&gt;&gt;<i> Mainwindow is currently left out as we have to work on that class
+</I>&gt;&gt;<i> and I think that the canorus exe will later consist of this class.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> c) Preliminary work
+</I>&gt;&gt;<i> To avoid dependencies between the libraries itself we probably have
+</I>&gt;&gt;<i> to refactor to some patterns like bridge (encapsulation by abstraction
+</I>&gt;&gt;<i> using service-abstraction and facility-interface), adapter (interface
+</I>&gt;&gt;<i> adaption if it doesn't fit), facade (encapsulate complex logic), Proxy,
+</I>&gt;&gt;<i> Wrapper or similar methods. I think header changes or new headers should
+</I>&gt;&gt;<i> normally be enough (after all headers are the most important part of the
+</I>&gt;&gt;<i> Canorus &quot;SDK&quot; ;) )
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> d) Your part
+</I>&gt;&gt;<i> Please correct me and tell me what you think about my proposal
+</I>&gt;&gt;<i> (especially if you like the way I ordered the libs).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Thanks and regards,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Reinhard
+</I>&gt;&gt;<i> P.S.: Sorry Matevz, it seems you have to redraw your librarydiagram
+</I>&gt;&gt;<i> picture :)
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;<i>   
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000930.html">[Canorus-devel] Canorus library proposal
+</A></li>
+	<LI>Next message: <A HREF="000934.html">[Canorus-devel] Canorus library proposal
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#933">[ date ]</a>
+              <a href="thread.html#933">[ thread ]</a>
+              <a href="subject.html#933">[ subject ]</a>
+              <a href="author.html#933">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

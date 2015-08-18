@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Menu tool buttons don't work on OS X
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Menu%20tool%20buttons%20don%27t%20work%20on%20OS%20X&In-Reply-To=%3C399204.13055.qm%40web30615.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000067.html">
+   <LINK REL="Next"  HREF="000071.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Menu tool buttons don't work on OS X</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Menu%20tool%20buttons%20don%27t%20work%20on%20OS%20X&In-Reply-To=%3C399204.13055.qm%40web30615.mail.mud.yahoo.com%3E"
+       TITLE="[Canorus-devel] Menu tool buttons don't work on OS X">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Mon Mar 19 04:39:54 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000067.html">[Canorus-devel] Menu tool buttons don't work on OS X
+</A></li>
+        <LI>Next message: <A HREF="000071.html">[Canorus-devel] Menu tool buttons don't work on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>
+--- <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+
+&gt;<i> When you select a sub-symbol, does the button get checked or stays
+</I>&gt;<i> up?
+</I>
+No, the menu goes away without selecting anything.
+
+&gt;<i> Does mouse wheel over the button select it?
+</I>
+Hard to say as I am on a Powerbook without a wheel, but I did install
+mouse wheel emulation software; it worked on other programs but in
+Canorus it still didn't select anything.
+
+&gt;<i> I did a small fix in R404 preventing button box hiding to quickly on
+</I>&gt;<i> Mac. The drawback is that you must select a clef or the button box
+</I>&gt;<i> will never hide. Does this work?
+</I>
+Yes, thanks, this does work, mostly. It requires a two clicks to select
+an item in the box, and as you say if you don't select anything it does
+not hide. The console errors still remain; I'll try to investigate more
+soon when I have some time.
+
+Sam
+
+
+&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#197;&#190;
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; The menu tool buttons for selecting different clefs, barlines, etc.
+</I>&gt;<i> &gt; don't work any more on Mac OS X (R403); it is possible to select
+</I>&gt;<i> the
+</I>&gt;<i> &gt; different types of symbols, that is I can switch between inserting
+</I>&gt;<i> &gt; clefs, time signatures, etc., but the popup menu won't select
+</I>&gt;<i> between
+</I>&gt;<i> &gt; the different types of the same symbol: for example, the clef popup
+</I>&gt;<i> is
+</I>&gt;<i> &gt; stuck on treble clef. The menu does pop up and show the various
+</I>&gt;<i> choices
+</I>&gt;<i> &gt; but when I click on a button the menu disappears and the button
+</I>&gt;<i> never
+</I>&gt;<i> &gt; gets selected. Here are the errors that show up on the console:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; At startup:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiContextType_toggled(bool,int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiClefType_toggled(bool,int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiTimeSigType_toggled(bool,int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiBarlineType_toggled(bool,int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiSheetName_returnPressed()
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiContextName_returnPressed()
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiStaffNumberOfLines_valueChanged(int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiPlayableLength_toggled(bool,int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiNoteStemDirection_toggled(bool,int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiKeySigNumberOfAccs_valChanged(int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiTimeSigBeats_valChanged(int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiTimeSigBeat_valChanged(int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiVoiceNum_valChanged(int)
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiVoiceName_returnPressed()
+</I>&gt;<i> &gt; QMetaObject::connectSlotsByName: No matching signal for
+</I>&gt;<i> &gt; on_uiVoiceStemDirection_toggled(bool,int)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; And then when I click on the arrow to pop up the menu:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; QToolButton: Menu in setMenu() overriding actions set in addAction!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; These are obviously related to the problem, but I am not familiar
+</I>&gt;<i> &gt; enough with Qt to figure out what is causing this behavior. It
+</I>&gt;<i> looks
+</I>&gt;<i> &gt; like setupCustomUi(), called from the constructor for mainwin.cpp,
+</I>&gt;<i> &gt; connects those functions to the toggled() or triggered() signals
+</I>&gt;<i> &gt; appropriately.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; These functions worked before the newgui merge. I don't remember
+</I>&gt;<i> them
+</I>&gt;<i> &gt; ever working on the newgui branch, but I thought they just hadn't
+</I>&gt;<i> been
+</I>&gt;<i> &gt; implemented yet.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Suggestions?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Sam
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;   
+</I>&gt;<i> 
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> 
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000067.html">[Canorus-devel] Menu tool buttons don't work on OS X
+</A></li>
+	<LI>Next message: <A HREF="000071.html">[Canorus-devel] Menu tool buttons don't work on OS X
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#68">[ date ]</a>
+              <a href="thread.html#68">[ thread ]</a>
+              <a href="subject.html#68">[ subject ]</a>
+              <a href="author.html#68">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

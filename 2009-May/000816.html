@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] r1066 doesn't link under MacOSX
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20r1066%20doesn%27t%20link%20under%20MacOSX&In-Reply-To=%3CC50D8FFD-4D76-42BB-B4CE-AF1F14D288EA%40titanium.sabren.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000824.html">
+   <LINK REL="Next"  HREF="000818.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] r1066 doesn't link under MacOSX</H1>
+    <B>Grzegorz Adam Hankiewicz</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20r1066%20doesn%27t%20link%20under%20MacOSX&In-Reply-To=%3CC50D8FFD-4D76-42BB-B4CE-AF1F14D288EA%40titanium.sabren.com%3E"
+       TITLE="[Canorus-devel] r1066 doesn't link under MacOSX">gradha at titanium.sabren.com
+       </A><BR>
+    <I>Mon May 18 16:16:48 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000824.html">[Canorus-devel] midi import
+</A></li>
+        <LI>Next message: <A HREF="000818.html">[Canorus-devel] r1066 doesn't link under MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#816">[ date ]</a>
+              <a href="thread.html#816">[ thread ]</a>
+              <a href="subject.html#816">[ subject ]</a>
+              <a href="author.html#816">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Strangely the problem is not the same for both architectures. I wonder  
+if I broke something in my Xcode due to the architecture warnings.
+
+INFO:root:Checking out 'trunk' commit of 1066.
+INFO:root:Exporting tree...
+INFO:root:Calling cmake...
+INFO:root:Calling make...
+ERROR:root:Error running command ['make', 'install']
+ERROR:root:Return value 2
+ERROR:root:Undefined symbols for architecture i386:
+   &quot;CAMusElementFactory::placeAutoBar(CAPlayable*)&quot;, referenced from:
+       CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+CAStaff*, CAVoice*)in midiimport.cpp.o
+       CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+CAStaff*, CAVoice*)in midiimport.cpp.o
+ld: symbol(s) not found for architecture i386
+collect2: ld returned 1 exit status
+ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/glib.c.o,  
+file is not of required architecture
+ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/ 
+elements.c.o, file is not of required architecture
+ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/except.c.o,  
+file is not of required architecture
+ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/mdutil.c.o,  
+file is not of required architecture
+ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/ 
+midiread.c.o, file is not of required architecture
+ld warning: in CMakeFiles/_CanorusPython.dir/import/pmidi/wrapper.c.o,  
+file is not of required architecture
+Undefined symbols for architecture ppc:
+   &quot;CAMusElementFactory::placeAutoBar(CAPlayable*)&quot;, referenced from:
+       CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+CAStaff*, CAVoice*)in midiimport.cpp.o
+       CAMidiImport::writeMidiChannelEventsToVoice_New(int, int,  
+CAStaff*, CAVoice*)in midiimport.cpp.o
+   &quot;_pmidi_out&quot;, referenced from:
+       _pmidi_out$non_lazy_ptr in midiimport.cpp.o
+   &quot;_pmidi_open_midi_file&quot;, referenced from:
+       CAMidiImport::importSheetImplPmidiParser(CASheet*)       in  
+midiimport.cpp.o
+   &quot;_pmidi_parse_midi_file&quot;, referenced from:
+       CAMidiImport::importSheetImplPmidiParser(CASheet*)       in  
+midiimport.cpp.o
+ld: symbol(s) not found for architecture ppc
+collect2: ld returned 1 exit status
+lipo: can't open input file: /var/folders/Us/UsO0wLwGFdiPPMqe80vxZ+++ 
++TI/-Tmp-//cchjGfgn.out (No such file or directory)
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000824.html">[Canorus-devel] midi import
+</A></li>
+	<LI>Next message: <A HREF="000818.html">[Canorus-devel] r1066 doesn't link under MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#816">[ date ]</a>
+              <a href="thread.html#816">[ thread ]</a>
+              <a href="subject.html#816">[ subject ]</a>
+              <a href="author.html#816">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

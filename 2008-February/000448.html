@@ -1,0 +1,88 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] clone() issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3Ca24024cb0802210916x23b32d18v2e66045607e5921d%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000447.html">
+   <LINK REL="Next"  HREF="000450.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] clone() issues</H1>
+    <B>Itay Perl</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3Ca24024cb0802210916x23b32d18v2e66045607e5921d%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] clone() issues">itay.perl at gmail.com
+       </A><BR>
+    <I>Thu Feb 21 18:16:48 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000447.html">[Canorus-devel] SVN
+</A></li>
+        <LI>Next message: <A HREF="000450.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#448">[ date ]</a>
+              <a href="thread.html#448">[ thread ]</a>
+              <a href="subject.html#448">[ subject ]</a>
+              <a href="author.html#448">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello all,
+
+In the current design, some objects hold pointers to their containers, which
+are used in the destructor to remove themselves from it before being
+destroyed. This creates a problem when we clone those elements, for usage
+with Copy&amp;Paste (CAMimeData) or in Undo/Redo stacks. For example, a cloned
+CAPlayable has a pointer to the voice context of the original playable, but
+the voice doesn't have a pointer to the cloned playable in its element list.
+So, if the voice is destroyed while the clone is still alive, it will delete
+the original, but not the clone. When the clone is destroyed (~CAMimeData
+for example), it will try to access the dangling voice pointer. That's the
+reason for the crash you can see if you copy a few notes to the clipboard
+and quit canorus.
+
+I think that such invalid conditions (e.g. playable has pointer to context,
+but context doesn't know about the playable) should not exist at all, so my
+solution would be to change the clone()s to clear those pointers in the
+clones. A clone() (no-arg) call would always create an &quot;orphan&quot; element,
+while e.g. CAPlayable::clone(CAVoice*) or CAMark::clone(CAMusElement*) would
+set the context pointer to the one given.
+
+Any objections?
+
+Regards,
+Itay
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080221/2725cf10/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080221/2725cf10/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000447.html">[Canorus-devel] SVN
+</A></li>
+	<LI>Next message: <A HREF="000450.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#448">[ date ]</a>
+              <a href="thread.html#448">[ thread ]</a>
+              <a href="subject.html#448">[ subject ]</a>
+              <a href="author.html#448">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

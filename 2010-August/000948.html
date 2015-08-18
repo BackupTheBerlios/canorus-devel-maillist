@@ -1,0 +1,266 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Embeddable sheet music render and player with events
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Embeddable%20sheet%20music%20render%20and%20player%20with%0A%20events&In-Reply-To=%3C20100820072524.3cedd641%40ext-ubu-msi%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000947.html">
+   <LINK REL="Next"  HREF="000949.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Embeddable sheet music render and player with events</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Embeddable%20sheet%20music%20render%20and%20player%20with%0A%20events&In-Reply-To=%3C20100820072524.3cedd641%40ext-ubu-msi%3E"
+       TITLE="[Canorus-devel] Embeddable sheet music render and player with events">suamor at web.de
+       </A><BR>
+    <I>Fri Aug 20 07:25:24 CEST 2010</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000947.html">[Canorus-devel] Embeddable sheet music render and player with	events
+</A></li>
+        <LI>Next message: <A HREF="000949.html">[Canorus-devel] a shut down problem with python enabelt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#948">[ date ]</a>
+              <a href="thread.html#948">[ thread ]</a>
+              <a href="subject.html#948">[ subject ]</a>
+              <a href="author.html#948">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear Gopalakrishna,
+
+Am Wed, 18 Aug 2010 18:17:19 -0700 (PDT)
+gab &quot;P.GopalaKrishna&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">krishnapg at yahoo.com</A>&gt; folgendes zu Papier:
+
+&gt;<i> Hello Reinhard,
+</I>&gt;<i> 
+</I>&gt;<i> Thank you for the detailed explanation. I got the picture.
+</I>&gt;<i> 
+</I>&gt;<i> CarMusTy is more like Lilypond, but for Carnatic music (as opposed to
+</I>&gt;<i> Western music). Like Lilypond, it allows Carnatic Music notation &amp; lyrics
+</I>&gt;<i> to be *typeset* beautifully and generate PDF files. (CarMusTy uses Latex,
+</I>&gt;<i> unlike Lilypond, which has its own syntax)
+</I>
+So for Canorus it'd be a backend kind of like Lilypond is. The infrastructure
+to add new backends to Canorus is available, even to plugins/scripts AFAIR.
+
+&gt;<i> Typesetting the Carnatic notation&#160;is the primary goal and it works fine for
+</I>&gt;<i> now. But for completeness sake, CarMusTy has two more goals - one is to
+</I>&gt;<i> generate the actual *sound* out of the notation, and two to generate the
+</I>&gt;<i> Western music notation equivalent for the Carnatic notation.
+</I>&gt;<i> 
+</I>&gt;<i> Generating MIDI for the Carnatic notation solves these two problems in one
+</I>&gt;<i> go, since MIDI can be *sounded* as well as there are many score editors
+</I>&gt;<i> that can render MIDI as sheet music (which by default happens to be Western
+</I>&gt;<i> notation). 
+</I>&gt;<i> 
+</I>&gt;<i> Another project of mine,&#160;CFugue, is capable of generating MIDI for Carnatic 
+</I>&gt;<i> notation and play the notes as MIDI (infact, CFugue is a C++ Runtime for
+</I>&gt;<i> MIDI score programming that&#160;supports both Western and Carnatic music and
+</I>&gt;<i> works directly on notes such as C, D, E etc. instead of MIDI data) - and
+</I>&gt;<i> CarMusTy can use CFugue to generate MIDI data.
+</I>
+This again is similar to both Lilypond and Canorus, both can create midi
+output. The difference is of course that as Canorus is an editor, there
+is a more &quot;live&quot; feeling to it (hearing sound during input and playback).
+(for Lilypond it's &quot;just&quot; a conversion script midi2ly, using an python
+interface to lilypond itself and some midi shared library)
+
+&gt;<i> But I am stuck at how to *render* that MIDI data as Western score within 
+</I>&gt;<i> CarMusTy itself. Just like Canorus, I am trying to minimize external 
+</I>&gt;<i> dependenceis, and CarMusTy already has an in-built PDF viewer (so that
+</I>&gt;<i> users can see the result of their typeset PDF within CarMusTy without
+</I>&gt;<i> having to open an external application) - and I would like to have in-built
+</I>&gt;<i> Sheet music Renderer also.
+</I>
+Rendering midi as said is in this case a completely different task. It
+mainly depends what you do want to do with the rendered score. Also
+you usually loose quite a lot of score information during the process
+so I see midi mainly as a base for creating new sheets or scores and less
+as a base for modifying/expanding an already created score.
+
+&gt;<i> All the open-source sheet music editors such as Musescore are very tightly 
+</I>&gt;<i> coupled with the rest of their application functionality, it just seems
+</I>&gt;<i> almost infeasible to *adapt* their rendering modules.
+</I>
+Yeah, especially for Musescore I'd really like to see the renderer as
+separately available module, because it has a good deal of layout and
+still has the score editing capabilities. Our goal on the renderer never
+was to include these layouting capabilities to avoid complexity
+(we're basically would reinventing lilypond here!) and so the composer
+can concentrate on the score itself and does layout as a separate step.
+
+We want to add some indirect layout possibilities (like forced page/line
+break) somewhen later in the development. Even then we recommend to
+concentrate on the piece itself until it is done and do the layout as
+separate step. Modern Layout of score is a complex task where lilypond
+currently AFAIK has the most possibilities.
+
+&gt;<i> May be I should try your suggestion of using Lilypond to generate the sheet 
+</I>&gt;<i> music&#160;Image. But not sure how complex it is going to be to *include*
+</I>&gt;<i> Lilypond inside CarMusTy. If Lilypond can be included directly as a C/C++
+</I>&gt;<i> library that should be great - else I would have to trigger it as an
+</I>&gt;<i> external command.
+</I>
+Though lilypond program itself is in C++, many parts of the whole lilypond
+typesetting system are done via scheme (lisp) scripts, so I don't know
+if it would be useful to create a shared library alternative to the program
+itself (the command line options would be function/method parameters
+afterwards). I haven't found much information about this. I think one of
+the reason is that the purpose of lilypond never to be able to edit the
+layout of the score in a way like Musescore does it but merely render it
+as explained above.
+
+&gt;<i> And, does&#160;Lilypond need&#160;MIDI data to be *translated*&#160;to its own syntax or
+</I>&gt;<i> is it capable of generating sheet music image directly from MIDI? If it
+</I>&gt;<i> can, then I think the problem is almost solved.
+</I>
+I don't know if lilypond is able to create sheets from midi files at all,
+I only know of the capability to create Midi form lilypond score.
+
+&gt;<i> Iam going&#160;to subscribe to the Lilypond forums. Meanwhile if anyone has any
+</I>&gt;<i> past experiences with Lilypond that can help answer these above, it should
+</I>&gt;<i> be great.
+</I>&gt;<i> 
+</I>&gt;<i> Thank you again all for your time and efforts on this. Keep the good work.
+</I>&gt;<i> It certainly will pay off to modulerize.
+</I>
+Regards,
+
+Reinhard Katzmann
+
+&gt;<i> Gopalakrishna Palem
+</I>&gt;<i> <A HREF="http://gpalem.web.officelive.com/CarMusTy.html">http://gpalem.web.officelive.com/CarMusTy.html</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> ________________________________
+</I>&gt;<i> From: Reinhard Katzmann &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">suamor at web.de</A>&gt;
+</I>&gt;<i> To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> Sent: Wed, August 18, 2010 9:56:50 PM
+</I>&gt;<i> Subject: Re: [Canorus-devel] Embeddable sheet music render and player with 
+</I>&gt;<i> events
+</I>&gt;<i> 
+</I>&gt;<i> Dear Gopalakrishna,
+</I>&gt;<i> 
+</I>&gt;<i> Am Tue, 17 Aug 2010 23:13:26 -0700 (PDT)
+</I>&gt;<i> gab &quot;P.GopalaKrishna&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">gopalakrishna.palem at yahoo.com</A>&gt; folgendes zu Papier:
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Hello,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I am the author of CarMusTy, Carnatic Music Typesetting application -
+</I>&gt;<i> &gt; looking for ready-to-use notation renderers (sheet music rendering
+</I>&gt;<i> &gt; modules) that can be plugged in and used. CarMusTy application is
+</I>&gt;<i> &gt; primarily target towards Carnatic music and generates MIDI files and I
+</I>&gt;<i> &gt; would like to have the MIDI file be represented as sheet music and played
+</I>&gt;<i> &gt; within CarMusTy supplied window (with the support for highlighing the
+</I>&gt;<i> &gt; currently played notes).
+</I>&gt;<i> 
+</I>&gt;<i> This sounds like an interesting project but I'm not sure how much of it
+</I>&gt;<i> is common with the existing score programs (especially the ones having
+</I>&gt;<i> full midi support, i.e. sequencer and score editing/rendering capabilities.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; I came across the Canorus and see that it can render the MIDI files as
+</I>&gt;<i> &gt; sheet music and play them with in its own UI.
+</I>&gt;<i> 
+</I>&gt;<i> Yes, we have that possibility. Note though that Canorus is no sequencer
+</I>&gt;<i> so it's main focus is on score editing and less on the midi department
+</I>&gt;<i> like instrument selection/manipulation, midi playback. You need partially
+</I>&gt;<i> separate software to fullfill this task (like timidity or
+</I>&gt;<i> qsynth/fluidsynth).
+</I>&gt;<i> 
+</I>&gt;<i> &gt; However, I would like to know how easy it is to *adapt* this sheet
+</I>&gt;<i> &gt; rendering &amp; playback modules in to other applications (such as CarMusTy). 
+</I>&gt;<i> 
+</I>&gt;<i> We have plans to split up Canorus into shared libraries, so the API
+</I>&gt;<i> for the user interface, core and other modules can be used from other
+</I>&gt;<i> programs as well. Currently this isn't easily possible. This will probably
+</I>&gt;<i> happen soon after or before our next release (no estimation exists yet about
+</I>&gt;<i> when this will happen but I wouldn't expect it before October this year).
+</I>&gt;<i> 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; I am looking for something like, given a MIDI file, the Canorus should
+</I>&gt;<i> &gt; generate a sheet music representation (may be as PNG or some other image
+</I>&gt;<i> &gt; that can be displayed in any widget). For example,
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &#160;&#160;&#160; QImage* notation =&#160;Canorus::RenderMIDIAsNotation(strMIDIFilePath);
+</I>&gt;<i> &gt; &#160;
+</I>&gt;<i> &gt; &#160;&#160;&#160; myPlayerWidget-&gt;ShowImage(notation); // Let my widget display the
+</I>&gt;<i> &gt; notes 
+</I>&gt;<i> &gt; &#160;&#160;&#160; Canorus::RenderMIDIAsSound(myPlayerWidget); // report player events to
+</I>&gt;<i> &gt; my player widget to hightlight the current notes.
+</I>&gt;<i> 
+</I>&gt;<i> Note that Canorus does only have a simple rendering from left to right. If
+</I>&gt;<i> you need sophisticated rendering, then you will have either to write your
+</I>&gt;<i> own rendering engine for Canorus or use the Lilypond backend and render
+</I>&gt;<i> the created PDF or SVG file to a separate Qt window (like we can do it for
+</I>&gt;<i> the preview - we use the Qt SVG rendering engine and create the Image from
+</I>&gt;<i> there).
+</I>&gt;<i> 
+</I>&gt;<i> So basically you'd need to
+</I>&gt;<i> a) Load the midi file 
+</I>&gt;<i> b) Convert the midi data to a Canorus score
+</I>&gt;<i> c) &quot;print&quot; an svg image
+</I>&gt;<i> 
+</I>&gt;<i> &gt; CarMusTy is based on Qt and I observe that Canorus is also based on Qt.
+</I>&gt;<i> &gt; But not sure about the dependencies within Canorus to decide how
+</I>&gt;<i> &gt; difficult it would be just to &quot;borrow&quot; few back-end modules (such as the
+</I>&gt;<i> &gt; renderer and player-with-events)&#160;without having to include everything.
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; &#160;&#160;&#160; Appreciate any information.
+</I>&gt;<i> 
+</I>&gt;<i> We try to keep dependencies as low as possible as well. The whole Canorus
+</I>&gt;<i> including plugins requires python additionally to the normal Canorus
+</I>&gt;<i> dependencies (you can use ldd to find out all the libs included in the
+</I>&gt;<i> program - the modules required by you probably don't need all those libs.
+</I>&gt;<i> 
+</I>&gt;<i> &gt; Thank you,
+</I>&gt;<i> &gt; Gopalakrishna Palem
+</I>&gt;<i> &gt; Creator of CFugue Runtime
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt; 
+</I>&gt;<i> &gt;&#160; &#160; &#160; 
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> 
+</I>&gt;<i> Reinhard Katzmann
+</I>
+
+
+-- 
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000947.html">[Canorus-devel] Embeddable sheet music render and player with	events
+</A></li>
+	<LI>Next message: <A HREF="000949.html">[Canorus-devel] a shut down problem with python enabelt
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#948">[ date ]</a>
+              <a href="thread.html#948">[ thread ]</a>
+              <a href="subject.html#948">[ subject ]</a>
+              <a href="author.html#948">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

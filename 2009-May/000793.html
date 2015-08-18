@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] score view rendering speed
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20score%20view%20rendering%20speed&In-Reply-To=%3C4A06FE9D.4060201%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000792.html">
+   <LINK REL="Next"  HREF="000794.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] score view rendering speed</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20score%20view%20rendering%20speed&In-Reply-To=%3C4A06FE9D.4060201%40schwaben.de%3E"
+       TITLE="[Canorus-devel] score view rendering speed">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Sun May 10 18:19:41 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000792.html">[Canorus-devel] score view rendering speed
+</A></li>
+        <LI>Next message: <A HREF="000794.html">[Canorus-devel] score view rendering speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#793">[ date ]</a>
+              <a href="thread.html#793">[ thread ]</a>
+              <a href="subject.html#793">[ subject ]</a>
+              <a href="author.html#793">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; Jekovec schrieb:
+&gt;<i> Hi guys.
+</I>&gt;<i>
+</I>&gt;<i> I did some manual benchmarking of the current Canorus SVN CAScoreView 
+</I>&gt;<i> rendering speed. I put around 1500 CADrawableMusElements to the view, 
+</I>&gt;<i> zoomed out and try to scroll. The framerate of scrolling was around 3-5 
+</I>&gt;<i> fps on a modern computer.
+</I>&gt;<i>
+</I>&gt;<i> I tested the scrolling speed of QGraphicsWidget and QGraphicsScene from 
+</I>&gt;<i> the Qt4 examples. I added a little more than 20,000 text items (font 
+</I>&gt;<i> rendering - similar to what we use for notes) and scrolling was smooth.
+</I>&gt;<i>
+</I>&gt;<i> Werner from MuseScore had similar troubles. He didn't fully migrate to 
+</I>&gt;<i> QGraphicsScene, though but only took the BSP (binary space partitioning) 
+</I>&gt;<i> code from Qt4 and create its own QGraphicsItems. Probably because of the 
+</I>&gt;<i> drawing code which was already there and working and dependency on QtGui 
+</I>&gt;<i> module, because he didn't have model-view separated.
+</I>&gt;<i>
+</I>&gt;<i> My conclusion is that we should completely migrate to QGraphicsScene 
+</I>&gt;<i> which would bring a major speedup (something for version 0.8?). In 2006 
+</I>&gt;<i> when Canorus was born, QGraphics* technology unfortunately didn't exist 
+</I>&gt;<i> yet (introduced in Qt4.2).
+</I>&gt;<i>
+</I>&gt;<i> Another issue we should be concerned of for larger scores is the 
+</I>&gt;<i> engraving/layouting speed (we should avoid any O(n^2) for loops as we 
+</I>&gt;<i> use them now, but only make 2 O(n) passes - theoretically it is possible 
+</I>&gt;<i> :) )
+</I>&gt;<i>
+</I>&gt;<i> Link:
+</I>&gt;<i> <A HREF="http://doc.trolltech.com/4.5/qgraphicsscene.html">http://doc.trolltech.com/4.5/qgraphicsscene.html</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i>   
+</I>Hi Matev&#382;,
+
+I'm afraid that the performance problem is not only a graphics problem,
+but also an internal score problem. When doing inserts with the
+keyboard, canorus gets slower with the score getting bigger, even that
+the graphics zoom span is identical. And that, when the score is still
+moderately long.
+
+The cure I'm guessing we need is a horizontal split of the score.
+Typical changes in a (very) long score are local. Music is separated in
+parts, let's say has a form of AABACA. Typically edit's in a part A
+doesn't affect a part B or C, when for example inserting notes. In big
+scores the typical edit action is overwrite, not insert, so changes are
+local. Or, inserting a bar in B doesn't affect A an C.
+
+When the music is an opera with a very long music scene we should divide
+the score artifically in pieces (qlists), unrecognized by the user. When
+we look backwards for a time or key signature we look only to the
+beginning of the chaned pieces. When we change the time or key signature
+at the start we put it in every piece header and mark it changed.
+Typically it doesn't need processing immediately because you work zoomed
+and don't look at more than six pages the same time. Maybe the user even
+likes to mark a piece for himself.
+
+I think running up and down the whole score should be avoided.
+
+My proposal is to have the score list as list of snippets (pieces). A
+snippet can have a natural size (bar, refrain, some bars) or an
+artificial size. The time, key, tempo of the snippets should be relative
+to the head time, to avoid computations in every element. The snippet is
+a list of muselements. If a muselement inside a piece has an property
+that affects downstream notes then this has to be stored in the header
+of the next piece.
+
+I'm afraid, that this is not very easy, but I guess it's neccessary.
+Hopefully it can be done gradually.
+
+Maybe with the tuplet we have already such an element, Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000792.html">[Canorus-devel] score view rendering speed
+</A></li>
+	<LI>Next message: <A HREF="000794.html">[Canorus-devel] score view rendering speed
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#793">[ date ]</a>
+              <a href="thread.html#793">[ thread ]</a>
+              <a href="subject.html#793">[ subject ]</a>
+              <a href="author.html#793">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

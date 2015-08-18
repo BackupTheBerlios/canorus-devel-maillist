@@ -1,0 +1,303 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Build r967 doesn't link under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20r967%20doesn%27t%20link%20under%20macosx&In-Reply-To=%3C49B3002B.4050504%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000673.html">
+   <LINK REL="Next"  HREF="000677.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Build r967 doesn't link under macosx</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20r967%20doesn%27t%20link%20under%20macosx&In-Reply-To=%3C49B3002B.4050504%40gmail.com%3E"
+       TITLE="[Canorus-devel] Build r967 doesn't link under macosx">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Mar  8 00:15:55 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000673.html">[Canorus-devel] Build r967 doesn't link under macosx
+</A></li>
+        <LI>Next message: <A HREF="000677.html">[Canorus-devel] Build r967 doesn't link under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#674">[ date ]</a>
+              <a href="thread.html#674">[ thread ]</a>
+              <a href="subject.html#674">[ subject ]</a>
+              <a href="author.html#674">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi &#352;tefan.
+
+I think SWIGCPP will work fine for this. There are two things you should
+also add:
+- add plugin.cpp, pluginaction.cpp and pluginmanager.cpp to swig_srcs in
+CMakeLists.txt
+- add pluginaction to plugins.i as well. This is the integral part of
+plugins subsystem.
+
+When testing the scripting stuff, always run Python and do &quot;import
+CanorusPython&quot;, if it really loads. For some reason you won't see any
+errors when gcc is linking a broken dll on Linux like other users do on
+Windows/Mac.
+
+
+Regards.
+-Matev&#382;
+
+&#352;tefan Sakal&#237;k pravi:
+&gt;<i> Good night Matev&#382;,
+</I>&gt;<i> Plugin support in SWIG was meant to be integral part of the cli: debugging,
+</I>&gt;<i> editing plugin code without needing to restart canorus. The same applies for
+</I>&gt;<i> scripts. I was looking for some quick and simple solution but now I guess I'm
+</I>&gt;<i> going to use good old SWIGCPP.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> &#352;tefan
+</I>&gt;<i>
+</I>&gt;<i> 2009/3/7 Matev&#382; Jekovec &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi &#352;tefan, sorry for the late replay.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I think this isn't a good idea. We are (will be?) working on breaking
+</I>&gt;&gt;<i> Canorus on multiple modules (and libraries). Ones should be core-only,
+</I>&gt;&gt;<i> others for import/export, GUI, playback, python etc. The idea is that
+</I>&gt;&gt;<i> the libraries/modules are not always dependent on each other and not all
+</I>&gt;&gt;<i> depend on external libraries (eg. core should not depend on QtGui module
+</I>&gt;&gt;<i> etc.). Having the whole CAMainWindow mess in CanorusPython.dll is
+</I>&gt;&gt;<i> something you currently *don't want to have*.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> SWIGCPP is used for building the bridge between canorus&lt;-&gt;swig. Python
+</I>&gt;&gt;<i> function hasGui() for example returns True, if Canorus main window is
+</I>&gt;&gt;<i> present or False, if it's called from the separated python library. Same
+</I>&gt;&gt;<i> for selection() function. It shouldn't be present at all in the
+</I>&gt;&gt;<i> separated python library, but only when calling it when Canorus itself
+</I>&gt;&gt;<i> is running. The second way of using SWIGCPP is when you don't want to
+</I>&gt;&gt;<i> split the class to two classes (the gui and non-gui for example), but
+</I>&gt;&gt;<i> just want to have a single function working a bit differently in each case.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I'm looking at your plugin patches - why do you want to have a plugin
+</I>&gt;&gt;<i> support in swig library at all? The most common functions used are
+</I>&gt;&gt;<i> CAPlugin::action() and CAPlugin::callAction(). They require mouse
+</I>&gt;&gt;<i> coordinates, current selection, current document/sheet options etc. You
+</I>&gt;&gt;<i> won't have those calling it from outside (ie. python from console).
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I advise you to encapsulate the GUI code (wherever CAMainWin* is used)
+</I>&gt;&gt;<i> and its includes with the SWIGCPP macro in plugin.cpp and
+</I>&gt;&gt;<i> pluginmanager.cpp. This way, the python proxy classes will still be
+</I>&gt;&gt;<i> generated, but will work only when Canorus is launched. Otherwise they
+</I>&gt;&gt;<i> return guiError(). See scripting/canoruspython.i for example.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regards.
+</I>&gt;&gt;<i> -Matev&#382;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &#352;tefan Sakal&#237;k pravi:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> We've got two sets of files for canorus library for swig and canorus
+</I>&gt;&gt;&gt;<i> itself. Including interface/plugin*.cpp I found out I need to put
+</I>&gt;&gt;&gt;<i> CAMainWin (and practically all canorus .cpp files) into that library.
+</I>&gt;&gt;&gt;<i> Therefore I propose to build the library from the same files as canorus
+</I>&gt;&gt;&gt;<i> and remove all SWIGCPP ifdefs (perhaps besides some specific cases). It
+</I>&gt;&gt;&gt;<i> would increase library size (not necessarily compile time, since you've
+</I>&gt;&gt;&gt;<i> got to compile one .cpp file just once).
+</I>&gt;&gt;&gt;<i> I have tried it and it seems to work. Does someone have any objections
+</I>&gt;&gt;&gt;<i> or comments?
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> -&#352;tefan
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Grzegorz Adam Hankiewicz wrote:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> At the link stage the following errors are thrown. The last compilable
+</I>&gt;&gt;&gt;&gt;<i> and linkable version is r965.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Undefined symbols for architecture i386:
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::importAction(QString, CADocument*, QString)&quot;,
+</I>&gt;&gt;&gt;&gt;<i> referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_importAction in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::action(QString, CADocument*, QEvent*, QPoint*,
+</I>&gt;&gt;&gt;&gt;<i> CAMainWin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_action in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::addAction(CAPluginAction*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPlugin_addAction in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::_pluginList&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __ZN15CAPluginManager11_pluginListE$non_lazy_ptr in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::disablePlugins()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_disablePlugins in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::CAPlugin()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_new_CAPlugin__SWIG_0 in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::CAPluginManager(CAMainWin*, CAPlugin*)&quot;,
+</I>&gt;&gt;&gt;&gt;<i> referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_new_CAPluginManager in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::~CAPlugin()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_delete_CAPlugin in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::readPlugins()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_readPlugins in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::_importFilterMap&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __ZN15CAPluginManager16_importFilterMapE$non_lazy_ptr in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::action(QString, CAMainWin*, CADocument*, QEvent*,
+</I>&gt;&gt;&gt;&gt;<i> QPoint*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPlugin_action in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::CAPlugin(QString, QString, QString, QString, QString,
+</I>&gt;&gt;&gt;&gt;<i> QString, QString)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_new_CAPlugin__SWIG_1 in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::_exportFilterMap&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __ZN15CAPluginManager16_exportFilterMapE$non_lazy_ptr in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::enablePlugin(CAPlugin*, CAMainWin*)&quot;, referenced
+</I>&gt;&gt;&gt;&gt;<i> from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_enablePlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::enablePlugins(CAMainWin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_enablePlugins in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::callAction(CAPluginAction*, CAMainWin*, CADocument*,
+</I>&gt;&gt;&gt;&gt;<i> QEvent*, QPoint*, QString)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPlugin_callAction in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::installPlugin(QString)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_installPlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::disablePlugin(CAPlugin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_disablePlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::exportAction(QString, CADocument*, QString)&quot;,
+</I>&gt;&gt;&gt;&gt;<i> referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_exportAction in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::removePlugin(CAPlugin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_removePlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i> ld: symbol(s) not found for architecture i386
+</I>&gt;&gt;&gt;&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;&gt;&gt;&gt;<i> Undefined symbols for architecture ppc:
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::importAction(QString, CADocument*, QString)&quot;,
+</I>&gt;&gt;&gt;&gt;<i> referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_importAction in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::action(QString, CADocument*, QEvent*, QPoint*,
+</I>&gt;&gt;&gt;&gt;<i> CAMainWin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_action in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::addAction(CAPluginAction*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPlugin_addAction in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::_pluginList&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __ZN15CAPluginManager11_pluginListE$non_lazy_ptr in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::disablePlugins()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_disablePlugins in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::CAPlugin()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_new_CAPlugin__SWIG_0 in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::CAPluginManager(CAMainWin*, CAPlugin*)&quot;,
+</I>&gt;&gt;&gt;&gt;<i> referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_new_CAPluginManager in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::~CAPlugin()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_delete_CAPlugin in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::readPlugins()&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_readPlugins in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::_importFilterMap&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __ZN15CAPluginManager16_importFilterMapE$non_lazy_ptr in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::action(QString, CAMainWin*, CADocument*, QEvent*,
+</I>&gt;&gt;&gt;&gt;<i> QPoint*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPlugin_action in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::CAPlugin(QString, QString, QString, QString, QString,
+</I>&gt;&gt;&gt;&gt;<i> QString, QString)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_new_CAPlugin__SWIG_1 in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::_exportFilterMap&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __ZN15CAPluginManager16_exportFilterMapE$non_lazy_ptr in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::enablePlugin(CAPlugin*, CAMainWin*)&quot;, referenced
+</I>&gt;&gt;&gt;&gt;<i> from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_enablePlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::enablePlugins(CAMainWin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_enablePlugins in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPlugin::callAction(CAPluginAction*, CAMainWin*, CADocument*,
+</I>&gt;&gt;&gt;&gt;<i> QEvent*, QPoint*, QString)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPlugin_callAction in canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::installPlugin(QString)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_installPlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::disablePlugin(CAPlugin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_disablePlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::exportAction(QString, CADocument*, QString)&quot;,
+</I>&gt;&gt;&gt;&gt;<i> referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_exportAction in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i>    &quot;CAPluginManager::removePlugin(CAPlugin*)&quot;, referenced from:
+</I>&gt;&gt;&gt;&gt;<i>        __wrap_CAPluginManager_removePlugin in
+</I>&gt;&gt;&gt;&gt;<i> canoruspythonPYTHON_wrap.cxx.o
+</I>&gt;&gt;&gt;&gt;<i> ld: symbol(s) not found for architecture ppc
+</I>&gt;&gt;&gt;&gt;<i> collect2: ld returned 1 exit status
+</I>&gt;&gt;&gt;&gt;<i> lipo: can't open input file: /var/folders/Us/UsO0wLwGFdiPPMqe80vxZ+++
+</I>&gt;&gt;&gt;&gt;<i> +TI/-Tmp-//ccLlIbQ4.out (No such file or directory)
+</I>&gt;&gt;&gt;&gt;<i> make[2]: *** [src/_CanorusPython.so] Error 1
+</I>&gt;&gt;&gt;&gt;<i> make[1]: *** [src/CMakeFiles/_CanorusPython.dir/all] Error 2
+</I>&gt;&gt;&gt;&gt;<i> make: *** [all] Error 2
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000673.html">[Canorus-devel] Build r967 doesn't link under macosx
+</A></li>
+	<LI>Next message: <A HREF="000677.html">[Canorus-devel] Build r967 doesn't link under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#674">[ date ]</a>
+              <a href="thread.html#674">[ thread ]</a>
+              <a href="subject.html#674">[ subject ]</a>
+              <a href="author.html#674">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

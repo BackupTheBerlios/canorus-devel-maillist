@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] bug report: editing impossible
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20bug%20report%3A%20editing%20impossible&In-Reply-To=%3C478DAAEA.70407%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000384.html">
+   <LINK REL="Next"  HREF="000387.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] bug report: editing impossible</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20bug%20report%3A%20editing%20impossible&In-Reply-To=%3C478DAAEA.70407%40schwaben.de%3E"
+       TITLE="[Canorus-devel] bug report: editing impossible">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Jan 16 07:57:46 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000384.html">[Canorus-devel] bug report: editing impossible
+</A></li>
+        <LI>Next message: <A HREF="000387.html">[Canorus-devel] compile errors on Mac OSX 10.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#395">[ date ]</a>
+              <a href="thread.html#395">[ thread ]</a>
+              <a href="subject.html#395">[ subject ]</a>
+              <a href="author.html#395">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi everybody,
+
+in rev 697 this crash is fixed. I had just to inhibit the use of a nil 
+pointer curTie[i] in staff.cpp for this operation:
+
+    static_cast&lt;CANote*&gt;(newElt)-&gt;setTieEnd(curTie[i]);
+
+While the fix is without side effects, I don't understand why it comes 
+to the situation at all, so, instead something else should be fixed, too.
+
+And I bet, that at the same code place setSlurEnd(curSlur[i]) and 
+setPhrasingSlurEnd(curPhrasingSlur[i]) should also get a pointer check, 
+also the setXStart() places. I attach the patch to make it easy to think 
+what else is needed :)
+
+At least I can now continue to edit the song,
+Regards,
+Georg
+
+
+-------------- next part --------------
+An embedded and charset-unspecified text was scrubbed...
+Name: crash_fix
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080116/bb56ead9/attachment.ksh">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080116/bb56ead9/attachment.ksh</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000384.html">[Canorus-devel] bug report: editing impossible
+</A></li>
+	<LI>Next message: <A HREF="000387.html">[Canorus-devel] compile errors on Mac OSX 10.5
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#395">[ date ]</a>
+              <a href="thread.html#395">[ thread ]</a>
+              <a href="subject.html#395">[ subject ]</a>
+              <a href="author.html#395">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

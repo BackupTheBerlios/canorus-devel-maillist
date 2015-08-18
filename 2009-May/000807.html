@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] question about renamings and API changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20question%20about%20renamings%20and%20API%20changes&In-Reply-To=%3C4A101DA6.2020008%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000797.html">
+   <LINK REL="Next"  HREF="000790.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] question about renamings and API changes</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20question%20about%20renamings%20and%20API%20changes&In-Reply-To=%3C4A101DA6.2020008%40web.de%3E"
+       TITLE="[Canorus-devel] question about renamings and API changes">suamor at web.de
+       </A><BR>
+    <I>Sun May 17 16:22:30 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000797.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+        <LI>Next message: <A HREF="000790.html">[Canorus-devel] Command Actions and Slot invocation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#807">[ date ]</a>
+              <a href="thread.html#807">[ thread ]</a>
+              <a href="subject.html#807">[ subject ]</a>
+              <a href="author.html#807">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Mikhail Yakshin wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> On Thu, May 14, 2009 at 2:40 PM, Luis Garrido
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">luisgarrido at users.sourceforge.net</A>&gt;  wrote:
+</I>&gt;&gt;<i> Perhaps a bit OT but, regarding a heavy redesign of the API, only
+</I>&gt;&gt;<i> recently I got my hands on Gang of Four's &quot;Design Patterns: Elements
+</I>&gt;&gt;<i> of Reusable Object-Oriented Software&quot; and, besides the theory on OOP
+</I>&gt;&gt;<i> patterns there is some good insight to design things like a wysiwyg
+</I>&gt;&gt;<i> text editor which could be applied to a project like Canorus.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It is an old book already, and a seminal work on OOP so you probably
+</I>&gt;&gt;<i> have already read it, but if you haven't it's definitely worth a look.
+</I>&gt;<i>
+</I>&gt;<i> Please, for god's sake, do take this book's recommendations with a
+</I>&gt;<i> huge grain of salt. Theoretical beauty of many patterns is greatly
+</I>&gt;<i> exaggerated, and gradually I see more and more good libraries spoiled
+</I>&gt;<i> by blatant &quot;let's do everything as the book says&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Same thing goes about some other &quot;sacred&quot; OOP literature, such as
+</I>&gt;<i> Alexandrescu or Abrahams.
+</I>&gt;<i>
+</I>
+For me though I haven't read the GOF book I'm very well aware about
+patterns and it's limits. They offer good basic solutions for common
+problems especially for object oriented programming.
+But the solution always has to be adapted to our own good and often
+we might want use a more simple way or just postpone certain solutions
+which might sound very reasonable due to different constraints.
+
+The main important patterns for Canorus are MVC and Observer, both
+already a bit enforced by Qt itself. For small control task I think
+it is really unnecessary to make a separate control class. Same goes
+for simple views or dialogs within control classes.
+
+More important for me since a long time is Refactoring in direction
+of Patterns. With some software development and programming experience
+and knowledge of both Patterns and Refactorings you will automatically
+avoid certain pit falls like large methods/classes with more than 1000
+lines of code and (most important) code duplication.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000797.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+	<LI>Next message: <A HREF="000790.html">[Canorus-devel] Command Actions and Slot invocation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#807">[ date ]</a>
+              <a href="thread.html#807">[ thread ]</a>
+              <a href="subject.html#807">[ subject ]</a>
+              <a href="author.html#807">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

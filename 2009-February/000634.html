@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Build 931 breakage under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20931%20breakage%20under%20macosx&In-Reply-To=%3C95CCDF51-2B74-4D15-B598-9231BAE2DF5E%40titanium.sabren.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000635.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Build 931 breakage under macosx</H1>
+    <B>Grzegorz Adam Hankiewicz</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20931%20breakage%20under%20macosx&In-Reply-To=%3C95CCDF51-2B74-4D15-B598-9231BAE2DF5E%40titanium.sabren.com%3E"
+       TITLE="[Canorus-devel] Build 931 breakage under macosx">gradha at titanium.sabren.com
+       </A><BR>
+    <I>Mon Feb  2 09:45:44 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000635.html">[Canorus-devel] Build 931 breakage under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#634">[ date ]</a>
+              <a href="thread.html#634">[ thread ]</a>
+              <a href="subject.html#634">[ subject ]</a>
+              <a href="author.html#634">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>ld warning: QList&lt;int&gt;::append(int const&amp;)has different visibility  
+(hidden) in /usr/local/Trolltech/Qt-4.4.0/lib/ 
+libQtCore.a(qtextcodec.o) and (default) in CMakeFiles/ 
+_CanorusPython.dir/core/functionmark.o
+Warning: name layoutWidget is already used
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp: In constructor &#8216;CAHelpCtl::CAHelpCtl()&#8217;:
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:30: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp: In member function &#8216;QString  
+CAHelpCtl::usersGuideLanguage()&#8217;:
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:41: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:44: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:47: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp: In constructor &#8216;CAHelpCtl::CAHelpCtl()&#8217;:
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:30: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp: In member function &#8216;QString  
+CAHelpCtl::usersGuideLanguage()&#8217;:
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:41: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:44: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+/Users/Shared/snapshots-canorus/build-931-2009-02-02/src/control/ 
+helpctl.cpp:47: error: &#8216;locateResource&#8217; is not a member of &#8216;CACanorus&#8217;
+lipo: can't figure out the architecture type of: /var/folders/Us/ 
+UsO0wLwGFdiPPMqe80vxZ++++TI/-Tmp-//ccyTI2Ld.out
+make[2]: *** [src/CMakeFiles/canorus.dir/control/helpctl.o] Error 1
+make[1]: *** [src/CMakeFiles/canorus.dir/all] Error 2
+make: *** [all] Error 2
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000635.html">[Canorus-devel] Build 931 breakage under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#634">[ date ]</a>
+              <a href="thread.html#634">[ thread ]</a>
+              <a href="subject.html#634">[ subject ]</a>
+              <a href="author.html#634">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

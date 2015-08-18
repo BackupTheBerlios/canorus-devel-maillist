@@ -1,0 +1,160 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] canorus python script
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20canorus%20python%20script&In-Reply-To=%3C1948616847%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000157.html">
+   <LINK REL="Next"  HREF="000159.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] canorus python script</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20canorus%20python%20script&In-Reply-To=%3C1948616847%40web.de%3E"
+       TITLE="[Canorus-devel] canorus python script">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Jun 16 23:10:00 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000157.html">[Canorus-devel] canorus python script
+</A></li>
+        <LI>Next message: <A HREF="000159.html">[Canorus-devel] canorus python script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Matev,
+
+sorry again,
+
+could you give me a simple example for a Note element. I have written a little parser for capella 2000 file format (import).
+Now I have got all the elements and want do set the related elements in canorus.
+
+Thanks in advance!
+
+Christian
+
+
+&gt;<i> -----Urspr&#252;ngliche Nachricht-----
+</I>&gt;<i> Von: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> Gesendet: 15.06.07 16:50:40
+</I>&gt;<i> An: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> Betreff: Re: [Canorus-devel] canorus python script
+</I>
+
+&gt;<i> 
+</I>&gt;<i> Hi Christian.
+</I>&gt;<i> 
+</I>&gt;<i> Because we cannot export any GUI elements to scripts yet (so you'd be
+</I>&gt;<i> able to set what document the current mainwin is pointing at), you can't
+</I>&gt;<i> set the document from the script. Instead, the empty document is already
+</I>&gt;<i> created by Canorus itself and is usually passed as an argument to a
+</I>&gt;<i> function (see scripts/newdocument.py, argument document is already passed).
+</I>&gt;<i> Your script should probably look something like this:
+</I>&gt;<i> import _CanorusPython
+</I>&gt;<i> 
+</I>&gt;<i> def myImportFunction(filename, document);
+</I>&gt;<i>     sheet1 = _CanorusPython.Document_addSheetByName(doc, 'Sheet1')
+</I>&gt;<i>     parseFile(filename)
+</I>&gt;<i>     ...
+</I>&gt;<i> 
+</I>&gt;<i> and descriptor file for the plugin should look something like that
+</I>&gt;<i> (saved in canorusplugin.xml):
+</I>&gt;<i> &lt;plugin&gt;
+</I>&gt;<i>         &lt;canorus-version&gt;0.3.1&lt;/canorus-version&gt;
+</I>&gt;<i>         &lt;name&gt;myImportPlugin&lt;/name&gt;
+</I>&gt;<i>         &lt;description&gt;This is my import plugin&lt;/description&gt;
+</I>&gt;<i>         &lt;version&gt;0.0.1&lt;/version&gt;
+</I>&gt;<i>         &lt;author&gt;your name&lt;/author&gt;
+</I>&gt;<i> 
+</I>&gt;<i>         &lt;home-url&gt;<A HREF="http://www.yoururl.com&lt;/home-url">http://www.yoururl.com&lt;/home-url</A>&gt;
+</I>&gt;<i>         &lt;update-url&gt;<A HREF="http://www.yourupdateurl.com&lt;/update-url">http://www.yourupdateurl.com&lt;/update-url</A>&gt;
+</I>&gt;<i> 
+</I>&gt;<i>         &lt;action&gt;
+</I>&gt;<i>                 &lt;name&gt;pluginTestInit&lt;/name&gt;
+</I>&gt;<i>                 &lt;import-filter&gt;My file format (*.mus)&lt;/import-filter&gt;
+</I>&gt;<i>                 &lt;lang&gt;python&lt;/lang&gt;
+</I>&gt;<i>                 &lt;filename&gt;myimportscript.py&lt;/filename&gt;
+</I>&gt;<i>                 &lt;args&gt;import-filename&lt;/args&gt;
+</I>&gt;<i>                 &lt;args&gt;document&lt;/args&gt;
+</I>&gt;<i>         &lt;/action&gt;
+</I>&gt;<i> &lt;/plugin&gt;
+</I>&gt;<i> 
+</I>&gt;<i> You should put both files (the script and descriptor) into
+</I>&gt;<i> plugins/myImportPlugin directory. Hope this helps!
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; Hi,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I tried to create a new document with python.
+</I>&gt;<i> &gt; I used the following code:
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; import _CanorusPython
+</I>&gt;<i> &gt; 	doc = _CanorusPython.new_Document()
+</I>&gt;<i> &gt; 	sheet1 = _CanorusPython.Document_addSheetByName(doc, 'Sheet1')
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; But nothing changes in the Canorus GUI.
+</I>&gt;<i> &gt; Could you help me, please!
+</I>&gt;<i> &gt; My target is writing a import filter and therefore I want to create a new document.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; best regards
+</I>&gt;<i> &gt; Christian
+</I>&gt;<i> &gt;   
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>&gt;<i> &lt;hr&gt;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> 
+</I>&gt;<i> 
+</I>
+-- 
+Christian Richter
+E-Mail: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">crichter at web.de</A>
+_____________________________________________________________________
+Der WEB.DE SmartSurfer hilft bis zu 70% Ihrer Onlinekosten zu sparen!
+<A HREF="http://smartsurfer.web.de/?mc=100071&amp;distributionid=000000000066">http://smartsurfer.web.de/?mc=100071&amp;distributionid=000000000066</A>
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000157.html">[Canorus-devel] canorus python script
+</A></li>
+	<LI>Next message: <A HREF="000159.html">[Canorus-devel] canorus python script
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#158">[ date ]</a>
+              <a href="thread.html#158">[ thread ]</a>
+              <a href="subject.html#158">[ subject ]</a>
+              <a href="author.html#158">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

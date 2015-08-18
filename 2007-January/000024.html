@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] [PATCH] Cloned music elements get into the wrong	context.
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BPATCH%5D%20Cloned%20music%20elements%20get%20into%20the%20wrong%0A%09context.&In-Reply-To=%3Ca24024cb0701091312s6aa93cd7vaf5c595692da2a4a%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000022.html">
+   <LINK REL="Next"  HREF="000025.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] [PATCH] Cloned music elements get into the wrong	context.</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BPATCH%5D%20Cloned%20music%20elements%20get%20into%20the%20wrong%0A%09context.&In-Reply-To=%3Ca24024cb0701091312s6aa93cd7vaf5c595692da2a4a%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] [PATCH] Cloned music elements get into the wrong	context.">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Jan  9 22:12:40 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000022.html">[Canorus-devel] Submission for workshop: Canorus - a music score	editor
+</A></li>
+        <LI>Next message: <A HREF="000025.html">[Canorus-devel] [PATCH] Cloned music elements get into the wrong context.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi all,
+
+Attached is another patch I wrote.
+The patch fixes a bug reproduceible by the doing the following: start
+Canorus, insert a note, window-&gt;split, window-&gt;unsplit, enjoy the segfault.
+The viewport cloning process includes cloning the music elements and the
+context elements, and inserting the music elements into their contexts. The
+bug made the cloned music elements go to the contexts of the _first_
+viewport, causing random crashes and memory leaks.
+
+The patch makes the following structural changes:
+- CADrawable::clone() is no longer pure. It returns
+CADrawableMusElement::clone(0). See comments inside.
+- CADrawableMusElement::clone() is now
+CADrawableMusElement::clone(CADrawableContext* newContext = 0), and is pure
+virtual.
+- CADrawableContext::clone() is pure virtual.
+- There's a new function CAScoreViewPort::importElements() which combines
+CAScoreViewPort::importMElements() and CAScoreViewPort::importCElements()
+
+I think that the last two functions (importMElements() and
+importCElements()) are not needed any more and can be removed. Any ideas?
+
+-- Itay Perl (aka lkjasa on IRC)
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070109/a7d6c51d/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070109/a7d6c51d/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: wrongcontext.patch
+Type: text/x-patch
+Size: 18321 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070109/a7d6c51d/attachment.bin">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070109/a7d6c51d/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000022.html">[Canorus-devel] Submission for workshop: Canorus - a music score	editor
+</A></li>
+	<LI>Next message: <A HREF="000025.html">[Canorus-devel] [PATCH] Cloned music elements get into the wrong context.
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#24">[ date ]</a>
+              <a href="thread.html#24">[ thread ]</a>
+              <a href="subject.html#24">[ subject ]</a>
+              <a href="author.html#24">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

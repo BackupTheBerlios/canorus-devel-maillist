@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] clone() issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3C47C2B32A.7070206%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000459.html">
+   <LINK REL="Next"  HREF="000449.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] clone() issues</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3C47C2B32A.7070206%40gmail.com%3E"
+       TITLE="[Canorus-devel] clone() issues">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Mon Feb 25 13:23:06 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000459.html">[Canorus-devel] clone() issues
+</A></li>
+        <LI>Next message: <A HREF="000449.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#461">[ date ]</a>
+              <a href="thread.html#461">[ thread ]</a>
+              <a href="subject.html#461">[ subject ]</a>
+              <a href="author.html#461">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Basically, you always copy instances of CAMusElement class or their
+subclasses.
+
+It contains a pointer to the context which the element is part of so you
+can know which context a music element belongs to when copying. It's
+just a matter of implementation - which stuff to get cloned and which not.
+
+See reference:
+<A HREF="http://canorus.jekovec.net/doc-stable/classCAMusElement.html">http://canorus.jekovec.net/doc-stable/classCAMusElement.html</A>
+
+
+Regards.
+-Matev&#382;
+
+David Bolton pravi:
+&gt;<i> Matev&#382; Jekovec wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Another problem is when pasting notes from multiple voices. How is 
+</I>&gt;&gt;<i> pasting done then?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Possible solutions:
+</I>&gt;&gt;<i> - I just noticed that the first issue could be solvable by comparing 
+</I>&gt;&gt;<i> timeStarts of the notes in the clipboard. If TS is the same, then the 
+</I>&gt;&gt;<i> notes are part of the same chord regardless to the voice.
+</I>&gt;&gt;<i> - For the second issue, we could lock the copying down to a single 
+</I>&gt;&gt;<i> voice or instead of pasting elements simultaniously, append the 
+</I>&gt;&gt;<i> elements one after another for other voices.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> I am not familiar with the internals of copying in Canorus. Is there a
+</I>&gt;<i> way to retain the structure of the CanorusML source (such as voice,
+</I>&gt;<i> staff, and context tags) that can be interpreted upon paste?
+</I>&gt;<i>
+</I>&gt;<i> Locking the copying down to a single voice might be handy every now and
+</I>&gt;<i> then, But limiting copy-paste to a single voice or staff by default is 
+</I>&gt;<i> tedious for the user.
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000459.html">[Canorus-devel] clone() issues
+</A></li>
+	<LI>Next message: <A HREF="000449.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#461">[ date ]</a>
+              <a href="thread.html#461">[ thread ]</a>
+              <a href="subject.html#461">[ subject ]</a>
+              <a href="author.html#461">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

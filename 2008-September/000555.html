@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] auto bar
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-September/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20auto%20bar&In-Reply-To=%3C48DFC36A.6020402%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000554.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] auto bar</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20auto%20bar&In-Reply-To=%3C48DFC36A.6020402%40gmail.com%3E"
+       TITLE="[Canorus-devel] auto bar">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Sep 28 19:48:26 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000554.html">[Canorus-devel] auto bar
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#555">[ date ]</a>
+              <a href="thread.html#555">[ thread ]</a>
+              <a href="subject.html#555">[ subject ]</a>
+              <a href="author.html#555">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Agreed. The algorithm for composing the number of rests to fill desired
+length is already present in CARest::composeRests(). This should now
+also be done for the notes, so you'd insert the notes for the first half
+of the note + barline + notes for the other half of the note and tie the
+notes together.
+
+Sounds like quite some work though ;)
+
+
+Regards.
+-Matev&#382;
+
+David Bolton pravi:
+&gt;<i> Matev&#382; Jekovec wrote:
+</I>&gt;&gt;<i> I'm currently in designing how to implement the auto bar stuff. I'd do
+</I>&gt;&gt;<i> something like when you insert a new note, it determines the current
+</I>&gt;&gt;<i> time signature and the last barline and if the timestart of the new note
+</I>&gt;&gt;<i> and the last barline is too big, it adds a barline in front of the
+</I>&gt;&gt;<i> new note.
+</I>&gt;&gt;<i>   
+</I>&gt;<i> This would be a good. Something to consider is the case when a user
+</I>&gt;<i> enters a note that can't fit in the current measure. For example, in
+</I>&gt;<i> 4/4 time: a quarter note followed by two half notes. In this scenario
+</I>&gt;<i> some scorewriters will convert the last half note to a quarter note
+</I>&gt;<i> tied over the bar line to a quarter note of the next measure.
+</I>&gt;<i>
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000554.html">[Canorus-devel] auto bar
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#555">[ date ]</a>
+              <a href="thread.html#555">[ thread ]</a>
+              <a href="subject.html#555">[ subject ]</a>
+              <a href="author.html#555">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

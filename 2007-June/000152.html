@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] undo implemented
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20undo%20implemented&In-Reply-To=%3Ca24024cb0706121107na2b6da6mdd20bc97ae3e9356%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000151.html">
+   <LINK REL="Next"  HREF="000153.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] undo implemented</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20undo%20implemented&In-Reply-To=%3Ca24024cb0706121107na2b6da6mdd20bc97ae3e9356%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] undo implemented">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Jun 12 20:07:56 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000151.html">[Canorus-devel] undo implemented
+</A></li>
+        <LI>Next message: <A HREF="000153.html">[Canorus-devel] undo implemented
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#152">[ date ]</a>
+              <a href="thread.html#152">[ thread ]</a>
+              <a href="subject.html#152">[ subject ]</a>
+              <a href="author.html#152">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matev&#382;,
+Great job!
+
+Here are a few issues I noticed already:
+1/ after adding a tie I can't add any new notes no matter what I do until I
+select another context.
+
+2/ Insert a new context -&gt; Insert an element to the context -&gt; Undo twice -&gt;
+Insert a new context -&gt; crash.
+
+3/ Insert a bunch of notes -&gt; Playback everything -&gt; While playing back,
+click undo or redo twice -&gt; crash.
+
+4/ Add voice -&gt; Undo -&gt; crash
+
+5/ Window splitting through the window menu doesn't work anymore.
+
+6/ A common shortcut for Redo (esp. in linux) is ctrl-shift-z, which is IMO
+much more convenient the ctrl+y. I think it should also be supported.
+
+7/ Removal of an additional Sheet can be undone, while removal of the only
+one cannot.
+
+8/ CanorusML view doesn't show up.
+
+9/ Insert a note -&gt; Change stem direction -&gt; Undo twice -&gt; Insert a note -&gt;
+crash
+
+10/ Insert a note with an accidental -&gt; Insert another note -&gt; Undo -&gt; Watch
+the accidental turn gray -&gt; Click on the gray accidental (as if inserting a
+note there) -&gt; crash.
+
+That's it for now.
+
+Sorry I don't have the time to help more than just reporting the bugs...
+
+Best regards,
+Itay
+
+On 6/12/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+wrote:
+&gt;<i>
+</I>&gt;<i> Hi guys,
+</I>&gt;<i>
+</I>&gt;<i> I'm glad to announce that the stuff I've been doing for the past week
+</I>&gt;<i> has become mature enough to publish it for testing. Yes, Undo and Redo
+</I>&gt;<i> are implemented and work great!
+</I>&gt;<i>
+</I>&gt;<i> Please test!
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070612/84c0cbc5/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070612/84c0cbc5/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000151.html">[Canorus-devel] undo implemented
+</A></li>
+	<LI>Next message: <A HREF="000153.html">[Canorus-devel] undo implemented
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#152">[ date ]</a>
+              <a href="thread.html#152">[ thread ]</a>
+              <a href="subject.html#152">[ subject ]</a>
+              <a href="author.html#152">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

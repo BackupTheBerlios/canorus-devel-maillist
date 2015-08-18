@@ -1,0 +1,144 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] My GSoC project announcement
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20My%20GSoC%20project%20announcement&In-Reply-To=%3C47E53CFB.7040705%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000496.html">
+   <LINK REL="Next"  HREF="000497.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] My GSoC project announcement</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20My%20GSoC%20project%20announcement&In-Reply-To=%3C47E53CFB.7040705%40web.de%3E"
+       TITLE="[Canorus-devel] My GSoC project announcement">suamor at web.de
+       </A><BR>
+    <I>Sat Mar 22 18:08:11 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000496.html">[Canorus-devel] My GSoC project announcement
+</A></li>
+        <LI>Next message: <A HREF="000497.html">[Canorus-devel] My GSoC project announcement
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#498">[ date ]</a>
+              <a href="thread.html#498">[ thread ]</a>
+              <a href="subject.html#498">[ subject ]</a>
+              <a href="author.html#498">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stefan,
+
+Sorry, I yesterday was somewhat pessimistic, but I just
+didn't see your statement about the mentoring organization.
+
+&#352;tefan Sakal&#237;k schrieb:
+&gt;<i> Hi.
+</I>&gt;<i> 
+</I>&gt;<i> Matev&#382; Jekovec wrote:
+</I>&gt;&gt;<i> what mentoring organization did you choose? 
+</I>&gt;<i> I've chosen PSF. I've been said that provided I can find a mentor, I may 
+</I>&gt;<i> work on the project.
+</I>&gt;&gt;<i> So if you're looking for the mentor, you should ask Reinhard, if he's
+</I>&gt;&gt;<i> interested in.
+</I>
+I'd be willing to help you as a mentor on the Canorus part of your
+project but I won't be much useful to use to you on the python part
+of your project as my python experience is quite limited. What I did so far
+mainly is to try to adapt the NoteEdit build system to scons. Scons is a
+build system based on python so I did some programming with it this way. So
+far I did not develop any Canorus related scripts, so my background to this is
+more theoretical. So for deep-technical python stuff it'd be better to ask some
+of the python specialists from the psf.
+
+&gt;<i> I've asked sometime ago. There are bunch of people on the devlist, so I 
+</I>&gt;<i> had asked generally about interest, (by participation i meant mentors, 
+</I>&gt;<i> students, anything).
+</I>&gt;<i> Reinhard, If you were my mentor that would be really great (and the best 
+</I>&gt;<i> solution for the project I guess). So I 'm asking you: Do you want to be 
+</I>&gt;<i> my mentor ;)?
+</I>
+Yes, I'd be glad to be your mentor. If it's ok for you with my limited
+practical python experience It'd be an interesting new challenge for me.
+Do you know who I need to contact at the PSF for my mentoring work ?
+(I currently have google connection problems, so it's a bit of a challenge
+to get the psf organzation informations, hope that will work soon again).
+
+&gt;&gt;<i> Putting each plugin into a separated thread, make an
+</I>&gt;&gt;<i> encapsulated environment for each one
+</I>&gt;<i> This could be problem because there is only 1 python interpreter object 
+</I>&gt;<i> per process allowed (as they told me on IRC). But I don't know how 
+</I>&gt;<i> serious this is nor have I researched it any further yet.
+</I>&gt;<i> 
+</I>
+Maybe it's theoratically possible to have several interpreter objects in
+one thread but they either inhibit it or just say it doesn't work because
+these objects aren't thread-safe. I guess it would be a separate challenge
+to add thread safety to such an object ;) (Except the general challenge due
+to the complexity of the interpreter I'd estimate some performance hits).
+
+On the Canorus part my wish is in a first step to have some simple
+communication possibilities in both directions, I'd prefer signal-slots
+of course.
+
+The other more complicated wish is to be able to integrate python views
+into a Canorus widget (or some way to ease the creation of the view content
+for a python script). It's be also nice to have it the other way round though
+I'd need to think of a feature where this would be desirable.
+
+For simple UI stuff (forms, dialogs) with existing Qt widgets I will create
+a generic class having methods to create such a form (including layout). For
+this class being useful to scripts we'd need the above communication layer
+with the python script.
+
+One thing being more a sort of requirement would be that all this is not too
+much tight to python itself, so we can adapt it to ruby later too.
+
+As there are only 3 months of time including documentation and all the
+management work I'd first concentrate on your own ideas before starting to
+work on my wishes. It would be good though to keep the wishes in your mind
+so we can later expand on your work.
+
+I'll set up a Canorus SoC page too for the PSF soon for the PSF developer
+to get easier into the Canorus project themselves.
+
+Best,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000496.html">[Canorus-devel] My GSoC project announcement
+</A></li>
+	<LI>Next message: <A HREF="000497.html">[Canorus-devel] My GSoC project announcement
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#498">[ date ]</a>
+              <a href="thread.html#498">[ thread ]</a>
+              <a href="subject.html#498">[ subject ]</a>
+              <a href="author.html#498">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

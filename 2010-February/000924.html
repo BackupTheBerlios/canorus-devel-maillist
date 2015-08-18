@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] CAMainWin::scoreViewKeyPress()
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAMainWin%3A%3AscoreViewKeyPress%28%29&In-Reply-To=%3C21e77bcd1002181717w31d100dcrdb803d507b7f2b99%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000925.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] CAMainWin::scoreViewKeyPress()</H1>
+    <B>James Smith</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAMainWin%3A%3AscoreViewKeyPress%28%29&In-Reply-To=%3C21e77bcd1002181717w31d100dcrdb803d507b7f2b99%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] CAMainWin::scoreViewKeyPress()">josmith42 at gmail.com
+       </A><BR>
+    <I>Fri Feb 19 02:17:17 CET 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000925.html">[Canorus-devel] CAMainWin::scoreViewKeyPress()
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#924">[ date ]</a>
+              <a href="thread.html#924">[ thread ]</a>
+              <a href="subject.html#924">[ subject ]</a>
+              <a href="author.html#924">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Canorus Team,
+
+I've noticed a potential bug in CAMainWin::scoreViewKeyPress().  In the
+following code (lines 2097-2100 of mainwin.cpp in trunk):
+
+        case Qt::Key_Down: {
+            if (mode() == SelectMode) {    // select the upper music element
+                v-&gt;selectUpMusElement();
+                v-&gt;repaint();
+
+It looks like the call should be v-&gt;selectDownMusElement(), rather than
+v-&gt;selectUpMusElement().  It's not causing a problem now since neither
+CAScoreView::selectUpMusElement() nor CAScoreView::selectDownMusElement()
+have been implemented, but I thought I'd mention it since fixing it now
+might save you time in the future.
+
+Regards,
+James Smith
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20100218/27f31493/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20100218/27f31493/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000925.html">[Canorus-devel] CAMainWin::scoreViewKeyPress()
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#924">[ date ]</a>
+              <a href="thread.html#924">[ thread ]</a>
+              <a href="subject.html#924">[ subject ]</a>
+              <a href="author.html#924">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

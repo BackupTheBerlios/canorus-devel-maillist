@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] undo implemented
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20undo%20implemented&In-Reply-To=%3Ca24024cb0706121113w5f5aa64vdd514f56f8fe692e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000152.html">
+   <LINK REL="Next"  HREF="000154.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] undo implemented</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20undo%20implemented&In-Reply-To=%3Ca24024cb0706121113w5f5aa64vdd514f56f8fe692e%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] undo implemented">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Jun 12 20:13:34 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000152.html">[Canorus-devel] undo implemented
+</A></li>
+        <LI>Next message: <A HREF="000154.html">[Canorus-devel] undo implemented
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi again,
+Just found another one: File -&gt; Close -&gt; crash
+
+Itay
+
+On 6/12/07, Itay Perl &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Hi Matev&#382;,
+</I>&gt;<i> Great job!
+</I>&gt;<i>
+</I>&gt;<i> Here are a few issues I noticed already:
+</I>&gt;<i> 1/ after adding a tie I can't add any new notes no matter what I do until
+</I>&gt;<i> I select another context.
+</I>&gt;<i>
+</I>&gt;<i> 2/ Insert a new context -&gt; Insert an element to the context -&gt; Undo twice
+</I>&gt;<i> -&gt; Insert a new context -&gt; crash.
+</I>&gt;<i>
+</I>&gt;<i> 3/ Insert a bunch of notes -&gt; Playback everything -&gt; While playing back,
+</I>&gt;<i> click undo or redo twice -&gt; crash.
+</I>&gt;<i>
+</I>&gt;<i> 4/ Add voice -&gt; Undo -&gt; crash
+</I>&gt;<i>
+</I>&gt;<i> 5/ Window splitting through the window menu doesn't work anymore.
+</I>&gt;<i>
+</I>&gt;<i> 6/ A common shortcut for Redo (esp. in linux) is ctrl-shift-z, which is
+</I>&gt;<i> IMO much more convenient the ctrl+y. I think it should also be supported.
+</I>&gt;<i>
+</I>&gt;<i> 7/ Removal of an additional Sheet can be undone, while removal of the only
+</I>&gt;<i> one cannot.
+</I>&gt;<i>
+</I>&gt;<i> 8/ CanorusML view doesn't show up.
+</I>&gt;<i>
+</I>&gt;<i> 9/ Insert a note -&gt; Change stem direction -&gt; Undo twice -&gt; Insert a note
+</I>&gt;<i> -&gt; crash
+</I>&gt;<i>
+</I>&gt;<i> 10/ Insert a note with an accidental -&gt; Insert another note -&gt; Undo -&gt;
+</I>&gt;<i> Watch the accidental turn gray -&gt; Click on the gray accidental (as if
+</I>&gt;<i> inserting a note there) -&gt; crash.
+</I>&gt;<i>
+</I>&gt;<i> That's it for now.
+</I>&gt;<i>
+</I>&gt;<i> Sorry I don't have the time to help more than just reporting the bugs...
+</I>&gt;<i>
+</I>&gt;<i> Best regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> On 6/12/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hi guys,
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; I'm glad to announce that the stuff I've been doing for the past week
+</I>&gt;<i> &gt; has become mature enough to publish it for testing. Yes, Undo and Redo
+</I>&gt;<i> &gt; are implemented and work great!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Please test!
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards.
+</I>&gt;<i> &gt; - Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070612/99f98245/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070612/99f98245/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000152.html">[Canorus-devel] undo implemented
+</A></li>
+	<LI>Next message: <A HREF="000154.html">[Canorus-devel] undo implemented
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#153">[ date ]</a>
+              <a href="thread.html#153">[ thread ]</a>
+              <a href="subject.html#153">[ subject ]</a>
+              <a href="author.html#153">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

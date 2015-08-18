@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] placeAutoBar bug fix
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20placeAutoBar%20bug%20fix&In-Reply-To=%3C4A1C61B3.8020709%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000839.html">
+   <LINK REL="Next"  HREF="000841.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] placeAutoBar bug fix</H1>
+    <B>Georg Rudolph</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20placeAutoBar%20bug%20fix&In-Reply-To=%3C4A1C61B3.8020709%40schwaben.de%3E"
+       TITLE="[Canorus-devel] placeAutoBar bug fix">georg.rudolph at schwaben.de
+       </A><BR>
+    <I>Tue May 26 23:40:03 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000839.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+        <LI>Next message: <A HREF="000841.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#840">[ date ]</a>
+              <a href="thread.html#840">[ thread ]</a>
+              <a href="subject.html#840">[ subject ]</a>
+              <a href="author.html#840">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; Jekovec schrieb:
+&gt;<i> Ok, I understand now. Looks like the time/keysig query code is not 
+</I>&gt;<i> really neat... This should be redesigned when we move the signs out of 
+</I>&gt;<i> the voices to the sheet level.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Fine.
+
+When you talk about redesign, especially related to performance... these
+are things I thought about the last days. Two conclusions I would like
+to share:
+
+-- run up/down algorythms over the voices should, instead of linearly
+stepping from element to element, better do binary searches. To look up
+a specific timeStart() element would be a candidate for this, this would
+be faster, I guess.
+It could be done already now, it's only a change inside a function, This
+would work on elements that are evenly distributed over the voice/staff,
+for example notes, rests, barlines.
+
+-- rare elements, usually time and key signatures, repeats, should be
+kept in seperate or additional lists, as linked lists to the
+voice/staff/sheet. They could live in the staff class. The burden to
+keep them up do date is a significant change, regarding the current
+mechanics. At midi import I'm currently implementing local signature
+lists, that once should move over to what you mention above.
+
+Best Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000839.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+	<LI>Next message: <A HREF="000841.html">[Canorus-devel] placeAutoBar bug fix
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#840">[ date ]</a>
+              <a href="thread.html#840">[ thread ]</a>
+              <a href="subject.html#840">[ subject ]</a>
+              <a href="author.html#840">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

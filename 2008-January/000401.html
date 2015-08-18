@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Official Debian package of canorus
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Official%20Debian%20package%20of%20canorus&In-Reply-To=%3C20080122194236.7e15d124%40homer%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000399.html">
+   <LINK REL="Next"  HREF="000402.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Official Debian package of canorus</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Official%20Debian%20package%20of%20canorus&In-Reply-To=%3C20080122194236.7e15d124%40homer%3E"
+       TITLE="[Canorus-devel] Official Debian package of canorus">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Jan 22 19:42:36 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000399.html">[Canorus-devel] Help with Canorus on Mac OS X
+</A></li>
+        <LI>Next message: <A HREF="000402.html">[Canorus-devel] bug-report: infinite cpu power
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I'm currently preparing a Debian package of your program, canorus. The
+version I'm using is 0.4, because 0.5 seems to be still in beta stage
+right now. However, I think that your program is already a nice piece
+of work and should be more widespread to receive feedback. In case you
+don't want to have an official Debian package at this time, please say
+so.
+
+If you have no objections, I'd like to suggest a few things which would
+make my work as package maintainer a lot easier.
+
+First of all, it would be great if you could remove the debian
+directory from your tarball, as the packaging work needs a tarball
+without that directory. Debian (as well as Ubuntu) add their debian
+directories themselves, so a pre-existing debian directory may confuse
+the building process at best, and generate an unsuitable package at
+worst. Any chance for that to happen?
+
+Second, I've noticed that you include the subversion metadata
+directories in the tarball (.svn). Although this does not harm, you
+might want to consider removing them from your distribution.
+
+Third, I'm currently not able to build outside the source directory.
+Have you tried that and succeeded?
+
+Regards,
+Tobias
+
+-- 
+Tobias Toedter   | I used to be indecisive, now I'm not sure.
+Hamburg, Germany |
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 189 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080122/41db69ba/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080122/41db69ba/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000399.html">[Canorus-devel] Help with Canorus on Mac OS X
+</A></li>
+	<LI>Next message: <A HREF="000402.html">[Canorus-devel] bug-report: infinite cpu power
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#401">[ date ]</a>
+              <a href="thread.html#401">[ thread ]</a>
+              <a href="subject.html#401">[ subject ]</a>
+              <a href="author.html#401">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

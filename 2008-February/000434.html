@@ -1,0 +1,84 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Exporting function to python
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Exporting%20function%20to%20python&In-Reply-To=%3C47A9B4A4.1060801%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000433.html">
+   <LINK REL="Next"  HREF="000435.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Exporting function to python</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Exporting%20function%20to%20python&In-Reply-To=%3C47A9B4A4.1060801%40gmail.com%3E"
+       TITLE="[Canorus-devel] Exporting function to python">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Wed Feb  6 14:22:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000433.html">[Canorus-devel] Exporting function to python
+</A></li>
+        <LI>Next message: <A HREF="000435.html">[Canorus-devel] Exporting function to python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#434">[ date ]</a>
+              <a href="thread.html#434">[ thread ]</a>
+              <a href="subject.html#434">[ subject ]</a>
+              <a href="author.html#434">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>You better create CAPyConsole in Python itself using PyQt4. Exporting Qt
+classes is a showstopper for swig (lots of ununderstandable Qt macros etc.).
+
+Otherwise, create .i descriptor file for your class and add it to
+CanorusPython library in CMakeLists.txt. You might also want to include
+the .cpp files in CanorusPython.
+
+
+Regards.
+-Matev&#382;
+
+rabbit pista pravi:
+&gt;<i> I'm working on that CLI...I have a class CAPyConsole, 2 functions
+</I>&gt;<i> there: QString buffered_input(), void buffered_output(QString str); or
+</I>&gt;<i> char* whatever.
+</I>&gt;<i> How to export them to python script, (convert to PyObject)? I was
+</I>&gt;<i> looking at things in scripting/, but I'm quite confused :/. Please
+</I>&gt;<i> help me.
+</I>&gt;<i>
+</I>&gt;<i> Regrads,
+</I>&gt;<i> Stefan
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000433.html">[Canorus-devel] Exporting function to python
+</A></li>
+	<LI>Next message: <A HREF="000435.html">[Canorus-devel] Exporting function to python
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#434">[ date ]</a>
+              <a href="thread.html#434">[ thread ]</a>
+              <a href="subject.html#434">[ subject ]</a>
+              <a href="author.html#434">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Copy &amp; Paste ideas
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Copy%20%26%20Paste%20ideas&In-Reply-To=%3C47489A4E.7090504%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000289.html">
+   <LINK REL="Next"  HREF="000292.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Copy &amp; Paste ideas</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Copy%20%26%20Paste%20ideas&In-Reply-To=%3C47489A4E.7090504%40web.de%3E"
+       TITLE="[Canorus-devel] Copy &amp; Paste ideas">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Nov 24 22:40:30 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000289.html">[Canorus-devel] new clefs
+</A></li>
+        <LI>Next message: <A HREF="000292.html">[Canorus-devel] Copy &amp; Paste ideas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#291">[ date ]</a>
+              <a href="thread.html#291">[ thread ]</a>
+              <a href="subject.html#291">[ subject ]</a>
+              <a href="author.html#291">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Me and Matevz discussed on IRC about the future of copy &amp; paste in Canorus.
+Currently it's quite simple, for one staff mainly.
+
+I thought about the context level first, as in one of my rehearsals a cantor
+told me about her problems with the score program she is using. She could not
+simply move one staff to a different position. Canorus does this currently
+via context properties.
+
+I thought about copy &amp; paste for staffs (complete, i.e. with lyrics) and/or
+drag and drop of one staff at a different position. The problems arising are
+- what to do if the user wants to insert into a existing staff instead
+  of just moving around
+- how do I actually select one staff ?
+Alternatively (this works already now) the composer can add a new staff and
+selects the complete staff (all music elements) and cut/pastes them into the
+new staff. After that he can delete the old staff.
+
+The next question arose to me when I tested copy &amp; paste with several staffs.
+I selected music elements from three staffs and did an insert afterwards. How
+should canorus behave ?
+- add new staff(s) as needed if insertion staff is at a position where there
+  are not enough staff availables
+- paste the elements of all remaining staffs at the start of the sheet.
+- let the user first somehow select those staffs where he wants to insert
+  the elements (very flexible solution, but might be confusing to the composer)
+- ask the composer what to do
+
+I'd like to hear your opinion about it and also more ideas, probably I did not
+graps every aspekt of copy &amp; paste yet. Think of
+- pasting into/from other programs
+- copy &amp; paste of complete sheets
+- select all, what is selected in which context
+
+Someone needs to collect this stuff and add it into the Wiki.
+And yes, implementation issues should not be left out.
+
+Matevz additionally said to this:
+someone would need to rethink how copy&amp;paste would be used.
+what to be copied and what not
+how is this done in other notation software
+and compare to drawing app and openoffice
+how could the GUI &lt;-&gt; model cooperate together the best
+the problem are the shared music elements (present in all voices in staff)
+once the theory and common use stuff is done, the implementation is pretty
+straight-forward
+
+We'd call an research for the ideal copy &amp; paste.
+Also it would be good to keep in mind which features could be
+implemented first and which of them at a later time.
+
+Thank you for your help.
+
+Best,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000289.html">[Canorus-devel] new clefs
+</A></li>
+	<LI>Next message: <A HREF="000292.html">[Canorus-devel] Copy &amp; Paste ideas
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#291">[ date ]</a>
+              <a href="thread.html#291">[ thread ]</a>
+              <a href="subject.html#291">[ subject ]</a>
+              <a href="author.html#291">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

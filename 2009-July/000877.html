@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Fonts under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fonts%20under%20macosx&In-Reply-To=%3C9a4db0e10907092339h7c0103aaxcd971c12d9f80a93%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000884.html">
+   <LINK REL="Next"  HREF="000878.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Fonts under macosx</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fonts%20under%20macosx&In-Reply-To=%3C9a4db0e10907092339h7c0103aaxcd971c12d9f80a93%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Fonts under macosx">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Fri Jul 10 08:39:58 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000884.html">[Canorus-devel] windows build and pmidi [fixed]
+</A></li>
+        <LI>Next message: <A HREF="000878.html">[Canorus-devel] Fonts under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#877">[ date ]</a>
+              <a href="thread.html#877">[ thread ]</a>
+              <a href="subject.html#877">[ subject ]</a>
+              <a href="author.html#877">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Grzegorz.
+
+Could you try compiling Canorus with the lates Qt4.5.2? A user reported that
+&quot;Emmentaler&quot; only should work fine now. It works on Ubuntu and Vista. If
+not, can you try
+#ifdef Q_WS_MAC
+QFont font(&quot;Emmentaler 14&quot;);
+#endif
+
+In the top of the drawing code for notes (src/layout/drawablenote.cpp,
+function draw()).
+
+
+Regards.
+-Matev&#382;
+
+2009/3/11 Grzegorz Adam Hankiewicz &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">gradha at titanium.sabren.com</A>&gt;
+
+&gt;<i>
+</I>&gt;<i> El 11/03/2009, a las 19:57, Grzegorz Adam Hankiewicz escribi&#243;:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Now that fonts work I tried to load an xml example and got garbage
+</I>&gt;<i> &gt; for notes. Any ideas about this?
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="http://dl.getdropbox.com/u/145894/bad_notes.png">http://dl.getdropbox.com/u/145894/bad_notes.png</A>
+</I>&gt;<i>
+</I>&gt;<i> Forgot to put some logs of the application. Presumably zero widths and
+</I>&gt;<i> negative heights have something to do with the garbage, unless it's
+</I>&gt;<i> just that the string formatting is not the correct type.
+</I>&gt;<i>
+</I>&gt;<i> 11/03/09 19:46:55 [0x0-0xd50d5].Canorus[9096] drawableMusElement:
+</I>&gt;<i> 0x1b237360, x,y=144,-65318, w,h=0,131072, dContext=0x1b230190
+</I>&gt;<i> 11/03/09 19:46:55 [0x0-0xd50d5].Canorus[9096] musElement: 0x1b2cabe0,
+</I>&gt;<i> timeStart=0, timeEnd=0, context=0x1b2ca5c0, voice=0x1b18e2c0,
+</I>&gt;<i> voiceNr=1, idxInVoice=6, voiceStaff=0x1b2ca5c0, pitch=-1
+</I>&gt;<i> 11/03/09 19:46:55 [0x0-0xd50d5].Canorus[9096] drawableMusElement:
+</I>&gt;<i> 0x1b237460, x,y=144,-1572646, w,h=0,3145728, dContext=0x1b230190
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20090710/b88edc91/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20090710/b88edc91/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000884.html">[Canorus-devel] windows build and pmidi [fixed]
+</A></li>
+	<LI>Next message: <A HREF="000878.html">[Canorus-devel] Fonts under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#877">[ date ]</a>
+              <a href="thread.html#877">[ thread ]</a>
+              <a href="subject.html#877">[ subject ]</a>
+              <a href="author.html#877">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Dutch translation
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Dutch%20translation&In-Reply-To=%3C467A8351.7060408%40xs4all.nl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000161.html">
+   <LINK REL="Next"  HREF="000283.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Dutch translation</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Dutch%20translation&In-Reply-To=%3C467A8351.7060408%40xs4all.nl%3E"
+       TITLE="[Canorus-devel] Dutch translation">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Jun 21 15:55:29 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000161.html">[Canorus-devel] Dutch translation
+</A></li>
+        <LI>Next message: <A HREF="000283.html">[Canorus-devel] Bugs in canorus
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi
+
+I tried to translate a little bit and tried to see how it looked in 
+canorus, but it only shows english text. I tried to use nl_NL.ts and 
+nl.ts (of course, i changed the src/CMakeLists.txt) but none of them 
+worked. I compiled canorus by using &quot;cmake .&quot; &quot;make&quot; and &quot;make install&quot;.
+When i compile canorus, he sometimes says something like this:
+&quot;Updating 'lang/nl_NL.qm'...
+    Generated 3 translations (3 finished and 0 unfinished)
+    Ignored 272 untranslated source texts&quot;
+Do i have to translate everything before i can see the result or am i 
+doing something wrong?
+
+Regards, Zeelander
+
+P.s. other kde programs such as koffice are translated and i set dutch 
+as language in kcontrolcenter.
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schreef:
+&gt;<i> I advice you to translate the SVN trunk as your translation will get
+</I>&gt;<i> into 0.4 and there are quite some new expressions in comparison to 0.3.1
+</I>&gt;<i> already.
+</I>&gt;<i>
+</I>&gt;<i> First, add your two-digit country and language file to
+</I>&gt;<i> src/CMakeLists.txt around line 210 to Canorus_Translation_Srcs and
+</I>&gt;<i> Canorus_Translation_Bins.
+</I>&gt;<i> Rebuild the application - this will generate an empty translation file
+</I>&gt;<i> in src/lang for the first time.
+</I>&gt;<i> Translate the file with Qt Linguist.
+</I>&gt;<i> Recompile the application (.ts are compiled into .qm) and check your
+</I>&gt;<i> results.
+</I>&gt;<i> When done, send us your .ts file.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I was wondering if someone started with the Dutch translation of
+</I>&gt;&gt;<i> canorus. If not, I would like to give it a try.
+</I>&gt;&gt;<i> It would be the first translation project for me, so don't expect any
+</I>&gt;&gt;<i> great results.
+</I>&gt;&gt;<i> I found some files in canorus-0.3.1/src/lang; are these the files that
+</I>&gt;&gt;<i> need to be translated or are there other files that I will need?
+</I>&gt;&gt;<i> Right now, I'm reading the kbabel docs:
+</I>&gt;&gt;<i> <A HREF="http://docs.kde.org/development/en/kdesdk/kbabel/kbabel-features.html.">http://docs.kde.org/development/en/kdesdk/kbabel/kbabel-features.html.</A>
+</I>&gt;&gt;<i> When i've finished that, i'll start translating.*
+</I>&gt;&gt;<i> *By the way, can i translate the 0.3.1 version or do i need the svn
+</I>&gt;&gt;<i> version?
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Sorry if i don't write fluent english, but trust me, my Dutch is better ;)
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Zeelander
+</I>&gt;&gt;<i> ------------------------------------------------------------------------
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000161.html">[Canorus-devel] Dutch translation
+</A></li>
+	<LI>Next message: <A HREF="000283.html">[Canorus-devel] Bugs in canorus
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#162">[ date ]</a>
+              <a href="thread.html#162">[ thread ]</a>
+              <a href="subject.html#162">[ subject ]</a>
+              <a href="author.html#162">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

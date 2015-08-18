@@ -1,0 +1,94 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] midi export?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20export%3F&In-Reply-To=%3C478154CF.4030501%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000358.html">
+   <LINK REL="Next"  HREF="000366.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] midi export?</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20export%3F&In-Reply-To=%3C478154CF.4030501%40schwaben.de%3E"
+       TITLE="[Canorus-devel] midi export?">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Jan  6 23:23:11 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000358.html">[Canorus-devel] dotted notes insertion
+</A></li>
+        <LI>Next message: <A HREF="000366.html">[Canorus-devel] 1st draft Traditional Chinese Translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#359">[ date ]</a>
+              <a href="thread.html#359">[ thread ]</a>
+              <a href="subject.html#359">[ subject ]</a>
+              <a href="author.html#359">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schrieb:
+&gt;<i> ... Simply inherit CAExport to
+</I>&gt;<i> CAMidiExport or whatever and implement the needed functions. After that,
+</I>&gt;<i> add the filter to export dialog (see CALilyPondExport for example).
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Hello everybody,
+
+midi export is basically working now, and done with a lot of code reuse,
+which I liked! What's still missing is proper export of time signatures,
+so that importing programs don't have to guess too much about the
+quantization of the music, I guess, and the export of lyrics. Even more
+could be missing.
+
+Embedded texts, like header text, should be translated, and other texts
+should be in locale, but still managed in these 8 bit strings, which I
+don't understand fully yet. Probably there is a simple trick with
+QTextStream. Currently stream.codec(&quot;Latin-1&quot;) avoids UTF encodings when
+outputting binary QByteArrays to QTextStream, but that might not work in
+non european countries, hmm.
+
+Best Regards,
+Georg
+
+
+ps: if I'd have one wish for free now, I would ask to get for canorus
+triple notes.
+
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000358.html">[Canorus-devel] dotted notes insertion
+</A></li>
+	<LI>Next message: <A HREF="000366.html">[Canorus-devel] 1st draft Traditional Chinese Translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#359">[ date ]</a>
+              <a href="thread.html#359">[ thread ]</a>
+              <a href="subject.html#359">[ subject ]</a>
+              <a href="author.html#359">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

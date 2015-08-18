@@ -1,0 +1,210 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] some stuff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3Ca24024cb0708250927k1dc2edbmfebe16f505bb1487%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000200.html">
+   <LINK REL="Next"  HREF="000203.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] some stuff</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3Ca24024cb0708250927k1dc2edbmfebe16f505bb1487%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] some stuff">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Aug 25 18:27:33 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000200.html">[Canorus-devel] some stuff
+</A></li>
+        <LI>Next message: <A HREF="000203.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi again,
+
+Continued...
+
+1. Would it make sense to have a separate undo stack for each sheet?
+
+2. I've just inserted something that made canorus crash, I think it was a
+slur, and then I couldn't start canorus anymore since the recovery file made
+canorus crash every time... I removed ~/.config/Canorus/recovery0, but not
+before I saved a copy of it. It's attached. I noticed that removing lines
+42-44 prevents the crash.
+
+3. If you open another instance of canorus after the first has saved a
+recovery file, the new instance will recover the file. I think that it
+shouldn't be possible to have more than one instance running - new instances
+will create a new document in a new mainwindow of the old instance and then
+exit.
+
+4. Get two staves with a treble clef. In the lower staff, insert a high note
+with lots of ledger lines, say a d''''. copy it and paste it in the staff
+above. You can't see the note, and there are no scrollbars.
+
+5. Lilypond view indeed crashes most of the times but sometimes it does
+work. But then if you commit changes, and then window-&gt;unsplit all, the only
+score viewport is unsplitted (did I do it?). It doesn't always happen
+though. Also it looks like interaction with the source view text box doesn't
+make it the current view port, and window-&gt;close current view closes the
+score view port instead.
+
+Regards,
+
+Itay
+
+On 8/25/07, Itay Perl &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>&gt; wrote:
+&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> Awesome work Matev&#382;!!
+</I>&gt;<i>
+</I>&gt;<i> A few issues (Tested on r555. Just noticed that r557 is out...All bugs are
+</I>&gt;<i> still there though....)
+</I>&gt;<i>
+</I>&gt;<i> 0. Insert a chord. Select it, copy, paste.
+</I>&gt;<i>
+</I>&gt;<i> 1. Function marking seems to be a bit buggy, lots of crashes.
+</I>&gt;<i>
+</I>&gt;<i> 2. Select some notes AND some function markings, copy, select staff,
+</I>&gt;<i> paste, crash.
+</I>&gt;<i>
+</I>&gt;<i> 3. quite funny: select some notes and some lyrics together, copy, paste.
+</I>&gt;<i> The lyrics are pasted on the staff! No crash though.
+</I>&gt;<i>
+</I>&gt;<i> 4. I can only paste a limited number of times in a row. Sometimes on the
+</I>&gt;<i> last time, the paste is &quot;drawn back&quot; and the new notes appear below the
+</I>&gt;<i> previous notes as chords. Then paste stops working. Select a few notes,
+</I>&gt;<i> copy, paste, paste, paste, paste,... and you'll see it.
+</I>&gt;<i>
+</I>&gt;<i> 5. Maybe related to the previous: Insert a note and a barline, select
+</I>&gt;<i> both, copy, paste, paste, paste, (...). after the first paste, only the
+</I>&gt;<i> barline is added.
+</I>&gt;<i>
+</I>&gt;<i> 6. Slurs are cut (removed) but not pasted.
+</I>&gt;<i>
+</I>&gt;<i> 7. Can't recall if it was like this before: the menus of menu/undo tool
+</I>&gt;<i> buttons are separate windows, and appear in the task bar (on linux/kde at
+</I>&gt;<i> least). I've just pressed alt+tab and saw the menu without the main window.
+</I>&gt;<i> They should be connected somehow IMO.
+</I>&gt;<i>
+</I>&gt;<i> 8. Insert some elements, select them, copy, new document, paste, copy,
+</I>&gt;<i> crash
+</I>&gt;<i>
+</I>&gt;<i> 9. Lilypond source crashes (unless there are no elements)
+</I>&gt;<i>
+</I>&gt;<i> 10. CanorusML source just hides the vertical toolbar and nothing else (no
+</I>&gt;<i> source is shown).
+</I>&gt;<i>
+</I>&gt;<i> 11. Viewport splitting through the window menu has stopped working long
+</I>&gt;<i> ago. (View -&gt; Score view works).
+</I>&gt;<i>
+</I>&gt;<i> 12. Maybe the undo-menu-tool-button-listbox (ugh..) could be a bit less
+</I>&gt;<i> wide?
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> New in r557: compile warnings, swig canorusPython
+</I>&gt;<i>
+</I>&gt;<i> core/canorusml.h:32: Warning(401): Nothing known about base class
+</I>&gt;<i> 'QXmlDefaultHandler'. Ignored.
+</I>&gt;<i> interface/playback.h:20: Warning(401): Nothing known about base class
+</I>&gt;<i> 'QThread'. Ignored.
+</I>&gt;<i> interface/mididevice.h:19: Warning(401): Nothing known about base class
+</I>&gt;<i> 'QObject'. Ignored.
+</I>&gt;<i>
+</I>&gt;<i> Stay tuned for more... ;)
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> On 8/24/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i> wrote:
+</I>&gt;<i>
+</I>&gt;<i> &gt; Hi David, thanks for reply.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; &gt; I tried out the latest SVN version (R. 554). It looks like a lot a
+</I>&gt;<i> &gt; &gt; development is going on.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Some regressions:
+</I>&gt;<i> &gt; &gt; * Cannot create new documents (&quot;ImportError: No module name new&quot;)
+</I>&gt;<i> &gt; That's weird. I can't reproduce this. Is this the whole output? Would
+</I>&gt;<i> &gt; expect something like newDocument or newDefaultDocument, not just &quot;new&quot;.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; &gt; * Undo/redo missing from Edit menu and undo/redo keybindings no longer
+</I>&gt;<i> &gt; &gt; work
+</I>&gt;<i> &gt; Fixed in R555.
+</I>&gt;<i> &gt; &gt;
+</I>&gt;<i> &gt; &gt; Some new bugs:
+</I>&gt;<i> &gt; &gt; * Copy/paste does not paste multiple voices or multiple staves
+</I>&gt;<i> &gt; &gt; correctly (try copy/paste with the sample file attached)
+</I>&gt;<i> &gt; That's the problem, I agree. For now, use copy&amp;paste from 1 voice to 1
+</I>&gt;<i> &gt; voice. The problem is that there aren't just voices -&gt; voices behaviour
+</I>&gt;<i> &gt; questions, but also if you copy random elements from various staffs, how
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; should those be pasted. I'll take a look at this later and try to fix
+</I>&gt;<i> &gt; some crashes, but can't promise much.
+</I>&gt;<i> &gt; &gt; * Paste is not recorded by undo
+</I>&gt;<i> &gt; Fixed in R555.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards.
+</I>&gt;<i> &gt; - Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070825/83d917c0/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070825/83d917c0/attachment.html</A>&gt;
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: failure.xml
+Type: text/xml
+Size: 8443 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070825/83d917c0/attachment.xml">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070825/83d917c0/attachment.xml</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000200.html">[Canorus-devel] some stuff
+</A></li>
+	<LI>Next message: <A HREF="000203.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#201">[ date ]</a>
+              <a href="thread.html#201">[ thread ]</a>
+              <a href="subject.html#201">[ subject ]</a>
+              <a href="author.html#201">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

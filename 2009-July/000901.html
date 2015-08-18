@@ -1,0 +1,98 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Compiler optimizations
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Compiler%20optimizations&In-Reply-To=%3C4A6DF53F.4050807%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000895.html">
+   <LINK REL="Next"  HREF="000893.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Compiler optimizations</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Compiler%20optimizations&In-Reply-To=%3C4A6DF53F.4050807%40web.de%3E"
+       TITLE="[Canorus-devel] Compiler optimizations">suamor at web.de
+       </A><BR>
+    <I>Mon Jul 27 20:43:11 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000895.html">[Canorus-devel] Compiler optimizations
+</A></li>
+        <LI>Next message: <A HREF="000893.html">[Canorus-devel] volta bracket support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#901">[ date ]</a>
+              <a href="thread.html#901">[ thread ]</a>
+              <a href="subject.html#901">[ subject ]</a>
+              <a href="author.html#901">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Grzegorz Adam Hankiewicz wrote:
+&gt;<i> El 17/07/2009, a las 9:55, Itay Perl escribi&#243;:
+</I>&gt;<i>
+</I>&gt;&gt;<i> Done, r1171.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> To create a release build, run: cmake -DCMAKE_BUILD_TYPE=Release
+</I>&gt;&gt;<i> Note that this also causes QT_NO_DEBUG to be defined.
+</I>&gt;<i>
+</I>&gt;<i> Macosx builds now fail because during &quot;make install&quot; no binary is
+</I>&gt;<i> copied into the correct distribution directory. Is the
+</I>&gt;<i> CMAKE_BUILD_TYPE parameter mandatory? What would be the parameter for
+</I>&gt;<i> non release builds?
+</I>
+According to the docs:
+
+CMAKE_BUILD_TYPE
+  Specifies the build type for make based generators.
+
+  This specifies what build type will be built in this  tree.  Possible
+  values are  empty, Debug, Release, RelWithDebInfo and MinSizeRel. This
+  variable is only supported for make based generators. If this variable
+  is supported, then CMake will also provide initial values for the vari&#8208;
+  ables with the  name   CMAKE_C_FLAGS_[Debug|Release|RelWithDebInfo|Min&#8208;
+  SizeRel].   For   example,   if   CMAKE_BUILD_TYPE   is   Debug,   then
+  CMAKE_C_FLAGS_DEBUG will be added to the CMAKE_C_FLAGS.
+
+Else I have not checked/tested with recent changes at all on my
+platform (except simple default debug build).
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000895.html">[Canorus-devel] Compiler optimizations
+</A></li>
+	<LI>Next message: <A HREF="000893.html">[Canorus-devel] volta bracket support
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#901">[ date ]</a>
+              <a href="thread.html#901">[ thread ]</a>
+              <a href="subject.html#901">[ subject ]</a>
+              <a href="author.html#901">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

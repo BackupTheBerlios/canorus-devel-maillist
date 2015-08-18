@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] question about renamings and API changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20question%20about%20renamings%20and%20API%20changes&In-Reply-To=%3C4A0C6B1A.2050001%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000796.html">
+   <LINK REL="Next"  HREF="000807.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] question about renamings and API changes</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20question%20about%20renamings%20and%20API%20changes&In-Reply-To=%3C4A0C6B1A.2050001%40gmail.com%3E"
+       TITLE="[Canorus-devel] question about renamings and API changes">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Thu May 14 21:03:54 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000796.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+        <LI>Next message: <A HREF="000807.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#797">[ date ]</a>
+              <a href="thread.html#797">[ thread ]</a>
+              <a href="subject.html#797">[ subject ]</a>
+              <a href="author.html#797">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys.
+
+Thanks for the tip. I agree - the theory is one thing and the &quot;useful&quot; 
+common practice is usually the other one :)
+I remember at this years LAC, we had an interesting talk with Reinhard 
+(the Qt4 and pattern maestro) about the Model-Control classes. In 
+theory, almost every Model class should have another Control class for 
+making the common tasks like insertion, searching, storage etc.
+
+But then in practice, who would use
+$ v = Voice()
+$ elt = MusElement(v)
+$ vCtl = VoiceCtl(v)
+$ vCtl.appendAndDoSomething(elt)
+$ vCtl.commit()
+
+but rather
+$ v = Voice()
+$ v.appendAndDoSomething( MusElement(v) )
+
+So the whole theory about the patterns and the idea how to break class 
+to pieces probably becomes useful when the particular class gets &gt;1000 
+lines long (eg. our MainWindow).
+
+My 5 practical cents. Reinhard, comment? ;)
+-Matev&#382;
+
+Mikhail Yakshin pravi:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> On Thu, May 14, 2009 at 2:40 PM, Luis Garrido
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">luisgarrido at users.sourceforge.net</A>&gt; wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Perhaps a bit OT but, regarding a heavy redesign of the API, only
+</I>&gt;&gt;<i> recently I got my hands on Gang of Four's &quot;Design Patterns: Elements
+</I>&gt;&gt;<i> of Reusable Object-Oriented Software&quot; and, besides the theory on OOP
+</I>&gt;&gt;<i> patterns there is some good insight to design things like a wysiwyg
+</I>&gt;&gt;<i> text editor which could be applied to a project like Canorus.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> It is an old book already, and a seminal work on OOP so you probably
+</I>&gt;&gt;<i> have already read it, but if you haven't it's definitely worth a look.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Please, for god's sake, do take this book's recommendations with a
+</I>&gt;<i> huge grain of salt. Theoretical beauty of many patterns is greatly
+</I>&gt;<i> exaggerated, and gradually I see more and more good libraries spoiled
+</I>&gt;<i> by blatant &quot;let's do everything as the book says&quot;.
+</I>&gt;<i>
+</I>&gt;<i> Same thing goes about some other &quot;sacred&quot; OOP literature, such as
+</I>&gt;<i> Alexandrescu or Abrahams.
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000796.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+	<LI>Next message: <A HREF="000807.html">[Canorus-devel] question about renamings and API changes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#797">[ date ]</a>
+              <a href="thread.html#797">[ thread ]</a>
+              <a href="subject.html#797">[ subject ]</a>
+              <a href="author.html#797">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

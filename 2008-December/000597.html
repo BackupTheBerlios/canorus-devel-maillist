@@ -1,0 +1,121 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Itay - R894?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-December/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Itay%20-%20R894%3F&In-Reply-To=%3Ca24024cb0812020436v6e1cbb40n1428d772a47d0591%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000596.html">
+   <LINK REL="Next"  HREF="000599.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Itay - R894?</H1>
+    <B>Itay Perl</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Itay%20-%20R894%3F&In-Reply-To=%3Ca24024cb0812020436v6e1cbb40n1428d772a47d0591%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Itay - R894?">itay.perl at gmail.com
+       </A><BR>
+    <I>Tue Dec  2 13:36:15 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000596.html">[Canorus-devel] Itay - R894?
+</A></li>
+        <LI>Next message: <A HREF="000599.html">[Canorus-devel] [Print Preview]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#597">[ date ]</a>
+              <a href="thread.html#597">[ thread ]</a>
+              <a href="subject.html#597">[ subject ]</a>
+              <a href="author.html#597">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Matev&#382;,
+
+On Tue, Dec 2, 2008 at 10:54 AM, Matev&#382; Jekovec &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;wrote:
+
+&gt;<i> Hi Itay,
+</I>&gt;<i>
+</I>&gt;<i> I remember committing a similar bugfix for deleting/changing the chord
+</I>&gt;<i> length. The problem was not updated timeLength for the notes.
+</I>&gt;<i>
+</I>&gt;<i> Can you please check
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="http://svn.berlios.de/wsvn/canorus/?op=comp&amp;compare[">http://svn.berlios.de/wsvn/canorus/?op=comp&amp;compare[</A>]=%<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">2F at 884</A>&amp;compare[]=%<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">2F at 885</A>&lt;<A HREF="http://svn.berlios.de/wsvn/canorus/?op=comp&amp;compare%5B%5D=%2F@884&amp;compare%5B%5D=%2F@885">http://svn.berlios.de/wsvn/canorus/?op=comp&amp;compare%5B%5D=%2F@884&amp;compare%5B%5D=%2F@885</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> if it maybe already fixes your problem.
+</I>&gt;<i>
+</I>
+I don't see a connection... I've just tried a clean trunk build and the bug
+I (hopefully) fixed in r894 is still there. Consider the following
+situation:
+&lt;&lt; { c1 } \ { g4 g g g } &gt;&gt; |
+At this point if you select the whole staff contents and shift+delete or
+cut, all notes are replaced with rests. Doesn't make sense IMO.
+The only behavior change I made is:
+
+else if( !musElemSet.contains(current) ) {
+
+instead of just &quot;else {&quot;. I.e., now not forcing replacement with rests if
+the note in the other voice is also going to be deleted. I think it makes
+sense.
+Apart from that I removed some redundancy with a do...while loop.
+
+Agree?
+
+
+&gt;<i> Btw. I think it's time to merge copypaste branch with trunk. The sooner
+</I>&gt;<i> the better - we can test your code and you'll have less conflicts if you
+</I>&gt;<i> merge it sooner.
+</I>&gt;<i>
+</I>
+I've been planning to merge today. Already merged locally with no
+problematic conflicts.
+Going to test a bit to see that everything works, and then commit.
+
+(BTW, I had to upgrade to Qt 4.4 to compile trunk because of the printing
+code, hence r895).
+
+Best regards,
+Itay
+
+&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20081202/6e8f6a6f/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20081202/6e8f6a6f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000596.html">[Canorus-devel] Itay - R894?
+</A></li>
+	<LI>Next message: <A HREF="000599.html">[Canorus-devel] [Print Preview]
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#597">[ date ]</a>
+              <a href="thread.html#597">[ thread ]</a>
+              <a href="subject.html#597">[ subject ]</a>
+              <a href="author.html#597">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

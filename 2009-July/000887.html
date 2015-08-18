@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] midi import does chords
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import%20does%20chords&In-Reply-To=%3C4A59E944.7050808%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000886.html">
+   <LINK REL="Next"  HREF="000888.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] midi import does chords</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20midi%20import%20does%20chords&In-Reply-To=%3C4A59E944.7050808%40web.de%3E"
+       TITLE="[Canorus-devel] midi import does chords">suamor at web.de
+       </A><BR>
+    <I>Sun Jul 12 15:46:44 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000886.html">[Canorus-devel] midi import does chords
+</A></li>
+        <LI>Next message: <A HREF="000888.html">[Canorus-devel] Compiler optimizations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#887">[ date ]</a>
+              <a href="thread.html#887">[ thread ]</a>
+              <a href="subject.html#887">[ subject ]</a>
+              <a href="author.html#887">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Matevz &amp; Co,
+
+I discussed with Georg about CAVoice/CAStaff dependencies and we thought
+to implement a minimal control class with reference lists to f.e. clefs.
+
+If the list gets changed by one class the other is notified about the
+change. It might be useful (similar to transactions) to do several
+changes at once.
+
+A possible delay for the changes could be introduced if Canorus is in 
+some kind of busy state (it would be more complex, so I'd introduce such 
+delays only if there are really problematic performance issues).
+
+Matev&#382; Jekovec wrote:
+&gt;<i> I think in the future we should move the shared signs outside the voice
+</I>&gt;<i> (to CAStaff directly). And I wouldn't use CAVoiceCtl and CAStaffCtl
+</I>&gt;<i> classes but put all the control stuff into the CAVoice and CAStaff
+</I>&gt;<i> itself (not many public control functions will exist I think - maybe 5,
+</I>&gt;<i> others are more model for insertion/deletion). This way we would
+</I>&gt;<i> simplify the score operations to the core classes CAVoice, CAStaff etc.
+</I>&gt;<i> No special control classes would be needed for the Python developer.
+</I>&gt;<i>
+</I>&gt;<i> I would create class CAQuantization for the tuplet and other quantiazion
+</I>&gt;<i> operations. I would create CAMainWinMode, CAMainWinInsert,
+</I>&gt;<i> CAMainWinDelete, CAMainWinEdit for the GUI operations specific to the
+</I>&gt;<i> current mode.
+</I>
+Insert should have two variants: Insert by moving like we already have
+and also Insert by Overwriting like it is done already for x-tuples.
+This would make it also easier for x-tuples requiring currently a very
+exact mouse control to &quot;overwrite&quot; the pause elements by notes.
+
+I don't exactly see the need for a Delete mode. You can delete both
+in Insert and Edit mode (which replaces notes by pauses normally).
+
+&gt;<i> I need Reinhard's opinion on this though.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> -Matev&#382;
+</I>
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000886.html">[Canorus-devel] midi import does chords
+</A></li>
+	<LI>Next message: <A HREF="000888.html">[Canorus-devel] Compiler optimizations
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#887">[ date ]</a>
+              <a href="thread.html#887">[ thread ]</a>
+              <a href="subject.html#887">[ subject ]</a>
+              <a href="author.html#887">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

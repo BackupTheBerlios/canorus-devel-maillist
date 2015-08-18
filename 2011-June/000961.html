@@ -1,0 +1,130 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Problems with Slurs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2011-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Problems%20with%20Slurs&In-Reply-To=%3C20110626183754.639b8c67%40m40ubu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Problems with Slurs</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Problems%20with%20Slurs&In-Reply-To=%3C20110626183754.639b8c67%40m40ubu%3E"
+       TITLE="[Canorus-devel] Problems with Slurs">suamor at web.de
+       </A><BR>
+    <I>Sun Jun 26 18:37:54 CEST 2011</I>
+    <P><UL>
+        
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#961">[ date ]</a>
+              <a href="thread.html#961">[ thread ]</a>
+              <a href="subject.html#961">[ subject ]</a>
+              <a href="author.html#961">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I've created a new score with duols and slurs. I've attached the current
+version of the document.
+This documents leads to two crashes:
+1) When loading within Canorus, the layoutengine(.cpp) crashes:
+During creation of Slurs there is no check again null pointer.
+
+One thing that might have lead to the crash lateron was that I
+copied and pasted one complete bar containing the duols. Here
+I found a bug:
+The pasted notes don't have the slur anymore.
+I added them nonetheless.
+
+Later during editing I saw that all the slurs of both the duols bars
+had disappeared. Shortly after that Canorus crashed (probably in the
+layoutengine as well but I haven't tried to reproduce this problem).
+
+I only fixed the null pointer check but haven't looked into what is
+happening to the slurs themselves (don't know the code much myself).
+
+2) When loading the document via command line parameter Canorus crashes
+in mainwin.h (currentScoreView() method):
+
+Found type of view: P6CAView
+Program received signal SIGSEGV, Segmentation fault.
+0x027f881b in __dynamic_cast () from /usr/lib/libstdc++.so.6
+(gdb) up
+#1  0x08129f57 in CAMainWin::currentScoreView (this=0x88a3668)
+    at /home/volker/projekte/canorus/trunk/src/ui/mainwin.h:119
+119				return
+dynamic_cast&lt;CAScoreView*&gt;(currentView());
+
+I added two lines to check the type of the currentView:
+fprintf(stdout,&quot;Found type of view: %s&quot;, typeid(currentView()).name());
+fflush(stdout);
+
+The result was:
+Found type of view: P6CAView
+So obviosly this view is no score view at all but only a basic view.
+
+More backtrace:
+#3  0x0817aa9b in CAMainWin::updateInsertToolBar (this=0x88a3668)
+    at /home/volker/projekte/canorus/trunk/src/ui/mainwin.cpp:4402
+#4  0x0817a156 in CAMainWin::updateToolBars (this=0x88a3668)
+    at /home/volker/projekte/canorus/trunk/src/ui/mainwin.cpp:4265
+#5  0x0816a16a in CAMainWin::setMode (this=0x88a3668, 
+    mode=CAMainWin::ProgressMode)
+    at /home/volker/projekte/canorus/trunk/src/ui/mainwin.cpp:1482
+#6  0x0812bf56 in CAMainWinProgressCtl::startProgress (this=0x88a3818, 
+    f=0x8d241a8)
+    at /home/volker/projekte/canorus/trunk/src/control/mainwinprogressctl.cpp:55
+#7  0x08172c98 in CAMainWin::openDocument (this=0x88a3668, fileName=...)
+    at /home/volker/projekte/canorus/trunk/src/ui/mainwin.cpp:2955
+#8  0x080e5bd1 in CACanorus::parseOpenFileArguments (argc=2, argv=0xbffff9b4)
+    at /home/volker/projekte/canorus/trunk/src/canorus.cpp:284
+
+I currently have no idea how to fix this problem.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: cohen_halleluja_viola.xml
+Type: application/xml
+Size: 28011 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20110626/baaad453/attachment.xml">https://lists.berlios.de/pipermail/canorus-devel/attachments/20110626/baaad453/attachment.xml</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#961">[ date ]</a>
+              <a href="thread.html#961">[ thread ]</a>
+              <a href="subject.html#961">[ subject ]</a>
+              <a href="author.html#961">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

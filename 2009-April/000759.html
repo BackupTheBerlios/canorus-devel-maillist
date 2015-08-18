@@ -1,0 +1,163 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] [Canorus-user] Canorus and MIDI
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BCanorus-user%5D%20Canorus%20and%20MIDI&In-Reply-To=%3C49D7C754.3020702%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000758.html">
+   <LINK REL="Next"  HREF="000760.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] [Canorus-user] Canorus and MIDI</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BCanorus-user%5D%20Canorus%20and%20MIDI&In-Reply-To=%3C49D7C754.3020702%40web.de%3E"
+       TITLE="[Canorus-devel] [Canorus-user] Canorus and MIDI">suamor at web.de
+       </A><BR>
+    <I>Sat Apr  4 22:47:16 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000758.html">[Canorus-devel] LAC 2009: Program Online
+</A></li>
+        <LI>Next message: <A HREF="000760.html">[Canorus-devel] [Canorus-user] Canorus and MIDI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#759">[ date ]</a>
+              <a href="thread.html#759">[ thread ]</a>
+              <a href="subject.html#759">[ subject ]</a>
+              <a href="author.html#759">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi David,
+
+David Cuny wrote:
+&gt;<i> Hi, Reinhard.
+</I>&gt;<i>
+</I>&gt;&gt;<i> Basically I don't see any limitation. I don't know really the core but
+</I>&gt;&gt;<i> Midi support certainly isn't finished at this point.
+</I>&gt;<i>
+</I>&gt;<i> I was just surprised the velocity wasn't included at this point, since it's pretty basic.
+</I>
+Hopefully Matevz or Georg can answer that question. For me at this
+point I'm happy that I can input notes via my small keyboard.
+I plan to do some transponation of a Bach sonata from violin to
+viola. So while input is important, but playback is low priority
+as I play it directly on the instrument.
+
+&gt;&gt;<i> to be that way I hope that it will change. Core developers can
+</I>&gt;&gt;<i> tell you more about the design.
+</I>&gt;<i>
+</I>&gt;<i> I understand that you'd want to decouple classes, and it makes sense to put most of the MIDI information int CAVoice. However, I'm not sure how you would go about implementing various time-varying effects.
+</I>&gt;<i>
+</I>&gt;<i> Imagine that you wanted a crescendo and decrescendo over the span of a single note. To do this, you'd have to emit a series of volume change MIDI events over the timespan of the instrument. The spacing of the events would depend on the resolution of the MIDI track.
+</I>&gt;<i>
+</I>&gt;<i> Having this driven from the articulation seems like a bad design plan, since the crescendo and decrescendo would need to know about MIDI. As you've said, this creates a strong dependency between classes, which is generally to be avoided.
+</I>&gt;<i>
+</I>&gt;<i> A bottom down approach would seem better, where the CANote queries the CAStaff for a list of articulation events. It could then pass these events to the MIDI controller, which could know how to implement them.
+</I>&gt;<i>
+</I>&gt;<i> But I don't see anything like that in the design discussion. As I said, the absence of MIDI volume was surprising, since it's pretty basic. I understand that there are other priorities and a limited number of developers.
+</I>
+I wasn't involved in design discussions concerning Midi but your
+proposal sounds reasonable to me. I did mainly printing and preview
+and testing and advocating (for LAC 2009, Google Summer of Code).
+I just basically know that we use rtmidi for Midi output and the
+rest is up to the core. My personal next step for Canorus is to
+improve the usability and one step hencefore is to improve the
+overall control of music elements at the UI via keyboard, midi,
+context menus (and maybe more).
+
+&gt;&gt;<i> Some simple control was planned for the release but we lack developers
+</I>&gt;&gt;<i> to do all this features we wish to have :(
+</I>&gt;<i>
+</I>&gt;<i> How difficult is it to code Canorus? I'm currently working on a Java applicatio which uses the Gervill library as a base. I'd looked at using abc4j to render the notation, but it doesn't handle chords well at this point.
+</I>
+Well it's written in C++ and we use the Qt4 framework. I don't find it
+very hard to code and we tried to make a good object oriented design.
+The main weekness currently is our main window class also having too
+much control function which has to be separated. This is also basic for
+implementing my own usability ideas.
+
+Thanks to the plugin interface we mainly need to discuss how much to put
+at the interface level to Canorus for plugins. Though plugins are
+current written in python swig offers far more support.
+
+Also I'm considering to go to a virtual machine like parrot if
+interfacing and/or performance improvements can be achieved this way
+(i.e. we only provide the interface and don't have to care about
+the language you want to implement your Canorus plugin).
+
+&gt;<i> I'm currently writing a notation front-end myself, but it's re-inventing the wheel. I've just run across Canorus, and it looks like it would be a good front-end for what I'm doing. I've dabbled a bit in Python, and some time back I'd done music composition with Prolog. I'm just scoping the project out to see if (at this point) there are any major limitations.
+</I>
+If there are limitations (except time to implement all our ideas :-)
+we'd like to hear about them. What has been largely discussed is
+layout of the score. I still hope that we can &quot;borrow&quot; some layout
+engine as an additional view for later (&gt; 1.0) versions of Canorus.
+
+&gt;<i> I haven't looked at the code yet, but I can't imagine that adding basic support for MIDI velocity would be that difficult. But I'm not all that eager to start coding on yet another project, since I'm already overextended on what I'm currently doing.
+</I>
+It's all up to you of course, we'd be very happy to have you with
+our team even if it's only some hour per week. Good design ideas
+written down at the wiki without implementing code is already a
+big help (actually static and dynamic OD).
+
+&gt;<i> How difficult is it to set up the development environment for Canorus under Ubuntu? I use Eclipse on a regular basis, so I'm comfortable with that. I'm comfortable with C coding, but haven't done C++ coding. However, I'm been doing Java coding for some time, so I'm not that worried about it.
+</I>
+While C++ is a bit more &quot;primitive&quot; from an object oriented view
+than Java the syntax itself is basically identical.
+For dev environment you can use Eclipse or simply some
+text editor and cmake (make). gdb as debugger works just
+fine for me. If you want a light-weight development environment
+I'd recommand to look at geany (<A HREF="http://www.geany.org/">http://www.geany.org/</A> meanwhile
+0.16 was released, I still have the previous version).
+For Eclipse you need to have C++ plugin installed as well as
+the subversion plugin (see also 
+<A HREF="http://canorus.berlios.de/wiki/index.php/Developers_Guide">http://canorus.berlios.de/wiki/index.php/Developers_Guide</A> )
+
+&gt;<i> However, I'd also have to dabble with SWIG, which I haven't touched in years...
+</I>
+&gt;<i> Perhaps I should be posting these questions on the other mailing lists?
+</I>&gt;<i>
+</I>
+I moved the thread to that list. I CCed you in case you're not on that
+list. The swig part is currently maintained by Matevz but I think you
+don't need to bother for it.
+
+Kind regards,
+
+Reinhard Katzmann
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000758.html">[Canorus-devel] LAC 2009: Program Online
+</A></li>
+	<LI>Next message: <A HREF="000760.html">[Canorus-devel] [Canorus-user] Canorus and MIDI
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#759">[ date ]</a>
+              <a href="thread.html#759">[ thread ]</a>
+              <a href="subject.html#759">[ subject ]</a>
+              <a href="author.html#759">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

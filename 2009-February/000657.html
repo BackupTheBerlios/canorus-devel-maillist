@@ -1,0 +1,128 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] 0.7 release plan
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%200.7%20release%20plan&In-Reply-To=%3C49A8049D.4070405%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000656.html">
+   <LINK REL="Next"  HREF="000658.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] 0.7 release plan</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%200.7%20release%20plan&In-Reply-To=%3C49A8049D.4070405%40gmail.com%3E"
+       TITLE="[Canorus-devel] 0.7 release plan">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Fri Feb 27 16:19:57 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000656.html">[Canorus-devel] 0.7 release plan
+</A></li>
+        <LI>Next message: <A HREF="000658.html">[Canorus-devel] Avoid absolute paths under MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#657">[ date ]</a>
+              <a href="thread.html#657">[ thread ]</a>
+              <a href="subject.html#657">[ subject ]</a>
+              <a href="author.html#657">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Itay,
+
+the anti-aliasing stuff is slow, but looks nicer IMO - especially if you
+use higher resolution. I'll enable it by default, but will put the &quot;use
+anti-aliased fonts&quot; in Settings. Slurs will always be anti-aliased.
+
+About resources: I think all resources should always be saved. When
+saving to myScore.xml format, a &quot;myScore.xml files/&quot; directory should be
+made where saving along the .xml file. And when saving to .can format,
+the folder should be zipped along the file.
+
+
+Regards.
+-Matev&#382;
+
+Itay Perl pravi:
+&gt;<i> Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i> Looks good to me. Anything you'd want me to do about resources? How
+</I>&gt;<i> are you planning to implement it (GUI-wise and
+</I>&gt;<i> canorusml/archive-wise)? I take it the archive format will save all
+</I>&gt;<i> the resources, and xml will retain only the linked resources?
+</I>&gt;<i>
+</I>&gt;<i> BTW, the new global anti-aliasing really hurts my eyes... the notes
+</I>&gt;<i> are kinda blurry. I think it was better when only slurs were
+</I>&gt;<i> anti-aliased (they look *really* awful without it).
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> On Thu, Feb 26, 2009 at 5:52 PM, Matev&#382; Jekovec
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">matevz.jekovec at gmail.com</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     Hi guys.
+</I>&gt;<i>
+</I>&gt;<i>     I'm going to release 0.7 beta as soon as me and Itay implement the
+</I>&gt;<i>     resources saving/loading. From my side, we're feature complete for the
+</I>&gt;<i>     0.7 then.
+</I>&gt;<i>
+</I>&gt;<i>     Bugs to fix and implement until final 0.7 release:
+</I>&gt;<i>     - user's guide (at least some tutorial)
+</I>&gt;<i>     - translation updates
+</I>&gt;<i>     - bug not showing the images in user's guide
+</I>&gt;<i>     - other bugs and polishes
+</I>&gt;<i>
+</I>&gt;<i>     Some dates I had in mind:
+</I>&gt;<i>     - 8th March: 0.7beta, phrases freeze for translators
+</I>&gt;<i>     - 22th March: deadline for translators
+</I>&gt;<i>     - 24th March: 0.7 release
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Regards.
+</I>&gt;<i>     -Matev&#382;
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Canorus-devel mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000656.html">[Canorus-devel] 0.7 release plan
+</A></li>
+	<LI>Next message: <A HREF="000658.html">[Canorus-devel] Avoid absolute paths under MacOSX
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#657">[ date ]</a>
+              <a href="thread.html#657">[ thread ]</a>
+              <a href="subject.html#657">[ subject ]</a>
+              <a href="author.html#657">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

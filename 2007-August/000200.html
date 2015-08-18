@@ -1,0 +1,164 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] some stuff
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3Ca24024cb0708241655o423bcbdcv93663b53f979bb6d%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000199.html">
+   <LINK REL="Next"  HREF="000201.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] some stuff</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20some%20stuff&In-Reply-To=%3Ca24024cb0708241655o423bcbdcv93663b53f979bb6d%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] some stuff">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Aug 25 01:55:06 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000199.html">[Canorus-devel] some stuff
+</A></li>
+        <LI>Next message: <A HREF="000201.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Awesome work Matev&#382;!!
+
+A few issues (Tested on r555. Just noticed that r557 is out...All bugs are
+still there though....)
+
+0. Insert a chord. Select it, copy, paste.
+
+1. Function marking seems to be a bit buggy, lots of crashes.
+
+2. Select some notes AND some function markings, copy, select staff, paste,
+crash.
+
+3. quite funny: select some notes and some lyrics together, copy, paste. The
+lyrics are pasted on the staff! No crash though.
+
+4. I can only paste a limited number of times in a row. Sometimes on the
+last time, the paste is &quot;drawn back&quot; and the new notes appear below the
+previous notes as chords. Then paste stops working. Select a few notes,
+copy, paste, paste, paste, paste,... and you'll see it.
+
+5. Maybe related to the previous: Insert a note and a barline, select both,
+copy, paste, paste, paste, (...). after the first paste, only the barline is
+added.
+
+6. Slurs are cut (removed) but not pasted.
+
+7. Can't recall if it was like this before: the menus of menu/undo tool
+buttons are separate windows, and appear in the task bar (on linux/kde at
+least). I've just pressed alt+tab and saw the menu without the main window.
+They should be connected somehow IMO.
+
+8. Insert some elements, select them, copy, new document, paste, copy, crash
+
+9. Lilypond source crashes (unless there are no elements)
+
+10. CanorusML source just hides the vertical toolbar and nothing else (no
+source is shown).
+
+11. Viewport splitting through the window menu has stopped working long ago.
+(View -&gt; Score view works).
+
+12. Maybe the undo-menu-tool-button-listbox (ugh..) could be a bit less
+wide?
+
+
+New in r557: compile warnings, swig canorusPython
+
+core/canorusml.h:32: Warning(401): Nothing known about base class
+'QXmlDefaultHandler'. Ignored.
+interface/playback.h:20: Warning(401): Nothing known about base class
+'QThread'. Ignored.
+interface/mididevice.h:19: Warning(401): Nothing known about base class
+'QObject'. Ignored.
+
+Stay tuned for more... ;)
+
+Regards,
+Itay
+
+On 8/24/07, <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+wrote:
+&gt;<i>
+</I>&gt;<i> Hi David, thanks for reply.
+</I>&gt;<i>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;<i> &gt; I tried out the latest SVN version (R. 554). It looks like a lot a
+</I>&gt;<i> &gt; development is going on.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Some regressions:
+</I>&gt;<i> &gt; * Cannot create new documents (&quot;ImportError: No module name new&quot;)
+</I>&gt;<i> That's weird. I can't reproduce this. Is this the whole output? Would
+</I>&gt;<i> expect something like newDocument or newDefaultDocument, not just &quot;new&quot;.
+</I>&gt;<i> &gt; * Undo/redo missing from Edit menu and undo/redo keybindings no longer
+</I>&gt;<i> &gt; work
+</I>&gt;<i> Fixed in R555.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Some new bugs:
+</I>&gt;<i> &gt; * Copy/paste does not paste multiple voices or multiple staves
+</I>&gt;<i> &gt; correctly (try copy/paste with the sample file attached)
+</I>&gt;<i> That's the problem, I agree. For now, use copy&amp;paste from 1 voice to 1
+</I>&gt;<i> voice. The problem is that there aren't just voices -&gt; voices behaviour
+</I>&gt;<i> questions, but also if you copy random elements from various staffs, how
+</I>&gt;<i> should those be pasted. I'll take a look at this later and try to fix
+</I>&gt;<i> some crashes, but can't promise much.
+</I>&gt;<i> &gt; * Paste is not recorded by undo
+</I>&gt;<i> Fixed in R555.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Regards.
+</I>&gt;<i> - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070825/7cc7ad3f/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070825/7cc7ad3f/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000199.html">[Canorus-devel] some stuff
+</A></li>
+	<LI>Next message: <A HREF="000201.html">[Canorus-devel] some stuff
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#200">[ date ]</a>
+              <a href="thread.html#200">[ thread ]</a>
+              <a href="subject.html#200">[ subject ]</a>
+              <a href="author.html#200">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

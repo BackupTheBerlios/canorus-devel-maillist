@@ -1,0 +1,165 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] pycli 2nd
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20pycli%202nd&In-Reply-To=%3C9a4db0e10803010433r5397fc71g69456fe10575597e%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000484.html">
+   <LINK REL="Next"  HREF="000486.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] pycli 2nd</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20pycli%202nd&In-Reply-To=%3C9a4db0e10803010433r5397fc71g69456fe10575597e%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] pycli 2nd">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sat Mar  1 13:33:29 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000484.html">[Canorus-devel] Canorus Portable [Windows Binaries] for	PortableApps.com
+</A></li>
+        <LI>Next message: <A HREF="000486.html">[Canorus-devel] SoC, plugins, threads &amp; processes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#485">[ date ]</a>
+              <a href="thread.html#485">[ thread ]</a>
+              <a href="subject.html#485">[ subject ]</a>
+              <a href="author.html#485">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Thanks, it works now.
+
+
+Regards.
+-Matev&#382;
+
+2008/2/29, &#352;tefan Sakal&#237;k &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">rabbit6440 at gmail.com</A>&gt;:
+&gt;<i>
+</I>&gt;<i> Sorry, I've forgotten to comment out some lines.
+</I>&gt;<i> Now it has to work! :)
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> Matev&#382; Jekovec wrote:
+</I>&gt;<i> &gt; I still got an error:
+</I>&gt;<i> &gt; c:\MinGW\bin\g++.exe   -O0 -g -IC:\canorus\trunk\src
+</I>&gt;<i> -IC:\canorus\trunk\src\zlib -IC:\Qt\4.3.0\include
+</I>&gt;<i> -IC:\Qt\4.3.0\include\QtSvg -IC:\Qt\4.3.0\include\QtGui
+</I>&gt;<i> -IC:\Qt\4.3.0\include\QtXml -IC:\Qt\4.3.0\include\QtCore
+</I>&gt;<i> -IC:\Python25\include   -D__WINDOWS_MM__ -DCANORUS_VERSION=\&quot;0.6svn\&quot;
+</I>&gt;<i> -DUSE_SWIG -DUSE_PYTHON -DQT_SHARED -DQT_SVG_LIB -DQT_GUI_LIB -DQT_XML_LIB
+</I>&gt;<i> -DQT_CORE_LIB -o src/CMakeFiles/canorus.dir/scripting/swigpython.obj -c
+</I>&gt;<i> C:\canorus\trunk\src\scripting\swigpython.cpp
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; C:\canorus\trunk\src\scripting\swigpython.cpp: In static member function
+</I>&gt;<i> `static void* CASwigPython::callPycli(void*)':
+</I>&gt;<i> &gt; C:\canorus\trunk\src\scripting\swigpython.cpp:171: error: `pthread_exit'
+</I>&gt;<i> undeclared (first use this function)
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; C:\canorus\trunk\src\scripting\swigpython.cpp:171: error: (Each
+</I>&gt;<i> undeclared identifier is reported only once for each function it appears
+</I>&gt;<i> in.)
+</I>&gt;<i> &gt; mingw32-make[2]: ***
+</I>&gt;<i> [src/CMakeFiles/canorus.dir/scripting/swigpython.obj] Error 1
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; mingw32-make[2]: Leaving directory `C:/canorus/trunk'
+</I>&gt;<i> &gt; mingw32-make[1]: *** [src/CMakeFiles/canorus.dir/all] Error 2
+</I>&gt;<i> &gt; mingw32-make[1]: Leaving directory `C:/canorus/trunk'
+</I>&gt;<i> &gt; c:\mingw\bin\mingw32-make: *** [all] Error 2
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; Regards.
+</I>&gt;<i> &gt; -Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; 2008/2/29, &#352;tefan Sakal&#237;k &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">rabbit6440 at gmail.com</A>
+</I>&gt;<i>
+</I>&gt;<i> &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">rabbit6440 at gmail.com</A>&gt;&gt;:
+</I>&gt;<i>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Hi Matev&#382;.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     It's fixed I think, try it now.
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Regards,
+</I>&gt;<i> &gt;     &#352;tefan
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     Matev&#382; Jekovec wrote:
+</I>&gt;<i> &gt;     &gt; Hi &#352;tefan.
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; I still cannot compile Canorus under Windows. As you might know,
+</I>&gt;<i> &gt;     &gt; pthread is part of posix system. Unfortunately Windows doesn't
+</I>&gt;<i> bring
+</I>&gt;<i> &gt;     &gt; it along. Could you use QThread instead?
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; Regards.
+</I>&gt;<i> &gt;     &gt; -Matev&#382;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;     &gt; _______________________________________________
+</I>&gt;<i> &gt;     &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt;     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt;     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;     &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;     _______________________________________________
+</I>&gt;<i> &gt;     Canorus-devel mailing list
+</I>&gt;<i>
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A> &lt;mailto:
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; ------------------------------------------------------------------------
+</I>&gt;<i> &gt;
+</I>&gt;<i> &gt; _______________________________________________
+</I>&gt;<i> &gt; Canorus-devel mailing list
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i> &gt;
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080301/5e88a815/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080301/5e88a815/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000484.html">[Canorus-devel] Canorus Portable [Windows Binaries] for	PortableApps.com
+</A></li>
+	<LI>Next message: <A HREF="000486.html">[Canorus-devel] SoC, plugins, threads &amp; processes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#485">[ date ]</a>
+              <a href="thread.html#485">[ thread ]</a>
+              <a href="subject.html#485">[ subject ]</a>
+              <a href="author.html#485">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

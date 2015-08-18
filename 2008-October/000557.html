@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] images support
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-October/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20images%20support&In-Reply-To=%3C48E91989.1000904%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000556.html">
+   <LINK REL="Next"  HREF="000558.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] images support</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20images%20support&In-Reply-To=%3C48E91989.1000904%40web.de%3E"
+       TITLE="[Canorus-devel] images support">suamor at web.de
+       </A><BR>
+    <I>Sun Oct  5 21:46:17 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000556.html">[Canorus-devel] Basic midi keyboard score input
+</A></li>
+        <LI>Next message: <A HREF="000558.html">[Canorus-devel] Casting madness
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#557">[ date ]</a>
+              <a href="thread.html#557">[ thread ]</a>
+              <a href="subject.html#557">[ subject ]</a>
+              <a href="author.html#557">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+Sorry, I was basically offline for quite some time - busy with music projects
+mainly but also having terrible DSL connection problems lately (also phone call
+do not get through to me - but I don't understand why :-( )
+I changed something in Software in Hardware to have at least some connection
+but very often the connection gets slow and I'm forced to reboot my Fritz Box.
+I have not the slightest idea, it just suddenly started one evening.
+
+Apart from that I'm doing slow progress in Export PDF and printing/preview.
+I have a hairy problem where I hope that I meanwhile have found a solution
+for it (crash-bug when export sets a file name probably because a stream is
+not initialized properly in the beginning or something different weird because
+I never reach my &quot;Impl&quot; constructor in my class...)
+
+I lastly tried to catch up some of the mails from the list. This one should
+be answered I guess.
+
+Matev&#382; Jekovec schrieb:
+&gt;<i> Hi guys.
+</I>&gt;<i> 
+</I>&gt;<i> We're currently having a discussion of how to implement the resources
+</I>&gt;<i> inside the document with Itay.
+</I>
+Up to now I just use the document Canorus delivers. I have not yet started
+thinking about how to handle the options from settings. My first question
+coming up what you exactly mean by resources ? Probably somethind different
+from NoteEdit ;-)
+
+&gt;<i> I played around a bit and in the end, we might expect something like this:
+</I>&gt;<i> 1) Insert-&gt;Picture...
+</I>&gt;<i> 2) User selects the picture (supported all image formats by Qt4) and
+</I>&gt;<i> inserts it
+</I>
+I asked myself if the picture (or other &quot;resource&quot; ?) can be placed anywhere
+in the score. I see this as a function similar to desktop publishers or
+text processors: Wrap around picture (could be problematic as it is more a
+layout function), and of course things like to front / to back etc.
+
+&gt;<i> 3) Picture appears in the document and on the resources list
+</I>&gt;<i> 4) User prints the document
+</I>&gt;<i> 5) The image is converted into a EPS format (using QPrinter)
+</I>
+I have no idea how this should be implemented. Does QPrinter support
+EPS natively ? PDF is ok, but Windows does not support EPS natively without
+installing ghostscript as extra package. Up to now we (actually when my
+export class finally works) can only print SVG and create PDF or Postscript via 
+QPrinter (Postscript Export could be easily implemented once the PDF export works).
+
+Concerning the conversion: I don't see the idea behing the fact to
+actually convert the picture. This is all highly layout stuff things and
+I at once come up with the question &quot;What is the exact position of my picture&quot;
+and &quot;What is the exact position of the &quot;Note a&quot; left of the picture or 
+something similar.
+
+&gt;<i> 6) The image is inserted into the lilypond document using
+</I>&gt;<i> \markup{\epsfile #X #10 #&quot;./image.eps&quot;}
+</I>
+Ok, so that is why you need EPS files and nor normal postscript files.
+
+&gt;<i> 7) PDF is generated (or printed). See the attachment for the result.
+</I>&gt;<i> 
+</I>&gt;<i> Reinhard, you might be interested in the QImage-&gt;EPS conversion. See the
+</I>&gt;<i> attached script.
+</I>&gt;<i> 
+</I>
+I still don't see the whole concept but thanks for the script so far. I
+doubt though that Qt creates encapsulated postscript. Would need to be
+tested with lilypond. Maybe you did that already
+
+Best Regards and a good start in the next week to you all,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000556.html">[Canorus-devel] Basic midi keyboard score input
+</A></li>
+	<LI>Next message: <A HREF="000558.html">[Canorus-devel] Casting madness
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#557">[ date ]</a>
+              <a href="thread.html#557">[ thread ]</a>
+              <a href="subject.html#557">[ subject ]</a>
+              <a href="author.html#557">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

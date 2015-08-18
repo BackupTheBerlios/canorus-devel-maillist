@@ -1,0 +1,86 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Ledger lines and layout in general
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-December/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Ledger%20lines%20and%20layout%20in%20general&In-Reply-To=%3Cffda12330712071608l3e5c4303na6ca6081d95eefe7%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000319.html">
+   <LINK REL="Next"  HREF="000322.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Ledger lines and layout in general</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Ledger%20lines%20and%20layout%20in%20general&In-Reply-To=%3Cffda12330712071608l3e5c4303na6ca6081d95eefe7%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Ledger lines and layout in general">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Dec  8 01:08:02 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000319.html">[Canorus-devel] basic use question
+</A></li>
+        <LI>Next message: <A HREF="000322.html">[Canorus-devel] about kdiff3 or other tool
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#321">[ date ]</a>
+              <a href="thread.html#321">[ thread ]</a>
+              <a href="subject.html#321">[ subject ]</a>
+              <a href="author.html#321">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi there!
+
+I have been checking out latest Canorus SVN (633).
+
+There is some weird thing going on with ledger lines. Just place a
+c''' and a d''' side to side and you'll see what I mean. I took a look
+at the code thinking of sending some patch, since this seemed an easy
+one. When I saw the layout code I thought of more fundamental
+questions.
+
+IMO what would make sense here would be a stylesheet approach. I would
+take a leaf of Qt widget system and bundle the look (representation,
+view) and feel (behaviour, controller) in a style class, similar to
+QStyle.
+
+Regarding rounding issues, QPainter admits floating coordinates. Did
+you give it a try?
+
+If at some point you are planning to implement different size staves
+in the same score (ossias, accompaniment parts) things like note
+drawing should take this into account.
+
+Cheers,
+
+Luis
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000319.html">[Canorus-devel] basic use question
+</A></li>
+	<LI>Next message: <A HREF="000322.html">[Canorus-devel] about kdiff3 or other tool
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#321">[ date ]</a>
+              <a href="thread.html#321">[ thread ]</a>
+              <a href="subject.html#321">[ subject ]</a>
+              <a href="author.html#321">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

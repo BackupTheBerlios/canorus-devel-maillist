@@ -1,0 +1,106 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] CAExternProgram and Control directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAExternProgram%20and%20Control%20directory&In-Reply-To=%3C47C24BCB.4000802%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000458.html">
+   <LINK REL="Next"  HREF="000452.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] CAExternProgram and Control directory</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAExternProgram%20and%20Control%20directory&In-Reply-To=%3C47C24BCB.4000802%40web.de%3E"
+       TITLE="[Canorus-devel] CAExternProgram and Control directory">suamor at web.de
+       </A><BR>
+    <I>Mon Feb 25 06:02:03 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000458.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+        <LI>Next message: <A HREF="000452.html">[Canorus-devel] CLI in repository, doxygen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#460">[ date ]</a>
+              <a href="thread.html#460">[ thread ]</a>
+              <a href="subject.html#460">[ subject ]</a>
+              <a href="author.html#460">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stefan,
+
+Though I once upon a long a time ago I learned about threads
+I usually try to avoid them. The reason for observer class is
+(for me) mainly that you use a polling mechanism to fetch the
+signals at regular time intervals, so you avoid threads completely.
+Qt in this case has the event loop helping you so you don't need
+to setup your own timer events.
+
+&#352;tefan Sakal&#237;k schrieb:
+&gt;<i> Reinhard wrote:
+</I>&gt;<i> Hi Reinhard,
+</I>&gt;&gt;<i> The solution is of course a observer pattern, i.e. the
+</I>&gt;&gt;<i> script tells me that it waits for input (this is similar to signal/slot but
+</I>&gt;&gt;<i> independent of it and only on C++ layer). There are both solution for C++
+</I>&gt;&gt;<i> native (like sigslot) and python available, but the main question is how
+</I>&gt;&gt;<i> to combine the both (and use swig).
+</I>&gt;&gt;<i>   
+</I>&gt;<i> I called my script in different thread, script used observer to get 
+</I>&gt;<i> input in return, and put output back to c++, through a thin wrapper.
+</I>&gt;<i> 
+</I>&gt;<i> The thing is when I wanted to send a signal to thread, (like SIGINT -&gt; 
+</I>&gt;<i> KeyboardInterrupt in python), whole Canorus crashed or exited, because 
+</I>&gt;<i> signal is sent to each thread in process. I found out there can be 
+</I>&gt;<i> installed masks somehow, but I don't know much about this, and I thought 
+</I>&gt;<i> that would be ugly. Plus when I want to kill a python thread with 
+</I>&gt;<i> SIGTERM, whole process would crash.
+</I>&gt;<i> 
+</I>&gt;<i> But this was a thread... Is it possible to run script as a different 
+</I>&gt;<i> process, something like Proc1 creates Proc2, Proc2 calls function in 
+</I>&gt;<i> Proc1 in some thread of Proc1? I heard about D-BUS, but I'm quite lost here.
+</I>&gt;<i> 
+</I>
+Well I don't use system signals, but you can still look at man 3p signal
+(on my system at least :) to learn that process signal handling is not thread
+safe and how to kill threads etc.
+
+Kind regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000458.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+	<LI>Next message: <A HREF="000452.html">[Canorus-devel] CLI in repository, doxygen
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#460">[ date ]</a>
+              <a href="thread.html#460">[ thread ]</a>
+              <a href="subject.html#460">[ subject ]</a>
+              <a href="author.html#460">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

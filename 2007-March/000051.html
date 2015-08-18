@@ -1,0 +1,133 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Some suggestions on code design changes
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Some%20suggestions%20on%20code%20design%20changes&In-Reply-To=%3C45E6993F.6080100%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000050.html">
+   <LINK REL="Next"  HREF="000053.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Some suggestions on code design changes</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Some%20suggestions%20on%20code%20design%20changes&In-Reply-To=%3C45E6993F.6080100%40gmail.com%3E"
+       TITLE="[Canorus-devel] Some suggestions on code design changes">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Mar  1 10:13:35 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000050.html">[Canorus-devel] Some suggestions on code design changes
+</A></li>
+        <LI>Next message: <A HREF="000053.html">[Canorus-devel] PATCH: newgui build fixes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#51">[ date ]</a>
+              <a href="thread.html#51">[ thread ]</a>
+              <a href="subject.html#51">[ subject ]</a>
+              <a href="author.html#51">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Seth,
+
+I'm currently rewriting the whole GUI, so your patch probably won't make
+it to SVN (but I took a look of it) as the whole mode mechanisms might
+change. The current GUI is as you said especially when it comes to modes
+switching pretty error-prone. In addittion to new toolbars, reorganized
+menus and some core functionalities I have in mind it would be nice to
+redesign the mode switching as well. The finite state machine approach
+is logical but I don't know yet how to implement it in such a complex
+environment (as you written, every action should somehow share some of
+the same code for this).
+
+Anyway, you're welcome to come on Irc to talk about it. You can download
+the latest reworked GUI code from branches/newgui. Note that the branch
+is just a few days old and not much of the new code is there.
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> Hi all,
+</I>&gt;<i>
+</I>&gt;<i> In writing the previous patch I sent in my other mail and finding
+</I>&gt;<i> other bugs, I noticed some larger issues.
+</I>&gt;<i>
+</I>&gt;<i> The main window class is rather large and monolithic. The handling of
+</I>&gt;<i> mode changes and UI updates seems error-prone.
+</I>&gt;<i>   
+</I>Agreed. Reinhard is thinking/working on that.
+
+&gt;<i> I would suggest to use a finite state machine approach. This would
+</I>&gt;<i> make clear what happens on entrance, exit of each state and transition
+</I>&gt;<i> from state to state, and what happens during each mode.
+</I>&gt;<i>
+</I>&gt;<i> I'm not sure of the Qt metaphor for this (action?), but keypress and
+</I>&gt;<i> menu items need to share unified code. In addition, you should be able
+</I>&gt;<i> to assign keyboard shortcuts to the action. This goes along with
+</I>&gt;<i> moving the keypress-handling code out of the main window class.
+</I>&gt;<i>   
+</I>Reinhard, any ideas? The easiest way would be to call setMode() for each
+action (as it's now, but it's missing in some actions and widgets). Also
+the widget focus trouble is there (for eg. ESC key works only in
+CAScoreViewPort, when closing insert CAKeySignature widget, the score
+viewport doesn't get focus and you can't quit the mode).
+
+&gt;<i> Also I noticed that the engraver consists of one large function. I
+</I>&gt;<i> don't know how anyone can understand all of that, even the author :)
+</I>&gt;<i>   
+</I>The engraver function is mine. The CAEngraver class is there from the
+early state of development and didn't change much. I'll rewrite it when
+new elements are to be added (slurs, dynamics, text signs, note signs,
+independent note stems, more complex collision determination). The
+refresh mechanisms should also be reworked - currently it always redraws
+the whole scene, which works, but it's *very* slow.
+
+&gt;<i> I would volunteer to work on any of these aspects, but I'm not so
+</I>&gt;<i> familiar with Qt or the design of Canorus, so might have trouble doing
+</I>&gt;<i> it. Anyway, let me know if you need help.
+</I>&gt;<i>   
+</I>Help is always appreciated. I think it's best to talk on Irc with our Qt
+meister Reinhard or me. One of the things that won't change much anymore
+are the core music elements. The first idea that comes to my mind and is
+time-consumable are the import/export filters for NoteEdit, MusicXML and
+others (maybe even the closed-source Finale and Sibelius?).
+
+
+Regards.
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070301/cd52a4f0/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070301/cd52a4f0/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000050.html">[Canorus-devel] Some suggestions on code design changes
+</A></li>
+	<LI>Next message: <A HREF="000053.html">[Canorus-devel] PATCH: newgui build fixes
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#51">[ date ]</a>
+              <a href="thread.html#51">[ thread ]</a>
+              <a href="subject.html#51">[ subject ]</a>
+              <a href="author.html#51">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

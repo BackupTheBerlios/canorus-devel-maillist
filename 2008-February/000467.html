@@ -1,0 +1,132 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] &quot;new document&quot; does not work?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C47C4525C.2090404%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000466.html">
+   <LINK REL="Next"  HREF="000468.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] &quot;new document&quot; does not work?</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C47C4525C.2090404%40gmail.com%3E"
+       TITLE="[Canorus-devel] &quot;new document&quot; does not work?">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Tue Feb 26 18:54:36 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000466.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+        <LI>Next message: <A HREF="000468.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>When you call
+
+a=newdocument.newDefaultDocument({})
+
+the empty argument you passed should be an already created document -
+this script only adds two staffs with two voices, names them correctly
+and adds clefs and time signatures at the beginning.
+
+You can create new document by calling
+import CanorusPython
+doc = CanorusPython.CADocument()
+
+and then
+
+a=newdocument.newDefaultDocument(doc)
+
+
+Regards.
+-Matev&#382;
+
+Michal Kolodziejczyk pravi:
+&gt;<i> Matev&#382; Jekovec wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Yes, Python should be enabled, if you want to normally create a new
+</I>&gt;&gt;<i> document and use other scripts. We're even thinking of setting it as
+</I>&gt;&gt;<i> dependency in the future.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> The Python problem is weird. What Canorus basically does is
+</I>&gt;&gt;<i> import sys
+</I>&gt;&gt;<i> sys.path.append('/usr/share/canorus/scripts')
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> and then
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> import newdocument
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Can you try this manually? Note that CanorusPython.py and
+</I>&gt;&gt;<i> _CanorusPython.so should also be in the path. These can be found in
+</I>&gt;&gt;<i> /usr/lib or /usr/share/canorus - depends on installation.
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> I have those files in /usr/share/canorus.
+</I>&gt;<i> This works for me:
+</I>&gt;<i> $ cd /usr/share/canorus/
+</I>&gt;<i> [<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">miko at wpmichalmobile</A> canorus]$ python
+</I>&gt;<i> Python 2.5.2 (r252:60911, Feb 23 2008, 21:20:32)
+</I>&gt;<i> [GCC 4.2.3] on linux2
+</I>&gt;<i> Type &quot;help&quot;, &quot;copyright&quot;, &quot;credits&quot; or &quot;license&quot; for more information.
+</I>&gt;<i>  &gt;&gt;&gt; import sys
+</I>&gt;<i>  &gt;&gt;&gt; sys.path.append('/usr/share/canorus/scripts')
+</I>&gt;<i>  &gt;&gt;&gt; import newdocument
+</I>&gt;<i>  &gt;&gt;&gt; print(newdocument)
+</I>&gt;<i> &lt;module 'newdocument' from '/usr/share/canorus/scripts/newdocument.py'&gt;
+</I>&gt;<i>  &gt;&gt;&gt; a=newdocument.newDefaultDocument({})
+</I>&gt;<i> Traceback (most recent call last):
+</I>&gt;<i>    File &quot;&lt;stdin&gt;&quot;, line 1, in &lt;module&gt;
+</I>&gt;<i>    File &quot;/usr/share/canorus/scripts/newdocument.py&quot;, line 4, in 
+</I>&gt;<i> newDefaultDocument
+</I>&gt;<i>      sheet1 = document.addSheetByName( tr('Sheet%1').replace('%1',str(1)) )
+</I>&gt;<i> AttributeError: 'dict' object has no attribute 'addSheetByName'
+</I>&gt;<i>
+</I>&gt;<i> So it looks like should be working. Any other hints?
+</I>&gt;<i>
+</I>&gt;<i> Thanks,
+</I>&gt;<i> 	miko
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000466.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+	<LI>Next message: <A HREF="000468.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#467">[ date ]</a>
+              <a href="thread.html#467">[ thread ]</a>
+              <a href="subject.html#467">[ subject ]</a>
+              <a href="author.html#467">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

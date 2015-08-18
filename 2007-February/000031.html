@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Hello, Mac OS X build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C855582.97745.qm%40web30609.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000032.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Hello, Mac OS X build</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C855582.97745.qm%40web30609.mail.mud.yahoo.com%3E"
+       TITLE="[Canorus-devel] Hello, Mac OS X build">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Feb  7 03:42:19 CET 2007</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000032.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi, I've been following Canorus (and NoteEdit) development for some
+time now, and I'd like to say, great work guys! It is coming along
+nicely.
+
+(Note: I tried to attach some files to this message but the mail server
+complained that they were too big, so find them here:
+<A HREF="http://merphant.net/canorus/">http://merphant.net/canorus/</A> )
+
+I recently got Canorus to build on my machine (OS X 10.4 ppc) and was
+playing  around trying to get the fonts to display properly. I got it
+to work after opening the Emmentaler-14.ttf file in fontforge and
+twiddling some values: Canorus/Qt is looking for a font named
+&quot;Emmentaler&quot;, but the name of the font in the .ttf is &quot;Emmentaler 14&quot;
+(no not the name of the .ttf, this name is stored along with the font
+data inside the file). Also, by changing some output settings when
+re-generating the font in fontforge, Mac OS will install the font
+without complaints when clicking on the .ttf file (before it had
+complained about &quot;Missing Opentype Data&quot; as Erlend Aasland noted).
+
+Also srl said in an earlier message that he had to create a &quot;shell&quot;
+canorus.app bundle to make a double-clickable app (basically a
+directory structure and and XML file). Cmake will do some of the work:
+if you add MACOSX_BUNDLE as the second argument to ADD_EXECUTABLE in
+CMakeLists.txt, it will create those directories and the Info.plist XML
+file. It also lets you set some of the values in the Info.plist file.
+I created a patch to src/CMakeLists.txt that creates the bundle and
+indicates the icon file on OSX; on other platforms it should be ignored
+although I haven't tested it.
+
+I haven't yet figured out how to tell cmake to add files to
+the canorus.app bundle, so for now I've been using a simple shell
+script to make a 'Resources' directory and add in the icon file
+(canorus.icns, trivially generated from ui/images/clogosm.png using
+Apple's Icon Composer.app):
+
+mkdir canorus.app/Contents/Resources \
+&amp;&amp; cp ui/images/canorus.icns canorus.app/Contents/Resources/
+
+Also, Erlend noted that MIDI doesn't play (the MIDI setup dialog shows
+&quot;None&quot; and &quot;None&quot;). This can be solved by using the OS X Audio MIDI
+Setup application and enabling the IAC Driver. That will let you choose
+&quot;Bus 1&quot; as an input and output device in Canorus. For some reason it
+will not let you play directly to Quicktime though, so you need a
+program that will take MIDI input and feed it to Quicktime. Google told
+me about SimpleSynth ( <A HREF="http://pete.yandell.com/software/">http://pete.yandell.com/software/</A> ) which works
+fine. Eventually it would be nice to be able to play back using
+Quicktime without a helper app but this works for now. I haven't yet
+tested it with a real MIDI keyboard yet but it looks promising.
+
+Sorry for the long message, but I hope this will be useful. 
+
+Cheers,
+
+Sam Hernandez
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000032.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#31">[ date ]</a>
+              <a href="thread.html#31">[ thread ]</a>
+              <a href="subject.html#31">[ subject ]</a>
+              <a href="author.html#31">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

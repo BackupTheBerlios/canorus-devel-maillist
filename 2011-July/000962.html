@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Problems with Slurs
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2011-July/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Problems%20with%20Slurs&In-Reply-To=%3C4E0FAC89.9060402%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000963.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Problems with Slurs</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Problems%20with%20Slurs&In-Reply-To=%3C4E0FAC89.9060402%40gmail.com%3E"
+       TITLE="[Canorus-devel] Problems with Slurs">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Jul  3 01:40:57 CEST 2011</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000963.html">[Canorus-devel] Thank you so much! (Re:  Problems with Slurs)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#962">[ date ]</a>
+              <a href="thread.html#962">[ thread ]</a>
+              <a href="subject.html#962">[ subject ]</a>
+              <a href="author.html#962">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+I just committed a fixes for importing of slurs inside the tuplets. It 
+might well be linked to the slurs disappearing issue you mentioned. Can 
+you please test and see if it works or write exact steps to reproduce it.
+
+
+Regards.
+-Matev&#382;
+
+On 26. 06. 2011 18:37, Reinhard Katzmann wrote:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I've created a new score with duols and slurs. I've attached the current
+</I>&gt;<i> version of the document.
+</I>&gt;<i> This documents leads to two crashes:
+</I>&gt;<i> 1) When loading within Canorus, the layoutengine(.cpp) crashes:
+</I>&gt;<i> During creation of Slurs there is no check again null pointer.
+</I>&gt;<i>
+</I>&gt;<i> One thing that might have lead to the crash lateron was that I
+</I>&gt;<i> copied and pasted one complete bar containing the duols. Here
+</I>&gt;<i> I found a bug:
+</I>&gt;<i> The pasted notes don't have the slur anymore.
+</I>&gt;<i> I added them nonetheless.
+</I>&gt;<i>
+</I>&gt;<i> Later during editing I saw that all the slurs of both the duols bars
+</I>&gt;<i> had disappeared. Shortly after that Canorus crashed (probably in the
+</I>&gt;<i> layoutengine as well but I haven't tried to reproduce this problem).
+</I>&gt;<i>
+</I>&gt;<i> I only fixed the null pointer check but haven't looked into what is
+</I>&gt;<i> happening to the slurs themselves (don't know the code much myself).
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000963.html">[Canorus-devel] Thank you so much! (Re:  Problems with Slurs)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#962">[ date ]</a>
+              <a href="thread.html#962">[ thread ]</a>
+              <a href="subject.html#962">[ subject ]</a>
+              <a href="author.html#962">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

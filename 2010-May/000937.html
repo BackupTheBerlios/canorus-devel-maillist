@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] patch for building in a separate build dir in linux
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2010-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20patch%20for%20building%20in%20a%20separate%20build%20dir%20in%20linux&In-Reply-To=%3C201005092227.16615.jos%40vandenoever.info%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000938.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] patch for building in a separate build dir in linux</H1>
+    <B>Jos van den Oever</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20patch%20for%20building%20in%20a%20separate%20build%20dir%20in%20linux&In-Reply-To=%3C201005092227.16615.jos%40vandenoever.info%3E"
+       TITLE="[Canorus-devel] patch for building in a separate build dir in linux">jos at vandenoever.info
+       </A><BR>
+    <I>Sun May  9 22:27:16 CEST 2010</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000938.html">[Canorus-devel] OT: MusicXML test suite
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#937">[ date ]</a>
+              <a href="thread.html#937">[ thread ]</a>
+              <a href="subject.html#937">[ subject ]</a>
+              <a href="author.html#937">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys,
+
+Nice to a see cross platform GUI for editing music scores. I'm looking for a 
+nice MusicXML viewer for use in playing trombone on a 12&quot; screen and I'm 
+looking into the possibilities of coaxing canorus in this role.
+
+While building the latest trunk on Linux I found some build problems. I 
+usually build in a directory other than the source directory. The current 
+canorus source is not prepared for that. Also, there is not test for libasound 
+development files at the moment. Here is a patch to improve that. It is not 
+perfect; it only works with -DNO_SWIG=True and still generates some 
+translation files in the source directory which is not pretty.
+
+Cheers,
+Jos
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: build.patch
+Type: text/x-patch
+Size: 1672 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20100509/ea2fdb23/attachment.bin">https://lists.berlios.de/pipermail/canorus-devel/attachments/20100509/ea2fdb23/attachment.bin</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000938.html">[Canorus-devel] OT: MusicXML test suite
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#937">[ date ]</a>
+              <a href="thread.html#937">[ thread ]</a>
+              <a href="subject.html#937">[ subject ]</a>
+              <a href="author.html#937">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

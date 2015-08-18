@@ -1,0 +1,137 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Fwd: compiling Canorus on Mac
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fwd%3A%20compiling%20Canorus%20on%20Mac&In-Reply-To=%3C9a4db0e10708270105o57266871v39534977cd59e885%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000210.html">
+   <LINK REL="Next"  HREF="000213.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Fwd: compiling Canorus on Mac</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Fwd%3A%20compiling%20Canorus%20on%20Mac&In-Reply-To=%3C9a4db0e10708270105o57266871v39534977cd59e885%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] Fwd: compiling Canorus on Mac">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Mon Aug 27 10:05:56 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000210.html">[Canorus-devel] splitter crashes
+</A></li>
+        <LI>Next message: <A HREF="000213.html">[Canorus-devel] splash screen added
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi.
+
+Which version of swig are you using?
+
+You might want to compile setting VERBOSE as well for the full error output.
+eg.
+$ VERBOSE=1 make
+
+Regards.
+- Matev&#382;
+
+---------- Forwarded message ----------
+From: David Baumgold &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">baumgold at brandeis.edu</A>&gt;
+Date: 27.8.2007 2:47
+Subject: compiling Canorus on Mac
+
+Anyway, I wanted to give you an update on what I was doing. I discovered in
+the README file an answer to the &quot;swig not found&quot; error I was having, but
+running the command given (line 47) didn't fix the problem. I poked around
+and discovered the problem: on my machine, swig is stored in
+/usr/local/share, not in /usr/share. Therefore, the proper command should
+be:
+
+*% sudo ln -s /usr/local/share/swig/1.3.*[version]* /usr/local/share/swig1.3
+*
+
+Where [version] is the current version of swig. This should probably be
+updated in the README file -- I'd do it myself, but as I said, I don't know
+how to use SVN.
+
+That said, I did manage to download the latest nightly version of Canorus
+from <A HREF="http://193.95.242.3/canorusNightly/source/">http://193.95.242.3/canorusNightly/source/</A> to build, but when I tried
+building it, I got an error on the &quot;make&quot; command:
+
+[ 18%] Swig source
+core/canorusml.h:32: Warning(401): Nothing known about class
+'QXmlDefaultHandler'. Ignored.
+interface/playback.h:20: Warning(401): Nothing known about class 'QThread'.
+Ignored.
+interface/mididevice.h:19: Warning(401): Nothing known about class
+'QObject'. Ignored.
+Scanning dependencies of target _CanorusPython
+[ 18%] Building CXX object
+src/CMakeFiles/_CanorusPython.dir/scripting/canoruspythonPYTHON_wrap.o
+/Users/David/Desktop/canorus-0.3svn.R562/src/scripting/canoruspythonPYTHON_wrap.cxx:
+In function 'void markDelete(PyObject*)':
+/Users/David/Desktop/canorus-0.3svn.R562/src/scripting/canoruspythonPYTHON_wrap.cxx:834:
+error: 'SWIG_Python_GetSwigThis' was not declared in this scope
+/Users/David/Desktop/canorus-0.3svn.R562/src/scripting/canoruspythonPYTHON_wrap.cxx:
+In function 'void markDelete(PyObject*)':
+/Users/David/Desktop/canorus-0.3svn.R562/src/scripting/canoruspythonPYTHON_wrap.cxx:834:
+error: 'SWIG_Python_GetSwigThis' was not declared in this scope
+lipo: can't figure out the architecture type of: /var/tmp//ccUmIRd7.out
+make[2]: ***
+[src/CMakeFiles/_CanorusPython.dir/scripting/canoruspythonPYTHON_wrap.o]
+Error 1
+make[1]: *** [src/CMakeFiles/_CanorusPython.dir/all] Error 2
+make: *** [all] Error 2
+
+After this failure, I re-downloaded the latest stable version (Canorus 0.3.1)
+from the main page of the website. This version compiled just fine, and I
+was able to run it. It didn't look very good, and there was no sound, so
+then I ran through the other steps described in the macosx/files/README-
+OSX.txt. Now that I've done those, it looks like Canorus is indeed working!
+There are some bugs (&quot;pull-down&quot; selections from the buttons on the
+left-side don't close unless you actually select something, the note shadows
+following the cursor during note input appear for multiple octaves) but it
+works, and when I tried opening the sample file and playing it, it did
+indeed play while SimpleSynth was running.
+
+I would definitely like to help out with this project in any way I can,
+although as I told you, I don't know much about programming. Let me know if
+there's anything I can do to help!
+~David
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070827/fc635a7b/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070827/fc635a7b/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000210.html">[Canorus-devel] splitter crashes
+</A></li>
+	<LI>Next message: <A HREF="000213.html">[Canorus-devel] splash screen added
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#212">[ date ]</a>
+              <a href="thread.html#212">[ thread ]</a>
+              <a href="subject.html#212">[ subject ]</a>
+              <a href="author.html#212">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

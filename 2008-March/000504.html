@@ -1,0 +1,115 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] GSoC: IPC communication mechanism
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20GSoC%3A%20IPC%20communication%20mechanism&In-Reply-To=%3C47EFD795.8070109%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000503.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] GSoC: IPC communication mechanism</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20GSoC%3A%20IPC%20communication%20mechanism&In-Reply-To=%3C47EFD795.8070109%40web.de%3E"
+       TITLE="[Canorus-devel] GSoC: IPC communication mechanism">suamor at web.de
+       </A><BR>
+    <I>Sun Mar 30 20:10:29 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000503.html">[Canorus-devel] GSoC Canorus/PSF wiki page
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#504">[ date ]</a>
+              <a href="thread.html#504">[ thread ]</a>
+              <a href="subject.html#504">[ subject ]</a>
+              <a href="author.html#504">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Stefan,
+
+At first I thought for an inter-plugin communication DBus is too much, but
+I'd have to study the python libraries closer to tell you if there are any
+good and easier alternatives. Maybe someone on this list has an idea.
+
+I also read the DBUS FAQ. At the end of answer 6 (is DBUS a component system)
+I read a part about generic plugin or extensions. I'd had the idea that you
+might want to look how Firefox/Thunderbird or maybe even better Eclipse handle
+the plugin communication. This has nothing per se to do with the definition of
+what a plugin actually is as described there.
+
+Also there might be one problem: There could be problems with streaming data
+via DBUS due to it's speed limitations (not to think even at some potential
+realtime requirements). Also you might be restricted on the number of
+communication channels you can use at a time (but that could be handled by
+lowering the number by using one communication channel for several plugins
+if you don't have any critical speed requirements). Technical details are
+discussed in FAQ 7 of DBUS (How fast is DBUS ref. impl.).
+
+Answer 9 of the FAQ (How does DBUS differ from other IPC protocols) might be
+a help to decide wether it really fits your needs. I don't know how much of
+this high level features can be disabled.
+
+Surely there are many advantages when using DBUS (not only those you listed
+but also things like direkt support of &quot;signals&quot; like in Qt). Maybe there is
+an IPC Forum somewhere out there where you can more informations about other
+IPC communication types (I could imagine someone has implemented a leightweight
+DBUS/CORBA/RPC or something like that). The DBUS FAQ already has quite some
+informations about the main different IPC variants.
+
+Just my 0.02 &#8364; ;) Best regards,
+
+Reinhard
+
+&#352;tefan Sakal&#237;k schrieb:
+&gt;<i> Hi,
+</I>&gt;<i> I've been researching various options for IPC, and come to conclusion
+</I>&gt;<i> that D-Bus is the best solution:
+</I>&gt;<i> Shared memory: too platform specific.
+</I>&gt;<i> Pipes/Sockets: simple to use, but limited feature set. The only IPC data
+</I>&gt;<i> structure is char* afaik.
+</I>&gt;<i> D-Bus: There is a windows port yet to be merged. It supports GLib as
+</I>&gt;<i> IPC. (There might be some Qt extensions).
+</I>&gt;<i> It has one disadvantage. It's quite complex, but worth it I think.
+</I>&gt;<i> Do you agree, or have a different idea?
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> &#352;tefan
+</I>
+
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000503.html">[Canorus-devel] GSoC Canorus/PSF wiki page
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#504">[ date ]</a>
+              <a href="thread.html#504">[ thread ]</a>
+              <a href="subject.html#504">[ subject ]</a>
+              <a href="author.html#504">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

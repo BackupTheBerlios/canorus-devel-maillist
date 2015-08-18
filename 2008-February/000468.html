@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] &quot;new document&quot; does not work?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C47C48FC7.4090405%40wp.pl%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000467.html">
+   <LINK REL="Next"  HREF="000469.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] &quot;new document&quot; does not work?</H1>
+    <B>Michal Kolodziejczyk</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%22new%20document%22%20does%20not%20work%3F&In-Reply-To=%3C47C48FC7.4090405%40wp.pl%3E"
+       TITLE="[Canorus-devel] &quot;new document&quot; does not work?">miko at wp.pl
+       </A><BR>
+    <I>Tue Feb 26 23:16:39 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000467.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+        <LI>Next message: <A HREF="000469.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#468">[ date ]</a>
+              <a href="thread.html#468">[ thread ]</a>
+              <a href="subject.html#468">[ subject ]</a>
+              <a href="author.html#468">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Matev&#382; Jekovec wrote:
+&gt;<i> When you call
+</I>&gt;<i> 
+</I>&gt;<i> a=newdocument.newDefaultDocument({})
+</I>&gt;<i> 
+</I>&gt;<i> the empty argument you passed should be an already created document -
+</I>&gt;<i> this script only adds two staffs with two voices, names them correctly
+</I>&gt;<i> and adds clefs and time signatures at the beginning.
+</I>&gt;<i> 
+</I>&gt;<i> You can create new document by calling
+</I>&gt;<i> import CanorusPython
+</I>&gt;<i> doc = CanorusPython.CADocument()
+</I>&gt;<i> 
+</I>&gt;<i> and then
+</I>&gt;<i> 
+</I>&gt;<i> a=newdocument.newDefaultDocument(doc)
+</I>
+OK, I did, and maybe there is a hint?
+ &gt;&gt;&gt; doc = CanorusPython.CADocument()
+ &gt;&gt;&gt; a=newdocument.newDefaultDocument(doc)
+ &gt;&gt;&gt; print(a)
+None
+ &gt;&gt;&gt; print(doc)
+&lt;CanorusPython.CADocument; proxy of &lt;Swig Object of type 'CADocument *' 
+at 0x8134820&gt; &gt;
+
+I suppose a should not be None?
+
+Regards,
+	miko
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000467.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+	<LI>Next message: <A HREF="000469.html">[Canorus-devel] &quot;new document&quot; does not work?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#468">[ date ]</a>
+              <a href="thread.html#468">[ thread ]</a>
+              <a href="subject.html#468">[ subject ]</a>
+              <a href="author.html#468">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

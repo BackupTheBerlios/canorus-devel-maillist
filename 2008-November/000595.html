@@ -1,0 +1,81 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] print settings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20print%20settings&In-Reply-To=%3C492E0B6C.4060709%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000594.html">
+   
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] print settings</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20print%20settings&In-Reply-To=%3C492E0B6C.4060709%40gmail.com%3E"
+       TITLE="[Canorus-devel] print settings">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Thu Nov 27 03:52:28 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000594.html">[Canorus-devel] unsaved changes
+</A></li>
+        
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi guys.
+
+I added typesetter and PDF viewer options to settings and settings
+dialog. Reinhard, I made a few small checks, if the typesetter program
+exists and how it quits and connect these to a messagebox saying the
+user should install lily and pdf application, if not present.
+
+I also added CATypesetter class only having an enum of LilyPond
+currently. This enum is only used for settings (which typesetter is the
+default one). At first, I wanted to add this enum to CATypesetCtl, but I
+thought it's more a model stuff than control. Maybe in the future
+CALilypondExport etc. should inherit CATypesetter. Similar to
+CAMidiExport which inherits CAMidiDevice. I'm looking for a way to
+modularly &quot;register&quot; a typesetter into Canorus (a typesetter could also
+be added by a plugin). Dunno, maybe we should remove CATypesetter, if it
+brings nothing useful.
+
+Please test.
+
+
+Regards.
+-Matev&#382;
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000594.html">[Canorus-devel] unsaved changes
+</A></li>
+	
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#595">[ date ]</a>
+              <a href="thread.html#595">[ thread ]</a>
+              <a href="subject.html#595">[ subject ]</a>
+              <a href="author.html#595">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,207 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] canorus python script
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20canorus%20python%20script&In-Reply-To=%3C4677F360.4070904%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000158.html">
+   <LINK REL="Next"  HREF="000160.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] canorus python script</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20canorus%20python%20script&In-Reply-To=%3C4677F360.4070904%40gmail.com%3E"
+       TITLE="[Canorus-devel] canorus python script">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Tue Jun 19 17:16:48 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000158.html">[Canorus-devel] canorus python script
+</A></li>
+        <LI>Next message: <A HREF="000160.html">[Canorus-devel] Dutch translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Sorry for the late response. The following code is a modified
+newdocument.py script which adds a C1 quarter note after the clefs and
+key signatures:
+
+        sheet1 = _CanorusPython.Document_addSheetByName(document, 'Sheet1')
+
+        staff1 = _CanorusPython.Sheet_addStaff(sheet1)
+        staff1voice1 = _CanorusPython.new_Voice(staff1, 'Staff1Voice1',
+1, _CanorusPython.Note_StemUp)
+        _CanorusPython.Staff_addVoice(staff1, staff1voice1)
+        staff1voice2 = _CanorusPython.new_Voice(staff1, 'Staff1Voice2',
+2, _CanorusPython.Note_StemDown)
+        _CanorusPython.Staff_addVoice(staff1, staff1voice2)
+        _CanorusPython.Staff_insertSign(staff1,
+_CanorusPython.new_Clef(_CanorusPython.Clef_Treble, staff1, 0))
+        _CanorusPython.Staff_insertSign(staff1,
+_CanorusPython.new_TimeSignature(4, 4, staff1, 0))
+
+        note1 = _CanorusPython.new_Note(_CanorusPython.Playable_Quarter,
+staff1voice1, 28, 0, 0, 0)
+        _CanorusPython.Voice_appendMusElement(staff1voice1, note1)
+
+
+You can get a class reference at
+<A HREF="https://www.canorus.org/doc/html">https://www.canorus.org/doc/html</A>
+
+CAClassName is ClassName in Python (CAVoice -&gt; Voice, CANote -&gt; Note
+etc.). So, looking at CANote constructor at
+<A HREF="https://www.canorus.org/doc/html/classCANote.html#ff01c84663da0aea5647a0b3c8a43a3c">https://www.canorus.org/doc/html/classCANote.html#ff01c84663da0aea5647a0b3c8a43a3c</A>
+says that we need 6 arguments:
+- playableLength (quarter, half, whole etc.)
+- parent voice
+- pitch (0 is sub-contra C, 28 is therefore C1)
+- accs (0 neutral, 1 sharp, -1 flat etc.)
+- timeStart (256 is the length of the quarter note, 512 half note etc.
+You should keep the current time tracking when creating a document somehow)
+- dotted (number of dots)
+
+
+Regards.
+- Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> Hello Matev,
+</I>&gt;<i>
+</I>&gt;<i> sorry again,
+</I>&gt;<i>
+</I>&gt;<i> could you give me a simple example for a Note element. I have written a little parser for capella 2000 file format (import).
+</I>&gt;<i> Now I have got all the elements and want do set the related elements in canorus.
+</I>&gt;<i>
+</I>&gt;<i> Thanks in advance!
+</I>&gt;<i>
+</I>&gt;<i> Christian
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> -----Urspr&#252;ngliche Nachricht-----
+</I>&gt;&gt;<i> Von: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> Gesendet: 15.06.07 16:50:40
+</I>&gt;&gt;<i> An: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> Betreff: Re: [Canorus-devel] canorus python script
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi Christian.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Because we cannot export any GUI elements to scripts yet (so you'd be
+</I>&gt;&gt;<i> able to set what document the current mainwin is pointing at), you can't
+</I>&gt;&gt;<i> set the document from the script. Instead, the empty document is already
+</I>&gt;&gt;<i> created by Canorus itself and is usually passed as an argument to a
+</I>&gt;&gt;<i> function (see scripts/newdocument.py, argument document is already passed).
+</I>&gt;&gt;<i> Your script should probably look something like this:
+</I>&gt;&gt;<i> import _CanorusPython
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> def myImportFunction(filename, document);
+</I>&gt;&gt;<i>     sheet1 = _CanorusPython.Document_addSheetByName(doc, 'Sheet1')
+</I>&gt;&gt;<i>     parseFile(filename)
+</I>&gt;&gt;<i>     ...
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> and descriptor file for the plugin should look something like that
+</I>&gt;&gt;<i> (saved in canorusplugin.xml):
+</I>&gt;&gt;<i> &lt;plugin&gt;
+</I>&gt;&gt;<i>         &lt;canorus-version&gt;0.3.1&lt;/canorus-version&gt;
+</I>&gt;&gt;<i>         &lt;name&gt;myImportPlugin&lt;/name&gt;
+</I>&gt;&gt;<i>         &lt;description&gt;This is my import plugin&lt;/description&gt;
+</I>&gt;&gt;<i>         &lt;version&gt;0.0.1&lt;/version&gt;
+</I>&gt;&gt;<i>         &lt;author&gt;your name&lt;/author&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         &lt;home-url&gt;<A HREF="http://www.yoururl.com&lt;/home-url">http://www.yoururl.com&lt;/home-url</A>&gt;
+</I>&gt;&gt;<i>         &lt;update-url&gt;<A HREF="http://www.yourupdateurl.com&lt;/update-url">http://www.yourupdateurl.com&lt;/update-url</A>&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>         &lt;action&gt;
+</I>&gt;&gt;<i>                 &lt;name&gt;pluginTestInit&lt;/name&gt;
+</I>&gt;&gt;<i>                 &lt;import-filter&gt;My file format (*.mus)&lt;/import-filter&gt;
+</I>&gt;&gt;<i>                 &lt;lang&gt;python&lt;/lang&gt;
+</I>&gt;&gt;<i>                 &lt;filename&gt;myimportscript.py&lt;/filename&gt;
+</I>&gt;&gt;<i>                 &lt;args&gt;import-filename&lt;/args&gt;
+</I>&gt;&gt;<i>                 &lt;args&gt;document&lt;/args&gt;
+</I>&gt;&gt;<i>         &lt;/action&gt;
+</I>&gt;&gt;<i> &lt;/plugin&gt;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> You should put both files (the script and descriptor) into
+</I>&gt;&gt;<i> plugins/myImportPlugin directory. Hope this helps!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Regards.
+</I>&gt;&gt;<i> - Matev&#382;
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Hi,
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I tried to create a new document with python.
+</I>&gt;&gt;&gt;<i> I used the following code:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> import _CanorusPython
+</I>&gt;&gt;&gt;<i> 	doc = _CanorusPython.new_Document()
+</I>&gt;&gt;&gt;<i> 	sheet1 = _CanorusPython.Document_addSheetByName(doc, 'Sheet1')
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> But nothing changes in the Canorus GUI.
+</I>&gt;&gt;&gt;<i> Could you help me, please!
+</I>&gt;&gt;&gt;<i> My target is writing a import filter and therefore I want to create a new document.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> best regards
+</I>&gt;&gt;&gt;<i> Christian
+</I>&gt;&gt;&gt;<i>   
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> &lt;hr&gt;
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070619/1fedf1a0/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070619/1fedf1a0/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000158.html">[Canorus-devel] canorus python script
+</A></li>
+	<LI>Next message: <A HREF="000160.html">[Canorus-devel] Dutch translation
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#159">[ date ]</a>
+              <a href="thread.html#159">[ thread ]</a>
+              <a href="subject.html#159">[ subject ]</a>
+              <a href="author.html#159">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

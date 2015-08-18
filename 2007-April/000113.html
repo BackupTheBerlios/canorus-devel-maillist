@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Keybindings
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Keybindings&In-Reply-To=%3C462F2DCA.6030104%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000112.html">
+   <LINK REL="Next"  HREF="000108.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Keybindings</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Keybindings&In-Reply-To=%3C462F2DCA.6030104%40gmail.com%3E"
+       TITLE="[Canorus-devel] Keybindings">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Apr 25 12:30:34 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000112.html">[Canorus-devel] Keybindings
+</A></li>
+        <LI>Next message: <A HREF="000108.html">[Canorus-devel] Re-using canorus code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> Hi guys,
+</I>&gt;<i>
+</I>&gt;<i> I was thinking it would be nice to have Canorus act more like a
+</I>&gt;<i> &quot;musical typewriter&quot;: for example, type C and a C appears on the staff,
+</I>&gt;<i> sort of like &quot;speedy entry&quot; mode in Finale, but with Lilypond-like
+</I>&gt;<i> keys. Point and click is nice, but it is way more efficient to type in
+</I>&gt;<i> the notes.
+</I>&gt;<i>   
+</I>IMO LilyPond way as it is now is much faster. User only needs to know
+the pretty easy Lily syntax. But that's only my taste of course :)
+&gt;<i> This is also a good opportunity to refactor the keypress code in
+</I>&gt;<i> mainwin.cpp. IMO CAMainWin::viewPortKeyPressEvent() should be split
+</I>&gt;<i> into separate functions; the existing method should just figure out
+</I>&gt;<i> what key has been pressed and then call the appropriate function to do
+</I>&gt;<i> the work. And as long as that code is changing it would be worthwhile
+</I>&gt;<i> to make key bindings more configurable as well.
+</I>&gt;<i>   
+</I>Agreed. viewPortKeyPressEvent() should forward the call dependent on the
+current mode, viewport type, key pressed etc..
+&gt;<i> I have working code that implements this; I haven't committed it since
+</I>&gt;<i> it's more than a trivial change. Attached is a patch with the changes
+</I>&gt;<i> (against R461), as well as two new files (keybindings.cpp/h) that
+</I>&gt;<i> handle mapping keys to actions. Please comment.
+</I>&gt;<i>   
+</I>I'll look at it and test it further on Friday. keybindings.cpp/h should
+go to src/ui subdirectory. Change the header message to your copyright.
+The patch looks nice though. Just don't commit the translations.
+
+On the other hand, I prefer using QActions for key bindings. AFAIK they
+are there to substitute your CAKeyAction. This way, a key settings
+dialog for setting a custom key to custom action might be easier to
+implement in the future as this is the standard way.
+
+
+Regards.
+- Matevz
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070425/5dd4fac1/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070425/5dd4fac1/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000112.html">[Canorus-devel] Keybindings
+</A></li>
+	<LI>Next message: <A HREF="000108.html">[Canorus-devel] Re-using canorus code
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#113">[ date ]</a>
+              <a href="thread.html#113">[ thread ]</a>
+              <a href="subject.html#113">[ subject ]</a>
+              <a href="author.html#113">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

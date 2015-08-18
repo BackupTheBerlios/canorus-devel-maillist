@@ -1,0 +1,92 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Patch to have MacOSX 10.5 builds
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Patch%20to%20have%20MacOSX%2010.5%20builds&In-Reply-To=%3CF8A0C0F3-F3DF-4ABB-8180-ACFB091BAEF0%40titanium.sabren.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000617.html">
+   <LINK REL="Next"  HREF="000619.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Patch to have MacOSX 10.5 builds</H1>
+    <B>Grzegorz Adam Hankiewicz</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Patch%20to%20have%20MacOSX%2010.5%20builds&In-Reply-To=%3CF8A0C0F3-F3DF-4ABB-8180-ACFB091BAEF0%40titanium.sabren.com%3E"
+       TITLE="[Canorus-devel] Patch to have MacOSX 10.5 builds">gradha at titanium.sabren.com
+       </A><BR>
+    <I>Sat Jan 10 12:29:17 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000617.html">[Canorus-devel] staff lines and notes
+</A></li>
+        <LI>Next message: <A HREF="000619.html">[Canorus-devel] Translation of keyboard shortcuts?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#618">[ date ]</a>
+              <a href="thread.html#618">[ thread ]</a>
+              <a href="subject.html#618">[ subject ]</a>
+              <a href="author.html#618">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>The attached patch modifies the build system in two ways:
+
+* Disables generation for 10.4.
+* Disables linking against libutil under Mac.
+
+The third change adds a new zip target to the MacOSX distribution  
+process, which allows generation of a simple zip with no installers  
+for people who don't want to pollute their system or have admin rights.
+
+Actually, the reason I added this is because the pkg installer fails  
+for me as a plain user (doesn't detect correctly it needs priviledges)  
+and I don't trust it to run as root yet.
+
+I'm putting my snapshots at <A HREF="http://personales.ya.com/gradha/">http://personales.ya.com/gradha/</A> 
+canorus.html. I have tried this on two machines, mine and an old ppc  
+emac. On my machine the binary works but as reported at <A HREF="https://lists.berlios.de/pipermail/canorus-user/2009-January/000182.html">https://lists.berlios.de/pipermail/canorus-user/2009-January/000182.html</A> 
+  the ppc machine fails during launch.
+
+I request assistance in debugging canorus for this machine. Are there  
+any build switches that enforce a generation of a debug log? Maybe an  
+environment variable that hardens asserts/checks? Anybody know how I  
+can enable core dumping for post mortem debugging?
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: build_macosx.diff
+Type: application/octet-stream
+Size: 1463 bytes
+Desc: not available
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20090110/43509f1c/attachment.obj">https://lists.berlios.de/pipermail/canorus-devel/attachments/20090110/43509f1c/attachment.obj</A>&gt;
+-------------- next part --------------
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000617.html">[Canorus-devel] staff lines and notes
+</A></li>
+	<LI>Next message: <A HREF="000619.html">[Canorus-devel] Translation of keyboard shortcuts?
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#618">[ date ]</a>
+              <a href="thread.html#618">[ thread ]</a>
+              <a href="subject.html#618">[ subject ]</a>
+              <a href="author.html#618">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

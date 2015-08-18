@@ -1,0 +1,126 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] clone() issues
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3C9a4db0e10802220131j31cee3d6pcf3b7beac1f4a96%40mail.gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000448.html">
+   <LINK REL="Next"  HREF="000451.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] clone() issues</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20clone%28%29%20issues&In-Reply-To=%3C9a4db0e10802220131j31cee3d6pcf3b7beac1f4a96%40mail.gmail.com%3E"
+       TITLE="[Canorus-devel] clone() issues">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Fri Feb 22 10:31:58 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000448.html">[Canorus-devel] clone() issues
+</A></li>
+        <LI>Next message: <A HREF="000451.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#450">[ date ]</a>
+              <a href="thread.html#450">[ thread ]</a>
+              <a href="subject.html#450">[ subject ]</a>
+              <a href="author.html#450">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Yes, your idea is correct. The reason why I didn't implement this yet is the
+following copy&amp;paste scenario:
+1) copy a chord
+2) notes get cloned without a voice
+3) paste a chord
+4) the first note is pasted
+5) the second note and the next ones are *appended* after the first note
+instead of added to the same chord
+Reason: CANote::isPartOfTheChord() function requires a voice which then gets
+the next/prev note and determines, if the note is part of the chord.
+
+Another problem is when pasting notes from multiple voices. How is pasting
+done then?
+
+Possible solutions:
+- I just noticed that the first issue could be solvable by comparing
+timeStarts of the notes in the clipboard. If TS is the same, then the notes
+are part of the same chord regardless to the voice.
+- For the second issue, we could lock the copying down to a single voice or
+instead of pasting elements simultaniously, append the elements one after
+another for other voices.
+
+btw. Couldn't the crash be fixed simply by destroying the clipboard first
+and then the document itself?
+
+
+Regards.
+-Matev&#382;
+
+2008/2/21, Itay Perl &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">itay.perl at gmail.com</A>&gt;:
+&gt;<i>
+</I>&gt;<i> Hello all,
+</I>&gt;<i>
+</I>&gt;<i> In the current design, some objects hold pointers to their containers,
+</I>&gt;<i> which are used in the destructor to remove themselves from it before being
+</I>&gt;<i> destroyed. This creates a problem when we clone those elements, for usage
+</I>&gt;<i> with Copy&amp;Paste (CAMimeData) or in Undo/Redo stacks. For example, a cloned
+</I>&gt;<i> CAPlayable has a pointer to the voice context of the original playable, but
+</I>&gt;<i> the voice doesn't have a pointer to the cloned playable in its element list.
+</I>&gt;<i> So, if the voice is destroyed while the clone is still alive, it will delete
+</I>&gt;<i> the original, but not the clone. When the clone is destroyed (~CAMimeData
+</I>&gt;<i> for example), it will try to access the dangling voice pointer. That's the
+</I>&gt;<i> reason for the crash you can see if you copy a few notes to the clipboard
+</I>&gt;<i> and quit canorus.
+</I>&gt;<i>
+</I>&gt;<i> I think that such invalid conditions (e.g. playable has pointer to
+</I>&gt;<i> context, but context doesn't know about the playable) should not exist at
+</I>&gt;<i> all, so my solution would be to change the clone()s to clear those pointers
+</I>&gt;<i> in the clones. A clone() (no-arg) call would always create an &quot;orphan&quot;
+</I>&gt;<i> element, while e.g. CAPlayable::clone(CAVoice*) or
+</I>&gt;<i> CAMark::clone(CAMusElement*) would set the context pointer to the one given.
+</I>&gt;<i>
+</I>&gt;<i> Any objections?
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080222/7e07b7df/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080222/7e07b7df/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000448.html">[Canorus-devel] clone() issues
+</A></li>
+	<LI>Next message: <A HREF="000451.html">[Canorus-devel] clone() issues
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#450">[ date ]</a>
+              <a href="thread.html#450">[ thread ]</a>
+              <a href="subject.html#450">[ subject ]</a>
+              <a href="author.html#450">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

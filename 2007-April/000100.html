@@ -1,0 +1,114 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Runtime error (no noteheads)
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-April/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Runtime%20error%20%28no%20noteheads%29&In-Reply-To=%3C4618C316.6040501%40charter.net%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000099.html">
+   <LINK REL="Next"  HREF="000101.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Runtime error (no noteheads)</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Runtime%20error%20%28no%20noteheads%29&In-Reply-To=%3C4618C316.6040501%40charter.net%3E"
+       TITLE="[Canorus-devel] Runtime error (no noteheads)">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sun Apr  8 12:25:26 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000099.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+        <LI>Next message: <A HREF="000101.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+&gt;<i> --- <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+</I>&gt;<i> 
+</I>&gt;&gt;<i> I used drakfont to install the lilypond fonts, didn't fix it, tried
+</I>&gt;&gt;<i> the Emmentaler.ttf from /trunk/macosx/files (it wasn't called 
+</I>&gt;&gt;<i> Emmantaler-Mac.ttf).  That also didn't work.  I get this message in
+</I>&gt;&gt;<i> the console, everytime I paste a note or symbol on the staff:
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> QToolButton: Menu in setMenu() overriding actions set in addAction!
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Maybe this is a clue?
+</I>&gt;&gt;<i> Galen
+</I>&gt;<i> 
+</I>&gt;<i> Oops, sorry about the misleading info, I've been fiddling with that
+</I>&gt;<i> stuff a lot lately.
+</I>&gt;<i> 
+</I>&gt;<i> I don't think the setMenu() error message is causing the font problem;
+</I>&gt;<i> I get that message on the console too, but the noteheads, clefs, and
+</I>&gt;<i> other symbols show up just fine. I believe the error message comes from
+</I>&gt;<i> the custom tool button widget that shows your options for selecting
+</I>&gt;<i> symbols, e.g. the thing that pops up so you can choose between treble,
+</I>&gt;<i> bass, and alto clefs. On Mac (and possibly Windows too) there is some
+</I>&gt;<i> bugginess which causes that menu to disappear before the items are
+</I>&gt;<i> selected. On Linux, Matevz said you get the message but not that
+</I>&gt;<i> particular buggy behavior.
+</I>&gt;<i> 
+</I>&gt;<i> As far as the font problem goes you have pretty much stumped me;
+</I>&gt;<i> hopefully one of the other devs who run linux can help you out. A few
+</I>&gt;<i> more things to try are using the Emmentaler font in another program
+</I>&gt;<i> like a GUI text editor and see if you can get any music symbols to show
+</I>&gt;<i> up, and maybe check the X config file to see how the fonts paths are
+</I>&gt;<i> configured... I am really reaching here.
+</I>&gt;<i> 
+</I>&gt;<i> For the record can you please file a bug in the bug tracker here:
+</I>&gt;<i> 
+</I>&gt;<i> <A HREF="https://developer.berlios.de/bugs/?group_id=6144">https://developer.berlios.de/bugs/?group_id=6144</A>
+</I>&gt;<i> 
+</I>&gt;<i> Please post a description of the problem and what versions of
+</I>&gt;<i> pclinuxos, qt, gcc, X, and cmake you are using; it would probably be
+</I>&gt;<i> helpful to post another message here with a screenshot of the problem
+</I>&gt;<i> and reference that that message in the bug tracker for that bug.
+</I>&gt;<i> Hopefully that will give someone enough clues to solve it.
+</I>&gt;<i> 
+</I>&gt;<i> Thanks and good luck,
+</I>&gt;<i> 
+</I>&gt;<i> Sam
+</I>&gt;<i> 
+</I>Thanks for the reply.  I used kde control center font-installer to 
+preview the Emmentaler font and an interesting thing showed up.  The 
+Emmentaler font seemed to be all there, but there was also an entry for 
+Emmentaler, medium which seems to have only the first few characters, 
+but missing all the notes, rests, music symbols, etc.
+Galen
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000099.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+	<LI>Next message: <A HREF="000101.html">[Canorus-devel] Runtime error (no noteheads)
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#100">[ date ]</a>
+              <a href="thread.html#100">[ thread ]</a>
+              <a href="subject.html#100">[ subject ]</a>
+              <a href="author.html#100">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

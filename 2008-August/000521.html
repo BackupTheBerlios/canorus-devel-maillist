@@ -1,0 +1,157 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Plugin interface
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-August/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Plugin%20interface&In-Reply-To=%3C48AA4C5E.7080306%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000519.html">
+   <LINK REL="Next"  HREF="000525.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Plugin interface</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Plugin%20interface&In-Reply-To=%3C48AA4C5E.7080306%40web.de%3E"
+       TITLE="[Canorus-devel] Plugin interface">suamor at web.de
+       </A><BR>
+    <I>Tue Aug 19 06:30:22 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000519.html">[Canorus-devel] Printing / Preview
+</A></li>
+        <LI>Next message: <A HREF="000525.html">[Canorus-devel] Plugin interface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#521">[ date ]</a>
+              <a href="thread.html#521">[ thread ]</a>
+              <a href="subject.html#521">[ subject ]</a>
+              <a href="author.html#521">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Dear &#352;tefan,
+
+&#352;tefan Sakal&#237;k schrieb:
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> Since I can't send anything to lists.berlios.de for some reason I'm
+</I>&gt;<i> sending this to everyone in memberlist (reply if you don't want this
+</I>&gt;<i> spam). Btw, does it work for you?
+</I>
+I can send to the list just fine. Did you check your mailing list settings
+at berlios ? Could be the address itself or something different...
+I'd have to check what's going on actually myself.
+
+&gt;<i> I've been working on my PPA Plugin architecture for some time, it's
+</I>&gt;<i> not finished yet but I believe I'm going in the right direction (why
+</I>&gt;<i> am I having the feeling that it's just reinventing the wheel?)
+</I>
+Well it's sound great that you are making progress. I think many
+applications wanting some modular extensions restrict themself to
+some kind of language like XUL for mozilla or binary dll's for the
+most professional tools. Also (what's not bad by default) many applications
+restrict access to either core or user interface or whatever.
+I think it's great that Canorus currently offers potential for two
+scripting languages and that it is even possible to add native plugins as
+well (even better in the future). The main problem remaining is the fact
+that we have to do restrictions because of the way how swig works.
+
+&gt;<i> Anyways, I wanted to ask you what kind of plugin interface would you
+</I>&gt;<i> like to have (simple c functions, class-based, ...)? The thing with
+</I>&gt;<i> this OpenPPA is that writing interface is not nearly as simple as with
+</I>&gt;<i> SWIG. For instance this simple function:int hello(int); it would take
+</I>&gt;<i> 4 lines of code to send + another 4-8 to receive function call (+ some
+</I>&gt;<i> API learning).
+</I>Well actually I'd prefer two have the possibility to have both simple
+function access (like &quot;function, parameter1, parameter2, ...&quot;) for simple
+plugins not requiring access to the complete Canorus API and for object
+oriented plugins it would be nice to have the possibility to create code
+using the existing canorus classes in a relatively simple way.
+
+For native plugins and due to License restrictions we discussed recently
+that we might offer an LGPL-based thin library to access certain functions
+defined in a C header file. It'd be probably enough to have one simple
+get/set functions and one complex function call while the name could be
+part of enum or similar. There would have to be code at the plugin interface
+in Canorus defining in which function goes into which part of Canorus while
+the resolution of the name should happen in that part of Canorus probably.
+
+For time critical plugins requiring much communication between Canorus
+and the plugin the native plugin would suit better as it would basically
+open the inner part of Canorus to the plugin. We are planning to split
+Canorus into some libraries and provide header files to program these
+native plugins. For script plugins it would be very helpful to use the
+classes defined in those headers. Having the experiences with Swig I fear
+that the Qt world might introduce problems on this layer.
+
+We currently do not need complete access to the Qt world on the user
+interface layer but only core and control. We discussed that it would
+be the best to have controls inside Canorus and plugin controls doing
+basically the same work but on a different layer.
+
+&gt;<i> Plugin developers wouldn't have to write PPA (unless they want to
+</I>&gt;<i> define their own functions). I had some success with automatic code
+</I>&gt;<i> generation, it should simplify the process, but with variable sized
+</I>&gt;<i> arrays and especially classes it's impossible to generate code without
+</I>&gt;<i> any further editing.
+</I>
+Matevz told me about one interface using the Qt MOC compiler to actually
+solve this problem though this has other restrictions (python-qt AFAIR).
+My hope is that you can automate the process better if you get more
+information about the code in some form (like the C++ header files could be
+automatically &quot;translated&quot; into a form suiting better to your PPA). As said
+above the complete user interface stuff is not necessarily needed but only
+the basic Qt datatype like QString or QVector. One question is for me that
+if a plugin has it's own user interface using something like Py-Qt4 if we
+can use and transfer these Qt datatatypes (instances of it) in both directions.
+
+&gt;<i> I want to say it would be good not to use too many data types
+</I>&gt;<i> (different classes) if evitable; to have stable API.
+</I>
+I think we currently need simple datatype primitives like int, float, char
+and one string, array, datastream, maybe date/time. File/Dir, Font, Hash
+is probably not needed, but Matevz should better comment on this too. Things
+like images or midi data should be transferred via datastream + datatype IMO.
+Working signal/slots would be very useful and helpful too.
+
+Thanks for your work so far.
+
+Best regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000519.html">[Canorus-devel] Printing / Preview
+</A></li>
+	<LI>Next message: <A HREF="000525.html">[Canorus-devel] Plugin interface
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#521">[ date ]</a>
+              <a href="thread.html#521">[ thread ]</a>
+              <a href="subject.html#521">[ subject ]</a>
+              <a href="author.html#521">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

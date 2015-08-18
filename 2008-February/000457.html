@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] CAExternProgram and Control directory
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAExternProgram%20and%20Control%20directory&In-Reply-To=%3C47C08184.6070509%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000453.html">
+   <LINK REL="Next"  HREF="000458.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] CAExternProgram and Control directory</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20CAExternProgram%20and%20Control%20directory&In-Reply-To=%3C47C08184.6070509%40web.de%3E"
+       TITLE="[Canorus-devel] CAExternProgram and Control directory">suamor at web.de
+       </A><BR>
+    <I>Sat Feb 23 21:26:44 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000453.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+        <LI>Next message: <A HREF="000458.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#457">[ date ]</a>
+              <a href="thread.html#457">[ thread ]</a>
+              <a href="subject.html#457">[ subject ]</a>
+              <a href="author.html#457">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>rabbit schrieb:
+Hi Stefan,
+
+&gt;<i> Hi,
+</I>&gt;<i> 
+</I>&gt;<i> As I understand it, your module executes binary files. Are you planning 
+</I>&gt;<i> to integrate some functionality to call scripts (for example python -&gt; 
+</I>&gt;<i> call 'function' in 'script' with PyObject input )? Because I was 
+</I>&gt;<i> thinking about incorporating some kind of script/plugin testing facility 
+</I>&gt;<i> into the pyCLI. It would help :)
+</I>&gt;<i> 
+</I>&gt;<i> Regards,
+</I>&gt;<i> Stefan
+</I>&gt;<i> 
+</I>
+Well the main problem is currently that (AFAIK) I cannot export Qt objects.
+But this is the main requirement so that this class works. I considered for
+a different class to have a thin wrapper, so that mainly all Qt specific
+stuff is hidden. The main problem however is how to signal a script that
+something changed ? The solution is of course a observer pattern, i.e. the
+script tells me that it waits for input (this is similar to signal/slot but
+independent of it and only on C++ layer). There are both solution for C++
+native (like sigslot) and python available, but the main question is how
+to combine the both (and use swig).
+
+Signals in sigslots have a template syntax, like mysignal&lt;int&gt;. I don't
+know much about swig to really be able to tell you if this works together
+with python or ruby.
+
+Except the class calling an extern program I also want to offer a generic
+dialog / form display class. For this class I planned the possibility to
+use it with scripts. This could be a similar wrapper like above. Probably
+the best is to have a base class (that can be used standalone for simple
+interfaces) for the signal / slot functionality.
+
+Best,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000453.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+	<LI>Next message: <A HREF="000458.html">[Canorus-devel] CAExternProgram and Control directory
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#457">[ date ]</a>
+              <a href="thread.html#457">[ thread ]</a>
+              <a href="subject.html#457">[ subject ]</a>
+              <a href="author.html#457">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,123 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Hello, Mac OS X build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C114750.28553.qm%40web30613.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000034.html">
+   <LINK REL="Next"  HREF="000035.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Hello, Mac OS X build</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C114750.28553.qm%40web30613.mail.mud.yahoo.com%3E"
+       TITLE="[Canorus-devel] Hello, Mac OS X build">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Fri Feb  9 04:23:12 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000034.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+        <LI>Next message: <A HREF="000035.html">[Canorus-devel] qt, gtk1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> So, my question is, which files should be installed where? As far as
+</I>&gt;<i> I was able to see, Applications/ is used only for describing the
+</I>&gt;<i> applications, not for their data. The core application files are
+</I>&gt;<i> still located in /usr/bin&amp;lib&amp;share or maybe usr/local/bin&amp;lib&amp;share
+</I>&gt;<i> under Mac?
+</I>
+No, usually all files relating to a GUI app are in the application
+&quot;bundle&quot;, basically a special directory that ends in &quot;.app&quot; and
+contains the executable and necessary libraries, images, etc. Apps live
+in /Applications. A lot of the time they are kind of big since they
+have all the libraries inside them but they are pretty much
+self-contained. 
+
+Basic structure is like this:
+
+canorus.app/
+        Contents/
+                Info.plist               # XML file used by the OS
+                MacOS/
+                        canorus          # The actual executable
+                Resources/
+                        canorus.icns     # The icon file
+                        ...              # Some other files/libs etc
+
+Lilypond.app, for example, organizes the Resources directory like the
+installation prefix on Unix/Linux: it contains lib/, share/, bin/, etc.
+All of Lily's dependencies as well as other miscellaneous files are
+installed there.
+
+For Canorus it would be necessary to copy in the Qt libraries and tell
+the linker to look for them inside the .app, probably in
+canorus.app/Contents/Resources/lib/. 
+
+This document has some good info:
+<A HREF="http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/">http://developer.apple.com/documentation/Porting/Conceptual/PortingUnix/</A>
+
+In particular the parts &quot;Porting File and Device I/O: File System
+Layout&quot;, and &quot;Distributing Your Application&quot;.
+
+There are other ways to do things (use shared Frameworks, install
+everything in a more Unixy way under a separate prefix like Fink's
+/sw), but AFAIK making a stand-alone .app bundle is usually the easiest
+route to a double-clickable application.
+
+As far as packaging, the .app is usually put inside a .dmg (disk image)
+file for distribution. The user clicks on the .dmg, which opens like it
+is a disk, and then the user drags the .app into the /Applications
+folder. Alternatively the .app and other files (e.g. fonts) can be put
+into an OS X package file inside the .dmg. When the user opens the .dmg
+and clicks on the package it runs the OS X installer which puts the app
+into /Applications and installs the other files where they need to be.
+
+So I think typing &quot;make&quot; should go so far as to create the .app,
+generic &quot;make install&quot; should probably copy the .app to /Applications,
+and adding the platform-specific define should build the whole package,
+.dmg, and then run the OS X installer.
+
+I hope all this makes sense. At the moment I'm still working on
+building the .app properly :)
+
+Sam
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000034.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+	<LI>Next message: <A HREF="000035.html">[Canorus-devel] qt, gtk1
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#41">[ date ]</a>
+              <a href="thread.html#41">[ thread ]</a>
+              <a href="subject.html#41">[ subject ]</a>
+              <a href="author.html#41">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

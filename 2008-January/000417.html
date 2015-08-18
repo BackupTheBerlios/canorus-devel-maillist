@@ -1,0 +1,315 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Important: CACan format
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Important%3A%20CACan%20format&In-Reply-To=%3C47A24F69.1090509%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000416.html">
+   <LINK REL="Next"  HREF="000415.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Important: CACan format</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Important%3A%20CACan%20format&In-Reply-To=%3C47A24F69.1090509%40gmail.com%3E"
+       TITLE="[Canorus-devel] Important: CACan format">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Jan 31 23:44:57 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000416.html">[Canorus-devel] Important: CACan format
+</A></li>
+        <LI>Next message: <A HREF="000415.html">[Canorus-devel] Important: CACan format
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#417">[ date ]</a>
+              <a href="thread.html#417">[ thread ]</a>
+              <a href="subject.html#417">[ subject ]</a>
+              <a href="author.html#417">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Looking in PATH would be logical, yes. But only on Windows probably.
+Usual Python installation looks like C:\Python25 - this is where python
+installation and python.exe is located. And the pythonLib directory
+points to C:\Python25\Lib.
+
+So something like append python.exe location + &quot;/Lib&quot; should probably work.
+
+
+Regards.
+-Matev&#382;
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> About Python again - this solution works for the windows packages, but
+</I>&gt;<i> doesn't work when someone compiles canorus from sources, under
+</I>&gt;<i> windows.  pythonLib is not on svn, so compiling and running doesn't
+</I>&gt;<i> work. Couldn't canorus look for a compatible python version in PATH
+</I>&gt;<i> and then check for pythonLib, if none found?
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> 2008/1/31 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt;:
+</I>&gt;<i>
+</I>&gt;<i>     None of the attached files can be opened on Windows. Files are regual
+</I>&gt;<i>     .tar files though.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Regards.
+</I>&gt;<i>     -Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt; pravi:
+</I>&gt;<i>     &gt; Could you send me a .can file you can't open?
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; Regarding pythonLib - maybe canorus could check whether
+</I>&gt;<i>     pythonLib  is
+</I>&gt;<i>     &gt; needed/whether python is in PATH before looking for pythonLib? this
+</I>&gt;<i>     &gt; would most probably solve my error.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; Regards,
+</I>&gt;<i>     &gt; Itay
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; 2008/1/31 &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt;&gt;:
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     Saving a CAN file is ok on Win. But if I open any (Linux or
+</I>&gt;<i>     &gt;     Windows-generated) .can file, there is an error. Using R713.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     pythonLib is a directory where Python is installed on
+</I>&gt;<i>     Windows. This is
+</I>&gt;<i>     &gt;     usually C:\Program files\Canorus\pythonLib. It is needed
+</I>&gt;<i>     when loading
+</I>&gt;<i>     &gt;     CanorusPython.py because it needs at least new.py and some
+</I>&gt;<i>     others.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     Regards.
+</I>&gt;<i>     &gt;     -Matev&#382;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt; pravi:
+</I>&gt;<i>     &gt;     &gt; Hi,
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; I fixed a bug with saving an open can (which resulted in an
+</I>&gt;<i>     &gt;     empty file).
+</I>&gt;<i>     &gt;     &gt; I'm unable to reproduce the bug you mentioned. I use an
+</I>&gt;<i>     MSYS GCC
+</I>&gt;<i>     &gt;     build
+</I>&gt;<i>     &gt;     &gt; on a win 2000 VM. I have no problem opening a can archive
+</I>&gt;<i>     created on
+</I>&gt;<i>     &gt;     &gt; the linux host, or vice versa.
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; OT:
+</I>&gt;<i>     &gt;     &gt; I'm getting some python issues on win 2000. I can't start
+</I>&gt;<i>     &gt;     canorus/win
+</I>&gt;<i>     &gt;     &gt; in GDB, with python enabled. I get a segfault:
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; #0  0x78001d0b in strlen () from C:\WINNT\system32\msvcrt.dll
+</I>&gt;<i>     &gt;     &gt; #1  0x00516f2d in SWIG_FromCharPtr (
+</I>&gt;<i>     &gt;     &gt;     cptr=0x4427448
+</I>&gt;<i>     &gt;     &gt; &quot;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     &#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&#949;&#9632;&quot;...)
+</I>&gt;<i>     &gt;     &gt;     at
+</I>&gt;<i>     c:/canorus/src/scripting/canoruspythonPYTHON_wrap.cxx:2882
+</I>&gt;<i>     &gt;     &gt; #2  0x00516e96 in _wrap_tr (args=0x39d3dd0)
+</I>&gt;<i>     &gt;     &gt;     at
+</I>&gt;<i>     c:/canorus/src/scripting/canoruspythonPYTHON_wrap.cxx:3265
+</I>&gt;<i>     &gt;     &gt; #3  0x1e08e137 in python25!PyCFunction_Call ()
+</I>&gt;<i>     &gt;     &gt;    from C:\WINNT\system32\python25.dll
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; Which looks similar to this valgrind error:
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; ==9940== Invalid read of size 1
+</I>&gt;<i>     &gt;     &gt; ==9940==    at 0x81EB659: SWIG_FromCharPtr(char const*)
+</I>&gt;<i>     &gt;     &gt; (canoruspythonPYTHON_wrap.cxx:2872)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x81ED89B: _wrap_tr
+</I>&gt;<i>     &gt;     (canoruspythonPYTHON_wrap.cxx:3262)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x8279F62: PyCFunction_Call (in
+</I>&gt;<i>     &gt;     &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x8237A09: PyEval_EvalFrame (in
+</I>&gt;<i>     &gt;     &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x8238A38: PyEval_EvalCodeEx (in
+</I>&gt;<i>     &gt;     &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x8279239: function_call (in
+</I>&gt;<i>     &gt;     &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x81EF611: PyObject_Call (in
+</I>&gt;<i>     &gt;     &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x8232555: PyEval_CallObjectWithKeywords (in
+</I>&gt;<i>     &gt;     &gt; /home/itayperl/projects/canorus/master/src/canorus)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x80EE604: CASwigPython::callFunction(QString,
+</I>&gt;<i>     &gt;     QString,
+</I>&gt;<i>     &gt;     &gt; QList&lt;_object*&gt;) (swigpython.cpp:96)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x811F8C8: CAMainWin::newDocument()
+</I>&gt;<i>     (mainwin.cpp:795)
+</I>&gt;<i>     &gt;     &gt; ==9940==    by 0x80BD4EB: main (main.cpp:118)
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; But (surprisingly!) only window msvcrt crashes on this...
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; I also experienced a crash on line 40 of swigpython.cpp:
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     PyRun_SimpleString((QString(&quot;sys.path.append('&quot;)+CACanorus::locateResourceDir(&quot;pythonLib&quot;).at(0)+&quot;/pythonLib')&quot;).toStdString().c_str());
+</I>&gt;<i>     &gt;     &gt; Apparently I don't have a 'pythonLib', and commenting this
+</I>&gt;<i>     line out
+</I>&gt;<i>     &gt;     &gt; solved the error. Is it needed?
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; Regards,
+</I>&gt;<i>     &gt;     &gt; Itay
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; On Jan 27, 2008 11:50 PM, &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt;
+</I>&gt;<i>     &gt;     &gt; &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt;&gt;&gt; wrote:
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     I think this is the same bug:
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>&gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>&gt;&gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>&gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>
+</I>&gt;<i>     &lt;<A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=12832&amp;group_id=6144</A>&gt;&gt;&gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     Looks like no .can files can be loaded no matter where was
+</I>&gt;<i>     &gt;     it saved.
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     Regards.
+</I>&gt;<i>     &gt;     &gt;     -Matev&#382;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     Matev&#382; Jekovec pravi:
+</I>&gt;<i>     &gt;     &gt;     &gt; Hi Itay.
+</I>&gt;<i>     &gt;     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     &gt; The .can fileformats are somehow not cross-platform
+</I>&gt;<i>     &gt;     independent.
+</I>&gt;<i>     &gt;     &gt;     I tried
+</I>&gt;<i>     &gt;     &gt;     &gt; opening a .can file saved on Linux on Windows and it
+</I>&gt;<i>     &gt;     returns an
+</I>&gt;<i>     &gt;     &gt;     error.
+</I>&gt;<i>     &gt;     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     &gt; Could you please look at it? This should be fixed asap,
+</I>&gt;<i>     &gt;     but won't go
+</I>&gt;<i>     &gt;     &gt;     &gt; into 0.5 release though. Maybe 0.5.1 right after.
+</I>&gt;<i>     &gt;     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     &gt; Regards.
+</I>&gt;<i>     &gt;     &gt;     &gt; -Matev&#382;
+</I>&gt;<i>     &gt;     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;     _______________________________________________
+</I>&gt;<i>     &gt;     &gt;     Canorus-devel mailing list
+</I>&gt;<i>     &gt;     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;&gt;&gt;
+</I>&gt;<i>     &gt;     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;    
+</I>&gt;<i>     ------------------------------------------------------------------------
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;     &gt; _______________________________________________
+</I>&gt;<i>     &gt;     &gt; Canorus-devel mailing list
+</I>&gt;<i>     &gt;     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt;     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;&gt;
+</I>&gt;<i>     &gt;     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>     &gt;     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;     _______________________________________________
+</I>&gt;<i>     &gt;     Canorus-devel mailing list
+</I>&gt;<i>     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;&gt;
+</I>&gt;<i>     &gt;     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     ------------------------------------------------------------------------
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; _______________________________________________
+</I>&gt;<i>     &gt; Canorus-devel mailing list
+</I>&gt;<i>     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>     &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     &gt; <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>     &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Canorus-devel mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000416.html">[Canorus-devel] Important: CACan format
+</A></li>
+	<LI>Next message: <A HREF="000415.html">[Canorus-devel] Important: CACan format
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#417">[ date ]</a>
+              <a href="thread.html#417">[ thread ]</a>
+              <a href="subject.html#417">[ subject ]</a>
+              <a href="author.html#417">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

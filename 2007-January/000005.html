@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Python problem
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-January/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Python%20problem&In-Reply-To=%3C459CB265.8030504%40schwaben.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000004.html">
+   <LINK REL="Next"  HREF="000006.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Python problem</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Python%20problem&In-Reply-To=%3C459CB265.8030504%40schwaben.de%3E"
+       TITLE="[Canorus-devel] Python problem">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Thu Jan  4 08:53:09 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000004.html">[Canorus-devel] Python problem
+</A></li>
+        <LI>Next message: <A HREF="000006.html">[Canorus-devel] Python problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE><A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> schrieb:
+&gt;<i> Hi Georg,
+</I>&gt;<i> I got the following after applying your patch.  Compiling Canorus seems to
+</I>&gt;<i> work now, except for the warnings.
+</I>&gt;<i>
+</I>&gt;<i> [ 14%] Built target CanorusRuby
+</I>&gt;<i> [ 29%] Built target _CanorusPython
+</I>&gt;<i> Linking CXX executable canorus
+</I>&gt;<i> /usr/lib/python2.4/config/libpython2.4.a(posixmodule.o): In function
+</I>&gt;<i> `posix_tmpnam':
+</I>&gt;<i> (.text+0x845): warning: the use of `tmpnam_r' is dangerous, better use
+</I>&gt;<i> `mkstemp'
+</I>&gt;<i> /usr/lib/python2.4/config/libpython2.4.a(posixmodule.o): In function
+</I>&gt;<i> `posix_tempnam':
+</I>&gt;<i> (.text+0x93c): warning: the use of `tempnam' is dangerous, better use
+</I>&gt;<i> `mkstemp'
+</I>&gt;<i> [100%] Built target canorus
+</I>&gt;<i>
+</I>&gt;<i> I ran it, and upon clicking cancel in the export dialog, got thus:
+</I>&gt;<i> ......
+</I>&gt;<i> ASSERT failure in QList&lt;T&gt;::operator[]: &quot;index out of range&quot;, file
+</I>&gt;<i> /usr/include/QtCore/qlist.h, line 378
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>Hi Daniel,
+
+in Revision 323 there is a fix for the cancel path.
+ 
+Now, that wi have the file dialog, I'm stuck in reasoning:
+
+Should the export be written in c++ or better python/ruby? Also to try
+that out, is there an example of how to script canorus? What should I
+read? Don't know python/ruby yet, but Ithink, for performance reasons
+c++ is not needed for export.
+
+Regards,
+Georg
+
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000004.html">[Canorus-devel] Python problem
+</A></li>
+	<LI>Next message: <A HREF="000006.html">[Canorus-devel] Python problem
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#5">[ date ]</a>
+              <a href="thread.html#5">[ thread ]</a>
+              <a href="subject.html#5">[ subject ]</a>
+              <a href="author.html#5">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

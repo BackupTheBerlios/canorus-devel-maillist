@@ -1,0 +1,154 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Canorus 0.2.5 is out
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%200.2.5%20is%20out&In-Reply-To=%3C460E8461.4020306%40startvox.hu%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000079.html">
+   <LINK REL="Next"  HREF="000086.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Canorus 0.2.5 is out</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Canorus%200.2.5%20is%20out&In-Reply-To=%3C460E8461.4020306%40startvox.hu%3E"
+       TITLE="[Canorus-devel] Canorus 0.2.5 is out">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat Mar 31 17:55:13 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000079.html">[Canorus-devel] Canorus 0.2.5 is out
+</A></li>
+        <LI>Next message: <A HREF="000086.html">[Canorus-devel] Canorus 0.2.5 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hello Everyone,
+
+
+I tried to build Canorus in December last year (not sure about the date) 
+on Mac OS X, but I couldn't do it finally. I tried it once more with the 
+latest version last week, but it also didn't work. What I got after 
+running cmake was the following:
+
+vadAlma:~/Desktop/canorus-0.1.0 admin$ cmake .
+-- Check for working C compiler: /usr/bin/gcc
+-- Check for working C compiler: /usr/bin/gcc -- works
+-- Check size of void*
+-- Check size of void* - done
+-- Check for working CXX compiler: /usr/bin/c++
+-- Check for working CXX compiler: /usr/bin/c++ -- works
+-- Looking for Q_WS_X11
+-- Looking for Q_WS_X11 - not found.
+-- Looking for Q_WS_MAC
+-- Looking for Q_WS_MAC - found
+-- Looking for Q_WS_WIN
+-- Looking for Q_WS_WIN - not found.
+-- Found Qt-Version 4.2.3
+Ruby Library and Development files found. Ruby extensions enabled.
+Python Library and Development files found. Python extensions enabled.
+CMake Error: Error in cmake code at
+/Users/admin/Desktop/canorus-0.1.0/src/CMakeLists.txt:328:
+Unknown CMake command &quot;SWIG_ADD_MODULE&quot;.
+-- Configuring done
+
+Actually, I usually develop things with Xcode (before that I used Visual 
+Studio), so for me the command-line building is something very very 
+unknown. That means: I understand nothing of the &quot;unknown command...&quot; 
+error, but I see that something is wrong. If anyone can help me on what 
+to do to avoid this problem, I could try to make an Intel version of 
+Canorus (I use a MacBook Pro with OS X 10.4.9).
+
+Bye,
+Adam
+
+________________
+Siska &#193;d&#225;m
++36 (70) 207-63-85
+<A HREF="http://apocalypse.rulez.org/~sadam">http://apocalypse.rulez.org/~sadam</A>
+
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> wrote:
+&gt;<i> Fred Leason wrote:
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>&gt;&gt;<i> A few weeks ago, Matev&#382; posted an announcement about Canorus. I have
+</I>&gt;&gt;<i> tried to make it work on Mac OS X. Unfortunately, my programming
+</I>&gt;&gt;<i> skills are not up to the challenge. Has anyone else taken a look at
+</I>&gt;&gt;<i> Canorus, Mac OS X or otherwise.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Are there other GUI front ends (or that export) to Lilypond
+</I>&gt;&gt;<i> that work on Mac OS X?
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i> Canorus should compile &quot;out of the box&quot; on OS X as long as the
+</I>&gt;<i> prerequisites are installed (on 10.4 that is; there may be issues with
+</I>&gt;<i> previous versions). So far I have been compiling it on PPC, but the PPC
+</I>&gt;<i> builds have been tested on Intel as well and run fine under emulation.
+</I>&gt;<i>
+</I>&gt;<i> Someday in the not-too-distant future I hope to look into making
+</I>&gt;<i> universal binaries. In the very near future (hopefully within the next
+</I>&gt;<i> week) OS X installer packages will be ready (PPC binaries, .pkg in a
+</I>&gt;<i> .dmg); I have been putting off posting binary packages until I have
+</I>&gt;<i> some build system updates ready to commit to svn. 
+</I>&gt;<i>
+</I>&gt;<i> As for other GUI programs, Rosegarden has been ported to OS X via Fink
+</I>&gt;<i> and X11, although it doesn't do sound on OSX, and the last time I tried
+</I>&gt;<i> to build it it didn't work for some reason. Denemo has also been ported
+</I>&gt;<i> in the same way, but I'm not sure how alive that project is these days.
+</I>&gt;<i>
+</I>&gt;<i> I'm sure you already know about Lilypond.app, although it is probably
+</I>&gt;<i> not quite the &quot;GUI&quot; you were hoping for :). It is a standalone GUI .app
+</I>&gt;<i> that lets you compile .ly files and generate PDFs though, but you still
+</I>&gt;<i> have to enter the score as Lilypond code.
+</I>&gt;<i>
+</I>&gt;<i> I am very interested to hear about any issues you've had building
+</I>&gt;<i> Canorus on OSX; please follow up to <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i>
+</I>&gt;<i> For more info on building and running Canorus, check out the website:
+</I>&gt;<i> canorus.org
+</I>&gt;<i>
+</I>&gt;<i> Cheers,
+</I>&gt;<i> Sam
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000079.html">[Canorus-devel] Canorus 0.2.5 is out
+</A></li>
+	<LI>Next message: <A HREF="000086.html">[Canorus-devel] Canorus 0.2.5 is out
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#80">[ date ]</a>
+              <a href="thread.html#80">[ thread ]</a>
+              <a href="subject.html#80">[ subject ]</a>
+              <a href="author.html#80">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

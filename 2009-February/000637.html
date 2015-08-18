@@ -1,0 +1,96 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Build 933 breakage under macosx
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20933%20breakage%20under%20macosx&In-Reply-To=%3C49875FDA.8040602%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000636.html">
+   <LINK REL="Next"  HREF="000638.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Build 933 breakage under macosx</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Build%20933%20breakage%20under%20macosx&In-Reply-To=%3C49875FDA.8040602%40gmail.com%3E"
+       TITLE="[Canorus-devel] Build 933 breakage under macosx">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Mon Feb  2 22:04:26 CET 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000636.html">[Canorus-devel] Build 933 breakage under macosx
+</A></li>
+        <LI>Next message: <A HREF="000638.html">[Canorus-devel] Build 933 breakage under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#637">[ date ]</a>
+              <a href="thread.html#637">[ thread ]</a>
+              <a href="subject.html#637">[ subject ]</a>
+              <a href="author.html#637">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Grzegorz.
+
+Fonts should be installed to Canorus data directory /fonts. On Linux,
+that's /usr/share/canorus/fonts and on Windows C:\Program
+files\Canorus\fonts. There is no need to &quot;register&quot; it anymore - the
+fonts are loaded on the fly.
+
+
+Regards.
+-Matev&#382;
+
+Grzegorz Adam Hankiewicz pravi:
+&gt;<i> Recent path changes break the makefile in the macosx directory. The  
+</I>&gt;<i> files target fails. What should be done with fonts under mac?
+</I>&gt;<i>
+</I>&gt;<i> perl -e '$line = &lt;STDIN&gt;;	\
+</I>&gt;<i> 		if ($line =~ /svn/) {	\
+</I>&gt;<i> 			chomp $line;	\
+</I>&gt;<i> 			$rev = `svn info | sed -n &quot;/Revision/ p&quot;`;	\
+</I>&gt;<i> 			$rev =~ s/Revision: /R/;	\
+</I>&gt;<i> 		}	\
+</I>&gt;<i> 		print &quot;Canorus\nVersion $line $rev\n&quot;;' &lt; ../VERSION &gt;Canorus/README- 
+</I>&gt;<i> OSX.txt
+</I>&gt;<i> cat files/README-OSX.txt &gt;&gt; Canorus/README-OSX.txt
+</I>&gt;<i> cp files/canorus-example.xml Canorus
+</I>&gt;<i> cp files/Emmentaler-14.ttf package-contents/Library/Fonts/
+</I>&gt;<i> cp: directory package-contents/Library/Fonts does not exist
+</I>&gt;<i> make: *** [files] Error 1
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000636.html">[Canorus-devel] Build 933 breakage under macosx
+</A></li>
+	<LI>Next message: <A HREF="000638.html">[Canorus-devel] Build 933 breakage under macosx
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#637">[ date ]</a>
+              <a href="thread.html#637">[ thread ]</a>
+              <a href="subject.html#637">[ subject ]</a>
+              <a href="author.html#637">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

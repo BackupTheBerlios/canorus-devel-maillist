@@ -1,0 +1,90 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Update on printing
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-March/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Update%20on%20printing&In-Reply-To=%3C47CD8958.9030608%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000487.html">
+   <LINK REL="Next"  HREF="000489.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Update on printing</H1>
+    <B>Reinhard</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Update%20on%20printing&In-Reply-To=%3C47CD8958.9030608%40web.de%3E"
+       TITLE="[Canorus-devel] Update on printing">suamor at web.de
+       </A><BR>
+    <I>Tue Mar  4 18:39:36 CET 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000487.html">[Canorus-devel] SoC, plugins, threads &amp; processes
+</A></li>
+        <LI>Next message: <A HREF="000489.html">[Canorus-devel] Printing and preview from file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#488">[ date ]</a>
+              <a href="thread.html#488">[ thread ]</a>
+              <a href="subject.html#488">[ subject ]</a>
+              <a href="author.html#488">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi,
+
+I managed to get the basic printing stuff running. Currently
+&quot;print&quot; does show the pdf file produced with CAPrintCtl, so the
+QPrintDialog (or similar) integration and actual sending to the
+printer is still missing (but that should be relatively easily
+done).
+
+Export options for printing will (contrary to NoteEdit) via
+settings. It's easier and more logical to have this all at
+one place, so the user is not confused about the export
+options when doing a preview of the print like in NoteEdit
+(and the complicated integration of the export options to the
+printer dialog can be avoided).
+
+Concerning threads / processes: I currently don't have the
+time to completely explain all, but I recommand to take a
+look at the CAExternProgram class to get an idea how to
+control extern programs. Could be used or adapted in a
+similar way for the scripts. I'm open for discussion.
+
+Best,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor -
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000487.html">[Canorus-devel] SoC, plugins, threads &amp; processes
+</A></li>
+	<LI>Next message: <A HREF="000489.html">[Canorus-devel] Printing and preview from file
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#488">[ date ]</a>
+              <a href="thread.html#488">[ thread ]</a>
+              <a href="subject.html#488">[ subject ]</a>
+              <a href="author.html#488">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] moving tabs and double click
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-November/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20moving%20tabs%20and%20double%20click&In-Reply-To=%3C4AEDDC2C.9030005%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   
+   <LINK REL="Next"  HREF="000916.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] moving tabs and double click</H1>
+    <B>Matev&#382; Jekovec</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20moving%20tabs%20and%20double%20click&In-Reply-To=%3C4AEDDC2C.9030005%40gmail.com%3E"
+       TITLE="[Canorus-devel] moving tabs and double click">matevz.jekovec at gmail.com
+       </A><BR>
+    <I>Sun Nov  1 20:06:20 CET 2009</I>
+    <P><UL>
+        
+        <LI>Next message: <A HREF="000916.html">[Canorus-devel] Canorus - current state of developement
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#915">[ date ]</a>
+              <a href="thread.html#915">[ thread ]</a>
+              <a href="subject.html#915">[ subject ]</a>
+              <a href="author.html#915">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Georg.
+
+The setMovable() was added in Qt4.5. See
+<A HREF="http://doc.trolltech.com/4.5/qtabbar.html#movable-prop">http://doc.trolltech.com/4.5/qtabbar.html#movable-prop</A>
+
+Maybe you don't have the latest Qt version installed?
+
+
+Regards.
+-Matev&#382;
+
+ps. Still waiting :)
+
+Georg Rudolph pravi:
+&gt;<i> Matev&#382; Jekovec schrieb:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi guys.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> I added two nice features in the last revision:
+</I>&gt;&gt;<i> 1. You can move the tabs around and easily change sheet order this way
+</I>&gt;&gt;<i> without using the edit document dialog.
+</I>&gt;&gt;<i> 2. You can simply add new sheet by double clicking at the empty space
+</I>&gt;&gt;<i> right of the tabs.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i>   
+</I>&gt;&gt;<i>     
+</I>&gt;<i> Hi Matev&#382;,
+</I>&gt;<i>
+</I>&gt;<i> nice improvement. Although 1) is not working, because at compile time I get
+</I>&gt;<i>    .../src/widgets/tabwidget.cpp:22: error: &#8216;setMovable&#8217; was not
+</I>&gt;<i> declared in this scope
+</I>&gt;<i>    ...
+</I>&gt;<i> When commenting this out, canorus hints at startup, like this:
+</I>&gt;<i> Object::connect: No such signal QTabBar::tabMoved(int,int)
+</I>&gt;<i> Object::connect:  (sender name:   'qt_tabwidget_tabbar')
+</I>&gt;<i>
+</I>&gt;<i> Some stuff pending? But canorus starts up, and 2) is working nicely.
+</I>&gt;<i>
+</I>&gt;<i> The branch midiimport could be removed for now.
+</I>&gt;<i>
+</I>&gt;<i> Best Regards, waiting :)
+</I>&gt;<i> Georg
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	
+	<LI>Next message: <A HREF="000916.html">[Canorus-devel] Canorus - current state of developement
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#915">[ date ]</a>
+              <a href="thread.html#915">[ thread ]</a>
+              <a href="subject.html#915">[ subject ]</a>
+              <a href="author.html#915">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

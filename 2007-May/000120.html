@@ -1,0 +1,169 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] time to release...
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20time%20to%20release...&In-Reply-To=%3C464623E4.9090107%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000119.html">
+   <LINK REL="Next"  HREF="000121.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] time to release...</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20time%20to%20release...&In-Reply-To=%3C464623E4.9090107%40gmail.com%3E"
+       TITLE="[Canorus-devel] time to release...">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Sat May 12 22:30:28 CEST 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000119.html">[Canorus-devel] time to release...
+</A></li>
+        <LI>Next message: <A HREF="000121.html">[Canorus-devel] Canorus 0.3 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Itay,
+
+I fixed crashes 4., 5. and 6. and some others. I also resolved the
+number 1. - horizontal scroll problem.
+Number 2. is ok - if you insert a key sig with some accidentals before
+it, the gap would magically become a set of neutrals which mark the C-major.
+Number 3. is a bug, but the score viewport will change in version 0.4 a
+bit so it will eventually go away when we rewrite the helpers and their
+behaviour for score viewport.
+
+
+-M
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> Hi,
+</I>&gt;<i> I found a few issues and fixed them in trunk r484. I did it in a rush
+</I>&gt;<i> so I hope it's alright.
+</I>&gt;<i> Here's a list of a few more issues I noticed and don't have the time
+</I>&gt;<i> to fix. Most of these are not of high priority, but if you have time,
+</I>&gt;<i> please look into them:
+</I>&gt;<i>
+</I>&gt;<i> 1. Add many notes; Window-&gt;New view; horizontal scrollbar is not in place.
+</I>&gt;<i> 2. When inserting an empty keysig where an empty keysig is active, it
+</I>&gt;<i> creates a small gap. In other words: run canorus; click the keysig
+</I>&gt;<i> menutoolbutton, click on a staff a few times and then add a note.
+</I>&gt;<i> You'll see the gap.
+</I>&gt;<i> 3. If you click a muselement while in InsertMode, you get into
+</I>&gt;<i> SelectMode, although the insertion menutoolbar is still selected, and,
+</I>&gt;<i> if you were inserting a note, the shadow notes are still there.
+</I>&gt;<i> 4. CRASH: Insert a MusElement to a staff, and then to a lyrics or
+</I>&gt;<i> function marking context.
+</I>&gt;<i> 5. CRASH: Insert a note to a staff; Give this staff a lyrics context.
+</I>&gt;<i> Click the lyrics context, underneath the note so you can type; Type
+</I>&gt;<i> something; click outside the textbox on the yellow background, so it
+</I>&gt;<i> loses focus, but doesn't disappear; now give it the focus again by
+</I>&gt;<i> clicking it and press return. Ugh...
+</I>&gt;<i> 6. CRASH: run &quot;./canorus canorus&quot;...
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i> Itay
+</I>&gt;<i>
+</I>&gt;<i> On 5/12/07, *<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;*
+</I>&gt;<i> &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>&gt;&gt; wrote:
+</I>&gt;<i>
+</I>&gt;<i>     I fixed all the remaining issues.
+</I>&gt;<i>
+</I>&gt;<i>     I'm planning to release 0.3.0 tomorrow (Sunday). Please update your
+</I>&gt;<i>     translations.
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     Regards.
+</I>&gt;<i>     - Matev&#382;
+</I>&gt;<i>
+</I>&gt;<i>     Matev&#382; Jekovec pravi:
+</I>&gt;<i>     &gt; Hi guys.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; I implemented today the last missing feature - slurs and
+</I>&gt;<i>     phrasing slurs.
+</I>&gt;<i>     &gt; I'm thinking about releasing the major 0.3.0 in a week or so after
+</I>&gt;<i>     &gt; stabilizing a bit.
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; Major features implemented in 0.3.0 users might notice:
+</I>&gt;<i>     &gt; - lyrics support
+</I>&gt;<i>     &gt; - ties, slurs and phrasing slurs
+</I>&gt;<i>     &gt; - basic creation of function markings
+</I>&gt;<i>     &gt; - multiple selection
+</I>&gt;<i>     &gt; - SVG icons
+</I>&gt;<i>     &gt; - current voice coloring
+</I>&gt;<i>     &gt; - LilyPond improvements
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; Smaller features and bugs to be fixed till 0.3.0 :
+</I>&gt;<i>     &gt; - slurs are not drawn correctly yet
+</I>&gt;<i>     &gt; - slurs and phrasing slurs support in Lily
+</I>&gt;<i>     &gt; - multiple selection of slurs is sometimes annoying
+</I>&gt;<i>     &gt; - repeat bars don't play back properly yet
+</I>&gt;<i>     &gt; - tied notes shouldn't be re-played in playback
+</I>&gt;<i>     &gt; - slurs and phrasing slurs for chords should be solved
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt; Regards!
+</I>&gt;<i>     &gt; -Matev&#382;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>     &gt;
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>     _______________________________________________
+</I>&gt;<i>     Canorus-devel mailing list
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A> &lt;mailto:<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>&gt;
+</I>&gt;<i>     <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i> ------------------------------------------------------------------------
+</I>&gt;<i>
+</I>&gt;<i> _______________________________________________
+</I>&gt;<i> Canorus-devel mailing list
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;<i>   
+</I>
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070512/39b0b568/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070512/39b0b568/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000119.html">[Canorus-devel] time to release...
+</A></li>
+	<LI>Next message: <A HREF="000121.html">[Canorus-devel] Canorus 0.3 released
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#120">[ date ]</a>
+              <a href="thread.html#120">[ thread ]</a>
+              <a href="subject.html#120">[ subject ]</a>
+              <a href="author.html#120">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

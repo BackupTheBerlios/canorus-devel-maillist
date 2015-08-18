@@ -1,0 +1,188 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] kguitar state
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20kguitar%20state&In-Reply-To=%3C4A01918E.2030902%40wikifonia.org%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000784.html">
+   <LINK REL="Next"  HREF="000781.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] kguitar state</H1>
+    <B>Thomas Bonte</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20kguitar%20state&In-Reply-To=%3C4A01918E.2030902%40wikifonia.org%3E"
+       TITLE="[Canorus-devel] kguitar state">thomas at wikifonia.org
+       </A><BR>
+    <I>Wed May  6 15:33:02 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000784.html">[Canorus-devel] kguitar state
+</A></li>
+        <LI>Next message: <A HREF="000781.html">[Canorus-devel] Updated Wiki: Directory hierarchy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#787">[ date ]</a>
+              <a href="thread.html#787">[ thread ]</a>
+              <a href="subject.html#787">[ subject ]</a>
+              <a href="author.html#787">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Reinhard,
+
+Thank you for your extensive feedback. My call to join forces was indeed 
+a little too optimistic.
+Good you talked with Werner about it. It's interesting to do this cross 
+communication.
+
+Thomas
+
+Reinhard Katzmann schreef:
+&gt;<i> Hi,
+</I>&gt;<i>
+</I>&gt;<i> I was in contact with an developer via kguitar on sourceforge (see 
+</I>&gt;<i> <A HREF="https://sourceforge.net/tracker/index.php?func=detail&amp;aid=2689386&amp;group_id=7693&amp;atid=357693">https://sourceforge.net/tracker/index.php?func=detail&amp;aid=2689386&amp;group_id=7693&amp;atid=357693</A> 
+</I>&gt;<i> ).
+</I>&gt;<i> Parts of the kguitar that might not be useful to most Canorus user
+</I>&gt;<i> and should be provided in a plugin.
+</I>&gt;<i>
+</I>&gt;<i> Concerning MuseScore: We talked to Werner at the LAC in Parma and he
+</I>&gt;<i> told us that these things can be complicated because of the MuseScore
+</I>&gt;<i> code structure. I guess it's easy to make the logical, core part and
+</I>&gt;<i> maybe some control parts portable between applications.
+</I>&gt;<i>
+</I>&gt;<i> The user interface part though with layout/drawable also requires quite
+</I>&gt;<i> some work and here I currently don't see how MuseScore could profit from
+</I>&gt;<i> our layout view. It was a design decision by the MuseScore developers to
+</I>&gt;<i> combine (s)core and layout.
+</I>&gt;<i>
+</I>&gt;<i> We have longer plans to offer several libs that have parts of the
+</I>&gt;<i> Canorus code. The recent changes in the directory hierarchy work exactly
+</I>&gt;<i> in that direction. Mainly missing control classes (most controls are
+</I>&gt;<i> bound to CAMainWin currently) prevent to create them all.
+</I>&gt;<i>
+</I>&gt;<i> Borrowing Code from KGuitar would be mainly on the export/import layer
+</I>&gt;<i> as there is already quite some support for other tablature formats.
+</I>&gt;<i>
+</I>&gt;<i> Conclusion: Make the core/logic and other UI free code independent and
+</I>&gt;<i> useable in several projects. The UI part can be borrowed by Canorus or
+</I>&gt;<i> implemented by each program alone.
+</I>&gt;<i>
+</I>&gt;<i> Regards,
+</I>&gt;<i>
+</I>&gt;<i> Reinhard
+</I>&gt;<i>
+</I>&gt;<i> Thomas Bonte wrote:
+</I>&gt;<i>   
+</I>&gt;&gt;<i> Hi Matev&#382;, Reinhard,
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Perhaps you could join forces with the MuseScore developer community on
+</I>&gt;&gt;<i> this matter. It QT4 as well and it also lacks fret&amp;  tabstaff features.
+</I>&gt;&gt;<i> However, no one has stood up to implement it in MuseScore so same
+</I>&gt;&gt;<i> situation over there. Let's keep each other posted.
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Best regards,
+</I>&gt;&gt;<i> Thomas Bonte
+</I>&gt;&gt;<i>
+</I>&gt;&gt;<i> Matev&#382; Jekovec schreef:
+</I>&gt;&gt;<i>     
+</I>&gt;&gt;&gt;<i> Hi Reinhard.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> I think this feature should be triaged by a guitar user and programmer.
+</I>&gt;&gt;&gt;<i> I never actually read the tablature and chords, so I don't think I could
+</I>&gt;&gt;&gt;<i> be the right person to implement it.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> The idea to take a look at kguitar is ok with me. If the original author
+</I>&gt;&gt;&gt;<i> doesn't want to port it to Qt4, this might be a lot of work for us. If
+</I>&gt;&gt;&gt;<i> you ask me, we should remake a native support for fret diagrams, chords
+</I>&gt;&gt;&gt;<i> and tablatures in Canorus. KGuitar should be a referenced project for
+</I>&gt;&gt;&gt;<i> how the things should be made. Directly borrowing the code from them
+</I>&gt;&gt;&gt;<i> might not be a good idea.
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Regards.
+</I>&gt;&gt;&gt;<i> -Matev&#382;
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i> Reinhard Katzmann pravi:
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;&gt;&gt;<i> Hi,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I browsed once again the kguitar pages and checked for any news (also
+</I>&gt;&gt;&gt;&gt;<i> wrote some answers in the forum and updated my feature request).
+</I>&gt;&gt;&gt;&gt;<i> Reason for this is mainly the plan to drop KDE3 for my distribution in
+</I>&gt;&gt;&gt;&gt;<i> 2010 (don't know any exact date).
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> If the plan holds true for other distributions as well we no longer
+</I>&gt;&gt;&gt;&gt;<i> have NoteEdit as score editor available (as well as several other
+</I>&gt;&gt;&gt;&gt;<i> audio programs probably no longer in development).
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Apart from that is what will we do with guitar support. I don't know
+</I>&gt;&gt;&gt;&gt;<i> any better program but kguitar for that so an adaption to it as
+</I>&gt;&gt;&gt;&gt;<i> planned is still high on the list. OTOH it also might be nice to
+</I>&gt;&gt;&gt;&gt;<i> have a kguitar plugin to offer other features of kguitar not being
+</I>&gt;&gt;&gt;&gt;<i> in NoteEdit right now (there are some new features in kguitar as well
+</I>&gt;&gt;&gt;&gt;<i> since the version in NoteEdit is relatively old).
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> The question for me is what should we do:
+</I>&gt;&gt;&gt;&gt;<i> a) Port kguitar to Qt4 by ourselv (merging it into Canorus with some
+</I>&gt;&gt;&gt;&gt;<i>      plugin probably for special seldom used things)
+</I>&gt;&gt;&gt;&gt;<i> b) Reeinvent the wheel and borrow some of the non-KDE3/QT3 code from
+</I>&gt;&gt;&gt;&gt;<i>      the kguitar as needed
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> I haven't looked at kguitar sources since a long time but if the code
+</I>&gt;&gt;&gt;&gt;<i> is understandable I vote for option a)
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> This could be a nice student project if we find a sponsor for it.
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Regards,
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i> Reinhard
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;&gt;<i>         
+</I>&gt;&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;&gt;<i>
+</I>&gt;&gt;&gt;<i>       
+</I>&gt;&gt;<i> _______________________________________________
+</I>&gt;&gt;<i> Canorus-devel mailing list
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">Canorus-devel at lists.berlios.de</A>
+</I>&gt;&gt;<i> <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">https://lists.berlios.de/mailman/listinfo/canorus-devel</A>
+</I>&gt;&gt;<i>     
+</I>&gt;<i>
+</I>&gt;<i>
+</I>&gt;<i>   
+</I>
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000784.html">[Canorus-devel] kguitar state
+</A></li>
+	<LI>Next message: <A HREF="000781.html">[Canorus-devel] Updated Wiki: Directory hierarchy
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#787">[ date ]</a>
+              <a href="thread.html#787">[ thread ]</a>
+              <a href="subject.html#787">[ subject ]</a>
+              <a href="author.html#787">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

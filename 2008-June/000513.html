@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] OSX build update?
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2008-June/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20OSX%20build%20update%3F&In-Reply-To=%3C264743.47194.qm%40web31809.mail.mud.yahoo.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000512.html">
+   <LINK REL="Next"  HREF="000515.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] OSX build update?</H1>
+    <B>r_j_h_box-xb at yahoo.com</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20OSX%20build%20update%3F&In-Reply-To=%3C264743.47194.qm%40web31809.mail.mud.yahoo.com%3E"
+       TITLE="[Canorus-devel] OSX build update?">r_j_h_box-xb at yahoo.com
+       </A><BR>
+    <I>Mon Jun  9 08:02:07 CEST 2008</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000512.html">[Canorus-devel] OSX build update?
+</A></li>
+        <LI>Next message: <A HREF="000515.html">[Canorus-devel] about Canorus
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#513">[ date ]</a>
+              <a href="thread.html#513">[ thread ]</a>
+              <a href="subject.html#513">[ subject ]</a>
+              <a href="author.html#513">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>I went and learned how moc_ files are craeted, and found that the missing mocs needed to be searched in interface/ and other directories; patched CMakeLists.txt and got better results.  
+
+Was also able to restore USE_PYTHON without trouble.  Though I realize that I'd brute-forced the python stuff out of the CMakeLists.txt files and needed to manually restore them instead of relying on USE_PYTHON.  Not sure how those would be removed conditionally.
+
+After including these moc_ files in the build, importing the midi file still doesn't work.
+
+Recommendations?
+
+Randy
+
+
+----- Original Message ----
+From: &quot;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">r_j_h_box-xb at yahoo.com</A>&quot; &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">r_j_h_box-xb at yahoo.com</A>&gt;
+To: <A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A>
+Sent: Sunday, June 8, 2008 2:15:21 PM
+Subject: OSX build update?
+
+
+
+I see that back in January, the status of the OSX build was more than a bit iffy.  Any update on that?
+
+I've tried from the most recent &quot;nightly&quot; build in April, and got past cmake with little more than a warning about Poppler, which doesn't seem very necessary on a platform that has intrinsic print-to-pdf.  But no Makefile was generated...
+
+Adding poppler resulted in these kinds of messages
+
+CMake Error in src/CMakeLists.txt:
+  Cannot find source file &quot;moc_import.cxx&quot;.  Tried extensions .c .C .c++ .cc
+  .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp .hxx .in .txx
+
+
+CMake Error in src/CMakeLists.txt:
+  Cannot find source file &quot;moc_export.cxx&quot;.  Tried extensions .c .C .c++ .cc
+  .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp .hxx .in .txx
+
+
+CMake Error in src/CMakeLists.txt:
+  Cannot find source file &quot;moc_mididevice.cxx&quot;.  Tried extensions .c .C .c++
+  .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp .hxx .in .txx
+
+
+CMake Error in src/CMakeLists.txt:
+  Cannot find source file &quot;moc_playback.cxx&quot;.  Tried extensions .c .C .c++
+  .cc .cpp .cxx .m .M .mm .h .hh .h++ .hm .hpp .hxx .in .txx
+
+I commented these items out of the CMakeLists.txt and disabled Ruby and Python as indicated by:
+
+ <A HREF="https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=13391&amp;group_id=6144">https://developer.berlios.de/bugs/?func=detailbug&amp;bug_id=13391&amp;group_id=6144</A>
+
+I then had to #ifdef USE_PYTHON for all the stuff in mainwin.cpp having to do with pyconsole, and, lo and behold:
+
+[100%] Built target canorus
+
+But then there's an architecture problem; removing -arch ppc from all the makefiles etc fixes this, and I can finally make install, and build an installer Package, and it runs okay - even lets me play notes onto the software synth I downloaded.
+
+I can't seem to import a midi file, however - maybe something to do with missing moc_import.cxx message above?
+
+Your ideas on this will be welcomed, and if some of my comments above result in subversion commits that improve the state of the OSX build, even better.  Best would be figuring out how to get Python and Ruby going too, but one step at a time.
+
+Any help?
+
+Randy
+-------------- next part --------------
+An HTML attachment was scrubbed...
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20080608/86881b6a/attachment.html">https://lists.berlios.de/pipermail/canorus-devel/attachments/20080608/86881b6a/attachment.html</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000512.html">[Canorus-devel] OSX build update?
+</A></li>
+	<LI>Next message: <A HREF="000515.html">[Canorus-devel] about Canorus
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#513">[ date ]</a>
+              <a href="thread.html#513">[ thread ]</a>
+              <a href="subject.html#513">[ subject ]</a>
+              <a href="author.html#513">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

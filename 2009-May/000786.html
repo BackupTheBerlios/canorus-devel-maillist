@@ -1,0 +1,147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] [Fwd: Re: CanorusTranslation of Canorus into	czech]
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2009-May/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BFwd%3A%20Re%3A%20CanorusTranslation%20of%20Canorus%20into%0A%09czech%5D&In-Reply-To=%3C4A0190FE.6050109%40web.de%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000779.html">
+   <LINK REL="Next"  HREF="000780.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] [Fwd: Re: CanorusTranslation of Canorus into	czech]</H1>
+    <B>Reinhard Katzmann</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20%5BFwd%3A%20Re%3A%20CanorusTranslation%20of%20Canorus%20into%0A%09czech%5D&In-Reply-To=%3C4A0190FE.6050109%40web.de%3E"
+       TITLE="[Canorus-devel] [Fwd: Re: CanorusTranslation of Canorus into	czech]">suamor at web.de
+       </A><BR>
+    <I>Wed May  6 15:30:38 CEST 2009</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000779.html">[Canorus-devel] [Fwd: Re: CanorusTranslation of Canorus into czech]
+</A></li>
+        <LI>Next message: <A HREF="000780.html">[Canorus-devel] kguitar state
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#786">[ date ]</a>
+              <a href="thread.html#786">[ thread ]</a>
+              <a href="subject.html#786">[ subject ]</a>
+              <a href="author.html#786">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>&gt;<i> Subject: Re: CanorusTranslation of Canorus into czech
+</I>&gt;<i> Date: Tue, 05 May 2009 07:53:34 +0200 (CEST)
+</I>&gt;<i> From: Pavel Fric &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">pavelfric at seznam.cz</A>&gt;
+</I>&gt;<i> To: Reinhard Katzmann &lt;<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">suamor at web.de</A>&gt;
+</I>&gt;<i>
+</I>&gt;<i> Hi,
+</I>&gt;<i> many thanks for the answer. Yes, I will change some translations, as I
+</I>&gt;<i> see it in running program.
+</I>&gt;<i>
+</I>&gt;<i> I must consider the difference between up-prall and prall-up, because
+</I>&gt;<i> there are two marks for it. I remembered prall from the time, when I
+</I>&gt;<i> played recorder. I should probably look at some book with &quot;Musiklehre&quot;.
+</I>
+Ok thanks to let us know that in case any czech user asks. If you do
+update on your translation you can submit a kind of changelog if you
+want to track the changes you did.
+
+&gt;<i> Then, I installed probably stable 0.7 version. I let the notes to play,
+</I>&gt;<i> but I didn't heard the sound ( I have an old SoundBlaster card in this
+</I>&gt;<i> machine: something like emu10k in settings for output, as I remember).
+</I>
+Well we use either timidity or fluidsynth (qsynth as frontend
+recommended) and connect Canorus midi port to it either directly or
+in case of stability issues indirectly to an alsa virtual midi device
+making handling in such cases a bit easier in my experience (IME ? ;).
+
+&gt;<i> Then, lilypond is installed in Mandriva system, but preview of Prin
+</I>&gt;<i> wasn't functioning. I count, that these little problem are caused the
+</I>&gt;<i> way I installed. Maybe packager (rpm builder) could do and test it to
+</I>&gt;<i> work properly.
+</I>
+For diagnosis you could run Canorus from a xterm or other terminal
+console and send us the output. Two common problems are no write access
+to the temporary directory Canorus writes lilypond output etc. and a
+version of lilypond being too old.
+
+&gt;<i> Probably I should compile help, because even if I inserte &quot;staff&quot; for
+</I>&gt;<i> writing of syllabs, I didn't understand, how to begin with writing of
+</I>&gt;<i> text. No &quot;text cursor&quot; was active, when choosing the green field.
+</I>
+I never worked with Lyrics, I hope Georg or Matevzs can help you here.
+
+&gt;<i> I enjoy this work, because my brother in musician - singer of classic
+</I>&gt;<i> music and piano and organ player, so sometimes he was rewriting the
+</I>&gt;<i> notes in an old version of Logic Emagic.
+</I>
+Thanks for the feedback :-) I also like how Canorus progresses
+currently. Maybe somewhen in the future (autumn or winter 2009) we
+can make somewhere a small Canorus or other related kind of meeting
+within some other Linux-related event in germany, or at some other
+place in europe.
+
+&gt;<i> If you could send me a link to trunk version, if it is possible and
+</I>&gt;<i> working - I am registered, so after log in I could simply enter the
+</I>&gt;<i> adress and download the &quot;tarball&quot;.
+</I>
+We provide a night build service. You can either check out the current
+trunk via SVN (see <A HREF="http://developer.berlios.de/svn/?group_id=6144">http://developer.berlios.de/svn/?group_id=6144</A> for
+anonymous svn access) or somewhen tomorrow here: 
+<A HREF="http://193.95.242.3/canorusNightly/">http://193.95.242.3/canorusNightly/</A> (this is the current Nightly Build 
+Canorus Wiki Link).
+
+Write accesss for translators to SVN is something I currently don't know
+how to do. It would be nice if berlios can restrict access to certain
+directories or branches but I haven't seen anything like this up to now.
+
+&gt;<i> Do everithing you want to do with .ts file - include it into stable, I
+</I>&gt;<i> would like only to make some minor changes and look at it little time in
+</I>&gt;<i> action.
+</I>
+Thanks for your translation work! If you wish you can somewhen in the
+later future make a help document translation. Currently the
+documentation is very little so I think it's worth waiting for a more
+complete version before start a new translation project on it. Also of
+course I know that it would be good to have two different people work
+for translations as the doc translation task is very different from the
+user interface translation.
+
+Regards,
+
+Reinhard
+-- 
+Software-Engineer, Developer of User Interfaces
+Project: Canorus - the next generation music score editor - 
+<A HREF="http://canorus.berlios.de">http://canorus.berlios.de</A>
+GnuPG Public Key available on request
+
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000779.html">[Canorus-devel] [Fwd: Re: CanorusTranslation of Canorus into czech]
+</A></li>
+	<LI>Next message: <A HREF="000780.html">[Canorus-devel] kguitar state
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#786">[ date ]</a>
+              <a href="thread.html#786">[ thread ]</a>
+              <a href="subject.html#786">[ subject ]</a>
+              <a href="author.html#786">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>

@@ -1,0 +1,127 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<HTML>
+ <HEAD>
+   <TITLE> [Canorus-devel] Hello, Mac OS X build
+   </TITLE>
+   <LINK REL="Index" HREF="http://lists.berlios.de/pipermail/canorus-devel/2007-February/index.html" >
+   <LINK REL="made" HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C45C9A26B.40405%40gmail.com%3E">
+   <META NAME="robots" CONTENT="index,nofollow">
+   <style type="text/css">
+       pre {
+           white-space: pre-wrap;       /* css-2.1, curent FF, Opera, Safari */
+           }
+   </style>
+   <META http-equiv="Content-Type" content="text/html; charset=us-ascii">
+   <LINK REL="Previous"  HREF="000031.html">
+   <LINK REL="Next"  HREF="000033.html">
+ </HEAD>
+ <BODY BGCOLOR="#ffffff">
+   <H1>[Canorus-devel] Hello, Mac OS X build</H1>
+    <B>canorus-devel at lists.berlios.de</B> 
+    <A HREF="mailto:canorus-devel%40lists.berlios.de?Subject=Re%3A%20%5BCanorus-devel%5D%20Hello%2C%20Mac%20OS%20X%20build&In-Reply-To=%3C45C9A26B.40405%40gmail.com%3E"
+       TITLE="[Canorus-devel] Hello, Mac OS X build">canorus-devel at lists.berlios.de
+       </A><BR>
+    <I>Wed Feb  7 10:56:59 CET 2007</I>
+    <P><UL>
+        <LI>Previous message: <A HREF="000031.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+        <LI>Next message: <A HREF="000033.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+    <HR>  
+<!--beginarticle-->
+<PRE>Hi Sam,
+
+Great post, I'll look into it. But I have a few questions first
+
+<A HREF="https://lists.berlios.de/mailman/listinfo/canorus-devel">canorus-devel at lists.berlios.de</A> pravi:
+&gt;<i> data inside the file). Also, by changing some output settings when
+</I>&gt;<i> re-generating the font in fontforge, Mac OS will install the font
+</I>&gt;<i>   
+</I>Could you be more specific about these output settings. We used
+FontForge for the Lily-&gt;Canorus converation as well. There are other
+fonts to come as well and it would be good to know what seems to be the
+problem.
+
+&gt;<i> Also srl said in an earlier message that he had to create a &quot;shell&quot;
+</I>&gt;<i> canorus.app bundle to make a double-clickable app (basically a
+</I>&gt;<i> directory structure and and XML file). Cmake will do some of the work:
+</I>&gt;<i> if you add MACOSX_BUNDLE as the second argument to ADD_EXECUTABLE in
+</I>&gt;<i> CMakeLists.txt, it will create those directories and the Info.plist XML
+</I>&gt;<i> file. It also lets you set some of the values in the Info.plist file.
+</I>&gt;<i> I created a patch to src/CMakeLists.txt that creates the bundle and
+</I>&gt;<i> indicates the icon file on OSX; on other platforms it should be ignored
+</I>&gt;<i> although I haven't tested it.
+</I>&gt;<i>
+</I>&gt;<i> I haven't yet figured out how to tell cmake to add files to
+</I>&gt;<i> the canorus.app bundle, so for now I've been using a simple shell
+</I>&gt;<i> script to make a 'Resources' directory and add in the icon file
+</I>&gt;<i> (canorus.icns, trivially generated from ui/images/clogosm.png using
+</I>&gt;<i> Apple's Icon Composer.app):
+</I>&gt;<i>   
+</I>Do you know of any linux tools which convert or save icons in .icns
+format? It might be useful for the future as well.
+&gt;<i> mkdir canorus.app/Contents/Resources \
+</I>&gt;<i> &amp;&amp; cp ui/images/canorus.icns canorus.app/Contents/Resources/
+</I>&gt;<i>   
+</I>I'll figure something out. I think there is a way to universally copy
+the file in CMake.
+
+&gt;<i> Also, Erlend noted that MIDI doesn't play (the MIDI setup dialog shows
+</I>&gt;<i> &quot;None&quot; and &quot;None&quot;). This can be solved by using the OS X Audio MIDI
+</I>&gt;<i> Setup application and enabling the IAC Driver. That will let you choose
+</I>&gt;<i> &quot;Bus 1&quot; as an input and output device in Canorus. For some reason it
+</I>&gt;<i> will not let you play directly to Quicktime though, so you need a
+</I>&gt;<i> program that will take MIDI input and feed it to Quicktime. Google told
+</I>&gt;<i> me about SimpleSynth ( <A HREF="http://pete.yandell.com/software/">http://pete.yandell.com/software/</A> ) which works
+</I>&gt;<i> fine. Eventually it would be nice to be able to play back using
+</I>&gt;<i> Quicktime without a helper app but this works for now. I haven't yet
+</I>&gt;<i> tested it with a real MIDI keyboard yet but it looks promising.
+</I>&gt;<i>   
+</I>Software synthesizers are something normal for computers without
+hardware MIDI (Sound Blaster, Audigy etc.). It surprises me that MacOSX
+doesn't bundle one along by default (Microsoft uses internal Windows
+MIDI mapper, if no hardware present).
+
+I'll also create a wiki entry for Mac OSX users where these issues are
+mentioned (especially for the MIDI stuff).
+
+
+Regards!
+- Matev&#382;
+
+-------------- next part --------------
+A non-text attachment was scrubbed...
+Name: signature.asc
+Type: application/pgp-signature
+Size: 252 bytes
+Desc: OpenPGP digital signature
+URL: &lt;<A HREF="https://lists.berlios.de/pipermail/canorus-devel/attachments/20070207/63b48475/attachment.pgp">https://lists.berlios.de/pipermail/canorus-devel/attachments/20070207/63b48475/attachment.pgp</A>&gt;
+</PRE>
+
+<!--endarticle-->
+    <HR>
+    <P><UL>
+        <!--threads-->
+	<LI>Previous message: <A HREF="000031.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+	<LI>Next message: <A HREF="000033.html">[Canorus-devel] Hello, Mac OS X build
+</A></li>
+         <LI> <B>Messages sorted by:</B> 
+              <a href="date.html#32">[ date ]</a>
+              <a href="thread.html#32">[ thread ]</a>
+              <a href="subject.html#32">[ subject ]</a>
+              <a href="author.html#32">[ author ]</a>
+         </LI>
+       </UL>
+
+<hr>
+<a href="https://lists.berlios.de/mailman/listinfo/canorus-devel">More information about the Canorus-devel
+mailing list</a><br>
+</body></html>
